@@ -1,7 +1,17 @@
 import React from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
+import RootLayout from './pages/Root';
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <RootLayout />,
+    },
+]);
 
 const App = () => {
-    return <div className="App">초기화면테스트</div>;
+    return <RouterProvider router={router} />;
 };
 
 export default App;
