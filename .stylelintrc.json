@@ -50,6 +50,7 @@
                     "float",
                     "clear",
                     "position",
+                    "inset",
                     "top",
                     "right",
                     "bottom",
