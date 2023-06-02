@@ -1,0 +1,103 @@
+{
+    "extends": ["stylelint-config-standard"],
+    "customSyntax": "postcss-styled-syntax",
+    "plugins": ["stylelint-order"],
+    "rules": {
+        "order/order": ["custom-properties", "dollar-variables", "declarations"],
+        "order/properties-order": [
+            {
+                "groupName": "layout-display",
+                "properties": [
+                    "display",
+                    "grid-template-rows",
+                    "grid-template-columns",
+                    "grid-template",
+                    "grid-template-areas",
+                    "grid-gap",
+                    "grid-row-gap",
+                    "grid-column-gap",
+                    "grid-auto-flow",
+                    "grid-auto-rows",
+                    "grid-auto-columns",
+                    "grid-area",
+                    "grid-column",
+                    "grid-column-start",
+                    "grid-column-end",
+                    "grid-row",
+                    "grid-row-start",
+                    "grid-row-end",
+                    "place-self",
+                    "justify-self",
+                    "flex-direction",
+                    "flex-wrap",
+                    "flex-flow",
+                    "justify-content",
+                    "align-items",
+                    "align-content",
+                    "order",
+                    "flex",
+                    "flex-grow",
+                    "flex-shrink",
+                    "flex-basis",
+                    "align-self"
+                ]
+            },
+            {
+                "groupName": "layout",
+                "properties": [
+                    "visibility",
+                    "overflow",
+                    "float",
+                    "clear",
+                    "position",
+                    "top",
+                    "right",
+                    "bottom",
+                    "left",
+                    "z-index"
+                ]
+            },
+            {
+                "groupName": "box",
+                "properties": [
+                    "width",
+                    "height",
+                    "margin",
+                    "padding",
+                    "border",
+                    "border-width",
+                    "border-style",
+                    "border-color",
+                    "border-radius"
+                ]
+            },
+            {
+                "groupName": "background",
+                "properties": [
+                    "background",
+                    "background-color",
+                    "background-image",
+                    "background-repeat",
+                    "background-position",
+                    "background-size",
+                    "background-attachment",
+                    "background-origin",
+                    "background-clip"
+                ]
+            },
+            {
+                "groupName": "font",
+                "properties": [
+                    "font",
+                    "color",
+                    "letter-spacing",
+                    "text-align",
+                    "text-decoration",
+                    "text-indent",
+                    "vertical-align",
+                    "white-space"
+                ]
+            }
+        ]
+    }
+}
