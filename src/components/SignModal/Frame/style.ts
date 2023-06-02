@@ -1,46 +1,50 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    align-items: center;
-    border: 0.1rem solid;
-    border-radius: 3.2rem;
     display: flex;
     flex-direction: column;
-    height: 57rem;
     justify-content: center;
-    left: 50%;
+    align-items: center;
     position: fixed;
     top: 50%;
-    transform: translate(-50%, -50%);
+    left: 50%;
     width: 60.5rem;
+    height: 57rem;
+    border-radius: 3.2rem;
+    box-shadow: 0 1px 5px 0 #d3d3d3;
+    transform: translate(-50%, -50%);
 `;
 
 export const XButton = styled.span`
-    font-size: 2.5rem;
     position: absolute;
-    right: 25px;
-    top: 25px;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 2.5rem;
 `;
 
 export const Title = styled.div`
-    margin-bottom: 0.6rem;
+    margin-bottom: 3rem;
     text-align: center;
+    font-size: 20px;
 `;
 
-export const Hr = styled.div`
-    &::before,
-    &::after {
-        background: black;
-        content: '';
-        flex-grow: 1;
-        font-size: 0px;
-        height: 1px;
-        line-height: 0px;
-        margin: 0 3rem;
-    }
-    align-items: center;
+export const Line = styled.div`
     display: flex;
-    margin: 4.7rem -6rem 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+`;
+
+export const TextSocialLogin = styled.span`
+    margin: 0 2.8rem;
+    color: #949494;
+`;
+
+export const Hr = styled.span`
+    width: 14.5rem;
+    height: 1px;
+    background: #949494;
 `;
 
 export const SocialLogin = styled.div`
@@ -48,9 +52,9 @@ export const SocialLogin = styled.div`
 `;
 
 export const GoogleLogo = styled.img`
-    border: 0.1rem solid;
-    border-radius: 50%;
+    width: 7rem;
     height: 7rem;
     padding: 1rem;
-    width: 7rem;
+    border-radius: 50%;
+    box-shadow: 0 1px 5px 0 #d3d3d3;
 `;

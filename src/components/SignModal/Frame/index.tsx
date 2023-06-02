@@ -1,4 +1,3 @@
-import React from 'react';
 import * as Styled from './style';
 import GoogleLogoImage from 'assets/Google_Logo.png';
 
@@ -12,7 +11,11 @@ const SignModalFrame = ({ children }: Props) => {
             <Styled.XButton>X</Styled.XButton>
             <Styled.Title>CSTUDY에 오신 것을 환영합니다!</Styled.Title>
             {children}
-            <Styled.Hr>소셜 로그인</Styled.Hr>
+            <Styled.Line>
+                <Styled.Hr></Styled.Hr>
+                <Styled.TextSocialLogin>소셜 로그인</Styled.TextSocialLogin>
+                <Styled.Hr></Styled.Hr>
+            </Styled.Line>
             <Styled.SocialLogin>
                 <Styled.GoogleLogo src={GoogleLogoImage} alt="구글로 로그인" />
             </Styled.SocialLogin>
