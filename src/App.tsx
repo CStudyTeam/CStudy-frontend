@@ -11,27 +11,18 @@ import MyPage from 'pages/MyPage';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <RootLayout />,
+        children: [
+            { index: true, element: <RootLayout /> },
+            { path: 'board', element: <Board /> },
+            { path: 'problemset', element: <ProblemSet /> },
+            { path: 'contest', element: <Contest /> },
+            { path: 'workbook', element: <Workbook /> },
+            { path: 'mypage', element: <MyPage /> },
+        ],
     },
     {
-        path: '/board',
-        element: <Board />,
-    },
-    {
-        path: '/problemset',
-        element: <ProblemSet />,
-    },
-    {
-        path: '/contest',
-        element: <Contest />,
-    },
-    {
-        path: '/workbook',
-        element: <Workbook />,
-    },
-    {
-        path: '/mypage',
-        element: <MyPage />,
+        path: '/admin',
+        children: [{ index: true, element: <RootLayout /> }],
     },
 ]);
 
