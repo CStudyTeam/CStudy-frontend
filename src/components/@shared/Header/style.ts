@@ -14,10 +14,8 @@ export const LogoWrap = styled.h1`
 export const LogoImg = styled.img``;
 
 export const Nav = styled.nav`
-    display: flex;
     flex: 3;
-
-    & > a {
+    /* & > a {
         padding: 0.5rem 1.5rem;
         font-size: ${FONT.REGULAR_16};
         color: #181818;
@@ -26,15 +24,30 @@ export const Nav = styled.nav`
 
     & > a:last-child {
         margin-right: 0;
+    } */
+`;
+
+export const NavList = styled.ul`
+    display: flex;
+    font-size: ${FONT.REGULAR_16};
+    color: #181818;
+`;
+
+export const NavItem = styled.li`
+    margin-right: 1rem;
+
+    & > a {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
     }
 `;
+
 export const Sign = styled.div`
     display: flex;
-    justify-content: space-between;
 
     & > button {
         padding: 0.5rem;
-        font-size: ${FONT.REGULAR_16};
+        font-size: ${FONT.REGULAR_14};
     }
 
     & > button:first-child {
