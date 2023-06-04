@@ -15,16 +15,6 @@ export const LogoImg = styled.img``;
 
 export const Nav = styled.nav`
     flex: 3;
-    /* & > a {
-        padding: 0.5rem 1.5rem;
-        font-size: ${FONT.REGULAR_16};
-        color: #181818;
-        margin-right: 1rem;
-    }
-
-    & > a:last-child {
-        margin-right: 0;
-    } */
 `;
 
 export const NavList = styled.ul`

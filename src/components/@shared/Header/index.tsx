@@ -9,7 +9,9 @@ const Header = () => {
     return (
         <Styled.Wrapper>
             <Styled.LogoWrap>
-                <Styled.LogoImg src={Logo} alt="CStudy 로고" />
+                <Link to="/">
+                    <Styled.LogoImg src={Logo} alt="CStudy 로고" />
+                </Link>
             </Styled.LogoWrap>
             <Styled.Nav>
                 <Styled.NavList>
