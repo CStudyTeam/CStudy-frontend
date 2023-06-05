@@ -5,5 +5,5 @@ export const COLOR = {
     RED: '#e52330',
     BLACK: '#181818',
     GRAY: '#c4c4c4',
-    WHITE: '#fffff',
+    WHITE: '#ffffff',
 };
