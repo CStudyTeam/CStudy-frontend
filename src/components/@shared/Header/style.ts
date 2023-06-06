@@ -11,8 +11,6 @@ export const LogoWrap = styled.h1`
     flex: 1;
 `;
 
-export const LogoImg = styled.img``;
-
 export const Nav = styled.nav`
     flex: 3;
 `;

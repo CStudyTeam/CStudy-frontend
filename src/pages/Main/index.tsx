@@ -1,7 +1,14 @@
 import React from 'react';
+import * as Styled from './style';
+import Contents from 'components/@main/Contents';
 
 const Main = () => {
-    return <div>메인</div>;
+    return (
+        <Styled.MainWrapper>
+            <Styled.Banner />
+            <Contents />
+        </Styled.MainWrapper>
+    );
 };
 
 export default Main;

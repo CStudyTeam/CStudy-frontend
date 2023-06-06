@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './style';
-import Container from '../Container';
 import Logo from 'assets/Logo.png';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
@@ -10,7 +9,7 @@ const Header = () => {
         <Styled.Wrapper>
             <Styled.LogoWrap>
                 <Link to="/">
-                    <Styled.LogoImg src={Logo} alt="CStudy 로고" />
+                    <img src={Logo} alt="CStudy 로고" />
                 </Link>
             </Styled.LogoWrap>
             <Styled.Nav>
