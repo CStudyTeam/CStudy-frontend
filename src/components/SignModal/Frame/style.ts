@@ -1,3 +1,4 @@
+import { COLOR } from 'constants/themeColor';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -8,9 +9,11 @@ export const Container = styled.div`
     position: fixed;
     top: 50%;
     left: 50%;
+    z-index: 99;
     width: 60.5rem;
     height: 57rem;
     border-radius: 3.2rem;
+    background: ${COLOR.WHITE};
     box-shadow: 0 1px 5px 0 #d3d3d3;
     transform: translate(-50%, -50%);
 `;
@@ -20,12 +23,13 @@ export const XButton = styled.span`
     top: 2.5rem;
     right: 2.5rem;
     font-size: 2.5rem;
+    cursor: pointer;
 `;
 
 export const Title = styled.div`
-    margin-bottom: 3rem;
     text-align: center;
     font-size: 20px;
+    margin-bottom: 1.4rem;
 `;
 
 export const Line = styled.div`

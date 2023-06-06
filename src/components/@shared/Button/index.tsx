@@ -1,7 +1,11 @@
-import React, { PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
-const Button = ({ children }: PropsWithChildren) => {
-    return <button>{children}</button>;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    children?: ReactNode | string;
+}
+
+const Button = ({ children, ...rest }: ButtonProps) => {
+    return <button {...rest}>{children}</button>;
 };
 
 export default Button;

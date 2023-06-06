@@ -3,12 +3,13 @@ import GoogleLogoImage from 'assets/Google_Logo.png';
 
 interface Props {
     children: JSX.Element;
+    closeModalHandler: VoidFunction;
 }
 
-const SignModalFrame = ({ children }: Props) => {
+const SignModalFrame = ({ children, closeModalHandler }: Props) => {
     return (
         <Styled.Container>
-            <Styled.XButton>X</Styled.XButton>
+            <Styled.XButton onClick={closeModalHandler}>X</Styled.XButton>
             <Styled.Title>CSTUDY에 오신 것을 환영합니다!</Styled.Title>
             {children}
             <Styled.Line>
