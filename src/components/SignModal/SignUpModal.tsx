@@ -27,6 +27,7 @@ const SignUpModal = ({ closeSignUpModal }: { closeSignUpModal: VoidFunction }) =
                         required: '이름을 입력해주세요.',
                     })}
                 />
+
                 <Styled.ErrorMessage></Styled.ErrorMessage>
                 <Styled.Input
                     type="email"
