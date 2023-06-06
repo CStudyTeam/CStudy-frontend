@@ -1,4 +1,4 @@
-import { COLOR } from 'constants/themeColor';
+import { COLOR } from 'constants/Color';
 import styled from 'styled-components';
 
 export const Container = styled.div`
