@@ -5,7 +5,6 @@ import { userStorage } from 'utils/userStorage';
 export const useSignIn = (closeSignInModal: VoidFunction) => {
     return useMutation(signIn, {
         onSuccess: (response) => {
-            console.log(response);
             userStorage.set({
                 accessToken: response.data.accessToken,
                 refreshToken: response.data.refreshToken,

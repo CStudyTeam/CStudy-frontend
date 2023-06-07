@@ -10,10 +10,7 @@ export const instance = axios.create({
 instance.interceptors.request.use(
     (config) => {
         const tokens = getUserTokens();
-        if (!tokens) throw new Error('토큰이 없습니다.');
-
-        const { accessToken } = tokens;
-        config.headers.accessToken = `Bearer ${accessToken}`;
+        config.headers.accessToken = `Bearer ${tokens?.accessToken}`;
         return config;
     },
     (error) => {
@@ -54,6 +51,6 @@ instance.interceptors.response.use(
                 // 로그아웃
             }
         }
-        throw new Error('Unknown Error');
+        throw new Error(error);
     },
 );

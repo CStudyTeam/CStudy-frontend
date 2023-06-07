@@ -6,6 +6,8 @@ import useModal from 'hooks/@shared/useModal';
 import SignInModal from 'components/SignModal/SignInModal';
 import SignUpModal from 'components/SignModal/SignUpModal';
 import Modal from '../modal';
+import { isLogin } from 'utils/auth';
+import { useSignOut } from 'hooks/@query/useSignOut';
 
 const Header = () => {
     const {
@@ -18,6 +20,8 @@ const Header = () => {
         closeModalHandler: closeSignUpModal,
         isOpenModal: isOpenSignUpModal,
     } = useModal();
+
+    const { mutate: signOut } = useSignOut();
 
     return (
         <>
@@ -44,8 +48,19 @@ const Header = () => {
                     </Styled.NavList>
                 </Styled.Nav>
                 <Styled.Sign>
-                    <Button onClick={openSignInModal}>로그인</Button>
-                    <Button onClick={openSignUpModal}>회원가입</Button>
+                    {isLogin() ? (
+                        <>
+                            <Button onClick={() => signOut()}>로그아웃</Button>
+                            <Button>
+                                <Link to="mypage">마이페이지</Link>
+                            </Button>
+                        </>
+                    ) : (
+                        <>
+                            <Button onClick={openSignInModal}>로그인</Button>
+                            <Button onClick={openSignUpModal}>회원가입</Button>
+                        </>
+                    )}
                 </Styled.Sign>
             </Styled.Wrapper>
             {isOpenSignInModal && (
