@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import * as Styled from './style';
 
 export type ButtonProps = {
@@ -8,6 +8,7 @@ export type ButtonProps = {
     color?: string;
     fontSize?: string;
     main?: boolean;
+    margin?: string;
 };
 
 const Button = ({
@@ -18,6 +19,7 @@ const Button = ({
     backgroundColor,
     color,
     fontSize,
+    margin,
 }: PropsWithChildren<ButtonProps>) => {
     return (
         <Styled.Button
@@ -27,6 +29,7 @@ const Button = ({
             backgroundColor={backgroundColor}
             color={color}
             fontSize={fontSize}
+            margin={margin}
         >
             {children}
         </Styled.Button>

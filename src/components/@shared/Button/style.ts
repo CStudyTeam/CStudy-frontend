@@ -7,6 +7,7 @@ export const Button = styled.button<ButtonProps>`
     width: ${(props) => props.width};
     background-color: ${(props) => props.backgroundColor};
     padding: ${(props) => (props.main ? '1.5rem 0' : '1.3rem 0')};
+    margin: ${(props) => props.margin};
     color: ${(props) => props.color};
     border-radius: 0.8rem;
 `;
