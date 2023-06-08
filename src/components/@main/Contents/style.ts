@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { FONT } from 'constants/Font';
-// import { COLOR } from 'constants/Color';
 
 export const Section = styled.section`
     padding-top: 12rem;

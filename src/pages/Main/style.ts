@@ -6,8 +6,10 @@ export const MainWrapper = styled.main`
 `;
 
 export const Banner = styled.div`
+    position: relative;
+    display: flex;
     width: 100%;
     height: 67rem;
-    background-color: #eee;
     margin-top: 5rem;
+    background-color: #121212;
 `;
