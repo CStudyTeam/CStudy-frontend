@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './style';
-import Container from '../Container';
 import Logo from 'assets/Logo.png';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
@@ -23,6 +22,14 @@ const Header = () => {
                     </Styled.NavItem>
                     <Styled.NavItem>
                         <Link to="contest">대회</Link>
+                        <Styled.ContestCategory>
+                            <li>
+                                <Link to="open">참가가능한 대회</Link>
+                            </li>
+                            <li>
+                                <Link to="end">종료된 대회</Link>
+                            </li>
+                        </Styled.ContestCategory>
                     </Styled.NavItem>
                     <Styled.NavItem>
                         <Link to="workbook">문제집</Link>
