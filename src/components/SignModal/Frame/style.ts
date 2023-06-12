@@ -61,4 +61,5 @@ export const GoogleLogo = styled.img`
     padding: 1rem;
     border-radius: 50%;
     box-shadow: 0 1px 5px 0 #d3d3d3;
+    cursor: pointer;
 `;
