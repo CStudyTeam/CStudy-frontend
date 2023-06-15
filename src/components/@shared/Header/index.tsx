@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './style';
-import Container from '../Container';
 import Logo from 'assets/Logo.png';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
@@ -19,13 +18,13 @@ const Header = () => {
                         <Link to="board">게시판</Link>
                     </Styled.NavItem>
                     <Styled.NavItem>
-                        <Link to="workbook">문제풀이</Link>
+                        <Link to="question">문제풀이</Link>
                     </Styled.NavItem>
                     <Styled.NavItem>
                         <Link to="contest">대회</Link>
                     </Styled.NavItem>
                     <Styled.NavItem>
-                        <Link to="problemset">문제집</Link>
+                        <Link to="workbook">문제집</Link>
                     </Styled.NavItem>
                 </Styled.NavList>
             </Styled.Nav>
