@@ -10,6 +10,11 @@ export const BannerContent = styled.div`
     padding: 2rem 0;
     z-index: 10;
 
+    & a {
+        display: inline-block;
+        margin-top: 1.2rem;
+    }
+
     &::before {
         content: '';
         display: block;

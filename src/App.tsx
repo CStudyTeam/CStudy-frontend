@@ -8,6 +8,7 @@ import ProblemSet from 'pages/ProblemSet';
 import Contest from 'pages/Contest';
 import Workbook from 'pages/Workbook';
 import MyPage from 'pages/MyPage';
+import OAuthRedirect from 'pages/OAuthRedirect';
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
             { path: 'contest', element: <Contest /> },
             { path: 'workbook', element: <Workbook /> },
             { path: 'mypage', element: <MyPage /> },
+            { path: 'oauth2/login', element: <OAuthRedirect /> },
         ],
     },
     {

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Button from 'components/@shared/Button';
 import { COLOR } from 'constants/Color';
 import CanvasEffect from '../CanvasEffect';
+import { FONT } from 'constants/Font';
 
 const Banner = () => {
     return (
@@ -19,7 +20,7 @@ const Banner = () => {
                     <span>CS 지식이 편해지는 그날 까지 함께! 재밌게!! 해결해요</span>
                 </Styled.BannerTitle>
                 <Link to="/problemset">
-                    <Button width="11rem" margin="1rem 0 0 0" backgroundColor={COLOR.NAVY_200} color="#eee">
+                    <Button main backgroundColor={COLOR.NAVY_200} color={COLOR.WHITE} fontSize={FONT.REGULAR_20}>
                         문제 풀러 가기
                     </Button>
                 </Link>

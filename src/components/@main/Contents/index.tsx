@@ -3,6 +3,7 @@ import * as Styled from './style';
 import Button from 'components/@shared/Button';
 import { Link } from 'react-router-dom';
 import { COLOR } from 'constants/Color';
+import { FONT } from 'constants/Font';
 
 const Contents = () => {
     return (
@@ -36,7 +37,12 @@ const Contents = () => {
                                 더욱 쉽게 접근 하고 학습 할 수 있게 도와줍니다.
                             </Styled.ContentsTextsDesc>
                             <Link to="/problemset">
-                                <Button width="18rem" backgroundColor={COLOR.NAVY_200} color={COLOR.WHITE}>
+                                <Button
+                                    main
+                                    backgroundColor={COLOR.NAVY_200}
+                                    color={COLOR.WHITE}
+                                    fontSize={FONT.REGULAR_20}
+                                >
                                     문제 풀러 가기
                                 </Button>
                             </Link>
@@ -61,7 +67,12 @@ const Contents = () => {
                                 노력하는 동료들을 확인하고 선의의 경쟁을 위해 준비했습니다.
                             </Styled.ContentsTextsDesc>
                             <Link to="/problemset">
-                                <Button width="18rem" backgroundColor={COLOR.NAVY_200} color={COLOR.WHITE}>
+                                <Button
+                                    main
+                                    backgroundColor={COLOR.NAVY_200}
+                                    color={COLOR.WHITE}
+                                    fontSize={FONT.REGULAR_20}
+                                >
                                     랭킹 확인 하기
                                 </Button>
                             </Link>
@@ -102,7 +113,12 @@ const Contents = () => {
                                 더욱 쉽게 접근 하고 학습 할 수 있게 도와줍니다.
                             </Styled.ContentsTextsDesc>
                             <Link to="/problemset">
-                                <Button width="18rem" backgroundColor={COLOR.NAVY_200} color={COLOR.WHITE}>
+                                <Button
+                                    main
+                                    backgroundColor={COLOR.NAVY_200}
+                                    color={COLOR.WHITE}
+                                    fontSize={FONT.REGULAR_20}
+                                >
                                     문제 풀러 가기
                                 </Button>
                             </Link>
