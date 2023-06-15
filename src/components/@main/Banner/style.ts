@@ -8,7 +8,7 @@ export const BannerContent = styled.div`
     transform: translateY(-50%);
     width: 40%;
     padding: 2rem 0;
-    z-index: 10;
+    z-index: 1;
 
     & a {
         display: inline-block;
