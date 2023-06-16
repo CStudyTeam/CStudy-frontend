@@ -5,12 +5,11 @@ import RootLayout from './pages/Root';
 import Main from 'pages/Main';
 import Board from 'pages/Board';
 import Contest from 'pages/Contest';
-import Workbook from 'pages/Workbook';
 import MyPage from 'pages/MyPage';
 import OAuthRedirect from 'pages/OAuthRedirect';
 import Question from 'pages/Question';
-import WorkbookQuestion from 'pages/WorkbookQuestion';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import ProblemSet from 'pages/ProblemSet';
 
 const queryClient = new QueryClient();
 
@@ -21,8 +20,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <Main /> },
             { path: 'board', element: <Board /> },
-            { path: 'Workbook', element: <Workbook /> },
-            { path: 'workbook/question/:questionId', element: <WorkbookQuestion /> },
+            { path: 'problemset', element: <ProblemSet /> },
             { path: 'contest', element: <Contest /> },
             { path: 'question', element: <Question /> },
             { path: 'mypage', element: <MyPage /> },
