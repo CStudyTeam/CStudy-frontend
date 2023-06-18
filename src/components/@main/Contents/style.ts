@@ -53,7 +53,7 @@ export const ContentsTextsTitle = styled.span`
 
 export const ContentsTextsDesc = styled.span`
     display: inline-block;
-    ${FONT.REGULAR_14}
+    font-size: ${FONT.REGULAR_14};
     margin-top: 1rem;
 `;
 
