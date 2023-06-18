@@ -10,6 +10,7 @@ import OAuthRedirect from 'pages/OAuthRedirect';
 import Question from 'pages/Question';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import ProblemSet from 'pages/ProblemSet';
+import Problem from 'pages/Problem';
 
 const queryClient = new QueryClient();
 
@@ -20,7 +21,13 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <Main /> },
             { path: 'board', element: <Board /> },
-            { path: 'problemset', element: <ProblemSet /> },
+            {
+                path: 'problemset',
+                children: [
+                    { index: true, element: <ProblemSet /> },
+                    { path: ':problemId', children: [{ index: true, element: <Problem /> }] },
+                ],
+            },
             { path: 'contest', element: <Contest /> },
             { path: 'question', element: <Question /> },
             { path: 'mypage', element: <MyPage /> },

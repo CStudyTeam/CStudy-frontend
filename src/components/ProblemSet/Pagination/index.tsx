@@ -5,7 +5,7 @@ const Pagination = () => {
         <Styled.Pagination>
             <Styled.LeftArrowButton />
             <Styled.PaginationButtonWrapper>
-                <Styled.PaginationButton>1</Styled.PaginationButton>
+                <Styled.PaginationButton className="active">1</Styled.PaginationButton>
                 <Styled.PaginationButton>2</Styled.PaginationButton>
                 <Styled.PaginationButton>3</Styled.PaginationButton>
                 <Styled.PaginationButton>4</Styled.PaginationButton>

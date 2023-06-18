@@ -13,6 +13,8 @@ export const LeftArrowButton = styled.button`
     height: 3.6rem;
     background-color: ${COLOR.NAVY_100};
     border-radius: 100%;
+    border: 0.1rem solid ${COLOR.WHITE};
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
 
     &::before {
         content: '';
@@ -36,10 +38,30 @@ export const PaginationButtonWrapper = styled.div`
     margin: 0 1.5rem;
     background-color: ${COLOR.NAVY_100};
     border-radius: 1rem;
+    border: 0.1rem solid ${COLOR.WHITE};
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    z-index: 0;
 `;
 
 export const PaginationButton = styled.button`
     ${FONT.BOLD_20}
+    position: relative;
+
+    &.active {
+        color: ${COLOR.WHITE};
+    }
+
+    &.active::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1.7rem 1.5rem;
+        background-color: ${COLOR.NAVY_200};
+        border-radius: 0.8rem;
+        z-index: -1;
+    }
 `;
 
 export const RightArrowButton = styled.button`
@@ -48,6 +70,8 @@ export const RightArrowButton = styled.button`
     height: 3.6rem;
     background-color: ${COLOR.NAVY_100};
     border-radius: 100%;
+    border: 0.1rem solid ${COLOR.WHITE};
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
 
     &::before {
         content: '';

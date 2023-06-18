@@ -1,7 +1,6 @@
 import ContentContainer from 'components/@shared/ContentContainer';
 import * as Styled from './style';
 import useSelectFilter from 'hooks/ProblemSet/useSelectFilter';
-import { Link } from 'react-router-dom';
 import Select from 'components/ProblemSet/Select';
 import Table from 'components/ProblemSet/Table';
 import Pagination from 'components/ProblemSet/Pagination';

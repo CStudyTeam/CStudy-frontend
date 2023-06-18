@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 
 export const Header = styled.div`
