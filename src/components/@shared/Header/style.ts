@@ -1,14 +1,20 @@
 import styled from 'styled-components';
 import { FONT } from './../../../constants/Font';
+import { COLOR } from 'constants/Color';
 
 export const Wrapper = styled.header`
     display: flex;
     align-items: center;
-    padding-top: 3.5rem;
+    padding: 2rem 0;
+    margin-top: 2.5rem;
+    background-color: ${COLOR.WHITE};
+    border-radius: 1.2rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
 `;
 
 export const LogoWrap = styled.h1`
     flex: 1;
+    padding-left: 1.8rem;
 `;
 
 export const Nav = styled.nav`
@@ -32,6 +38,7 @@ export const NavItem = styled.li`
 
 export const Sign = styled.div`
     display: flex;
+    padding-right: 1.8rem;
 
     & > button {
         padding: 0.5rem;
