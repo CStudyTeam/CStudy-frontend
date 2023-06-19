@@ -15,10 +15,22 @@ export const Wrapper = styled.div`
 `;
 
 export const Filter = styled.li`
-    padding: 1rem;
+    &:hover {
+        background: ${COLOR.NAVY_100};
+    }
+
+    padding: 1.2rem;
     border-radius: 5rem;
+    background: ${COLOR.GRAY_50};
     text-align: center;
-    font-size: ${FONT.REGULAR_14};
+    margin-right: 2rem;
+    cursor: pointer;
+`;
+
+export const Container = styled.div`
+    &:hover {
+        background-color: ${COLOR.GRAY_50};
+    }
 `;
 
 export const Article = styled.article`

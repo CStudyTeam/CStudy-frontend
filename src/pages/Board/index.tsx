@@ -30,16 +30,20 @@ const Board = () => {
             </Styled.Wrapper>
 
             {requests?.content.map((request) => (
-                <Styled.Article key={request.id}>
-                    <div>
-                        <Styled.Status>{request.flag ? '승인' : '대기'}</Styled.Status>
-                        <Styled.Title>{request.title}</Styled.Title>
-                    </div>
-                    <Styled.Content>{request.content}</Styled.Content>
-                    <Styled.Detail>
-                        <span>{request.memberName}</span>·<span>{request.createAt}</span>
-                    </Styled.Detail>
-                </Styled.Article>
+                <Styled.Container key={request.id}>
+                    <Link to={`/board/${request.id}`}>
+                        <Styled.Article>
+                            <div>
+                                <Styled.Status>{request.flag ? '승인' : '대기'}</Styled.Status>
+                                <Styled.Title>{request.title}</Styled.Title>
+                            </div>
+                            <Styled.Content>{request.content}</Styled.Content>
+                            <Styled.Detail>
+                                <span>{request.memberName}</span>·<span>{request.createAt}</span>
+                            </Styled.Detail>
+                        </Styled.Article>
+                    </Link>
+                </Styled.Container>
             ))}
         </>
     );

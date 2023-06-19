@@ -11,6 +11,7 @@ import Workbook from 'pages/Workbook';
 import MyPage from 'pages/MyPage';
 import OAuthRedirect from 'pages/OAuthRedirect';
 import QuestionRequestForm from 'pages/QuestionRequestForm';
+import BoardDetail from 'pages/BoardDetail';
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <Main /> },
             { path: 'board', element: <Board /> },
+            { path: 'board/:requestId', element: <BoardDetail /> },
             { path: 'board/request', element: <QuestionRequestForm /> },
             { path: 'problemset', element: <ProblemSet /> },
             { path: 'contest', element: <Contest /> },
