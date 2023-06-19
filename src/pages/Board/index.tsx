@@ -2,23 +2,29 @@ import Button from 'components/@shared/Button';
 import * as Styled from './style';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
+import { Link } from 'react-router-dom';
 
 const Board = () => {
     return (
         <>
             <Styled.PageTitle>게시판</Styled.PageTitle>
             <Styled.Wrapper>
-                <span>내가 낸 문제</span>
-                <Button
-                    backgroundColor={COLOR.NAVY_200}
-                    color={COLOR.WHITE}
-                    width="13rem"
-                    fontSize={FONT.REGULAR_14}
-                    weight="bold"
-                    borderRadius="1.6rem"
-                >
-                    글쓰기
-                </Button>
+                <ul>
+                    <Styled.Filter>대기</Styled.Filter>
+                    <Styled.Filter>내가 낸 문제</Styled.Filter>
+                </ul>
+                <Link to="request">
+                    <Button
+                        backgroundColor={COLOR.NAVY_200}
+                        color={COLOR.WHITE}
+                        width="13rem"
+                        fontSize={FONT.REGULAR_14}
+                        weight="bold"
+                        borderRadius="1.6rem"
+                    >
+                        글쓰기
+                    </Button>
+                </Link>
             </Styled.Wrapper>
             <Styled.Article>
                 <div>

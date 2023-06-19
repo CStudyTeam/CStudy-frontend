@@ -14,6 +14,13 @@ export const Wrapper = styled.div`
     padding-bottom: 2rem;
 `;
 
+export const Filter = styled.li`
+    padding: 1rem;
+    border-radius: 5rem;
+    text-align: center;
+    font-size: ${FONT.REGULAR_14};
+`;
+
 export const Article = styled.article`
     border-bottom: 0.1rem solid ${COLOR.GRAY_100};
     padding: 2.5rem;
