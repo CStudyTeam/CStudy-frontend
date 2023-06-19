@@ -3,14 +3,16 @@ import * as Styled from './style';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { Link } from 'react-router-dom';
+import useGetAllRequest from 'hooks/@query/board/useGetAllRequest';
 
 const Board = () => {
+    const requests = useGetAllRequest();
+
     return (
         <>
             <Styled.PageTitle>게시판</Styled.PageTitle>
             <Styled.Wrapper>
                 <ul>
-                    <Styled.Filter>대기</Styled.Filter>
                     <Styled.Filter>내가 낸 문제</Styled.Filter>
                 </ul>
                 <Link to="request">
@@ -26,45 +28,19 @@ const Board = () => {
                     </Button>
                 </Link>
             </Styled.Wrapper>
-            <Styled.Article>
-                <div>
-                    <Styled.Status>대기</Styled.Status>
-                    <Styled.Title>문제 요청합니다.</Styled.Title>
-                </div>
-                <Styled.Content>
-                    설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
-                </Styled.Content>
-                <Styled.Detail>
-                    <span>홍길동</span>
-                    <span>2023-03-05</span>
-                </Styled.Detail>
-            </Styled.Article>
-            <Styled.Article>
-                <div>
-                    <Styled.Status>대기</Styled.Status>
-                    <Styled.Title>문제 요청합니다.</Styled.Title>
-                </div>
-                <Styled.Content>
-                    설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명
-                </Styled.Content>
-                <Styled.Detail>
-                    <span>홍길동</span>
-                    <span>2023-03-05</span>
-                </Styled.Detail>
-            </Styled.Article>
-            <Styled.Article>
-                <div>
-                    <Styled.Status>대기</Styled.Status>
-                    <Styled.Title>문제 요청합니다.</Styled.Title>
-                </div>
-                <Styled.Content>
-                    설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설명설설명설명설명설명설명설명설명설명설명설명설명설명설명설설명설명설명설명설명설명설명설명설명설명설명설명설명설명
-                </Styled.Content>
-                <Styled.Detail>
-                    <span>홍길동</span>
-                    <span>2023-03-05</span>
-                </Styled.Detail>
-            </Styled.Article>
+
+            {requests?.content.map((request) => (
+                <Styled.Article key={request.id}>
+                    <div>
+                        <Styled.Status>{request.flag ? '승인' : '대기'}</Styled.Status>
+                        <Styled.Title>{request.title}</Styled.Title>
+                    </div>
+                    <Styled.Content>{request.content}</Styled.Content>
+                    <Styled.Detail>
+                        <span>{request.memberName}</span>·<span>{request.createAt}</span>
+                    </Styled.Detail>
+                </Styled.Article>
+            ))}
         </>
     );
 };
