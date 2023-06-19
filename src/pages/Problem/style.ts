@@ -79,14 +79,10 @@ export const ProblemNumber = styled.input`
         position: absolute;
         top: 65%;
         left: 50%;
-        transform: translate(-50%, -50%) rotate(-45deg);
-        width: 1rem;
+        transform: translate(-50%, -55%) rotate(-45deg);
+        width: 3.2rem;
         height: 1rem;
         border: 0.5rem solid rgb(25, 204, 25);
-        border-top: none;
-        border-right: none;
-        transform-origin: top left;
-        box-shadow: -0.2rem 0.2rem 0;
         border-top: none;
         border-right: none;
         transform-origin: top left;
