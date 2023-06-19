@@ -11,6 +11,10 @@ import Question from 'pages/Question';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import ProblemSet from 'pages/ProblemSet';
 import Problem from 'pages/Problem';
+import AdminRoot from 'pages/Admin/AdminRoot';
+import CreateProblem from 'pages/Admin/CreateProblem';
+import CreateContest from 'pages/Admin/CreateContest';
+import CreateWorkbook from 'pages/Admin/CreateWorkbook';
 
 const queryClient = new QueryClient();
 
@@ -36,7 +40,12 @@ const router = createBrowserRouter([
     },
     {
         path: '/admin',
-        children: [{ index: true, element: <RootLayout /> }],
+        element: <AdminRoot />,
+        children: [
+            { path: 'CreateProblem', element: <CreateProblem /> },
+            { path: 'CreateWorkbook', element: <CreateWorkbook /> },
+            { path: 'CreateContest', element: <CreateContest /> },
+        ],
     },
 ]);
 
