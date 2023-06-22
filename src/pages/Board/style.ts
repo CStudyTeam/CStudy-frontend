@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     padding-bottom: 2rem;
 `;
 
-export const Filter = styled.li`
+export const Filter = styled.button`
     &:hover {
         background: ${COLOR.NAVY_100};
     }

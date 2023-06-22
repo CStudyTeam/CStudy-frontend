@@ -1,19 +1,26 @@
 import Button from 'components/@shared/Button';
 import * as Styled from './style';
+import { useState } from 'react';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { Link } from 'react-router-dom';
 import useGetAllRequest from 'hooks/@query/board/useGetAllRequest';
 
 const Board = () => {
-    const requests = useGetAllRequest();
+    const [query, setQuery] = useState('list');
+    const { refetch, data: requests } = useGetAllRequest(query);
+
+    const handleRequestFilter = (filterOption: string) => {
+        setQuery(filterOption);
+        refetch();
+    };
 
     return (
         <>
             <Styled.PageTitle>게시판</Styled.PageTitle>
             <Styled.Wrapper>
                 <ul>
-                    <Styled.Filter>내가 낸 문제</Styled.Filter>
+                    <Styled.Filter onClick={() => handleRequestFilter('mylist')}>내가 낸 문제</Styled.Filter>
                 </ul>
                 <Link to="request">
                     <Button

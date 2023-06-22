@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAllRequest } from 'api/board';
+import { getRequests } from 'api/board';
 import { RequestPost } from 'types/board';
 
-const useGetAllRequest = () => {
-    const { data: myRequest } = useQuery<RequestPost>(['request'], getAllRequest);
-    return myRequest;
+const useGetRequests = (query: string) => {
+    const { data, refetch } = useQuery<RequestPost>(['request', query], () => getRequests(query));
+    return { data, refetch };
 };
 
-export default useGetAllRequest;
+export default useGetRequests;

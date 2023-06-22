@@ -6,8 +6,8 @@ export const createRequest = (RequestForm: RequestForm) => {
     return response;
 };
 
-export const getAllRequest = async () => {
-    const reponse = await instance.get('/api/request/list');
+export const getRequests = async (query: string) => {
+    const reponse = await instance.get(`/api/request/${query}`);
     return reponse.data;
 };
 
