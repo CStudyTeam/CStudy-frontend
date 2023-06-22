@@ -8,7 +8,6 @@ import { useCreateRequest } from 'hooks/@query/board/useCreateRequest';
 
 const QuestionRequestForm = () => {
     const { register, handleSubmit } = useForm<RequestForm>();
-
     const { mutate: createRequest } = useCreateRequest();
 
     const submitForm = (FormData: RequestForm) => {
@@ -21,13 +20,13 @@ const QuestionRequestForm = () => {
             <Styled.Form onSubmit={handleSubmit(submitForm)}>
                 <Styled.TitleInput
                     placeholder="제목을 입력해주세요"
-                    {...register('requestDto.title', {
+                    {...register('title', {
                         required: '제목을 입력해주세요.',
                     })}
                 />
                 <Styled.ContentInput
                     placeholder="내용을 적어주세요"
-                    {...register('requestDto.content', {
+                    {...register('content', {
                         required: '내용을 적어주세요.',
                     })}
                 />
