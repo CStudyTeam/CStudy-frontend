@@ -1,3 +1,5 @@
+import { FieldErrors } from 'react-hook-form';
+
 export interface QuestionDataProps {
     createQuestionRequestDto: {
         questionTitle: string | number;
@@ -12,4 +14,9 @@ export interface QuestionDataProps {
         content: string | number;
         answer?: string;
     }[];
+}
+
+export interface AdminInputStyleType {
+    errors: FieldErrors;
+    name: string;
 }

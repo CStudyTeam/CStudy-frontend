@@ -1,7 +1,7 @@
-import { FieldErrors } from 'react-hook-form';
 import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
+import { AdminInputStyleType } from 'types/problemForm';
 
 export const AdminInputWrapper = styled.div`
     display: flex;
@@ -17,12 +17,7 @@ export const AdminBasicLabel = styled.label`
     ${FONT.BOLD_18}
 `;
 
-interface AdminInputProps {
-    errors: FieldErrors;
-    name: string;
-}
-
-export const AdminBasicInput = styled.input<AdminInputProps>`
+export const AdminBasicInput = styled.input<AdminInputStyleType>`
     margin-top: 1rem;
     padding: 1.2rem;
     border: ${(props) => (props.errors[props.name] ? `0.1rem solid ${COLOR.RED}` : `0.1rem solid ${COLOR.WHITE}`)};
@@ -30,7 +25,7 @@ export const AdminBasicInput = styled.input<AdminInputProps>`
     border-radius: 0.4rem;
 `;
 
-export const AdminTextArea = styled.textarea<AdminInputProps>`
+export const AdminTextArea = styled.textarea<AdminInputStyleType>`
     margin-top: 1rem;
     padding: 1.2rem;
     border: ${(props) => (props.errors[props.name] ? `0.1rem solid ${COLOR.RED}` : `0.1rem solid ${COLOR.WHITE}`)};
@@ -49,7 +44,7 @@ export const AdminRadioLabel = styled.label`
     }
 `;
 
-export const AdminRadioInput = styled.input<AdminInputProps>`
+export const AdminRadioInput = styled.input<AdminInputStyleType>`
     appearance: none;
     position: relative;
     display: flex;
