@@ -37,7 +37,7 @@ const Board = () => {
                                 <Styled.Status>{request.flag ? '승인' : '대기'}</Styled.Status>
                                 <Styled.Title>{request.title}</Styled.Title>
                             </div>
-                            <Styled.Content>{request.content}</Styled.Content>
+                            <Styled.Content>{request.description}</Styled.Content>
                             <Styled.Detail>
                                 <span>{request.memberName}</span>·<span>{request.createAt}</span>
                             </Styled.Detail>

@@ -19,7 +19,7 @@ const BoardDetail = () => {
                     <span>·</span>
                     {request.createAt}
                 </Styled.Detail>
-                <Styled.Content>{request.content}</Styled.Content>
+                <Styled.Content>{request.description}</Styled.Content>
             </Styled.Container>
         </>
     );

@@ -1,17 +1,17 @@
 export interface RequestForm {
     title: string;
-    content: string;
+    description: string;
 }
 
 export interface RequestPost {
-    content: RequestContent[];
+    content: RequestDetail[];
 }
 
-export interface RequestContent {
+export interface RequestDetail {
     id: number;
     flag: boolean;
     title: string;
-    content: string;
+    description: string;
     memberId: number;
     memberName: string;
     createAt: string;

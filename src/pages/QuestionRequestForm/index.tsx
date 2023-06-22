@@ -26,7 +26,7 @@ const QuestionRequestForm = () => {
                 />
                 <Styled.ContentInput
                     placeholder="내용을 적어주세요"
-                    {...register('content', {
+                    {...register('description', {
                         required: '내용을 적어주세요.',
                     })}
                 />
