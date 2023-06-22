@@ -4,13 +4,15 @@ export interface RequestForm {
 }
 
 export interface RequestPost {
-    content: {
-        id: number;
-        flag: boolean;
-        title: string;
-        content: string;
-        memberId: number;
-        memberName: string;
-        createAt: string;
-    }[];
+    content: RequestContent[];
+}
+
+export interface RequestContent {
+    id: number;
+    flag: boolean;
+    title: string;
+    content: string;
+    memberId: number;
+    memberName: string;
+    createAt: string;
 }
