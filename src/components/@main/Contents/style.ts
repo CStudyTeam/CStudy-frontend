@@ -1,16 +1,21 @@
 import styled from 'styled-components';
 import { FONT } from 'constants/Font';
+import { COLOR } from 'constants/Color';
 
 export const Section = styled.section`
-    padding-top: 12rem;
+    padding-top: 6rem;
 
     &:first-of-type {
-        padding-top: 8rem;
+        padding-top: 4rem;
     }
 `;
 
 export const Wrapper = styled.div`
     display: flex;
+    background-color: ${COLOR.WHITE};
+    padding: 4rem 3rem;
+    border-radius: 1.2rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
 `;
 
 export const ContentsTitleImg = styled.div`
