@@ -28,6 +28,7 @@ instance.interceptors.response.use(
     },
     async (error) => {
         const { config } = error;
+        console.log('토큰에러', error);
         if (error.status === 401) {
             const originalRequest = config;
             const tokens = getUserTokens();

@@ -2,14 +2,15 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Form } from 'react-router-dom';
 import { useProblemSet } from 'hooks/@query/problemset/useProblemSet';
 
+import { useCallback, useState } from 'react';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ProblemForm from 'components/CreateProblem/ProblemForm';
 import Button from 'components/@shared/Button';
+import AdminContentHeaderWrapper from 'components/@shared/Admin/AdminContentHeaderWrapper';
+import AdminContentBodyWrapper from 'components/@shared/Admin/AdminContentBodyWrapper';
 
-import * as Styled from './style';
 import { FONT } from 'constants/Font';
 import { COLOR } from 'constants/Color';
-import { useCallback, useState } from 'react';
 import { QuestionDataProps } from 'types/problemForm';
 
 const CreateProblem = () => {
@@ -75,8 +76,7 @@ const CreateProblem = () => {
 
     return (
         <ContentContainer>
-            <Styled.Header>
-                <Styled.Title>문제생성</Styled.Title>
+            <AdminContentHeaderWrapper title="문제생성">
                 <Button
                     type="submit"
                     width="12rem"
@@ -87,8 +87,8 @@ const CreateProblem = () => {
                 >
                     문제 추가하기
                 </Button>
-            </Styled.Header>
-            <Styled.Body>
+            </AdminContentHeaderWrapper>
+            <AdminContentBodyWrapper>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     {problemForms.map((form) => (
                         <ProblemForm
@@ -113,7 +113,7 @@ const CreateProblem = () => {
                         문제 등록하기
                     </Button>
                 </Form>
-            </Styled.Body>
+            </AdminContentBodyWrapper>
         </ContentContainer>
     );
 };
