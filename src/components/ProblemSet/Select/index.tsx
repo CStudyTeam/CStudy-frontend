@@ -5,15 +5,18 @@ interface SelectProps {
     handleActive: (e: React.MouseEvent) => void;
     isActive: boolean;
     options: string[];
+    optionsValue: (string | number)[];
 }
 
-const Select = ({ name, handleActive, isActive, options }: SelectProps) => {
+const Select = ({ name, handleActive, isActive, options, optionsValue }: SelectProps) => {
     return (
         <Styled.SelectBox onClick={handleActive} className={isActive ? 'active' : ''}>
             <Styled.Button>{name}</Styled.Button>
             <Styled.OptionList className="optionList">
                 {options.map((option, index) => (
-                    <Styled.OptionItem key={index}>{option}</Styled.OptionItem>
+                    <Styled.OptionItem key={index} data-value={optionsValue[index]}>
+                        {option}
+                    </Styled.OptionItem>
                 ))}
             </Styled.OptionList>
         </Styled.SelectBox>

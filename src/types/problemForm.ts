@@ -20,3 +20,9 @@ export interface AdminInputStyleType {
     errors: FieldErrors;
     name: string;
 }
+
+export interface PaginationProps {
+    totalPages: number;
+    handlePage: (page: number) => void;
+    page: number;
+}

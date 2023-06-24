@@ -10,7 +10,11 @@ export const instance = axios.create({
 instance.interceptors.request.use(
     (config) => {
         const tokens = getUserTokens();
-        config.headers.accessToken = `Bearer ${tokens?.accessToken}`;
+
+        if (tokens) {
+            config.headers.Authorization = `Bearer ${tokens.accessToken}`;
+        }
+
         return config;
     },
     (error) => {
@@ -50,6 +54,9 @@ instance.interceptors.response.use(
             } catch (e) {
                 // 로그아웃
             }
+        }
+        if (error.status === 403) {
+            alert('접근 권한이 없습니다.');
         }
         throw new Error(error);
     },

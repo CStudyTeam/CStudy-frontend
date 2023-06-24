@@ -4,9 +4,10 @@ import * as Styled from './style';
 interface TableProps {
     colRate: string[];
     title: string[];
+    content?: [];
 }
 
-const Table = ({ colRate, title }: TableProps) => {
+const Table = ({ colRate, title, content }: TableProps) => {
     return (
         <Styled.Table cellSpacing={0}>
             <colgroup>
@@ -22,87 +23,15 @@ const Table = ({ colRate, title }: TableProps) => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <Styled.TBodyTd>
-                        <span>완료</span>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd className="title">
-                        <Link to="">7Layer 문제 블라블라블라블라</Link>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd>네트워크</Styled.TBodyTd>
-                </tr>
-                <tr>
-                    <Styled.TBodyTd>
-                        <span>완료</span>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd className="title">
-                        <Link to="">7Layer 문제 블라블라블라블라</Link>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd>네트워크</Styled.TBodyTd>
-                </tr>
-                <tr>
-                    <Styled.TBodyTd>
-                        <span>완료</span>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd className="title">
-                        <Link to="">7Layer 문제 블라블라블라블라</Link>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd>네트워크</Styled.TBodyTd>
-                </tr>
-                <tr>
-                    <Styled.TBodyTd>
-                        <span>완료</span>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd className="title">
-                        <Link to="">7Layer 문제 블라블라블라블라</Link>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd>네트워크</Styled.TBodyTd>
-                </tr>
-                <tr>
-                    <Styled.TBodyTd>
-                        <span>완료</span>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd className="title">
-                        <Link to="">7Layer 문제 블라블라블라블라</Link>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd>네트워크</Styled.TBodyTd>
-                </tr>
-                <tr>
-                    <Styled.TBodyTd>
-                        <span>완료</span>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd className="title">
-                        <Link to="">7Layer 문제 블라블라블라블라</Link>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd>네트워크</Styled.TBodyTd>
-                </tr>
-                <tr>
-                    <Styled.TBodyTd>
-                        <span>완료</span>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd className="title">
-                        <Link to="">7Layer 문제 블라블라블라블라</Link>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd>네트워크</Styled.TBodyTd>
-                </tr>
-                <tr>
-                    <Styled.TBodyTd>
-                        <span>완료</span>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd className="title">
-                        <Link to="">7Layer 문제 블라블라블라블라</Link>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd>네트워크</Styled.TBodyTd>
-                </tr>
-                <tr>
-                    <Styled.TBodyTd>
-                        <span>완료</span>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd className="title">
-                        <Link to="">7Layer 문제 블라블라블라블라</Link>
-                    </Styled.TBodyTd>
-                    <Styled.TBodyTd>네트워크</Styled.TBodyTd>
-                </tr>
+                {content?.map(({ questionId, questionTitle, categoryTitle, questionSuccess }, index) => (
+                    <tr key={index}>
+                        <Styled.TBodyTd>{questionSuccess && <span className="success">완료</span>}</Styled.TBodyTd>
+                        <Styled.TBodyTd className="title">
+                            <Link to={`${questionId}`}>{questionTitle}</Link>
+                        </Styled.TBodyTd>
+                        <Styled.TBodyTd>{categoryTitle}</Styled.TBodyTd>
+                    </tr>
+                ))}
             </tbody>
         </Styled.Table>
     );

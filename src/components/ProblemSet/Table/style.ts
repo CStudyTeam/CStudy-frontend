@@ -23,12 +23,20 @@ export const TBodyTd = styled.td`
     & span {
         display: inline-block;
         padding: 0.5rem 2rem;
-        background-color: ${COLOR.NAVY_200};
+
         color: ${COLOR.WHITE};
         border-radius: 5rem;
         border: 0.1rem solid ${COLOR.WHITE};
         box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
         text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
+
+        &.success {
+            background-color: ${COLOR.NAVY_200};
+        }
+
+        &.failed {
+            background-color: ${COLOR.RED};
+        }
     }
 
     &.title {

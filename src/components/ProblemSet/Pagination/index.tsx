@@ -1,17 +1,20 @@
 import * as Styled from './style';
+import usePagination from '../../../hooks/ProblemSet/usePagination';
+import { PaginationProps } from 'types/problemForm';
 
-const Pagination = () => {
+const Pagination = ({ totalPages, handlePage, page }: PaginationProps) => {
+    const { currentPage, handlePrevPageGroupClick, handleNextPageGroupClick, paginationButtons, totalGroups } =
+        usePagination({
+            totalPages,
+            handlePage,
+            page,
+        });
+
     return (
         <Styled.Pagination>
-            <Styled.LeftArrowButton />
-            <Styled.PaginationButtonWrapper>
-                <Styled.PaginationButton className="active">1</Styled.PaginationButton>
-                <Styled.PaginationButton>2</Styled.PaginationButton>
-                <Styled.PaginationButton>3</Styled.PaginationButton>
-                <Styled.PaginationButton>4</Styled.PaginationButton>
-                <Styled.PaginationButton>5</Styled.PaginationButton>
-            </Styled.PaginationButtonWrapper>
-            <Styled.RightArrowButton />
+            <Styled.LeftArrowButton onClick={handlePrevPageGroupClick} disabled={currentPage === 1} />
+            <Styled.PaginationButtonWrapper>{paginationButtons}</Styled.PaginationButtonWrapper>
+            <Styled.RightArrowButton onClick={handleNextPageGroupClick} disabled={currentPage === totalGroups} />
         </Styled.Pagination>
     );
 };
