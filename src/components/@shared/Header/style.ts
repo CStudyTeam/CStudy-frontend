@@ -30,9 +30,22 @@ export const NavList = styled.ul`
 export const NavItem = styled.li`
     margin-right: 1rem;
 
+    &:hover ul {
+        display: block;
+    }
+
     & > a {
         display: inline-block;
         padding: 0.5rem 1.5rem;
+    }
+`;
+
+export const ContestCategory = styled.ul`
+    display: none;
+    position: absolute;
+
+    & > li {
+        margin-top: 1rem;
     }
 `;
 

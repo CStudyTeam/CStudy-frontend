@@ -24,6 +24,7 @@ const Header = () => {
     const { mutate: signOut } = useSignOut();
 
     return (
+<<<<<<< HEAD
         <>
             <Styled.Wrapper>
                 <Styled.LogoWrap>
@@ -74,6 +75,43 @@ const Header = () => {
                 </Modal>
             )}
         </>
+=======
+        <Styled.Wrapper>
+            <Styled.LogoWrap>
+                <Link to="/">
+                    <Styled.LogoImg src={Logo} alt="CStudy 로고" />
+                </Link>
+            </Styled.LogoWrap>
+            <Styled.Nav>
+                <Styled.NavList>
+                    <Styled.NavItem>
+                        <Link to="board">게시판</Link>
+                    </Styled.NavItem>
+                    <Styled.NavItem>
+                        <Link to="problemset">문제풀이</Link>
+                    </Styled.NavItem>
+                    <Styled.NavItem>
+                        <Link to="contest">대회</Link>
+                        <Styled.ContestCategory>
+                            <li>
+                                <Link to="open">참가가능한 대회</Link>
+                            </li>
+                            <li>
+                                <Link to="end">종료된 대회</Link>
+                            </li>
+                        </Styled.ContestCategory>
+                    </Styled.NavItem>
+                    <Styled.NavItem>
+                        <Link to="workbook">문제집</Link>
+                    </Styled.NavItem>
+                </Styled.NavList>
+            </Styled.Nav>
+            <Styled.Sign>
+                <Button>로그인</Button>
+                <Button>회원가입</Button>
+            </Styled.Sign>
+        </Styled.Wrapper>
+>>>>>>> 0d9e784976b2e1ec669d2cced42723ac1331d281
     );
 };
 
