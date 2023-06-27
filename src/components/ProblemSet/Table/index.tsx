@@ -25,7 +25,13 @@ const Table = ({ colRate, title, content }: TableProps) => {
             <tbody>
                 {content?.map(({ questionId, questionTitle, categoryTitle, questionSuccess }, index) => (
                     <tr key={index}>
-                        <Styled.TBodyTd>{questionSuccess && <span className="success">완료</span>}</Styled.TBodyTd>
+                        <Styled.TBodyTd>
+                            {questionSuccess ? (
+                                <span className="success">완료</span>
+                            ) : (
+                                <span className="failed">실패</span>
+                            )}
+                        </Styled.TBodyTd>
                         <Styled.TBodyTd className="title">
                             <Link to={`${questionId}`}>{questionTitle}</Link>
                         </Styled.TBodyTd>

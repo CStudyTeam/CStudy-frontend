@@ -42,8 +42,8 @@ const ProblemSet = () => {
                         name={status}
                         handleActive={statusHandleActive}
                         isActive={statusActive}
-                        options={['전체', '완료']}
-                        optionsValue={[0, 1]}
+                        options={['전체', '완료', '실패']}
+                        optionsValue={[-1, 0, 1]}
                     />
                     <Select
                         name={category}

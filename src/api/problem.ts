@@ -15,7 +15,7 @@ export const problemSet = async (formData: QuestionDataProps[]) => {
     throw new Error('문제 생성에 실패했습니다.');
 };
 
-export const getProblem = async ({ categoryTitle = '', questionSuccess = 0, page = 0, size = 10 }) => {
+export const getProblem = async ({ categoryTitle = '', questionSuccess = -1, page = 0, size = 10 }) => {
     const response = await instance.get(
         `/api/questions?categoryTitle=${categoryTitle}&questionSuccess=${questionSuccess}&page=${page}&size=${size}`,
     );
