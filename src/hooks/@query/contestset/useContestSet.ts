@@ -8,11 +8,10 @@ interface useProblemSetProps {
 
 export const useContestSet = ({ setIsLoading }: useProblemSetProps) => {
     return useMutation(contestSet, {
-        onSuccess: (response) => {
-            console.log(response);
+        onSuccess: () => {
+            alert('대회 생성에 성공했습니다');
         },
         onError: (error) => {
-            console.log('에러지롱', error);
             alert(error);
         },
         onSettled: () => {

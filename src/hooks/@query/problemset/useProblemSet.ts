@@ -8,8 +8,8 @@ interface useProblemSetProps {
 
 export const useProblemSet = ({ setIsLoading }: useProblemSetProps) => {
     return useMutation(problemSet, {
-        onSuccess: (response) => {
-            console.log(response);
+        onSuccess: () => {
+            alert('문제 생성에 성공했습니다');
         },
         onError: (error) => {
             alert(error);
