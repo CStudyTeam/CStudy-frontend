@@ -17,6 +17,7 @@ import { FormBody } from 'components/@shared/Admin/FormBody/style';
 import FormSection from 'components/@shared/Admin/FormSection';
 import { useContestSet } from 'hooks/@query/contestset/useContestSet';
 import { ContestSetForm } from 'types/Form';
+import formatDate from 'utils/formatDate';
 
 const CreateContest = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -44,6 +45,8 @@ const CreateContest = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
+        data.competitionStart = formatDate(data.competitionStart);
+        data.competitionEnd = formatDate(data.competitionEnd);
         ContestSet(data as ContestSetForm);
     };
 
