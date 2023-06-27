@@ -1,9 +1,11 @@
+import { Fragment } from 'react';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
+import FormSection from 'components/@shared/Admin/FormSection';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 
 import * as Styled from './style';
-import { Fragment } from 'react';
+import { FormBody } from './../../@shared/Admin/FormBody/style';
 
 interface ProblemFormProps {
     isLoading?: boolean;
@@ -33,83 +35,65 @@ const ProblemForm = ({
     return (
         <Styled.FormWrapper>
             <Styled.ProblemNumber>#{titleNumber}</Styled.ProblemNumber>
-            <Styled.FormBody>
-                <Styled.FormContent>
-                    <Styled.ContentHeader>
-                        <Styled.ContentTitle>문제 기본정보를 설정해주세요</Styled.ContentTitle>
-                        <Styled.ContentSubTitle>제목, 설명, 해설을 기입해주세요.</Styled.ContentSubTitle>
-                    </Styled.ContentHeader>
-                    <Styled.ContentBody>
-                        {basicInfoInputs.map(({ name, label }, index) => (
+            <FormBody>
+                <FormSection title="문제 기본정보를 설정해주세요" subtitle="제목, 설명, 해설을 기입해주세요.">
+                    {basicInfoInputs.map(({ name, label }, index) => (
+                        <AdminInput
+                            key={index}
+                            id={`${name}${basicInfoNumber}`}
+                            name={`${name}${basicInfoNumber}`}
+                            label={label}
+                            register={register}
+                            errors={errors}
+                            disabled={isLoading}
+                            required
+                        />
+                    ))}
+                </FormSection>
+                <FormSection title="문제 카테고리를 설정해주세요" subtitle="문제에 해당하는 카테고리를 체크해 주세요.">
+                    {categories.map((category, index) => (
+                        <AdminInput
+                            key={index}
+                            id={`category${contentNumber[index]}`}
+                            name={`category${basicInfoNumber}`}
+                            type="radio"
+                            label={category}
+                            register={register}
+                            errors={errors}
+                            value={category}
+                            disabled={isLoading}
+                            required
+                        />
+                    ))}
+                </FormSection>
+                <FormSection title="문제 보기를 설정해주세요" subtitle="문제 보기를 기입하고, 정답을 체크해 주세요.">
+                    {Array.from({ length: totalChoices }, (_, index) => (
+                        <Fragment key={index}>
                             <AdminInput
-                                key={index}
-                                id={`${name}${basicInfoNumber}`}
-                                name={`${name}${basicInfoNumber}`}
-                                label={label}
+                                id={`content${contentNumber[index]}`}
+                                name={`content${contentNumber[index]}`}
+                                label={`문제 보기${index + 1}`}
                                 register={register}
                                 errors={errors}
                                 disabled={isLoading}
                                 required
+                                textarea
                             />
-                        ))}
-                    </Styled.ContentBody>
-                </Styled.FormContent>
-                <Styled.FormContent>
-                    <Styled.ContentHeader>
-                        <Styled.ContentTitle>문제 카테고리를 설정해주세요</Styled.ContentTitle>
-                        <Styled.ContentSubTitle>문제에 해당하는 카테고리를 체크해 주세요.</Styled.ContentSubTitle>
-                    </Styled.ContentHeader>
-                    <Styled.ContentBody>
-                        {categories.map((category, index) => (
                             <AdminInput
-                                key={index}
-                                id={`category${contentNumber[index]}`}
-                                name={`category${basicInfoNumber}`}
+                                id={`answer${contentNumber[index]}`}
                                 type="radio"
-                                label={category}
+                                name={`answer${basicInfoNumber}`}
+                                label="정답"
                                 register={register}
                                 errors={errors}
-                                value={category}
+                                value={`정답 ${index}`}
                                 disabled={isLoading}
                                 required
                             />
-                        ))}
-                    </Styled.ContentBody>
-                </Styled.FormContent>
-                <Styled.FormContent>
-                    <Styled.ContentHeader>
-                        <Styled.ContentTitle>문제 보기를 설정해주세요</Styled.ContentTitle>
-                        <Styled.ContentSubTitle>문제 보기를 기입하고, 정답을 체크해 주세요.</Styled.ContentSubTitle>
-                    </Styled.ContentHeader>
-                    <Styled.ContentBody>
-                        {Array.from({ length: totalChoices }, (_, index) => (
-                            <Fragment key={index}>
-                                <AdminInput
-                                    id={`content${contentNumber[index]}`}
-                                    name={`content${contentNumber[index]}`}
-                                    label={`문제 보기${index + 1}`}
-                                    register={register}
-                                    errors={errors}
-                                    disabled={isLoading}
-                                    required
-                                    textarea
-                                />
-                                <AdminInput
-                                    id={`answer${contentNumber[index]}`}
-                                    type="radio"
-                                    name={`answer${basicInfoNumber}`}
-                                    label="정답"
-                                    register={register}
-                                    errors={errors}
-                                    value={`정답 ${index}`}
-                                    disabled={isLoading}
-                                    required
-                                />
-                            </Fragment>
-                        ))}
-                    </Styled.ContentBody>
-                </Styled.FormContent>
-            </Styled.FormBody>
+                        </Fragment>
+                    ))}
+                </FormSection>
+            </FormBody>
         </Styled.FormWrapper>
     );
 };

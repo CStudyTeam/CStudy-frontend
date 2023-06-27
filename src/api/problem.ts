@@ -1,6 +1,7 @@
 import { instance } from 'api';
+import { QuestionDataProps } from 'types/problemForm';
 
-export const problemSet = async (formData: any) => {
+export const problemSet = async (formData: QuestionDataProps[]) => {
     if (formData.length === 1) {
         const response = await instance.post('/api/question', formData[0]);
         return response;

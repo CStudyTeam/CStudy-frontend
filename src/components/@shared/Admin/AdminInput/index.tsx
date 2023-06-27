@@ -51,6 +51,18 @@ const AdminInput = ({
                     )}
                 </Styled.AdminInputWrapper>
             )}
+            {type === 'number' && (
+                <Styled.AdminInputWrapper>
+                    <Styled.AdminBasicLabel htmlFor={id}>{label}</Styled.AdminBasicLabel>
+                    <Styled.AdminBasicInput
+                        id={id}
+                        disabled={disabled}
+                        type={type}
+                        errors={errors}
+                        {...register(name, { required, valueAsNumber: true, setValueAs: (value) => parseInt(value) })}
+                    />
+                </Styled.AdminInputWrapper>
+            )}
             {type === 'radio' && (
                 <Styled.AdminInputWrapper>
                     <Styled.AdminRadioLabel htmlFor={id}>
