@@ -16,10 +16,11 @@ import { COLOR } from 'constants/Color';
 import { FormBody } from 'components/@shared/Admin/FormBody/style';
 import FormSection from 'components/@shared/Admin/FormSection';
 import { useContestSet } from 'hooks/@query/contestset/useContestSet';
+import { ContestSetForm } from 'types/Form';
 
 const CreateContest = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [changeValue, setChangeValue] = useState<Date | null>(new Date());
+    const [defaultValue] = useState<Date | null>(new Date());
 
     const { mutate: ContestSet } = useContestSet({ setIsLoading });
 
@@ -39,12 +40,11 @@ const CreateContest = () => {
 
     const customSetValue = (id: string, value: Date) => {
         setValue(id, value);
-        setChangeValue(value);
     };
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
-        ContestSet(data);
+        ContestSet(data as ContestSetForm);
     };
 
     return (
@@ -76,13 +76,16 @@ const CreateContest = () => {
                                 required
                             />
                         </FormSection>
-                        <FormSection title="대회 일정을 설정해 주세요" subtitle="시작일과 종료일을 선택해주세요">
+                        <FormSection
+                            title="대회 일정을 설정해 주세요"
+                            subtitle="시작일과 종료일을 선택해주세요 (설정을 안했을 경우 당일로 처리됩니다)"
+                        >
                             <Styled.CustomCalendarContainer>
                                 <Styled.CalendarField>
                                     <Styled.CalendarLabel>대회 시작일</Styled.CalendarLabel>
                                     <Calendar
                                         onChange={(value) => customSetValue('competitionStart', value as Date)}
-                                        value={changeValue}
+                                        defaultValue={defaultValue}
                                     />
                                 </Styled.CalendarField>
                                 <BsChevronDoubleRight size={60} color={COLOR.NAVY_200} />
@@ -90,7 +93,7 @@ const CreateContest = () => {
                                     <Styled.CalendarLabel>대회 종료일</Styled.CalendarLabel>
                                     <Calendar
                                         onChange={(value) => customSetValue('competitionEnd', value as Date)}
-                                        value={changeValue}
+                                        defaultValue={defaultValue}
                                     />
                                 </Styled.CalendarField>
                             </Styled.CustomCalendarContainer>

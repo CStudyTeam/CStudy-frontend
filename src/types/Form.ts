@@ -23,3 +23,10 @@ export interface SignInForm {
 export interface SignUpForm extends SignInForm {
     name: string;
 }
+
+export interface ContestSetForm {
+    competitionTitle: string;
+    participants: number;
+    competitionStart: Date;
+    competitionEnd: Date;
+}
