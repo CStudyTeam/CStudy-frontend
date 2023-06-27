@@ -30,3 +30,7 @@ export interface ContestSetForm {
     competitionStart: Date;
     competitionEnd: Date;
 }
+export interface WorkbookSetForm {
+    title: string;
+    description: string;
+}
