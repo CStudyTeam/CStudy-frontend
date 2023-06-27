@@ -9,6 +9,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     fontSize?: string;
     main?: boolean;
     margin?: string;
+    weight?: string;
+    borderRadius?: string;
 }
 
 const Button = ({
@@ -20,6 +22,8 @@ const Button = ({
     color,
     fontSize,
     margin,
+    weight,
+    borderRadius,
     ...rest
 }: ButtonProps) => {
     return (
@@ -31,6 +35,8 @@ const Button = ({
             color={color}
             fontSize={fontSize}
             margin={margin}
+            weight={weight}
+            borderRadius={borderRadius}
             {...rest}
         >
             {children}
