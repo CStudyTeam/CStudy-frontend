@@ -78,7 +78,7 @@ export const OptionList = styled.ul`
 
 export const OptionItem = styled.li`
     background: ${COLOR.NAVY_100};
-    border-bottom: 0.1rem dashed ${COLOR.GRAY};
+    border-bottom: 0.1rem dashed ${COLOR.GRAY_100};
     padding: 0.5rem 1.5rem 0.5rem;
     color: ${COLOR.BLACK};
 

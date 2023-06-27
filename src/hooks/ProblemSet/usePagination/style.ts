@@ -18,7 +18,7 @@ export const PaginationButton = styled.button`
         transform: translate(-50%, -50%);
         padding: 1.7rem 1.5rem;
         background-color: ${COLOR.NAVY_200};
-        border: 0.2rem solid ${COLOR.GRAY};
+        border: 0.2rem solid ${COLOR.GRAY_100};
         border-radius: 0.8rem;
         z-index: -1;
     }
