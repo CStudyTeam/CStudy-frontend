@@ -26,7 +26,20 @@ const router = createBrowserRouter([
         element: <RootLayout />,
         children: [
             { index: true, element: <Main /> },
-            { path: 'board', element: <Board /> },
+            {
+                path: 'board',
+                children: [
+                    { index: true, element: <Board /> },
+                    {
+                        path: 'request',
+                        element: <QuestionRequestForm />,
+                    },
+                    {
+                        path: ':requestId',
+                        element: <BoardDetail />,
+                    },
+                ],
+            },
             {
                 path: 'problemset',
                 children: [
@@ -34,8 +47,6 @@ const router = createBrowserRouter([
                     { path: ':problemId', children: [{ index: true, element: <Problem /> }] },
                 ],
             },
-            { path: 'board/:requestId', element: <BoardDetail /> },
-            { path: 'board/request', element: <QuestionRequestForm /> },
             { path: 'problemset', element: <ProblemSet /> },
             { path: 'contest', element: <Contest /> },
             { path: 'question', element: <Question /> },
