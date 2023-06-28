@@ -10,10 +10,6 @@ export const instance = axios.create({
 instance.interceptors.request.use(
     (config) => {
         const tokens = getUserTokens();
-<<<<<<< HEAD
-
-=======
->>>>>>> f9293115445f47e1005e2569857443c1231c5080
         if (tokens) {
             config.headers.Authorization = `Bearer ${tokens.accessToken}`;
         }
