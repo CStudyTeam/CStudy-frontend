@@ -2,8 +2,8 @@ import { instance } from 'api';
 import { WorkbookSetForm } from 'types/Form';
 import { Workbook } from 'types/workbookList';
 
-export const getWorkbookList = async () => {
-    const response = await instance.get<Workbook[]>('/api/workbook/list');
+export const getWorkbookList = async ({ page = 0, size = 8 }) => {
+    const response = await instance.get<Workbook>(`/api/workbook/list?page=${page}&size=${size}`);
     return response.data;
 };
 
