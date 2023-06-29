@@ -5,7 +5,7 @@ interface CreateContestProps {
     title: string;
 }
 
-const AdminContentHeaderWrapper = ({ title, children }: PropsWithChildren<CreateContestProps>) => {
+const ContentHeaderWrapper = ({ title, children }: PropsWithChildren<CreateContestProps>) => {
     return (
         <Styled.Header>
             <Styled.Title>{title}</Styled.Title>
@@ -14,4 +14,4 @@ const AdminContentHeaderWrapper = ({ title, children }: PropsWithChildren<Create
     );
 };
 
-export default AdminContentHeaderWrapper;
+export default ContentHeaderWrapper;
