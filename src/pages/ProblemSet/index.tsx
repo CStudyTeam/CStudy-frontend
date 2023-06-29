@@ -3,7 +3,7 @@ import useSelectFilter from 'hooks/ProblemSet/useSelectFilter';
 import Select from 'components/ProblemSet/Select';
 import Table from 'components/ProblemSet/Table';
 import Pagination from 'components/ProblemSet/Pagination';
-import { useGetProblem } from 'hooks/@query/problemset/useGetProblem';
+import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
 import { useCallback, useState } from 'react';
 import * as Styled from './style';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';

@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { problemSet } from './../../../api/problem';
+import { problemSet } from '../../../api/problem';
 import { Dispatch, SetStateAction } from 'react';
 
 interface useProblemSetProps {

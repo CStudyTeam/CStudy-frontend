@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getWorkbookList } from 'api/workbookList';
+import { getWorkbookList } from 'api/workbook';
 import { Workbook } from 'types/workbookList';
 
 interface UseGetWorkbookListProps {

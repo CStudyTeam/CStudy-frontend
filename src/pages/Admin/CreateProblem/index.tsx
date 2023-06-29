@@ -1,6 +1,6 @@
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Form } from 'react-router-dom';
-import { useProblemSet } from 'hooks/@query/problemset/useProblemSet';
+import { useProblemSet } from 'hooks/@query/problem/useProblemSet';
 
 import { useCallback, useState } from 'react';
 import ContentContainer from 'components/@shared/ContentContainer';

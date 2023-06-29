@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form } from 'react-router-dom';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { useWorkbookSet } from 'hooks/@query/workbookList/useWorkbookSet';
+import { useWorkbookSet } from 'hooks/@query/workbook/useWorkbookSet';
 
 import Button from 'components/@shared/Button';
 import ContentContainer from 'components/@shared/ContentContainer';

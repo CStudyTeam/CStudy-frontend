@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { workbookSet } from 'api/workbookList';
+import { workbookSet } from 'api/workbook';
 import { Dispatch, SetStateAction } from 'react';
 
 interface useWorkbookSetProps {

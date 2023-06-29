@@ -1,7 +1,7 @@
 import Button from 'components/@shared/Button';
 import * as Styled from './style';
 import { COLOR } from 'constants/Color';
-import useGetWorkbookList from 'hooks/@query/workbookList/useGetWorkbookList';
+import useGetWorkbookList from 'hooks/@query/workbook/useGetWorkbookList';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
