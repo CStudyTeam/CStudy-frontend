@@ -1,6 +1,9 @@
 export type Workbook = {
-    id: number;
-    title: string;
-    description: string;
-    createdAt: string;
+    content?: {
+        id: number;
+        title: string;
+        description: string;
+        createdAt: string;
+    }[];
+    totalPages?: number;
 };
