@@ -1,4 +1,5 @@
 import { COLOR } from 'constants/Color';
+import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -14,7 +15,7 @@ export const Container = styled.div`
     height: 57rem;
     border-radius: 3.2rem;
     background: ${COLOR.WHITE};
-    box-shadow: 0 1px 5px 0 #d3d3d3;
+    box-shadow: ${SHADOW.CONTENTBOX_MD};
     transform: translate(-50%, -50%);
 `;
 
@@ -60,6 +61,6 @@ export const GoogleLogo = styled.img`
     height: 7rem;
     padding: 1rem;
     border-radius: 50%;
-    box-shadow: 0 1px 5px 0 #d3d3d3;
+    box-shadow: ${SHADOW.CONTENTBOX_MD};
     cursor: pointer;
 `;

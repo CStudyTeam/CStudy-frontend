@@ -1,5 +1,6 @@
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
+import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
 
 export const Table = styled.table`
@@ -7,7 +8,7 @@ export const Table = styled.table`
     background-color: ${COLOR.NAVY_100};
     border: 0.1rem solid ${COLOR.WHITE};
     border-radius: 5rem;
-    box-shadow: 0.4rem 0.6rem 2.4rem rgba(0, 0, 0, 0.1), inset 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+    box-shadow: ${SHADOW.CONTENTBOX_XLG};
 `;
 
 export const THeadTh = styled.th`
@@ -27,7 +28,7 @@ export const TBodyTd = styled.td`
         color: ${COLOR.WHITE};
         border-radius: 5rem;
         border: 0.1rem solid ${COLOR.WHITE};
-        box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+        box-shadow: ${SHADOW.CONTENTBOX_LG};
         text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
 
         &.success {

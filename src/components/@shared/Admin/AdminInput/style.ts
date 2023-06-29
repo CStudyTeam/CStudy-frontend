@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { AdminInputStyleType } from 'types/problemForm';
+import { SHADOW } from 'constants/Shadow';
 
 export const AdminInputWrapper = styled.div`
     display: flex;
@@ -21,7 +22,7 @@ export const AdminBasicInput = styled.input<AdminInputStyleType>`
     margin-top: 1rem;
     padding: 1.2rem;
     border: ${(props) => (props.errors[props.name] ? `0.1rem solid ${COLOR.RED}` : `0.1rem solid ${COLOR.WHITE}`)};
-    box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0, 0, 0, 0.2);
+    box-shadow: ${SHADOW.CONTENTBOX_MD};
     border-radius: 0.4rem;
 `;
 
@@ -29,7 +30,7 @@ export const AdminTextArea = styled.textarea<AdminInputStyleType>`
     margin-top: 1rem;
     padding: 1.2rem;
     border: ${(props) => (props.errors[props.name] ? `0.1rem solid ${COLOR.RED}` : `0.1rem solid ${COLOR.WHITE}`)};
-    box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem rgba(0, 0, 0, 0.2);
+    box-shadow: ${SHADOW.CONTENTBOX_MD};
     border-radius: 0.4rem;
     resize: none;
 `;
@@ -56,10 +57,10 @@ export const AdminRadioInput = styled.input<AdminInputStyleType>`
     background-color: ${COLOR.NAVY_100};
     border: ${(props) => (props.errors[props.name] ? `0.2rem solid ${COLOR.RED}` : `0.2rem solid ${COLOR.WHITE}`)};
     border-radius: 100%;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    box-shadow: ${SHADOW.CONTENTBOX_LG};
 
     &:checked {
-        border: 0.3rem solid rgb(25, 204, 25);
+        border: 0.3rem solid ${COLOR.GREEN};
     }
 
     &:checked::before {
@@ -70,15 +71,14 @@ export const AdminRadioInput = styled.input<AdminInputStyleType>`
         transform: translate(-50%, -50%) rotate(-45deg);
         width: 3.2rem;
         height: 1rem;
-        border: 0.5rem solid rgb(25, 204, 25);
+        border: 0.5rem solid ${COLOR.GREEN};
         border-top: none;
         border-right: none;
         transform-origin: top left;
-        box-shadow: -0.2rem 0.2rem 0;
         border-top: none;
         border-right: none;
         transform-origin: top left;
-        box-shadow: -0.2rem 0.2rem 0 0 rgba(0, 0, 0, 0.5);
+        box-shadow: ${SHADOW.QUESTION};
         animation: start 0.3s ease forwards;
     }
 

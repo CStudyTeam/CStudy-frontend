@@ -1,22 +1,19 @@
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
+import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
 
 interface Props {
     isApproved?: boolean;
 }
 
-export const PageTitle = styled.div`
-    ${FONT.H4};
-    margin-top: 8rem;
-`;
-
 export const Container = styled.div`
-    height: 100vh;
+    min-height: 60vh;
     padding: 6rem;
-    border: 0.1rem solid ${COLOR.GRAY_100};
+    background-color: ${COLOR.WHITE};
+    border: 0.1rem solid ${COLOR.WHITE};
     border-radius: 5rem;
-    margin-top: 6rem;
+    box-shadow: ${SHADOW.CONTENTBOX_LG};
 `;
 
 export const Status = styled.div<Props>`

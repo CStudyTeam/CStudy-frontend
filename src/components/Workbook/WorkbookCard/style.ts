@@ -1,5 +1,6 @@
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
+import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
 
 export const WorkBookCard = styled.article`
@@ -9,7 +10,7 @@ export const WorkBookCard = styled.article`
     background-color: ${COLOR.WHITE};
     border: 0.1rem solid ${COLOR.WHITE};
     border-radius: 1.6rem;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    box-shadow: ${SHADOW.CONTENTBOX_LG};
 `;
 
 export const Title = styled.div`

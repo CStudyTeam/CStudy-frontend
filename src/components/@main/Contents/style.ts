@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FONT } from 'constants/Font';
 import { COLOR } from 'constants/Color';
+import { SHADOW } from 'constants/Shadow';
 
 export const Section = styled.section`
     padding-top: 6rem;
@@ -15,7 +16,7 @@ export const Wrapper = styled.div`
     background-color: ${COLOR.WHITE};
     padding: 4rem 3rem;
     border-radius: 1.2rem;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    box-shadow: ${SHADOW.CONTENTBOX_LG};
 `;
 
 export const ContentsTitleImg = styled.div`

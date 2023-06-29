@@ -1,6 +1,7 @@
 import { COLOR } from 'constants/Color';
 import styled from 'styled-components';
 import { FONT } from 'constants/Font';
+import { SHADOW } from 'constants/Shadow';
 
 export const CustomCalendarContainer = styled.div`
     display: flex;
@@ -12,7 +13,7 @@ export const CustomCalendarContainer = styled.div`
         padding: 1.5rem;
         border: 0.1rem solid #ccc;
         border-radius: 1.2rem;
-        box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+        box-shadow: ${SHADOW.CONTENTBOX_LG};
     }
 
     .react-calendar__navigation__label__labelText {

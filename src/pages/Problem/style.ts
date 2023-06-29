@@ -1,5 +1,6 @@
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
+import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
 
 export const Header = styled.div`
@@ -19,7 +20,7 @@ export const Body = styled.div`
     background-color: ${COLOR.WHITE};
     border: 0.2rem solid ${COLOR.WHITE};
     border-radius: 1.2rem;
-    box-shadow: 0.4rem 0.4rem 2.4rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    box-shadow: ${SHADOW.CONTENTBOX_XLG};
 `;
 
 export const BodyTitleWrapper = styled.div`
@@ -61,7 +62,7 @@ export const ProblemNumber = styled.input`
     background-color: ${COLOR.NAVY_100};
     border: 0.2rem solid ${COLOR.WHITE};
     border-radius: 100%;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    box-shadow: ${SHADOW.CONTENTBOX_LG};
 
     cursor: pointer;
 
@@ -71,7 +72,7 @@ export const ProblemNumber = styled.input`
     }
 
     &:checked {
-        border: 0.4rem solid rgb(25, 204, 25);
+        border: 0.4rem solid ${COLOR.GREEN};
     }
 
     &:checked::after {
@@ -82,11 +83,11 @@ export const ProblemNumber = styled.input`
         transform: translate(-50%, -55%) rotate(-45deg);
         width: 3.2rem;
         height: 1rem;
-        border: 0.5rem solid rgb(25, 204, 25);
+        border: 0.5rem solid ${COLOR.GREEN};
         border-top: none;
         border-right: none;
         transform-origin: top left;
-        box-shadow: -0.2rem 0.2rem 0 0 rgba(0, 0, 0, 0.5);
+        box-shadow: ${SHADOW.QUESTION};
         animation: start 0.3s ease forwards;
     }
 
@@ -142,9 +143,9 @@ export const ProblemAnswerNumber = styled.div`
     background-color: ${COLOR.NAVY_100};
     margin-left: 1rem;
     ${FONT.BOLD_20}
-    border: 0.5rem solid rgb(25, 204, 25);
+    border: 0.5rem solid ${COLOR.GREEN};
     border-radius: 100%;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    box-shadow: ${SHADOW.CONTENTBOX_LG};
 `;
 export const Footer = styled.div`
     margin: 5rem 0 3rem;
@@ -152,8 +153,7 @@ export const Footer = styled.div`
     background-color: ${COLOR.NAVY_100};
     border: 0.1rem solid ${COLOR.WHITE};
     border-radius: 1.2rem;
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12),
-        inset -0.1rem -0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+    box-shadow: ${SHADOW.CONTENTBOX_REVERSE};
 `;
 export const FooterComment = styled.div`
     ${FONT.BOLD_20}

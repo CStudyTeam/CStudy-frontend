@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
+import { SHADOW } from 'constants/Shadow';
 
 interface PaginationOptionProps {
     white?: boolean;
@@ -18,7 +19,7 @@ export const LeftArrowButton = styled.button<PaginationOptionProps>`
     background-color: ${({ white }) => (white ? COLOR.WHITE : COLOR.NAVY_100)};
     border-radius: 100%;
     border: 0.1rem solid ${COLOR.WHITE};
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    box-shadow: ${SHADOW.CONTENTBOX_LG};
 
     &::before {
         content: '';
@@ -43,7 +44,7 @@ export const PaginationButtonWrapper = styled.div<PaginationOptionProps>`
     background-color: ${({ white }) => (white ? COLOR.WHITE : COLOR.NAVY_100)};
     border-radius: 1rem;
     border: 0.1rem solid ${COLOR.WHITE};
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    box-shadow: ${SHADOW.CONTENTBOX_LG};
     z-index: 0;
 `;
 
@@ -75,7 +76,7 @@ export const RightArrowButton = styled.button<PaginationOptionProps>`
     background-color: ${({ white }) => (white ? COLOR.WHITE : COLOR.NAVY_100)};
     border-radius: 100%;
     border: 0.1rem solid ${COLOR.WHITE};
-    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
+    box-shadow: ${SHADOW.CONTENTBOX_LG};
 
     &::before {
         content: '';
