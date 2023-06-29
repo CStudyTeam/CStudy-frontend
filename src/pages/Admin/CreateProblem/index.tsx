@@ -6,16 +6,16 @@ import { useCallback, useState } from 'react';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ProblemForm from 'components/CreateProblem/ProblemForm';
 import Button from 'components/@shared/Button';
-import AdminContentHeaderWrapper from 'components/@shared/Admin/AdminContentHeaderWrapper';
-import AdminContentBodyWrapper from 'components/@shared/Admin/AdminContentBodyWrapper';
+import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 
 import { FONT } from 'constants/Font';
 import { COLOR } from 'constants/Color';
 import { QuestionDataProps } from 'types/problemForm';
+import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 
 const CreateProblem = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const { mutate: ProblemSet } = useProblemSet({ setIsLoading });
+    const ProblemSet = useProblemSet({ setIsLoading });
 
     const {
         register,
@@ -76,7 +76,7 @@ const CreateProblem = () => {
 
     return (
         <ContentContainer>
-            <AdminContentHeaderWrapper title="문제생성">
+            <ContentHeaderWrapper title="문제생성">
                 <Button
                     type="submit"
                     width="12rem"
@@ -87,8 +87,8 @@ const CreateProblem = () => {
                 >
                     문제 추가하기
                 </Button>
-            </AdminContentHeaderWrapper>
-            <AdminContentBodyWrapper>
+            </ContentHeaderWrapper>
+            <ContentBodyWrapper>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     {problemForms.map((form) => (
                         <ProblemForm
@@ -113,7 +113,7 @@ const CreateProblem = () => {
                         문제 등록하기
                     </Button>
                 </Form>
-            </AdminContentBodyWrapper>
+            </ContentBodyWrapper>
         </ContentContainer>
     );
 };

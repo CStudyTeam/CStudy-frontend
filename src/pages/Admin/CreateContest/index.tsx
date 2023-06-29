@@ -5,8 +5,7 @@ import { BsChevronDoubleRight } from 'react-icons/bs';
 
 import { useState } from 'react';
 import ContentContainer from 'components/@shared/ContentContainer';
-import AdminContentHeaderWrapper from 'components/@shared/Admin/AdminContentHeaderWrapper';
-import AdminContentBodyWrapper from 'components/@shared/Admin/AdminContentBodyWrapper';
+import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Button from 'components/@shared/Button';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 
@@ -18,12 +17,13 @@ import FormSection from 'components/@shared/Admin/FormSection';
 import { useContestSet } from 'hooks/@query/contestset/useContestSet';
 import { ContestSetForm } from 'types/Form';
 import formatDate from 'utils/formatDate';
+import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 
 const CreateContest = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [defaultValue] = useState<Date | null>(new Date());
 
-    const { mutate: ContestSet } = useContestSet({ setIsLoading });
+    const ContestSet = useContestSet({ setIsLoading });
 
     const {
         register,
@@ -52,8 +52,8 @@ const CreateContest = () => {
 
     return (
         <ContentContainer>
-            <AdminContentHeaderWrapper title="대회생성" />
-            <AdminContentBodyWrapper>
+            <ContentHeaderWrapper title="대회생성" />
+            <ContentBodyWrapper>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <FormBody>
                         <FormSection title="대회 이름을 설정해 주세요">
@@ -114,7 +114,7 @@ const CreateContest = () => {
                         </Button>
                     </FormBody>
                 </Form>
-            </AdminContentBodyWrapper>
+            </ContentBodyWrapper>
         </ContentContainer>
     );
 };

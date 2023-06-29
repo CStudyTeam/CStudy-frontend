@@ -5,8 +5,7 @@ import { useWorkbookSet } from 'hooks/@query/workbookList/useWorkbookSet';
 
 import Button from 'components/@shared/Button';
 import ContentContainer from 'components/@shared/ContentContainer';
-import AdminContentHeaderWrapper from 'components/@shared/Admin/AdminContentHeaderWrapper';
-import AdminContentBodyWrapper from 'components/@shared/Admin/AdminContentBodyWrapper';
+import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import FormSection from 'components/@shared/Admin/FormSection';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 import FormBody from 'components/@shared/Admin/FormBody';
@@ -14,11 +13,12 @@ import FormBody from 'components/@shared/Admin/FormBody';
 import { FONT } from 'constants/Font';
 import { COLOR } from 'constants/Color';
 import { WorkbookSetForm } from 'types/Form';
+import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 
 const CreateWorkbook = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const { mutate: WorkbookSet } = useWorkbookSet({ setIsLoading });
+    const WorkbookSet = useWorkbookSet({ setIsLoading });
 
     const {
         register,
@@ -38,8 +38,8 @@ const CreateWorkbook = () => {
 
     return (
         <ContentContainer>
-            <AdminContentHeaderWrapper title="문제집생성" />
-            <AdminContentBodyWrapper>
+            <ContentHeaderWrapper title="문제집생성" />
+            <ContentBodyWrapper>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <FormBody>
                         <FormSection title="문제집 이름을 입력해 주세요">
@@ -77,7 +77,7 @@ const CreateWorkbook = () => {
                         </Button>
                     </FormBody>
                 </Form>
-            </AdminContentBodyWrapper>
+            </ContentBodyWrapper>
         </ContentContainer>
     );
 };
