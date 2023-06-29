@@ -6,6 +6,8 @@ import Pagination from 'components/ProblemSet/Pagination';
 import { useGetProblem } from 'hooks/@query/problemset/useGetProblem';
 import { useCallback, useState } from 'react';
 import * as Styled from './style';
+import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
+import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 
 const ProblemSet = () => {
     const {
@@ -23,7 +25,7 @@ const ProblemSet = () => {
 
     const [page, setPage] = useState(0);
 
-    const { data } = useGetProblem({
+    const problemList = useGetProblem({
         categoryTitle: categoryValue as string,
         questionSuccess: statusValue as number,
         page,
@@ -35,8 +37,7 @@ const ProblemSet = () => {
 
     return (
         <ContentContainer>
-            <Styled.Header>
-                <Styled.Title>문제풀이</Styled.Title>
+            <ContentHeaderWrapper title="문제풀이">
                 <Styled.FilterWrapper>
                     <Select
                         name={status}
@@ -53,13 +54,17 @@ const ProblemSet = () => {
                         optionsValue={['', '자바', '네트워크', '운영체제', '데이터베이스']}
                     />
                 </Styled.FilterWrapper>
-            </Styled.Header>
-            <Styled.Body>
-                <Table colRate={['15%', '70%', '15%']} title={['상태', '제목', '카테고리']} content={data?.content} />
+            </ContentHeaderWrapper>
+            <ContentBodyWrapper>
+                <Table
+                    colRate={['15%', '70%', '15%']}
+                    title={['상태', '제목', '카테고리']}
+                    content={problemList?.content}
+                />
                 <Styled.PaginationWrapper>
-                    <Pagination totalPages={data?.totalPages} handlePage={handlePage} page={page} />
+                    <Pagination totalPages={problemList?.totalPages} handlePage={handlePage} page={page} />
                 </Styled.PaginationWrapper>
-            </Styled.Body>
+            </ContentBodyWrapper>
         </ContentContainer>
     );
 };

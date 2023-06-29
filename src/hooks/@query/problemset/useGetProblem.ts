@@ -8,9 +8,11 @@ interface UseGetProblemProps {
 }
 
 export const useGetProblem = ({ categoryTitle, questionSuccess, page }: UseGetProblemProps) => {
-    return useQuery(
+    const { data: problemList } = useQuery(
         ['getProblem', { categoryTitle, questionSuccess, page }],
         () => getProblem({ categoryTitle, questionSuccess, page }),
         { keepPreviousData: true },
     );
+
+    return problemList;
 };

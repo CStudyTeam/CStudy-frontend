@@ -2,12 +2,12 @@ import { useMutation } from '@tanstack/react-query';
 import { contestSet } from 'api/contest';
 import { Dispatch, SetStateAction } from 'react';
 
-interface useProblemSetProps {
+interface useContestSetProps {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export const useContestSet = ({ setIsLoading }: useProblemSetProps) => {
-    return useMutation(contestSet, {
+export const useContestSet = ({ setIsLoading }: useContestSetProps) => {
+    const { mutate: ContestSet } = useMutation(contestSet, {
         onSuccess: () => {
             alert('대회 생성에 성공했습니다');
         },
@@ -18,4 +18,6 @@ export const useContestSet = ({ setIsLoading }: useProblemSetProps) => {
             setIsLoading(false);
         },
     });
+
+    return ContestSet;
 };

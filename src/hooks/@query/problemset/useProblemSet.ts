@@ -7,7 +7,7 @@ interface useProblemSetProps {
 }
 
 export const useProblemSet = ({ setIsLoading }: useProblemSetProps) => {
-    return useMutation(problemSet, {
+    const { mutate: ProblemSet } = useMutation(problemSet, {
         onSuccess: () => {
             alert('문제 생성에 성공했습니다');
         },
@@ -18,4 +18,6 @@ export const useProblemSet = ({ setIsLoading }: useProblemSetProps) => {
             setIsLoading(false);
         },
     });
+
+    return ProblemSet;
 };
