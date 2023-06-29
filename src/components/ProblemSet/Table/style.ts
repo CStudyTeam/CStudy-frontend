@@ -3,7 +3,7 @@ import { FONT } from 'constants/Font';
 import styled from 'styled-components';
 
 export const Table = styled.table`
-    width: inherit;
+    width: 100%;
     background-color: ${COLOR.NAVY_100};
     border: 0.1rem solid ${COLOR.WHITE};
     border-radius: 5rem;
