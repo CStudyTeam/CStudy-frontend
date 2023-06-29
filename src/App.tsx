@@ -8,15 +8,16 @@ import Board from 'pages/Board';
 import Contest from 'pages/Contest';
 import MyPage from 'pages/MyPage';
 import OAuthRedirect from 'pages/OAuthRedirect';
-import Question from 'pages/Question';
 import ProblemSet from 'pages/ProblemSet';
 import Problem from 'pages/Problem';
 import AdminRoot from 'pages/Admin/AdminRoot';
 import CreateProblem from 'pages/Admin/CreateProblem';
 import CreateContest from 'pages/Admin/CreateContest';
 import CreateWorkbook from 'pages/Admin/CreateWorkbook';
-import QuestionRequestForm from 'pages/QuestionRequestForm';
+import BoardRequestForm from 'pages/BoardRequestForm';
 import BoardDetail from 'pages/BoardDetail';
+import Workbook from 'pages/Workbook';
+import WorkbookQuestion from 'pages/WorkbookQuestion';
 
 const queryClient = new QueryClient();
 
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
                     { index: true, element: <Board /> },
                     {
                         path: 'request',
-                        element: <QuestionRequestForm />,
+                        element: <BoardRequestForm />,
                     },
                     {
                         path: ':requestId',
@@ -47,9 +48,14 @@ const router = createBrowserRouter([
                     { path: ':problemId', children: [{ index: true, element: <Problem /> }] },
                 ],
             },
-            { path: 'problemset', element: <ProblemSet /> },
+            {
+                path: 'workbook',
+                children: [
+                    { index: true, element: <Workbook /> },
+                    { path: ':questionId', element: <WorkbookQuestion /> },
+                ],
+            },
             { path: 'contest', element: <Contest /> },
-            { path: 'question', element: <Question /> },
             { path: 'mypage', element: <MyPage /> },
             { path: 'oauth2/login', element: <OAuthRedirect /> },
         ],
