@@ -14,7 +14,7 @@ import { FONT } from 'constants/Font';
 import { COLOR } from 'constants/Color';
 import { FormBody } from 'components/@shared/Admin/FormBody/style';
 import FormSection from 'components/@shared/Admin/FormSection';
-import { useContestSet } from 'hooks/@query/contestset/useContestSet';
+import { useContestSet } from 'hooks/@query/contest/useContestSet';
 import { ContestSetForm } from 'types/Form';
 import formatDate from 'utils/formatDate';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
