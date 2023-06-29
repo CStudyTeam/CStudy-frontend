@@ -2,16 +2,20 @@ import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 
+interface PaginationOptionProps {
+    white?: boolean;
+}
+
 export const Pagination = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
 `;
-export const LeftArrowButton = styled.button`
+export const LeftArrowButton = styled.button<PaginationOptionProps>`
     position: relative;
     width: 3.6rem;
     height: 3.6rem;
-    background-color: ${COLOR.NAVY_100};
+    background-color: ${({ white }) => (white ? COLOR.WHITE : COLOR.NAVY_100)};
     border-radius: 100%;
     border: 0.1rem solid ${COLOR.WHITE};
     box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
@@ -29,14 +33,14 @@ export const LeftArrowButton = styled.button`
     }
 `;
 
-export const PaginationButtonWrapper = styled.div`
+export const PaginationButtonWrapper = styled.div<PaginationOptionProps>`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 16rem;
     height: 3.6rem;
     margin: 0 1.5rem;
-    background-color: ${COLOR.NAVY_100};
+    background-color: ${({ white }) => (white ? COLOR.WHITE : COLOR.NAVY_100)};
     border-radius: 1rem;
     border: 0.1rem solid ${COLOR.WHITE};
     box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
@@ -64,11 +68,11 @@ export const PaginationButton = styled.button`
     }
 `;
 
-export const RightArrowButton = styled.button`
+export const RightArrowButton = styled.button<PaginationOptionProps>`
     position: relative;
     width: 3.6rem;
     height: 3.6rem;
-    background-color: ${COLOR.NAVY_100};
+    background-color: ${({ white }) => (white ? COLOR.WHITE : COLOR.NAVY_100)};
     border-radius: 100%;
     border: 0.1rem solid ${COLOR.WHITE};
     box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);
