@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { LoginResponse } from 'types/api';
 import { getUserTokens } from 'utils/auth';
 import { userStorage } from 'utils/userStorage';
+import { retryToken } from './auth';
 
 export const instance = axios.create({
     baseURL: 'http://localhost:8080',
@@ -26,38 +26,34 @@ instance.interceptors.response.use(
         return response;
     },
     async (error) => {
-        const { config } = error;
-        console.log('토큰에러', error);
-        if (error.status === 401) {
+        const { config, response } = error;
+
+        if (response.data.code == 401) {
             const originalRequest = config;
             const tokens = getUserTokens();
+
             if (!tokens) throw new Error('저장된 토큰이 없습니다.');
-            const { refreshToken } = tokens;
 
-            try {
-                const { data } = await instance.post<LoginResponse>('/api/refreshToken', {
-                    refreshToken: refreshToken,
-                });
-                const { accessToken: newAccessToken, refreshToken: newRefreshToken } = data;
+            const { accessToken: newAccessToken, refreshToken: newRefreshToken } = await retryToken(
+                tokens.refreshToken,
+            );
 
-                const user = userStorage.get();
-                if (!user) throw new Error('유저를 찾을 수 없습니다.');
-                const newUser = {
-                    accessToken: newAccessToken,
-                    refreshToken: newRefreshToken,
-                };
-                userStorage.set(newUser);
+            const newUser = {
+                accessToken: newAccessToken,
+                refreshToken: newRefreshToken,
+            };
 
-                axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
-                originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-                return axios(originalRequest);
-            } catch (e) {
-                // 로그아웃
-            }
+            userStorage.set(newUser);
+
+            axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+            originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+            return axios(originalRequest);
         }
-        if (error.status === 403) {
-            alert('접근 권한이 없습니다.');
+
+        if (error.response.data.code == 403) {
+            throw new Error('접근 권한이 없습니다.');
         }
-        throw new Error(error);
+
+        throw error.response.data.code;
     },
 );

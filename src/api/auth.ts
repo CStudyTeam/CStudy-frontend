@@ -33,10 +33,9 @@ export const modifyPassword = async (formData: any) => {
 };
 
 // 재발급
-export const retryToken = async () => {
-    const user = userStorage.get();
-    const response = await instance.post('/api/refreshToken', {
-        refreshToken: user?.refreshToken,
+export const retryToken = async (refreshToken: string) => {
+    const response = await instance.post<LoginResponse>('/api/refreshToken', {
+        refreshToken,
     });
     return response.data;
 };
