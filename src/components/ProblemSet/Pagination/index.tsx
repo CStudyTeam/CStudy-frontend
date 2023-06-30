@@ -11,15 +11,23 @@ const Pagination = ({ totalPages, handlePage, page, white }: PaginationProps) =>
         });
 
     return (
-        <Styled.Pagination>
-            <Styled.LeftArrowButton white={white} onClick={handlePrevPageGroupClick} disabled={currentPage === 1} />
-            <Styled.PaginationButtonWrapper white={white}>{paginationButtons}</Styled.PaginationButtonWrapper>
-            <Styled.RightArrowButton
-                white={white}
-                onClick={handleNextPageGroupClick}
-                disabled={currentPage === totalGroups}
-            />
-        </Styled.Pagination>
+        <>
+            {totalPages > 1 && (
+                <Styled.Pagination>
+                    <Styled.LeftArrowButton
+                        white={white}
+                        onClick={handlePrevPageGroupClick}
+                        disabled={currentPage === 1}
+                    />
+                    <Styled.PaginationButtonWrapper white={white}>{paginationButtons}</Styled.PaginationButtonWrapper>
+                    <Styled.RightArrowButton
+                        white={white}
+                        onClick={handleNextPageGroupClick}
+                        disabled={currentPage === totalGroups}
+                    />
+                </Styled.Pagination>
+            )}
+        </>
     );
 };
 
