@@ -28,6 +28,7 @@ export const SelectBox = styled.div`
     &.active {
         .optionList {
             max-height: 50rem;
+            transition: all 0.25s ease-in;
         }
     }
 
@@ -57,7 +58,6 @@ export const OptionList = styled.ul`
     border-radius: 0.6rem;
     overflow: hidden;
     max-height: 0;
-    transition: all 0.3s ease-in;
 
     &::-webkit-scrollbar {
         width: 6px;
