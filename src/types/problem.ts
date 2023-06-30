@@ -20,3 +20,10 @@ export interface PaginationProps {
     page: number;
     white?: boolean;
 }
+
+export interface ProblemListProps {
+    questionId: number;
+    questionTitle: string;
+    categoryTitle: string;
+    questionSuccess: number;
+}
