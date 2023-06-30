@@ -1,6 +1,6 @@
 import { instance } from 'api';
 import { FieldValues } from 'react-hook-form';
-import { RequestDetail, RequestForm } from 'types/board';
+import { RequestDetail } from 'types/board';
 
 /* -------- Get 요청 -------- */
 

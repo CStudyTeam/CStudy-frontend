@@ -1,7 +1,17 @@
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import * as Styled from './style';
-import { TextAreaStyleProps } from 'types/style';
 
-const TextArea = ({ id, label, disabled, required, register, errors, placeholder }: TextAreaStyleProps) => {
+interface TextAreaProps {
+    id: string;
+    label: string;
+    disabled?: boolean;
+    required?: boolean;
+    placeholder?: string;
+    register: UseFormRegister<FieldValues>;
+    errors: FieldErrors;
+}
+
+const TextArea = ({ id, label, disabled, required, register, errors, placeholder }: TextAreaProps) => {
     return (
         <Styled.Field>
             <Styled.Label htmlFor={id}>{label}</Styled.Label>
