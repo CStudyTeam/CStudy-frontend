@@ -7,6 +7,7 @@ export const COLOR = {
     GRAY_200: '#818181',
 
     RED: '#e52330',
+    GREEN: '#19cc19',
     BLACK: '#181818',
     WHITE: '#ffffff',
 };
