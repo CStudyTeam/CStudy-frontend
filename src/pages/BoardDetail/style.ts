@@ -20,10 +20,10 @@ export const Status = styled.div<Props>`
     width: 8rem;
     padding: 0.5rem 0;
     border-radius: 5rem;
-    background: ${({ isApproved }) => (isApproved ? COLOR.NAVY_200 : COLOR.NAVY_100)};
+    background: ${({ isApproved }) => (isApproved ? COLOR.GREEN : COLOR.NAVY_100)};
     color: ${COLOR.BLACK};
     text-align: center;
-    ${FONT.H2};
+    ${FONT.BOLD_20};
 `;
 
 export const Title = styled.div`
@@ -41,4 +41,14 @@ export const Detail = styled.div`
 
 export const Content = styled.div`
     margin-top: 4rem;
+`;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin: 3rem 0 0 auto;
+
+    button + button {
+        margin-left: 2rem;
+    }
 `;

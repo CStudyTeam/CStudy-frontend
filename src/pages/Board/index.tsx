@@ -1,58 +1,62 @@
 import Button from 'components/@shared/Button';
 import * as Styled from './style';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { Link } from 'react-router-dom';
-import useGetAllRequest from 'hooks/@query/board/useGetAllRequest';
+import useGetRequestList from 'hooks/@query/board/useGetRequestList';
+import ContentContainer from 'components/@shared/ContentContainer';
+import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
+import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
+import RequestLists from 'components/Board/RequestLists';
+import useLoginModal from 'hooks/@zustand/useLoginModal';
+import { isLogin } from 'utils/auth';
+// import useGetAllRequest from 'hooks/@query/board/useGetAllRequest';
 
 const Board = () => {
+    const loginModal = useLoginModal();
+    const [page, setPage] = useState(0);
     const [query, setQuery] = useState('list');
-    const { refetch, data: requests } = useGetAllRequest(query);
+    const isActive = query === 'mylist' ? 'active' : '';
 
-    const handleRequestFilter = (filterOption: string) => {
-        setQuery(filterOption);
-        refetch();
+    const handleToggle = useCallback(() => {
+        setQuery(query === 'list' ? 'mylist' : 'list');
+    }, [query]);
+
+    const buttonProps = {
+        backgroundColor: COLOR.NAVY_200,
+        color: COLOR.WHITE,
+        width: '13rem',
+        fontSize: FONT.REGULAR_14,
+        weight: 'bold',
+        borderRadius: '1.6rem',
     };
 
-    return (
-        <>
-            <Styled.PageTitle>게시판</Styled.PageTitle>
-            <Styled.Wrapper>
-                <ul>
-                    <Styled.Filter onClick={() => handleRequestFilter('mylist')}>내가 낸 문제</Styled.Filter>
-                </ul>
-                <Link to="request">
-                    <Button
-                        backgroundColor={COLOR.NAVY_200}
-                        color={COLOR.WHITE}
-                        width="13rem"
-                        fontSize={FONT.REGULAR_14}
-                        weight="bold"
-                        borderRadius="1.6rem"
-                    >
-                        글쓰기
-                    </Button>
-                </Link>
-            </Styled.Wrapper>
+    const writeButton = <Button {...buttonProps}>글쓰기</Button>;
 
-            {requests?.content.map((request) => (
-                <Styled.Container key={request.id}>
-                    <Link to={`/board/${request.id}`}>
-                        <Styled.Article>
+    return (
+        <ContentContainer>
+            <ContentHeaderWrapper title="게시판" />
+            <ContentBodyWrapper>
+                <Styled.Wrapper>
+                    {isLogin() ? (
+                        <>
                             <div>
-                                <Styled.Status>{request.flag ? '승인' : '대기'}</Styled.Status>
-                                <Styled.Title>{request.title}</Styled.Title>
+                                <Styled.Filter className={isActive} onClick={handleToggle}>
+                                    내가 낸 문제
+                                </Styled.Filter>
                             </div>
-                            <Styled.Content>{request.description}</Styled.Content>
-                            <Styled.Detail>
-                                <span>{request.memberName}</span>·<span>{request.createAt}</span>
-                            </Styled.Detail>
-                        </Styled.Article>
-                    </Link>
-                </Styled.Container>
-            ))}
-        </>
+                            <Link to="request">{writeButton}</Link>
+                        </>
+                    ) : (
+                        <Button {...buttonProps} onClick={loginModal.onOpen}>
+                            글쓰기
+                        </Button>
+                    )}
+                </Styled.Wrapper>
+                <RequestLists query={query} page={page} />
+            </ContentBodyWrapper>
+        </ContentContainer>
     );
 };
 
