@@ -1,25 +1,15 @@
 import * as Styled from './style';
 import Logo from 'assets/Logo.png';
 import { Link } from 'react-router-dom';
-import useModal from 'hooks/@shared/useModal';
-import SignInModal from 'components/SignModal/SignInModal';
-import SignUpModal from 'components/SignModal/SignUpModal';
 import { isLogin } from 'utils/auth';
 import { useSignOut } from 'hooks/@query/useSignOut';
 import Button from 'components/@shared/Button';
-import Modal from 'components/@shared/modal';
+import useLoginModal from 'hooks/@zustand/useLoginModal';
+import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 
 const AdminHeader = () => {
-    const {
-        openModalHandler: openSignInModal,
-        closeModalHandler: closeSignInModal,
-        isOpenModal: isOpenSignInModal,
-    } = useModal();
-    const {
-        openModalHandler: openSignUpModal,
-        closeModalHandler: closeSignUpModal,
-        isOpenModal: isOpenSignUpModal,
-    } = useModal();
+    const loginModal = useLoginModal();
+    const registerModal = useRegisterModal();
 
     const { mutate: signOut } = useSignOut();
 
@@ -54,22 +44,12 @@ const AdminHeader = () => {
                         </>
                     ) : (
                         <>
-                            <Button onClick={openSignInModal}>로그인</Button>
-                            <Button onClick={openSignUpModal}>회원가입</Button>
+                            <Button onClick={loginModal.onOpen}>로그인</Button>
+                            <Button onClick={registerModal.onOpen}>회원가입</Button>
                         </>
                     )}
                 </Styled.Sign>
             </Styled.Wrapper>
-            {isOpenSignInModal && (
-                <Modal isOpenModal={isOpenSignInModal} closeModalHandler={closeSignInModal}>
-                    <SignInModal closeSignInModal={closeSignInModal} />
-                </Modal>
-            )}
-            {isOpenSignUpModal && (
-                <Modal isOpenModal={isOpenSignUpModal} closeModalHandler={closeSignUpModal}>
-                    <SignUpModal closeSignUpModal={closeSignUpModal} />
-                </Modal>
-            )}
         </>
     );
 };

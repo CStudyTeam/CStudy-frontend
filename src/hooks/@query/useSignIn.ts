@@ -6,8 +6,8 @@ export const useSignIn = (closeSignInModal: VoidFunction) => {
     return useMutation(signIn, {
         onSuccess: (response) => {
             userStorage.set({
-                accessToken: response.data.accessToken,
-                refreshToken: response.data.refreshToken,
+                accessToken: response.accessToken,
+                refreshToken: response.refreshToken,
             });
             alert('로그인 되었습니다.');
             closeSignInModal();

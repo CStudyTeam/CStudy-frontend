@@ -18,6 +18,11 @@ import BoardRequestForm from 'pages/BoardRequestForm';
 import BoardDetail from 'pages/BoardDetail';
 import Workbook from 'pages/Workbook';
 import WorkbookQuestion from 'pages/WorkbookQuestion';
+import Modal from 'components/@shared/modal';
+import SignInModal from 'components/SignModal/SignInModal';
+import SignUpModal from 'components/SignModal/SignUpModal';
+import useLoginModal from 'hooks/@zustand/useLoginModal';
+import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 
 const queryClient = new QueryClient();
 
@@ -72,8 +77,20 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+    const loginModal = useLoginModal();
+    const registerModal = useRegisterModal();
     return (
         <QueryClientProvider client={queryClient}>
+            {loginModal.isOpen && (
+                <Modal isOpenModal={loginModal.isOpen} closeModalHandler={loginModal.onClose}>
+                    <SignInModal closeSignInModal={loginModal.onClose} />
+                </Modal>
+            )}
+            {registerModal.isOpen && (
+                <Modal isOpenModal={registerModal.isOpen} closeModalHandler={registerModal.onClose}>
+                    <SignUpModal closeSignUpModal={registerModal.onClose} />
+                </Modal>
+            )}
             <RouterProvider router={router} />
         </QueryClientProvider>
     );
