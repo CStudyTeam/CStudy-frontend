@@ -1,6 +1,6 @@
 import * as Styled from './style';
 import usePagination from '../../../hooks/ProblemSet/usePagination';
-import { PaginationProps } from 'types/problemForm';
+import { PaginationProps } from 'types/problem';
 
 const Pagination = ({ totalPages, handlePage, page, white }: PaginationProps) => {
     const { currentPage, handlePrevPageGroupClick, handleNextPageGroupClick, paginationButtons, totalGroups } =

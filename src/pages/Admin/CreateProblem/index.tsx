@@ -10,7 +10,7 @@ import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 
 import { FONT } from 'constants/Font';
 import { COLOR } from 'constants/Color';
-import { QuestionDataProps } from 'types/problemForm';
+import { QuestionDataProps } from 'types/problem';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 
 const CreateProblem = () => {

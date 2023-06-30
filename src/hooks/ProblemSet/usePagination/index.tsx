@@ -1,6 +1,6 @@
-import React, { useState, useCallback, useMemo, ReactElement } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import * as Styled from './style';
-import { PaginationProps } from 'types/problemForm';
+import { PaginationProps } from 'types/problem';
 
 const usePagination = ({ totalPages, handlePage, page }: PaginationProps) => {
     const [currentPage, setCurrentPage] = useState<number>(1);

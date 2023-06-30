@@ -1,5 +1,5 @@
 import { instance } from 'api';
-import { QuestionDataProps } from 'types/problemForm';
+import { QuestionDataProps } from 'types/problem';
 
 /* -------- Get 요청 -------- */
 
