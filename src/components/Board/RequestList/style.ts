@@ -1,6 +1,11 @@
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
+import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
+
+interface Props {
+    isApproved?: boolean;
+}
 
 export const Container = styled.div`
     &:hover {
@@ -13,10 +18,13 @@ export const Article = styled.article`
     padding: 2.5rem;
 `;
 
-export const Status = styled.span`
+export const Status = styled.span<Props>`
     padding: 0.5rem 1.5rem;
     border-radius: 5rem;
-    background: ${COLOR.NAVY_100};
+    background: ${({ isApproved }) => (isApproved ? COLOR.GREEN : COLOR.NAVY_100)};
+    color: ${({ isApproved }) => (isApproved ? COLOR.WHITE : COLOR.BLACK)};
+    box-shadow: ${({ isApproved }) => isApproved && SHADOW.CONTENTBOX_REVERSE};
+    text-shadow: ${({ isApproved }) => isApproved && '0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);'};
     ${FONT.BOLD_18};
 `;
 

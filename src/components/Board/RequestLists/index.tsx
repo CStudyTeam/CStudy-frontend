@@ -7,18 +7,16 @@ import { RequestDetail } from 'types/board';
 
 interface RequestListsProps {
     query: string;
+    page: number;
+    handlePage: (page: number) => void;
 }
 
-const RequestLists = ({ query }: RequestListsProps) => {
-    const [page, setPage] = useState(0);
+const RequestLists = ({ query, page, handlePage }: RequestListsProps) => {
     const requestList = useGetRequestList({ page, query });
-
-    const handlePage = useCallback((page: number) => {
-        setPage(page);
-    }, []);
 
     return (
         <>
+            {!requestList && <div style={{ height: '172vh' }}></div>}
             {requestList?.content.map(({ id, flag, title, description, memberName, createAt }: RequestDetail) => (
                 <RequestList
                     key={id}

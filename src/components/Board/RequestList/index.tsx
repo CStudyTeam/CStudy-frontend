@@ -16,7 +16,7 @@ const RequestList = ({ id, flag, title, description, memberName, createAt }: Req
             <Link to={`/board/${id}`}>
                 <Styled.Article>
                     <div>
-                        <Styled.Status>{flag ? '승인' : '대기'}</Styled.Status>
+                        <Styled.Status isApproved={flag}>{flag ? '승인' : '대기'}</Styled.Status>
                         <Styled.Title>{title}</Styled.Title>
                     </div>
                     <Styled.Content>{description}</Styled.Content>

@@ -24,15 +24,18 @@ const BoardDetail = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = (formData) => {
         formData.id = request?.id;
+        formData.flag = true;
         ApproveRequest(formData);
     };
+
+    const isApproved = request?.flag;
 
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="게시판" />
             <ContentBodyWrapper blue>
                 <Styled.Container>
-                    <Styled.Status>{request?.flag ? '승인' : '대기'}</Styled.Status>
+                    <Styled.Status isApproved={isApproved}>{request?.flag ? '승인' : '대기'}</Styled.Status>
                     <Styled.Title>{request?.title}</Styled.Title>
                     <Styled.Detail>
                         {request?.memberName}

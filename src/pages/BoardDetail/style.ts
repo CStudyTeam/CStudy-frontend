@@ -21,7 +21,9 @@ export const Status = styled.div<Props>`
     padding: 0.5rem 0;
     border-radius: 5rem;
     background: ${({ isApproved }) => (isApproved ? COLOR.GREEN : COLOR.NAVY_100)};
-    color: ${COLOR.BLACK};
+    color: ${({ isApproved }) => (isApproved ? COLOR.WHITE : COLOR.BLACK)};
+    box-shadow: ${({ isApproved }) => isApproved && SHADOW.CONTENTBOX_REVERSE};
+    text-shadow: ${({ isApproved }) => isApproved && '0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);'};
     text-align: center;
     ${FONT.BOLD_20};
 `;
