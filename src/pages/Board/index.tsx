@@ -13,7 +13,6 @@ import { isLogin } from 'utils/auth';
 
 const Board = () => {
     const loginModal = useLoginModal();
-    const [page, setPage] = useState(0);
     const [query, setQuery] = useState('list');
     const isActive = query === 'mylist' ? 'active' : '';
 
@@ -52,7 +51,7 @@ const Board = () => {
                         </Button>
                     )}
                 </Styled.Wrapper>
-                <RequestLists query={query} page={page} />
+                <RequestLists query={query} />
             </ContentBodyWrapper>
         </ContentContainer>
     );

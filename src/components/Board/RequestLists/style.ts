@@ -38,3 +38,7 @@ export const Detail = styled.div`
     color: ${COLOR.GRAY_200};
     margin-top: 1.2rem;
 `;
+
+export const PaginationWrapper = styled.div`
+    padding: 4rem 0 6rem;
+`;

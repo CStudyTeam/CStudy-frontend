@@ -1,10 +1,6 @@
 export interface RequestForm {
-    title: string;
-    description: string;
-}
-
-export interface RequestPost {
-    content: RequestDetail[];
+    id: string;
+    flag: string;
 }
 
 export interface RequestDetail {
