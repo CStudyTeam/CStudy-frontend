@@ -1,4 +1,5 @@
 import { instance } from 'api';
+import { FieldValues } from 'react-hook-form';
 import { RequestDetail, RequestForm } from 'types/board';
 
 /* -------- Get 요청 -------- */
@@ -18,13 +19,13 @@ export const getToggleRequestList = async ({ page = 0, size = 10, query = 'list'
 /* -------- POST 요청 -------- */
 
 // 게시판 문제 요청글 생성
-export const createRequest = (RequestForm: RequestForm) => {
+export const createRequest = (RequestForm: FieldValues) => {
     const response = instance.post('/api/request/create', RequestForm);
     return response;
 };
 
 // 게시글 상태 수정
-export const approveRequest = (RequestForm: RequestForm) => {
-    const response = instance.post('/api/request/create', RequestForm);
+export const approveRequest = (RequestForm: FieldValues) => {
+    const response = instance.post('/api/request/approve', RequestForm);
     return response;
 };
