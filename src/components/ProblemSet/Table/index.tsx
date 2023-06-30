@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { PropsWithChildren } from 'react';
 import * as Styled from './style';
 
 interface TableProps {
@@ -7,7 +7,7 @@ interface TableProps {
     content?: [];
 }
 
-const Table = ({ colRate, title, content }: TableProps) => {
+const Table = ({ colRate, title, children }: PropsWithChildren<TableProps>) => {
     return (
         <Styled.Table cellSpacing={0}>
             <colgroup>
@@ -22,23 +22,7 @@ const Table = ({ colRate, title, content }: TableProps) => {
                     ))}
                 </tr>
             </thead>
-            <tbody>
-                {content?.map(({ questionId, questionTitle, categoryTitle, questionSuccess }, index) => (
-                    <tr key={index}>
-                        <Styled.TBodyTd>
-                            {questionSuccess ? (
-                                <span className="success">완료</span>
-                            ) : (
-                                <span className="failed">실패</span>
-                            )}
-                        </Styled.TBodyTd>
-                        <Styled.TBodyTd className="title">
-                            <Link to={`${questionId}`}>{questionTitle}</Link>
-                        </Styled.TBodyTd>
-                        <Styled.TBodyTd>{categoryTitle}</Styled.TBodyTd>
-                    </tr>
-                ))}
-            </tbody>
+            <tbody>{children}</tbody>
         </Styled.Table>
     );
 };

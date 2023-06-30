@@ -19,7 +19,12 @@ export const TBodyTd = styled.td`
     text-align: center;
     padding: 3rem 0;
     border-top: 0.1rem solid ${COLOR.WHITE};
-    vertical-align: top;
+    vertical-align: middle;
+
+    // 선 추가 할 수도 있어서 일단 추가
+    /* & + & {
+        border-left: 0.1rem solid ${COLOR.WHITE};
+    } */
 
     & span {
         display: inline-block;
@@ -43,5 +48,10 @@ export const TBodyTd = styled.td`
     &.title {
         ${FONT.BOLD_20}
         text-align: left;
+        padding: 2rem 3rem;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        word-break: break-all;
     }
 `;

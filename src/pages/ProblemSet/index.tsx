@@ -8,6 +8,9 @@ import { useCallback, useState } from 'react';
 import * as Styled from './style';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
+import { Link } from 'react-router-dom';
+import { TBodyTd } from './../../components/ProblemSet/Table/style';
+import { ProblemListProps } from 'types/problem';
 
 const ProblemSet = () => {
     const {
@@ -35,6 +38,19 @@ const ProblemSet = () => {
         setPage(page);
     }, []);
 
+    const TBodyContent = problemList?.content?.map(
+        ({ questionId, questionTitle, categoryTitle, questionSuccess }: ProblemListProps, index: number) => (
+            <tr key={index}>
+                <TBodyTd>{questionId}</TBodyTd>
+                <TBodyTd>{questionSuccess ? <span className="success">완료</span> : ''}</TBodyTd>
+                <TBodyTd className="title">
+                    <Link to={`${questionId}`}>{questionTitle}</Link>
+                </TBodyTd>
+                <TBodyTd>{categoryTitle}</TBodyTd>
+            </tr>
+        ),
+    );
+
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="문제풀이">
@@ -56,11 +72,9 @@ const ProblemSet = () => {
                 </Styled.FilterWrapper>
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
-                <Table
-                    colRate={['15%', '70%', '15%']}
-                    title={['상태', '제목', '카테고리']}
-                    content={problemList?.content}
-                />
+                <Table colRate={['10%', '10%', '65%', '15%']} title={['번호', '상태', '제목', '카테고리']}>
+                    {TBodyContent}
+                </Table>
                 <Styled.PaginationWrapper>
                     <Pagination totalPages={problemList?.totalPages} handlePage={handlePage} page={page} />
                 </Styled.PaginationWrapper>
