@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
-import { AdminInputStyleType } from 'types/problemForm';
 import { SHADOW } from 'constants/Shadow';
+import { AdminInputStyleProps } from 'types/style';
 
 export const AdminInputWrapper = styled.div`
     display: flex;
@@ -18,7 +18,7 @@ export const AdminBasicLabel = styled.label`
     ${FONT.BOLD_18}
 `;
 
-export const AdminBasicInput = styled.input<AdminInputStyleType>`
+export const AdminBasicInput = styled.input<AdminInputStyleProps>`
     margin-top: 1rem;
     padding: 1.2rem;
     border: ${(props) => (props.errors[props.name] ? `0.1rem solid ${COLOR.RED}` : `0.1rem solid ${COLOR.WHITE}`)};
@@ -26,7 +26,7 @@ export const AdminBasicInput = styled.input<AdminInputStyleType>`
     border-radius: 0.4rem;
 `;
 
-export const AdminTextArea = styled.textarea<AdminInputStyleType>`
+export const AdminTextArea = styled.textarea<AdminInputStyleProps>`
     margin-top: 1rem;
     padding: 1.2rem;
     border: ${(props) => (props.errors[props.name] ? `0.1rem solid ${COLOR.RED}` : `0.1rem solid ${COLOR.WHITE}`)};
@@ -45,7 +45,7 @@ export const AdminRadioLabel = styled.label`
     }
 `;
 
-export const AdminRadioInput = styled.input<AdminInputStyleType>`
+export const AdminRadioInput = styled.input<AdminInputStyleProps>`
     appearance: none;
     position: relative;
     display: flex;
