@@ -9,7 +9,6 @@ import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { isAdmin } from 'utils/auth';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import Input from 'components/@shared/Input';
 import { useApproveRequest } from 'hooks/@query/board/useApproveRequest';
 
 const BoardDetail = () => {
@@ -25,11 +24,9 @@ const BoardDetail = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = (formData) => {
         formData.id = request?.id;
-        // formData.flag = request?.flag;
         ApproveRequest(formData);
     };
 
-    console.log(request);
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="게시판" />

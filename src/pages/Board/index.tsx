@@ -4,14 +4,12 @@ import { useCallback, useState } from 'react';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { Link } from 'react-router-dom';
-import useGetRequestList from 'hooks/@query/board/useGetRequestList';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import RequestLists from 'components/Board/RequestLists';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import { isLogin } from 'utils/auth';
-// import useGetAllRequest from 'hooks/@query/board/useGetAllRequest';
 
 const Board = () => {
     const loginModal = useLoginModal();
