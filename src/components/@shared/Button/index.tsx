@@ -11,6 +11,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     margin?: string;
     weight?: string;
     borderRadius?: string;
+    shadow?: boolean;
 }
 
 const Button = ({
@@ -24,6 +25,7 @@ const Button = ({
     margin,
     weight,
     borderRadius,
+    shadow,
     ...rest
 }: ButtonProps) => {
     return (
@@ -37,6 +39,7 @@ const Button = ({
             margin={margin}
             weight={weight}
             borderRadius={borderRadius}
+            shadow={shadow}
             {...rest}
         >
             {children}
