@@ -1,4 +1,5 @@
 import { instance } from 'api';
+import { FieldValues } from 'react-hook-form';
 import { SignInForm, SignUpForm } from 'types/Form';
 import { LoginResponse } from 'types/api';
 import { userStorage } from 'utils/userStorage';
@@ -27,7 +28,7 @@ export const signOut = async () => {
 };
 
 // 비밀번호 수정
-export const modifyPassword = async (formData: any) => {
+export const modifyPassword = async (formData: FieldValues) => {
     const response = await instance.post('/api/refreshToken', formData);
     return response.data;
 };
