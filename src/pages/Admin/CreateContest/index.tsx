@@ -44,10 +44,18 @@ const CreateContest = () => {
     };
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        setIsLoading(true);
-        data.competitionStart = formatDate(data.competitionStart);
-        data.competitionEnd = formatDate(data.competitionEnd);
-        ContestSet(data as ContestSetForm);
+        try {
+            if (data.competitionStart > data.competitionEnd) {
+                throw new Error('종료일이 시작일보다 빠릅니다');
+            }
+
+            setIsLoading(true);
+            data.competitionStart = formatDate(data.competitionStart);
+            data.competitionEnd = formatDate(data.competitionEnd);
+            ContestSet(data as ContestSetForm);
+        } catch (err) {
+            alert(err);
+        }
     };
 
     return (
@@ -89,6 +97,7 @@ const CreateContest = () => {
                                     <Calendar
                                         onChange={(value) => customSetValue('competitionStart', value as Date)}
                                         defaultValue={defaultValue}
+                                        minDate={new Date()}
                                     />
                                 </Styled.CalendarField>
                                 <BsChevronDoubleRight size={60} color={COLOR.NAVY_200} />
@@ -97,6 +106,7 @@ const CreateContest = () => {
                                     <Calendar
                                         onChange={(value) => customSetValue('competitionEnd', value as Date)}
                                         defaultValue={defaultValue}
+                                        minDate={new Date()}
                                     />
                                 </Styled.CalendarField>
                             </Styled.CustomCalendarContainer>
