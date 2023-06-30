@@ -14,10 +14,16 @@ import { isLogin } from 'utils/auth';
 const Board = () => {
     const loginModal = useLoginModal();
     const [query, setQuery] = useState('list');
+    const [page, setPage] = useState(0);
     const isActive = query === 'mylist' ? 'active' : '';
+
+    const handlePage = useCallback((page: number) => {
+        setPage(page);
+    }, []);
 
     const handleToggle = useCallback(() => {
         setQuery(query === 'list' ? 'mylist' : 'list');
+        setPage(0);
     }, [query]);
 
     const buttonProps = {
@@ -51,7 +57,7 @@ const Board = () => {
                         </Button>
                     )}
                 </Styled.Wrapper>
-                <RequestLists query={query} />
+                <RequestLists query={query} page={page} handlePage={handlePage} />
             </ContentBodyWrapper>
         </ContentContainer>
     );
