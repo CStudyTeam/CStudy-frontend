@@ -1,12 +1,16 @@
 import { instance } from 'api';
-import { QuestionDataProps } from 'types/problem';
+import { QuestionDataProps, selectAnswerProblemFromProps } from 'types/problem';
 
 /* -------- Get 요청 -------- */
 
-//  전체 문제 페이징
-export const getProblem = async ({ categoryTitle = '', questionSuccess = -1, page = 0, size = 10 }) => {
+//  전체 문제 페이징 / 내가 푼 문제 조회
+export const getProblem = async ({ categoryTitle = '', questionSuccess = -1, page = 0, size = 10, query = '' }) => {
     const response = await instance.get(
-        `/api/questions?categoryTitle=${categoryTitle}&questionSuccess=${questionSuccess}&page=${page}&size=${size}`,
+        `/api/questions${query}?${
+            query === ''
+                ? `categoryTitle=${categoryTitle}&questionSuccess=${questionSuccess}&page=${page}&size=${size}`
+                : `page=${page}&size=${size}`
+        }`,
     );
 
     return response.data;
@@ -14,7 +18,7 @@ export const getProblem = async ({ categoryTitle = '', questionSuccess = -1, pag
 
 //  단일 문제 찾기
 export const getOneProblem = async (problemId: string) => {
-    const response = await instance.get(`/api/questions/${problemId}`);
+    const response = await instance.get(`/api/question/${problemId}`);
     return response.data;
 };
 
@@ -36,7 +40,8 @@ export const problemSet = async (formData: QuestionDataProps[]) => {
 };
 
 // 단일 문제 정답 선택하기
-export const SelectAnswerProblem = async (problemId: string) => {
-    const response = await instance.post(`/api/questions/${problemId}`);
+export const selectAnswerProblem = async ({ problemId, formData }: selectAnswerProblemFromProps) => {
+    console.log(formData);
+    const response = await instance.post(`/api/question/${problemId}`, formData);
     return response;
 };
