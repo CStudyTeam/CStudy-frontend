@@ -28,3 +28,14 @@ export const isAdmin = () => {
     if (roles[0] === 'ROLE_ADMIN') return true;
     return false;
 };
+
+export const userInfo = () => {
+    const userToken = userStorage.get();
+    if (!userToken) {
+        return false;
+    }
+
+    const { memberId, roles }: jwtDecodeProps = jwtDecode(userToken.accessToken);
+
+    return { memberId, roles };
+};

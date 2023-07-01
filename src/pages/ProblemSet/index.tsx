@@ -11,6 +11,7 @@ import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import { Link } from 'react-router-dom';
 import { TBodyTd } from './../../components/ProblemSet/Table/style';
 import { ProblemListProps } from 'types/problem';
+import { Filter } from 'pages/Board/style';
 
 const ProblemSet = () => {
     const {
@@ -28,11 +29,20 @@ const ProblemSet = () => {
 
     const [page, setPage] = useState(0);
 
+    const [query, setQuery] = useState('');
+    const isActive = query === '/myquestion' ? 'active' : '';
+
     const problemList = useGetProblem({
         categoryTitle: categoryValue as string,
         questionSuccess: statusValue as number,
         page,
+        query,
     });
+
+    const handleToggle = useCallback(() => {
+        setQuery(query === '' ? '/myquestion' : '');
+        setPage(0);
+    }, [query]);
 
     const handlePage = useCallback((page: number) => {
         setPage(page);
@@ -55,6 +65,9 @@ const ProblemSet = () => {
         <ContentContainer>
             <ContentHeaderWrapper title="문제풀이">
                 <Styled.FilterWrapper>
+                    <Filter className={isActive} onClick={handleToggle}>
+                        내가 푼 문제
+                    </Filter>
                     <Select
                         name={status}
                         handleActive={statusHandleActive}
