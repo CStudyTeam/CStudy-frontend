@@ -41,7 +41,6 @@ export const problemSet = async (formData: QuestionDataProps[]) => {
 
 // 단일 문제 정답 선택하기
 export const selectAnswerProblem = async ({ problemId, formData }: selectAnswerProblemFromProps) => {
-    console.log(formData);
     const response = await instance.post(`/api/question/${problemId}`, formData);
     return response;
 };
