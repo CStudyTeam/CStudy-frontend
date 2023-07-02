@@ -2,7 +2,7 @@ import * as Styled from './style';
 import Logo from 'assets/Logo.png';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
-import { isLogin } from 'utils/auth';
+import { isAdmin, isLogin } from 'utils/auth';
 import { useSignOut } from 'hooks/@query/useSignOut';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
@@ -23,6 +23,19 @@ const Header = () => {
                 </Styled.LogoWrap>
                 <Styled.Nav>
                     <Styled.NavList>
+                        {isAdmin() && (
+                            <>
+                                <Styled.NavItem>
+                                    <Link to="admin/CreateProblem">문제생성</Link>
+                                </Styled.NavItem>
+                                <Styled.NavItem>
+                                    <Link to="admin/CreateContest">대회생성</Link>
+                                </Styled.NavItem>
+                                <Styled.NavItem>
+                                    <Link to="admin/CreateWorkbook">문제집생성</Link>
+                                </Styled.NavItem>
+                            </>
+                        )}
                         <Styled.NavItem>
                             <Link to="board">게시판</Link>
                         </Styled.NavItem>

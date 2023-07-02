@@ -14,7 +14,7 @@ export const Wrapper = styled.header`
 `;
 
 export const LogoWrap = styled.h1`
-    flex: 1;
+    flex: 0.5;
     padding-left: 1.8rem;
 `;
 

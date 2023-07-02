@@ -10,12 +10,23 @@ interface InputProps {
     placeholder?: string;
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors;
+    defaultValue?: string;
 }
 
-const Input = ({ id, label, type = 'text', disabled, required, register, errors, placeholder }: InputProps) => {
+const Input = ({
+    id,
+    label,
+    type = 'text',
+    disabled,
+    required,
+    register,
+    errors,
+    placeholder,
+    defaultValue,
+}: InputProps) => {
     return (
         <Styled.Field>
-            {type !== 'hidden' && <Styled.Label htmlFor={id}>{label}</Styled.Label>}
+            {label && <Styled.Label htmlFor={id}>{label}</Styled.Label>}
             <Styled.Input
                 id={id}
                 type={type}
@@ -23,6 +34,7 @@ const Input = ({ id, label, type = 'text', disabled, required, register, errors,
                 disabled={disabled}
                 {...register(id, { required })}
                 errors={errors}
+                defaultValue={defaultValue}
             />
         </Styled.Field>
     );
