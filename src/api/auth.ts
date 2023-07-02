@@ -40,3 +40,8 @@ export const retryToken = async (refreshToken: string) => {
     });
     return response.data;
 };
+
+// 테스트 더미 데이터
+export const dummyData = async () => {
+    return await instance.get('/api/sampledata');
+};

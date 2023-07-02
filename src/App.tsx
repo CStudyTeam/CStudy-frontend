@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -23,6 +23,8 @@ import SignInModal from 'components/SignModal/SignInModal';
 import SignUpModal from 'components/SignModal/SignUpModal';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
+import WorkbookProblemAdd from 'pages/Admin/WorkbookProblemAdd';
+import { dummyData } from 'api/auth';
 
 const queryClient = new QueryClient();
 
@@ -57,21 +59,33 @@ const router = createBrowserRouter([
                 path: 'workbook',
                 children: [
                     { index: true, element: <Workbook /> },
-                    { path: ':questionId', element: <WorkbookQuestion /> },
+                    {
+                        path: ':questionId',
+                        children: [
+                            { index: true, element: <WorkbookQuestion /> },
+                            { path: 'add', element: <WorkbookProblemAdd /> },
+                        ],
+                    },
                 ],
             },
             { path: 'contest', element: <Contest /> },
             { path: 'mypage', element: <MyPage /> },
             { path: 'oauth2/login', element: <OAuthRedirect /> },
-        ],
-    },
-    {
-        path: '/admin',
-        element: <AdminRoot />,
-        children: [
-            { path: 'CreateProblem', element: <CreateProblem /> },
-            { path: 'CreateWorkbook', element: <CreateWorkbook /> },
-            { path: 'CreateContest', element: <CreateContest /> },
+            {
+                path: 'admin',
+                element: <AdminRoot />,
+                children: [
+                    { path: 'CreateProblem', element: <CreateProblem /> },
+                    {
+                        path: 'CreateWorkbook',
+                        children: [
+                            { index: true, element: <CreateWorkbook /> },
+                            { path: 'add', element: <WorkbookProblemAdd /> },
+                        ],
+                    },
+                    { path: 'CreateContest', element: <CreateContest /> },
+                ],
+            },
         ],
     },
 ]);
@@ -79,6 +93,12 @@ const router = createBrowserRouter([
 const App = () => {
     const loginModal = useLoginModal();
     const registerModal = useRegisterModal();
+
+    // 더미데이터
+    useEffect(() => {
+        // dummyData().then((res) => console.log(res));
+    }, []);
+
     return (
         <QueryClientProvider client={queryClient}>
             {loginModal.isOpen && (
