@@ -2,8 +2,8 @@ import * as Styled from './style';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface AdminInputProps {
-    id: string;
-    label: string;
+    id?: string;
+    label?: string;
     name: string;
     type?: string;
     textarea?: boolean;
@@ -74,9 +74,23 @@ const AdminInput = ({
                             value={value}
                             {...register(name, { required })}
                         />
-                        <span>{label}</span>
-                        <span></span>
+                        {label && <span>{label}</span>}
                     </Styled.AdminRadioLabel>
+                </Styled.AdminInputWrapper>
+            )}
+            {type === 'checkbox' && (
+                <Styled.AdminInputWrapper>
+                    <Styled.AdminCheckboxLabel htmlFor={id}>
+                        <Styled.AdminCheckboxInput
+                            id={id}
+                            disabled={disabled}
+                            type={type}
+                            errors={errors}
+                            value={value}
+                            {...register(name, { required })}
+                        />
+                        {label && <span>{label}</span>}
+                    </Styled.AdminCheckboxLabel>
                 </Styled.AdminInputWrapper>
             )}
         </>

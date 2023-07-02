@@ -99,3 +99,9 @@ export const AdminRadioInput = styled.input<AdminInputStyleProps>`
         }
     }
 `;
+
+export const AdminCheckboxLabel = styled(AdminRadioLabel)`
+    justify-content: center;
+`;
+
+export const AdminCheckboxInput = styled(AdminRadioInput)``;
