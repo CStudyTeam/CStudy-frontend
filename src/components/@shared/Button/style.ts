@@ -14,4 +14,5 @@ export const Button = styled.button<ButtonProps>`
     font-weight: ${(props) => props.weight};
     border-radius: ${(props) => props.borderRadius};
     box-shadow: ${(props) => props.shadow && SHADOW.CONTENTBOX_MD};
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.5);
 `;
