@@ -19,39 +19,31 @@ const Workbook = () => {
     const workbookList = useGetWorkbookList({ page });
 
     return (
-        <>
-            <ContentContainer>
-                <ContentHeaderWrapper title="문제집">
-                    <div>
-                        <Styled.SearchInput type="text" />
-                        <Button width="5rem" backgroundColor={COLOR.NAVY_200} color="#eee">
-                            검색
-                        </Button>
-                    </div>
-                </ContentHeaderWrapper>
-                <ContentBodyWrapper blue>
-                    <Styled.WorkBookCards>
-                        {workbookList?.content?.map(({ id, title, description, createdAt }) => (
-                            <WorkBookCard
-                                key={id}
-                                id={id}
-                                title={title}
-                                description={description}
-                                createdAt={createdAt}
-                            />
-                        ))}
-                    </Styled.WorkBookCards>
-                    <Styled.PaginationWrapper>
-                        <Pagination
-                            totalPages={workbookList?.totalPages as number}
-                            handlePage={handlePage}
-                            page={page}
-                            white
-                        />
-                    </Styled.PaginationWrapper>
-                </ContentBodyWrapper>
-            </ContentContainer>
-        </>
+        <ContentContainer>
+            <ContentHeaderWrapper title="문제집">
+                <div>
+                    <Styled.SearchInput type="text" />
+                    <Button width="5rem" backgroundColor={COLOR.NAVY_200} color="#eee">
+                        검색
+                    </Button>
+                </div>
+            </ContentHeaderWrapper>
+            <ContentBodyWrapper blue>
+                <Styled.WorkBookCards>
+                    {workbookList?.content?.map(({ id, title, description, createdAt }) => (
+                        <WorkBookCard key={id} id={id} title={title} description={description} createdAt={createdAt} />
+                    ))}
+                </Styled.WorkBookCards>
+                <Styled.PaginationWrapper>
+                    <Pagination
+                        totalPages={workbookList?.totalPages as number}
+                        handlePage={handlePage}
+                        page={page}
+                        white
+                    />
+                </Styled.PaginationWrapper>
+            </ContentBodyWrapper>
+        </ContentContainer>
     );
 };
 
