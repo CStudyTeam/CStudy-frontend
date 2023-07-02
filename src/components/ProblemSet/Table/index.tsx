@@ -4,12 +4,12 @@ import * as Styled from './style';
 interface TableProps {
     colRate: string[];
     title: string[];
-    content?: [];
+    white?: boolean;
 }
 
-const Table = ({ colRate, title, children }: PropsWithChildren<TableProps>) => {
+const Table = ({ colRate, title, children, white }: PropsWithChildren<TableProps>) => {
     return (
-        <Styled.Table cellSpacing={0}>
+        <Styled.Table cellSpacing={0} white={white}>
             <colgroup>
                 {colRate.map((rate, index) => (
                     <col width={rate} key={index} />

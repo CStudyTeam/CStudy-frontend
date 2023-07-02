@@ -3,23 +3,31 @@ import { FONT } from 'constants/Font';
 import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
 
-export const Table = styled.table`
+interface Props {
+    white?: boolean;
+}
+
+export const Table = styled.table<Props>`
     width: 100%;
-    background-color: ${COLOR.NAVY_100};
+    background-color: ${({ white }) => (white ? COLOR.WHITE : COLOR.NAVY_100)};
     border: 0.1rem solid ${COLOR.WHITE};
     border-radius: 5rem;
-    box-shadow: ${SHADOW.CONTENTBOX_XLG};
+    box-shadow: ${({ white }) => (white ? SHADOW.CONTENTBOX_REVERSE : SHADOW.CONTENTBOX_XLG)};
 `;
 
 export const THeadTh = styled.th`
     padding: 4rem 0 2rem;
 `;
 
-export const TBodyTd = styled.td`
+export const TBodyTd = styled.td<Props>`
     text-align: center;
     padding: 3rem 0;
-    border-top: 0.1rem solid ${COLOR.WHITE};
+    border-top: ${({ white }) => (white ? `0.1rem solid ${COLOR.GRAY_50}` : `0.1rem solid ${COLOR.WHITE}`)};
     vertical-align: middle;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-all;
 
     // 선 추가 할 수도 있어서 일단 추가
     /* & + & {
@@ -49,9 +57,20 @@ export const TBodyTd = styled.td`
         ${FONT.BOLD_20}
         text-align: left;
         padding: 2rem 3rem;
-        word-wrap: break-word;
-        white-space: pre-wrap;
-        overflow-wrap: break-word;
-        word-break: break-all;
+    }
+
+    &.bold {
+        ${FONT.BOLD_20}
+        padding: 0;
+
+        a {
+            display: block;
+            padding: 2rem 3rem;
+        }
+
+        a:hover {
+            text-shadow: 0 0rem 2rem ${COLOR.WHITE}, 0 0rem 2.5rem ${COLOR.NAVY_100}, 0 -0.5rem 4rem ${COLOR.NAVY_200};
+            transition: all 0.2s ease-in-out;
+        }
     }
 `;
