@@ -7,3 +7,9 @@ export type Workbook = {
     }[];
     totalPages?: number;
 };
+
+export interface WorkbookQuestionDataType {
+    questionId: number;
+    title: string;
+    workbookQuestionId: number;
+}
