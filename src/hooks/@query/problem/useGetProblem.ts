@@ -2,10 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import { getProblem } from 'api/problem';
 
 interface UseGetProblemProps {
-    categoryTitle: string;
-    questionSuccess: number;
-    page: number;
-    query: string;
+    categoryTitle?: string;
+    questionSuccess?: number;
+    page?: number;
+    query?: string;
 }
 
 export const useGetProblem = ({ categoryTitle, questionSuccess, page, query }: UseGetProblemProps) => {
