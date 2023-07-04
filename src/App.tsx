@@ -25,6 +25,9 @@ import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 import WorkbookProblemAdd from 'pages/Admin/WorkbookProblemAdd';
 import { dummyData } from 'api/auth';
+import ContestDetail from 'pages/ContestDetail';
+import ContestProblemAdd from 'pages/Admin/ContestProblemAdd';
+import ContestProblem from 'pages/ContestProblem';
 
 const queryClient = new QueryClient();
 
@@ -68,7 +71,20 @@ const router = createBrowserRouter([
                     },
                 ],
             },
-            { path: 'contest', element: <Contest /> },
+            {
+                path: 'contest',
+                children: [
+                    { index: true, element: <Contest /> },
+                    {
+                        path: ':contestId',
+                        children: [
+                            { index: true, element: <ContestDetail /> },
+                            { path: 'add', element: <ContestProblemAdd /> },
+                            { path: 'contestproblem', element: <ContestProblem /> },
+                        ],
+                    },
+                ],
+            },
             { path: 'mypage', element: <MyPage /> },
             { path: 'oauth2/login', element: <OAuthRedirect /> },
             {
