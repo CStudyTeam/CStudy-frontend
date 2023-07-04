@@ -43,7 +43,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 2rem;
     left: 50%;
     transform: translateX(-50%);
