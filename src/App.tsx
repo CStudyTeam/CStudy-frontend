@@ -28,6 +28,7 @@ import { dummyData } from 'api/auth';
 import ContestDetail from 'pages/ContestDetail';
 import ContestProblemAdd from 'pages/Admin/ContestProblemAdd';
 import ContestProblem from 'pages/ContestProblem';
+import ContestResult from 'pages/ContestResult';
 
 const queryClient = new QueryClient();
 
@@ -81,6 +82,7 @@ const router = createBrowserRouter([
                             { index: true, element: <ContestDetail /> },
                             { path: 'add', element: <ContestProblemAdd /> },
                             { path: 'contestproblem', element: <ContestProblem /> },
+                            { path: 'contestresult', element: <ContestResult /> },
                         ],
                     },
                 ],
