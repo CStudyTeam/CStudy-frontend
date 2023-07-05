@@ -23,9 +23,7 @@ const Workbook = () => {
             <ContentHeaderWrapper title="문제집">
                 <div>
                     <Styled.SearchInput type="text" />
-                    <Button width="5rem" backgroundColor={COLOR.NAVY_200} color="#eee">
-                        검색
-                    </Button>
+                    <Button className="navy xl style">검색</Button>
                 </div>
             </ContentHeaderWrapper>
             <ContentBodyWrapper blue>

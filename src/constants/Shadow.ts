@@ -6,4 +6,7 @@ export const SHADOW = {
     CONTENTBOX_LG: '0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);',
     CONTENTBOX_XLG: '0.4rem 0.4rem 2.4rem rgba(0, 0, 0, 0.1), inset 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.12);',
     QUESTION: '-0.2rem 0.2rem 0 0 rgba(0, 0, 0, 0.5);',
+    BUTTON: 'inset 0.4rem 0.4rem 0.6rem -0.4rem rgba(230, 230, 230, 0.3), inset -0.4rem -0.4rem 0.8rem -0.5rem rgba(0, 0, 0, 0.3);',
+    BUTTON_NAVY:
+        'inset 0.4rem 0.4rem 0.6rem -0.4rem rgba(255, 255, 255, 0.3), inset -0.4rem -0.4rem 0.8rem -0.2rem rgba(0, 0, 0, 0.3);',
 };

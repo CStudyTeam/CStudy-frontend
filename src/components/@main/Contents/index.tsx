@@ -2,8 +2,7 @@ import React from 'react';
 import * as Styled from './style';
 import Button from 'components/@shared/Button';
 import { Link } from 'react-router-dom';
-import { COLOR } from 'constants/Color';
-import { FONT } from 'constants/Font';
+import StyleLink from 'components/@shared/StyleLink';
 
 const Contents = () => {
     return (
@@ -36,16 +35,9 @@ const Contents = () => {
                                 <br />
                                 더욱 쉽게 접근 하고 학습 할 수 있게 도와줍니다.
                             </Styled.ContentsTextsDesc>
-                            <Link to="/problemset">
-                                <Button
-                                    main
-                                    backgroundColor={COLOR.NAVY_200}
-                                    color={COLOR.WHITE}
-                                    fontSize={FONT.REGULAR_20}
-                                >
-                                    문제 풀러 가기
-                                </Button>
-                            </Link>
+                            <StyleLink to="/problemset" className="xl navy style">
+                                문제 풀러 가기
+                            </StyleLink>
                         </Styled.ContentsTexts>
                     </Styled.ContentsItem>
                 </Styled.Wrapper>
@@ -66,16 +58,9 @@ const Contents = () => {
                                 CSTUDY의 랭킹 시스템은 혼자 공부 하기 힘들고 어렵지만, 어려움을 딛고 같이 성장하기 위해
                                 노력하는 동료들을 확인하고 선의의 경쟁을 위해 준비했습니다.
                             </Styled.ContentsTextsDesc>
-                            <Link to="/problemset">
-                                <Button
-                                    main
-                                    backgroundColor={COLOR.NAVY_200}
-                                    color={COLOR.WHITE}
-                                    fontSize={FONT.REGULAR_20}
-                                >
-                                    랭킹 확인 하기
-                                </Button>
-                            </Link>
+                            <StyleLink to="/problemset" className="xl navy style">
+                                랭킹 확인 하기
+                            </StyleLink>
                         </Styled.ContentsTexts>
                     </Styled.ContentsItem>
                     <Styled.ContentsTitleImg>
@@ -112,16 +97,9 @@ const Contents = () => {
                                 <br />
                                 더욱 쉽게 접근 하고 학습 할 수 있게 도와줍니다.
                             </Styled.ContentsTextsDesc>
-                            <Link to="/problemset">
-                                <Button
-                                    main
-                                    backgroundColor={COLOR.NAVY_200}
-                                    color={COLOR.WHITE}
-                                    fontSize={FONT.REGULAR_20}
-                                >
-                                    문제 풀러 가기
-                                </Button>
-                            </Link>
+                            <StyleLink to="/problemset" className="xl navy style">
+                                문제 풀러 가기
+                            </StyleLink>
                         </Styled.ContentsTexts>
                     </Styled.ContentsItem>
                 </Styled.Wrapper>

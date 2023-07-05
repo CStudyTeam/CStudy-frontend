@@ -1,3 +1,4 @@
+import Button from 'components/@shared/Button';
 import * as Styled from './style';
 
 interface ProblemRenderSubmitProps {
@@ -7,7 +8,9 @@ interface ProblemRenderSubmitProps {
 const ProblemRenderSubmit = ({ isLoading }: ProblemRenderSubmitProps) => {
     return (
         <Styled.ProblemSubmitWrapper>
-            <Styled.SubmitButton disabled={isLoading}>제출</Styled.SubmitButton>
+            <Button className="xl wide navy style" disabled={isLoading}>
+                제출
+            </Button>
             <Styled.ProblemAnswerWrapper>
                 <Styled.ProblemAnswerTitle>정답:</Styled.ProblemAnswerTitle>
                 <Styled.ProblemAnswerNumber></Styled.ProblemAnswerNumber>

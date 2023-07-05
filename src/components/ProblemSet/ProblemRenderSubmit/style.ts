@@ -9,14 +9,6 @@ export const ProblemSubmitWrapper = styled.div`
     padding-top: 6rem;
 `;
 
-export const SubmitButton = styled.button`
-    padding: 1.2rem 4rem;
-    background-color: ${COLOR.NAVY_200};
-    font-size: ${FONT.REGULAR_20};
-    color: ${COLOR.WHITE};
-    border-radius: 1.2rem;
-`;
-
 export const ProblemAnswerWrapper = styled.div`
     display: flex;
     align-items: center;
@@ -34,7 +26,7 @@ export const ProblemAnswerNumber = styled.div`
     background-color: ${COLOR.NAVY_100};
     margin-left: 1rem;
     ${FONT.BOLD_20}
-    border: 0.5rem solid ${COLOR.GREEN};
+    border: 0.5rem solid ${COLOR.ANSWERGREEN};
     border-radius: 100%;
     box-shadow: ${SHADOW.CONTENTBOX_LG};
 `;

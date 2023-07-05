@@ -36,7 +36,7 @@ export const ProblemNumber = styled.input`
     }
 
     &:checked {
-        border: 0.4rem solid ${COLOR.GREEN};
+        border: 0.4rem solid ${COLOR.ANSWERGREEN};
     }
 
     &:checked::after {
@@ -47,7 +47,7 @@ export const ProblemNumber = styled.input`
         transform: translate(-50%, -55%) rotate(-45deg);
         width: 3.2rem;
         height: 1rem;
-        border: 0.5rem solid ${COLOR.GREEN};
+        border: 0.5rem solid ${COLOR.ANSWERGREEN};
         border-top: none;
         border-right: none;
         transform-origin: top left;

@@ -12,16 +12,6 @@ export const AdminWrapper = styled.div`
     justify-content: flex-end;
     margin-bottom: 1.6rem;
 
-    a {
-        padding: 1.6rem 1.4rem;
-        background-color: ${COLOR.NAVY_200};
-        font-size: ${FONT.REGULAR_14};
-        color: ${COLOR.WHITE};
-        text-align: center;
-        border-radius: 1.6rem;
-        box-shadow: ${SHADOW.CONTENTBOX_MD};
-    }
-
     a + button {
         margin-left: 1.2rem;
     }
@@ -39,7 +29,7 @@ export const ContestInfoHeaderWrapper = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
-    button + button {
+    a + button {
         margin-left: 0.8rem;
     }
 `;

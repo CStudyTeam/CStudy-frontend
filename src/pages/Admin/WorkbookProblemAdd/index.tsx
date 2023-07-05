@@ -84,15 +84,7 @@ const WorkbookProblemAdd = () => {
                                 ),
                             )}
                         </Table>
-                        <Button
-                            type="submit"
-                            width="16rem"
-                            fontSize={FONT.REGULAR_16}
-                            backgroundColor={COLOR.NAVY_200}
-                            color={COLOR.WHITE}
-                            margin="2rem 0 0 0"
-                            disabled={isLoading}
-                        >
+                        <Button type="submit" className="mt navy xl style" disabled={isLoading}>
                             문제등록하기
                         </Button>
                     </FormBody>

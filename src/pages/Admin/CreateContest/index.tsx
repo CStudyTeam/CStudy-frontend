@@ -113,15 +113,7 @@ const CreateContest = () => {
                                 </Styled.CalendarField>
                             </Styled.CustomCalendarContainer>
                         </FormSection>
-                        <Button
-                            type="submit"
-                            width="16rem"
-                            fontSize={FONT.REGULAR_16}
-                            backgroundColor={COLOR.NAVY_200}
-                            color={COLOR.WHITE}
-                            margin="2rem 0 0 0"
-                            disabled={isLoading}
-                        >
+                        <Button type="submit" className="mt xl navy style" disabled={isLoading}>
                             대회 등록하기
                         </Button>
                     </FormBody>

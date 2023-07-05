@@ -7,6 +7,7 @@ import Button from 'components/@shared/Button';
 import { COLOR } from 'constants/Color';
 import CanvasEffect from '../CanvasEffect';
 import { FONT } from 'constants/Font';
+import StyleLink from 'components/@shared/StyleLink';
 
 const Banner = () => {
     return (
@@ -19,11 +20,9 @@ const Banner = () => {
                     <br />
                     <span>CS 지식이 편해지는 그날 까지 함께! 재밌게!! 해결해요</span>
                 </Styled.BannerTitle>
-                <Link to="/problemset">
-                    <Button main backgroundColor={COLOR.NAVY_200} color={COLOR.WHITE} fontSize={FONT.REGULAR_20}>
-                        문제 풀러 가기
-                    </Button>
-                </Link>
+                <StyleLink to="/problemset" className="xl2 navy style">
+                    문제 풀러 가기
+                </StyleLink>
             </Styled.BannerContent>
             <Canvas
                 camera={{

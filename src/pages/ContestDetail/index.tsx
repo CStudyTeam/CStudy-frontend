@@ -20,6 +20,7 @@ import { useDeleteContestProblem } from 'hooks/@query/contest/useDeleteContestPr
 import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
 import { ProblemList } from 'types/problem';
 import { UseJoinContestProps } from 'types/contest';
+import StyleLink from 'components/@shared/StyleLink';
 
 const ContestDetail = () => {
     const { contestId } = useParams();
@@ -80,14 +81,11 @@ const ContestDetail = () => {
                     <Styled.Label>관리자</Styled.Label>
                     <Styled.AdminWrapper>
                         <div>
-                            <Link to="add">대회문제 추가하기</Link>
+                            <StyleLink to="add" className="xl navy style">
+                                대회문제 추가하기
+                            </StyleLink>
                             <Button
-                                backgroundColor={COLOR.WHITE}
-                                color={COLOR.BLACK}
-                                width="12rem"
-                                fontSize={FONT.REGULAR_14}
-                                borderRadius="1.6rem"
-                                shadow
+                                className="xl revert--red style"
                                 onClick={handleSubmit(onSubmit)}
                                 disabled={isLoading}
                             >
@@ -126,17 +124,10 @@ const ContestDetail = () => {
                 <Styled.ContestInfoHeaderWrapper>
                     <Styled.Label>대회정보</Styled.Label>
                     <Styled.ButtonWrapper>
-                        <Link to="contestresult">대회 결과보기</Link>
-                        <Button
-                            type="button"
-                            onClick={() => setIsModalOpen(true)}
-                            backgroundColor={COLOR.NAVY_200}
-                            color={COLOR.WHITE}
-                            width="13rem"
-                            borderRadius="1.6rem"
-                            shadow
-                            fontSize={FONT.REGULAR_16}
-                        >
+                        <StyleLink to="contestresult" className="xl green style">
+                            대회 결과보기
+                        </StyleLink>
+                        <Button type="button" className="xl navy style" onClick={() => setIsModalOpen(true)}>
                             대회 참여하기
                         </Button>
                         <ConfirmModal

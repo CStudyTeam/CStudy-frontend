@@ -77,14 +77,7 @@ const CreateProblem = () => {
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="문제생성">
-                <Button
-                    type="submit"
-                    width="12rem"
-                    fontSize={FONT.REGULAR_14}
-                    backgroundColor={COLOR.NAVY_200}
-                    color={COLOR.WHITE}
-                    onClick={handleClick}
-                >
+                <Button type="submit" className="navy xl style" onClick={handleClick}>
                     문제 추가하기
                 </Button>
             </ContentHeaderWrapper>
@@ -101,15 +94,7 @@ const CreateProblem = () => {
                             contentNumber={form.contentNumber}
                         />
                     ))}
-                    <Button
-                        type="submit"
-                        width="16rem"
-                        fontSize={FONT.REGULAR_16}
-                        backgroundColor={COLOR.NAVY_200}
-                        color={COLOR.WHITE}
-                        margin="2rem 0 0 0"
-                        disabled={isLoading}
-                    >
+                    <Button type="submit" className="navy mt xl2 style" disabled={isLoading}>
                         문제 등록하기
                     </Button>
                 </Form>

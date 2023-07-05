@@ -91,12 +91,7 @@ const Quiz = ({ quizData, competitionId }: QuizAppProps) => {
                         {currentIndex > 0 && (
                             <Button
                                 type="button"
-                                backgroundColor={COLOR.WHITE}
-                                color={COLOR.BLACK}
-                                width="12rem"
-                                fontSize={FONT.REGULAR_14}
-                                borderRadius="1.6rem"
-                                shadow
+                                className="xl wide white style"
                                 disabled={isLoading}
                                 onClick={handlePrevClick}
                             >
@@ -106,28 +101,14 @@ const Quiz = ({ quizData, competitionId }: QuizAppProps) => {
                         {currentIndex < quizData.length - 1 ? (
                             <Button
                                 type="button"
-                                backgroundColor={COLOR.NAVY_200}
-                                color={COLOR.WHITE}
-                                width="12rem"
-                                fontSize={FONT.REGULAR_14}
-                                borderRadius="1.6rem"
-                                shadow
+                                className="xl wide navy style"
                                 disabled={isLoading}
                                 onClick={handleNextClick}
                             >
                                 다음
                             </Button>
                         ) : (
-                            <Button
-                                type="submit"
-                                backgroundColor={COLOR.GREEN}
-                                color={COLOR.WHITE}
-                                width="12rem"
-                                fontSize={FONT.REGULAR_14}
-                                borderRadius="1.6rem"
-                                disabled={isLoading}
-                                shadow
-                            >
+                            <Button type="submit" className="xl wide green style" disabled={isLoading}>
                                 제출
                             </Button>
                         )}

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { ButtonProps } from '.';
+import { Link } from 'react-router-dom';
 import { ButtonLinkSharedStyles } from '../ButtonLinkSharedStyles';
 
-export const Button = styled.button<ButtonProps>`
+export const StyleLink = styled(Link)`
     ${ButtonLinkSharedStyles}
 `;

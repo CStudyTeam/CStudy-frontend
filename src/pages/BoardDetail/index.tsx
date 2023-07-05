@@ -47,30 +47,12 @@ const BoardDetail = () => {
                 <Styled.ButtonWrapper>
                     {isAdmin() && (
                         <>
-                            <Button
-                                backgroundColor={COLOR.NAVY_200}
-                                color={COLOR.WHITE}
-                                width="14.5rem"
-                                borderRadius="1.6rem"
-                                fontSize={FONT.REGULAR_14}
-                                type="submit"
-                                shadow
-                                onClick={handleSubmit(onSubmit)}
-                            >
+                            <Button type="submit" className="xl wide navy style" onClick={handleSubmit(onSubmit)}>
                                 승인하기
                             </Button>
                         </>
                     )}
-                    <Button
-                        backgroundColor={COLOR.WHITE}
-                        color={COLOR.BLACK}
-                        width="14.5rem"
-                        borderRadius="1.6rem"
-                        fontSize={FONT.REGULAR_14}
-                        type="button"
-                        onClick={handleNavigate}
-                        shadow
-                    >
+                    <Button type="button" className="xl revert style" onClick={handleNavigate}>
                         돌아가기
                     </Button>
                 </Styled.ButtonWrapper>

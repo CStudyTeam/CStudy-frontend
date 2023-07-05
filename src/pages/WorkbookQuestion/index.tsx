@@ -18,6 +18,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { useWorkbookQuestionDelete } from 'hooks/@query/workbook/useWorkbookQuestionDelete';
+import StyleLink from 'components/@shared/StyleLink';
 
 const WorkbookQuestion = () => {
     const { questionId } = useParams();
@@ -67,14 +68,11 @@ const WorkbookQuestion = () => {
                 <Styled.AdminWrapper>
                     {isAdmin() && (
                         <>
-                            <Link to="add">문제 추가하기</Link>
+                            <StyleLink to="add" className="navy xl style">
+                                문제 추가하기
+                            </StyleLink>
                             <Button
-                                backgroundColor={COLOR.WHITE}
-                                color={COLOR.BLACK}
-                                width="11rem"
-                                fontSize={FONT.REGULAR_14}
-                                borderRadius="1.6rem"
-                                shadow
+                                className="revert--red xl style"
                                 onClick={handleSubmit(onSubmit)}
                                 disabled={isLoading}
                             >

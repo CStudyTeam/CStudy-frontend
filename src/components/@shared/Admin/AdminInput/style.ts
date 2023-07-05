@@ -71,7 +71,7 @@ export const AdminRadioInput = styled.input<AdminInputStyleProps>`
         transform: translate(-50%, -50%) rotate(-45deg);
         width: 3.2rem;
         height: 1rem;
-        border: 0.5rem solid ${COLOR.GREEN};
+        border: 0.5rem solid ${COLOR.ANSWERGREEN};
         border-top: none;
         border-right: none;
         transform-origin: top left;

@@ -38,42 +38,15 @@ const ContentHeaderWrapper = ({ title, desc, admin, children }: PropsWithChildre
             <div>
                 {isAdmin() && admin && (
                     <Styled.AdminWrapper>
-                        <Button
-                            type="button"
-                            backgroundColor={isActive ? COLOR.GREEN : COLOR.NAVY_200}
-                            color={COLOR.WHITE}
-                            width="12rem"
-                            fontSize={FONT.REGULAR_14}
-                            borderRadius="0.8rem"
-                            onClick={() => setIsActive((active) => !active)}
-                            shadow
-                        >
+                        <Button type="button" onClick={() => setIsActive((active) => !active)}>
                             문제집 정보 수정
                         </Button>
                         {isActive && (
                             <>
-                                <Button
-                                    backgroundColor={COLOR.NAVY_200}
-                                    color={COLOR.WHITE}
-                                    width="12rem"
-                                    fontSize={FONT.REGULAR_14}
-                                    borderRadius="0.8rem"
-                                    onClick={handleSubmit(onSubmit)}
-                                    disabled={isLoading}
-                                    shadow
-                                >
+                                <Button onClick={handleSubmit(onSubmit)} disabled={isLoading}>
                                     수정하기
                                 </Button>
-                                <Button
-                                    backgroundColor={COLOR.WHITE}
-                                    color={COLOR.BLACK}
-                                    width="12rem"
-                                    fontSize={FONT.REGULAR_14}
-                                    borderRadius="0.8rem"
-                                    onClick={() => setIsActive(false)}
-                                    disabled={isLoading}
-                                    shadow
-                                >
+                                <Button onClick={() => setIsActive(false)} disabled={isLoading}>
                                     취소
                                 </Button>
                             </>

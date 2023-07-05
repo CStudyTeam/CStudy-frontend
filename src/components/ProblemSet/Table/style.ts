@@ -57,6 +57,11 @@ export const TBodyTd = styled.td<Props>`
         ${FONT.BOLD_20}
         text-align: left;
         padding: 2rem 3rem;
+
+        a:hover {
+            text-shadow: 0 0rem 2rem ${COLOR.WHITE}, 0 0rem 2.5rem ${COLOR.NAVY_100}, 0 -0.5rem 4rem ${COLOR.NAVY_200};
+            transition: all 0.2s ease-in-out;
+        }
     }
 
     &.bold {

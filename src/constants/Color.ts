@@ -7,7 +7,9 @@ export const COLOR = {
     GRAY_200: '#818181',
 
     RED: '#e52330',
-    GREEN: '#32CD32',
+    GREEN: '#28a745',
     BLACK: '#181818',
     WHITE: '#ffffff',
+
+    ANSWERGREEN: '#32CD32',
 };
