@@ -30,6 +30,10 @@ export const ButtonLinkSharedStyles = css`
         margin-top: 1.6rem;
     }
 
+    &.ml {
+        margin-left: 0.8rem;
+    }
+
     &.lg {
         padding: 1rem 1.4rem;
     }
