@@ -3,11 +3,11 @@ import { addContestProblem } from 'api/contest';
 import toast from 'provider/Toast';
 import { Dispatch, SetStateAction } from 'react';
 
-interface useJoinContestProps {
+interface useAddContestProblemProps {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export const useAddContestProblem = ({ setIsLoading }: useJoinContestProps) => {
+export const useAddContestProblem = ({ setIsLoading }: useAddContestProblemProps) => {
     const queryClient = useQueryClient();
 
     const { mutate: AddContestProblem } = useMutation(addContestProblem, {

@@ -3,11 +3,11 @@ import { deleteContestProblem } from 'api/contest';
 import toast from 'provider/Toast';
 import { Dispatch, SetStateAction } from 'react';
 
-interface useJoinContestProps {
+interface useDeleteContestProblemProps {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export const useDeleteContestProblem = ({ setIsLoading }: useJoinContestProps) => {
+export const useDeleteContestProblem = ({ setIsLoading }: useDeleteContestProblemProps) => {
     const queryClient = useQueryClient();
     const { mutate: DeleteContestProblem } = useMutation(deleteContestProblem, {
         onSuccess: () => {

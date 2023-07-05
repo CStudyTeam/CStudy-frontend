@@ -1,15 +1,10 @@
 import { useMutation } from '@tanstack/react-query';
 import { joinContest } from 'api/contest';
 import toast from 'provider/Toast';
-import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UseJoinContestProps } from 'types/contest';
 
-interface useJoinContestProps {
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
-    setIsModalOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-export const useJoinContest = ({ setIsLoading, setIsModalOpen }: useJoinContestProps) => {
+export const useJoinContest = ({ setIsLoading, setIsModalOpen }: UseJoinContestProps) => {
     const navigate = useNavigate();
     const { mutate: JoinContest } = useMutation(joinContest, {
         onSuccess: () => {
