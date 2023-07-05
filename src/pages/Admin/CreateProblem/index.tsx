@@ -1,5 +1,5 @@
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { Form } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import { useProblemSet } from 'hooks/@query/problem/useProblemSet';
 
 import { useCallback, useState } from 'react';
@@ -8,12 +8,11 @@ import ProblemForm from 'components/CreateProblem/ProblemForm';
 import Button from 'components/@shared/Button';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 
-import { FONT } from 'constants/Font';
-import { COLOR } from 'constants/Color';
 import { QuestionDataProps } from 'types/problem';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 
 const CreateProblem = () => {
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const ProblemSet = useProblemSet({ setIsLoading });
 
@@ -96,6 +95,9 @@ const CreateProblem = () => {
                     ))}
                     <Button type="submit" className="navy mt xl2 style" disabled={isLoading}>
                         문제 등록하기
+                    </Button>
+                    <Button type="button" className="revert mt ml xl2" onClick={() => navigate(-1)}>
+                        돌아가기
                     </Button>
                 </Form>
             </ContentBodyWrapper>

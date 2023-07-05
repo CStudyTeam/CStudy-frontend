@@ -23,19 +23,6 @@ const Header = () => {
                 </Styled.LogoWrap>
                 <Styled.Nav>
                     <Styled.NavList>
-                        {isAdmin() && (
-                            <>
-                                <Styled.NavItem>
-                                    <Link to="admin/CreateProblem">문제생성</Link>
-                                </Styled.NavItem>
-                                <Styled.NavItem>
-                                    <Link to="admin/CreateContest">대회생성</Link>
-                                </Styled.NavItem>
-                                <Styled.NavItem>
-                                    <Link to="admin/CreateWorkbook">문제집생성</Link>
-                                </Styled.NavItem>
-                            </>
-                        )}
                         <Styled.NavItem>
                             <Link to="board">게시판</Link>
                         </Styled.NavItem>

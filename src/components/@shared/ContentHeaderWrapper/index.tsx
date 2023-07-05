@@ -8,14 +8,16 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import Input from '../Input';
 import { useUpdateWorkbook } from 'hooks/@query/workbook/useUpdateWorkbook';
+import StyleLink from '../StyleLink';
 
 interface CreateContestProps {
     title: string;
     desc?: string;
     admin?: boolean;
+    adminLink?: string;
 }
 
-const ContentHeaderWrapper = ({ title, desc, admin, children }: PropsWithChildren<CreateContestProps>) => {
+const ContentHeaderWrapper = ({ title, desc, admin, adminLink, children }: PropsWithChildren<CreateContestProps>) => {
     const [isActive, setIsActive] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { questionId } = useParams();
@@ -38,20 +40,33 @@ const ContentHeaderWrapper = ({ title, desc, admin, children }: PropsWithChildre
             <div>
                 {isAdmin() && admin && (
                     <Styled.AdminWrapper>
-                        <Button type="button" onClick={() => setIsActive((active) => !active)}>
+                        <Button
+                            type="button"
+                            className="lg navy style"
+                            onClick={() => setIsActive((active) => !active)}
+                        >
                             문제집 정보 수정
                         </Button>
                         {isActive && (
                             <>
-                                <Button onClick={handleSubmit(onSubmit)} disabled={isLoading}>
+                                <Button
+                                    className="lg green style"
+                                    onClick={handleSubmit(onSubmit)}
+                                    disabled={isLoading}
+                                >
                                     수정하기
                                 </Button>
-                                <Button onClick={() => setIsActive(false)} disabled={isLoading}>
+                                <Button className="lg revert" onClick={() => setIsActive(false)} disabled={isLoading}>
                                     취소
                                 </Button>
                             </>
                         )}
                     </Styled.AdminWrapper>
+                )}
+                {isAdmin() && adminLink && (
+                    <StyleLink className="lg navy style" to="admin">
+                        {adminLink}
+                    </StyleLink>
                 )}
                 <Styled.Title>
                     {isActive ? (

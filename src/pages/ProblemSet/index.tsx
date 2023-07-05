@@ -39,10 +39,10 @@ const ProblemSet = () => {
         query,
     });
 
-    const handleToggle = useCallback(() => {
+    const handleToggle = () => {
         setQuery(query === '' ? '/myquestion' : '');
         setPage(0);
-    }, [query]);
+    };
 
     const handlePage = useCallback((page: number) => {
         setPage(page);
@@ -63,7 +63,7 @@ const ProblemSet = () => {
 
     return (
         <ContentContainer>
-            <ContentHeaderWrapper title="문제풀이">
+            <ContentHeaderWrapper title="문제풀이" adminLink="문제생성 페이지 이동">
                 <Styled.FilterWrapper>
                     <Filter className={isActive} onClick={handleToggle}>
                         내가 푼 문제

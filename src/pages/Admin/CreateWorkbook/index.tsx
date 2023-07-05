@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useWorkbookSet } from 'hooks/@query/workbook/useWorkbookSet';
 
@@ -10,12 +10,11 @@ import FormSection from 'components/@shared/Admin/FormSection';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 import FormBody from 'components/@shared/Admin/FormBody';
 
-import { FONT } from 'constants/Font';
-import { COLOR } from 'constants/Color';
 import { WorkbookSetForm } from 'types/Form';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 
 const CreateWorkbook = () => {
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const WorkbookSet = useWorkbookSet({ setIsLoading });
@@ -66,6 +65,9 @@ const CreateWorkbook = () => {
                         </FormSection>
                         <Button type="submit" className="mt xl navy style" disabled={isLoading}>
                             문제집 등록하기
+                        </Button>
+                        <Button type="button" className="revert mt ml xl2" onClick={() => navigate(-1)}>
+                            돌아가기
                         </Button>
                     </FormBody>
                 </Form>

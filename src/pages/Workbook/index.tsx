@@ -20,7 +20,7 @@ const Workbook = () => {
 
     return (
         <ContentContainer>
-            <ContentHeaderWrapper title="문제집">
+            <ContentHeaderWrapper title="문제집" adminLink="문제집생성 페이지 이동">
                 <div>
                     <Styled.SearchInput type="text" />
                     <Button className="navy xl style">검색</Button>

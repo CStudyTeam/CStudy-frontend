@@ -1,5 +1,5 @@
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { Form } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import { BsChevronDoubleRight } from 'react-icons/bs';
 
@@ -21,6 +21,7 @@ import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import toast from 'provider/Toast';
 
 const CreateContest = () => {
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [defaultValue] = useState<Date | null>(new Date());
 
@@ -115,6 +116,9 @@ const CreateContest = () => {
                         </FormSection>
                         <Button type="submit" className="mt xl navy style" disabled={isLoading}>
                             대회 등록하기
+                        </Button>
+                        <Button type="button" className="revert mt ml xl2" onClick={() => navigate(-1)}>
+                            돌아가기
                         </Button>
                     </FormBody>
                 </Form>

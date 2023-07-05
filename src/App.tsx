@@ -56,18 +56,23 @@ const router = createBrowserRouter([
                 path: 'problemset',
                 children: [
                     { index: true, element: <ProblemSet /> },
-                    { path: ':problemId', children: [{ index: true, element: <Problem /> }] },
+                    { path: 'admin', element: <CreateProblem /> },
+                    {
+                        path: ':problemId',
+                        children: [{ index: true, element: <Problem /> }],
+                    },
                 ],
             },
             {
                 path: 'workbook',
                 children: [
                     { index: true, element: <Workbook /> },
+                    { path: 'admin', element: <CreateWorkbook /> },
                     {
                         path: ':questionId',
                         children: [
                             { index: true, element: <WorkbookQuestion /> },
-                            { path: 'add', element: <WorkbookProblemAdd /> },
+                            { path: 'adminadd', element: <WorkbookProblemAdd /> },
                         ],
                     },
                 ],
@@ -76,11 +81,12 @@ const router = createBrowserRouter([
                 path: 'contest',
                 children: [
                     { index: true, element: <Contest /> },
+                    { path: 'admin', element: <CreateContest /> },
                     {
                         path: ':contestId',
                         children: [
                             { index: true, element: <ContestDetail /> },
-                            { path: 'add', element: <ContestProblemAdd /> },
+                            { path: 'adminadd', element: <ContestProblemAdd /> },
                             { path: 'contestproblem', element: <ContestProblem /> },
                             { path: 'contestresult', element: <ContestResult /> },
                         ],
@@ -89,21 +95,6 @@ const router = createBrowserRouter([
             },
             { path: 'mypage', element: <MyPage /> },
             { path: 'oauth2/login', element: <OAuthRedirect /> },
-            {
-                path: 'admin',
-                element: <AdminRoot />,
-                children: [
-                    { path: 'CreateProblem', element: <CreateProblem /> },
-                    {
-                        path: 'CreateWorkbook',
-                        children: [
-                            { index: true, element: <CreateWorkbook /> },
-                            { path: 'add', element: <WorkbookProblemAdd /> },
-                        ],
-                    },
-                    { path: 'CreateContest', element: <CreateContest /> },
-                ],
-            },
         ],
     },
 ]);

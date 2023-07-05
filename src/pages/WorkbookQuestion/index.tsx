@@ -68,7 +68,7 @@ const WorkbookQuestion = () => {
                 <Styled.AdminWrapper>
                     {isAdmin() && (
                         <>
-                            <StyleLink to="add" className="navy xl style">
+                            <StyleLink to="adminadd" className="navy xl style">
                                 문제 추가하기
                             </StyleLink>
                             <Button

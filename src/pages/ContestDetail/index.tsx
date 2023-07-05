@@ -81,7 +81,7 @@ const ContestDetail = () => {
                     <Styled.Label>관리자</Styled.Label>
                     <Styled.AdminWrapper>
                         <div>
-                            <StyleLink to="add" className="xl navy style">
+                            <StyleLink to="adminadd" className="xl navy style">
                                 대회문제 추가하기
                             </StyleLink>
                             <Button

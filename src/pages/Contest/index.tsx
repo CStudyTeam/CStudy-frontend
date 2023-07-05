@@ -1,5 +1,4 @@
 import ContentContainer from 'components/@shared/ContentContainer';
-import * as Styled from './style';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Table from 'components/ProblemSet/Table';
@@ -22,7 +21,7 @@ const Contest = () => {
 
     return (
         <ContentContainer>
-            <ContentHeaderWrapper title="대회" />
+            <ContentHeaderWrapper title="대회" adminLink="대회생성 페이지 이동" />
             <ContentBodyWrapper>
                 <Table colRate={['60%', '10%', '30%']} title={['대회명', '최대 인원수', '기간']}>
                     {contestList?.content?.map(({ id, title, startTime, endTime, participants }: ContestListData) => (
@@ -39,14 +38,12 @@ const Contest = () => {
                     {contestList?.totalPages > 1 && (
                         <tr>
                             <TBodyTd colSpan={3}>
-                                <Styled.PaginationWrapper>
-                                    <Pagination
-                                        totalPages={contestList?.totalPages}
-                                        handlePage={handlePage}
-                                        page={page}
-                                        white
-                                    />
-                                </Styled.PaginationWrapper>
+                                <Pagination
+                                    totalPages={contestList?.totalPages}
+                                    handlePage={handlePage}
+                                    page={page}
+                                    white
+                                />
                             </TBodyTd>
                         </tr>
                     )}
