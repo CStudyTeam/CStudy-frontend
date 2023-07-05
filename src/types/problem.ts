@@ -51,3 +51,9 @@ export interface OneProblemProps {
         content: string;
     }[];
 }
+
+export interface ProblemList {
+    questionId: number;
+    questionTitle: string;
+    categoryTitle: string;
+}
