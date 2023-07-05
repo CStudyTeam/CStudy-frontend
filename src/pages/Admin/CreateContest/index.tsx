@@ -18,6 +18,7 @@ import { useContestSet } from 'hooks/@query/contest/useContestSet';
 import { ContestSetForm } from 'types/Form';
 import formatDate from 'utils/formatDate';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
+import toast from 'provider/Toast';
 
 const CreateContest = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -45,7 +46,7 @@ const CreateContest = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         try {
-            if (data.competitionStart > data.competitionEnd) {
+            if (data.competitionStart >= data.competitionEnd) {
                 throw new Error('종료일이 시작일보다 빠릅니다');
             }
 
@@ -54,7 +55,8 @@ const CreateContest = () => {
             data.competitionEnd = formatDate(data.competitionEnd);
             ContestSet(data as ContestSetForm);
         } catch (err) {
-            alert(err);
+            const error = err as Error;
+            toast.error(error.toString());
         }
     };
 
