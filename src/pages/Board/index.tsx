@@ -19,10 +19,10 @@ const Board = () => {
         setPage(page);
     }, []);
 
-    const handleToggle = useCallback(() => {
+    const handleToggle = () => {
         setQuery(query === 'list' ? 'mylist' : 'list');
         setPage(0);
-    }, [query]);
+    };
 
     return (
         <ContentContainer>
