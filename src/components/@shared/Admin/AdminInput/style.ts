@@ -60,7 +60,7 @@ export const AdminRadioInput = styled.input<AdminInputStyleProps>`
     box-shadow: ${SHADOW.CONTENTBOX_LG};
 
     &:checked {
-        border: 0.3rem solid ${COLOR.GREEN};
+        border: 0.3rem solid ${COLOR.ANSWERGREEN};
     }
 
     &:checked::before {
