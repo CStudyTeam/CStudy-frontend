@@ -1,6 +1,10 @@
 import React from 'react';
 import * as Styled from './style';
-import { QuizResultProps } from 'types/contest';
+import { ContestResult } from 'types/api';
+
+interface QuizResultProps {
+    testResultData: ContestResult;
+}
 
 const QuizResult = ({ testResultData }: QuizResultProps) => {
     const correctDetails = testResultData?.details?.filter((detail) => detail.correct);

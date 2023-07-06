@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getContestList } from 'api/contest';
+import { ContestList } from 'types/api';
 
 interface GetContestListProps {
     page: number;
@@ -7,7 +8,9 @@ interface GetContestListProps {
 }
 
 const useGetContestList = ({ page, query }: GetContestListProps) => {
-    const { data: contestList } = useQuery(['contestList', { page, query }], () => getContestList({ page, query }));
+    const { data: contestList } = useQuery<ContestList>(['contestList', { page, query }], () =>
+        getContestList({ page, query }),
+    );
     return contestList;
 };
 

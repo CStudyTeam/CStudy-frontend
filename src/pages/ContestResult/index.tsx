@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import QuizResult from 'components/Contest/QuizResult';
 import useGetContestResult from 'hooks/@query/contest/useGetContestResult';
 import Button from 'components/@shared/Button';
+import { ContestResult as ContestResultType } from 'types/api';
 
 const ContestResult = () => {
     const { contestId } = useParams();
@@ -19,7 +20,7 @@ const ContestResult = () => {
                 </Button>
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
-                <QuizResult testResultData={contestResult} />
+                <QuizResult testResultData={contestResult as ContestResultType} />
             </ContentBodyWrapper>
         </ContentContainer>
     );

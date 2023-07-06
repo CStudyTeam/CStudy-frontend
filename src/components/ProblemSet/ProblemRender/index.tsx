@@ -1,12 +1,12 @@
-import { OneProblemProps } from 'types/problem';
 import * as Styled from './style';
 import { FieldValues, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 import ProblemRenderSubmit from '../ProblemRenderSubmit';
 import ProblemRenderContent from '../ProblemRenderContent';
 import ProblemRenderTitle from '../ProblemRenderTitle';
+import { OneProblem } from 'types/api';
 
 interface ProblemRenderProps {
-    problem: OneProblemProps;
+    problem: OneProblem;
     register: UseFormRegister<FieldValues>;
     handleSubmit: UseFormHandleSubmit<FieldValues>;
     onSubmit: SubmitHandler<FieldValues>;

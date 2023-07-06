@@ -1,11 +1,13 @@
 import { instance } from 'api';
-import { QuestionDataProps, selectAnswerProblemFromProps } from 'types/problem';
+import { FieldValues } from 'react-hook-form';
+import { OneProblem, Problem } from 'types/api';
+import { selectAnswerProblemFromProps } from 'types/problem';
 
 /* -------- Get 요청 -------- */
 
 //  전체 문제 페이징 / 내가 푼 문제 조회
 export const getProblem = async ({ categoryTitle = '', questionSuccess = -1, page = 0, size = 10, query = '' }) => {
-    const response = await instance.get(
+    const response = await instance.get<Problem>(
         `/api/questions${query}?${
             query === ''
                 ? `categoryTitle=${categoryTitle}&questionSuccess=${questionSuccess}&page=${page}&size=${size}`
@@ -18,14 +20,14 @@ export const getProblem = async ({ categoryTitle = '', questionSuccess = -1, pag
 
 //  단일 문제 찾기
 export const getOneProblem = async (problemId: string) => {
-    const response = await instance.get(`/api/question/${problemId}`);
+    const response = await instance.get<OneProblem>(`/api/question/${problemId}`);
     return response.data;
 };
 
 /* -------- POST 요청 -------- */
 
 // 문제 생성하기 & 대량 문제 생성하기
-export const problemSet = async (formData: QuestionDataProps[]) => {
+export const problemSet = async (formData: FieldValues) => {
     if (formData.length === 1) {
         const response = await instance.post('/api/question', formData[0]);
         return response.data;

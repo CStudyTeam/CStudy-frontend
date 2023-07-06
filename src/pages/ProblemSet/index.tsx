@@ -10,7 +10,6 @@ import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import { Link } from 'react-router-dom';
 import { TBodyTd } from './../../components/ProblemSet/Table/style';
-import { ProblemListProps } from 'types/problem';
 import { Filter } from 'pages/Board/style';
 
 const ProblemSet = () => {
@@ -49,7 +48,7 @@ const ProblemSet = () => {
     }, []);
 
     const TBodyContent = problemList?.content?.map(
-        ({ questionId, questionTitle, categoryTitle, questionSuccess }: ProblemListProps, index: number) => (
+        ({ questionId, questionTitle, categoryTitle, questionSuccess }, index: number) => (
             <tr key={index}>
                 <TBodyTd>{questionId}</TBodyTd>
                 <TBodyTd>{questionSuccess ? <span className="success">완료</span> : ''}</TBodyTd>
@@ -89,7 +88,7 @@ const ProblemSet = () => {
                     {TBodyContent}
                 </Table>
                 <Styled.PaginationWrapper>
-                    <Pagination totalPages={problemList?.totalPages} handlePage={handlePage} page={page} />
+                    <Pagination totalPages={problemList?.totalPages as number} handlePage={handlePage} page={page} />
                 </Styled.PaginationWrapper>
             </ContentBodyWrapper>
         </ContentContainer>

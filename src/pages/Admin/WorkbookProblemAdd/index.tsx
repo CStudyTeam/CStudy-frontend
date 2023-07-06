@@ -14,7 +14,6 @@ import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
-import { ProblemListProps } from 'types/problem';
 import { useAddWorkbookQuestion } from 'hooks/@query/workbook/useAddWorkbookQuestion';
 import useGetWorkbookQuestion from 'hooks/@query/workbook/useGetWorkbookQuestion';
 
@@ -63,26 +62,24 @@ const WorkbookProblemAdd = () => {
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <FormBody>
                         <Table white colRate={['15%', '65%', '20%']} title={['선택', '문제목록', '카테고리']}>
-                            {filterQuestion?.map(
-                                ({ questionId, questionTitle, categoryTitle }: ProblemListProps, index: number) => (
-                                    <tr key={index}>
-                                        <TBodyTd white>
-                                            <AdminInput
-                                                type="checkbox"
-                                                name="questionIds"
-                                                register={register}
-                                                errors={errors}
-                                                value={`${questionId}`}
-                                                required
-                                            />
-                                        </TBodyTd>
-                                        <TBodyTd white className="title">
-                                            {questionTitle}
-                                        </TBodyTd>
-                                        <TBodyTd white>{categoryTitle}</TBodyTd>
-                                    </tr>
-                                ),
-                            )}
+                            {filterQuestion?.map(({ questionId, questionTitle, categoryTitle }, index: number) => (
+                                <tr key={index}>
+                                    <TBodyTd white>
+                                        <AdminInput
+                                            type="checkbox"
+                                            name="questionIds"
+                                            register={register}
+                                            errors={errors}
+                                            value={`${questionId}`}
+                                            required
+                                        />
+                                    </TBodyTd>
+                                    <TBodyTd white className="title">
+                                        {questionTitle}
+                                    </TBodyTd>
+                                    <TBodyTd white>{categoryTitle}</TBodyTd>
+                                </tr>
+                            ))}
                         </Table>
                         <Button type="submit" className="mt navy xl style" disabled={isLoading}>
                             문제등록하기

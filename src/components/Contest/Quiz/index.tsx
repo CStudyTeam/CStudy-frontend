@@ -1,16 +1,20 @@
 import Button from 'components/@shared/Button';
 import * as Styled from './style';
-import { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, useFieldArray, SubmitHandler, FieldValues } from 'react-hook-form';
 import formatDate from 'utils/formatDate';
-import { COLOR } from 'constants/Color';
-import { FONT } from 'constants/Font';
 import { useParams } from 'react-router-dom';
 import { useSubmitContest } from './../../../hooks/@query/contest/useSubmitContest';
 import debounce from 'utils/debounce';
-import { QuizAppProps, UseSubmitContestProps } from 'types/contest';
+import { UseSubmitContestProps } from 'types/contest';
+import { ContestProblem } from 'types/api';
 
-const Quiz = ({ quizData, competitionId }: QuizAppProps) => {
+interface QuizProps {
+    quizData: ContestProblem[];
+    competitionId: string;
+}
+
+const Quiz = ({ quizData, competitionId }: QuizProps) => {
     const [isLoading, setIsLoading] = useState(false);
     const { contestId } = useParams();
     const [currentIndex, setCurrentIndex] = useState(0);

@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getProblem } from 'api/problem';
+import { Problem } from 'types/api';
 
 interface UseGetProblemProps {
     categoryTitle?: string;
@@ -9,7 +10,7 @@ interface UseGetProblemProps {
 }
 
 export const useGetProblem = ({ categoryTitle, questionSuccess, page, query }: UseGetProblemProps) => {
-    const { data: problemList } = useQuery(
+    const { data: problemList } = useQuery<Problem>(
         ['getProblem', { categoryTitle, questionSuccess, page, query }],
         () => getProblem({ categoryTitle, questionSuccess, page, query }),
         { keepPreviousData: true },

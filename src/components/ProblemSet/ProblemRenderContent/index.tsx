@@ -1,10 +1,10 @@
-import { OneProblemProps } from 'types/problem';
+import { OneProblem } from 'types/api';
 import ChoiceList from '../ChoiceList';
 import * as Styled from './style';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface ProblemFormProps {
-    problem: OneProblemProps;
+    problem: OneProblem;
     register: UseFormRegister<FieldValues>;
 }
 

@@ -8,7 +8,6 @@ import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
 import useGetWorkbookQuestion from 'hooks/@query/workbook/useGetWorkbookQuestion';
-import { WorkbookQuestionDataType } from 'types/workbookList';
 import { isAdmin } from 'utils/auth';
 import Button from 'components/@shared/Button';
 import Pagination from 'components/ProblemSet/Pagination';
@@ -61,7 +60,7 @@ const WorkbookQuestion = () => {
 
     return (
         <ContentContainer>
-            <ContentHeaderWrapper admin title={workbook?.title} desc={workbook?.description}>
+            <ContentHeaderWrapper admin title={workbook?.title as string} desc={workbook?.description}>
                 <Styled.CreateInfo>출시일: {workbook?.createdAt}</Styled.CreateInfo>
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
@@ -86,28 +85,26 @@ const WorkbookQuestion = () => {
                     colRate={isAdmin() ? ['20%', '60%', '20%'] : ['30%', '70%']}
                     title={isAdmin() ? ['문제번호', '문제이름', '문제삭제'] : ['문제번호', '문제이름']}
                 >
-                    {workbookQuestion?.content?.map(
-                        ({ questionId, title, workbookQuestionId }: WorkbookQuestionDataType) => (
-                            <tr key={workbookQuestionId}>
-                                <TBodyTd>{questionId}</TBodyTd>
-                                <TBodyTd className="bold">
-                                    <Link to={`/problemset/${questionId}`}>{title}</Link>
+                    {workbookQuestion?.content?.map(({ questionId, title, workbookQuestionId }) => (
+                        <tr key={workbookQuestionId}>
+                            <TBodyTd>{questionId}</TBodyTd>
+                            <TBodyTd className="bold">
+                                <Link to={`/problemset/${questionId}`}>{title}</Link>
+                            </TBodyTd>
+                            {isAdmin() && (
+                                <TBodyTd>
+                                    <AdminInput
+                                        type="checkbox"
+                                        name="questionIds"
+                                        register={register}
+                                        errors={errors}
+                                        value={`${questionId}`}
+                                        required
+                                    />
                                 </TBodyTd>
-                                {isAdmin() && (
-                                    <TBodyTd>
-                                        <AdminInput
-                                            type="checkbox"
-                                            name="questionIds"
-                                            register={register}
-                                            errors={errors}
-                                            value={`${questionId}`}
-                                            required
-                                        />
-                                    </TBodyTd>
-                                )}
-                            </tr>
-                        ),
-                    )}
+                            )}
+                        </tr>
+                    ))}
                 </Table>
                 <PaginationWrapper>
                     <Pagination

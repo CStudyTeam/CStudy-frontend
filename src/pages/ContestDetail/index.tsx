@@ -75,7 +75,7 @@ const ContestDetail = () => {
 
     return (
         <ContentContainer>
-            <ContentHeaderWrapper title={contest?.title} />
+            <ContentHeaderWrapper title={contest?.title as string} />
             {isAdmin() && (
                 <ContentBodyWrapper>
                     <Styled.Label>관리자</Styled.Label>

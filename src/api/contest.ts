@@ -1,24 +1,25 @@
 import { instance } from 'api';
 import { FieldValues } from 'react-hook-form';
 import { ContestSetForm } from 'types/Form';
+import { Contest, ContestList, ContestProblem, ContestResult } from 'types/api';
 
 /* -------- Get 요청 -------- */
 
 // 대회 정보
 export const getContest = async (competitionId: string) => {
-    const response = await instance.get(`/api/competition/${competitionId}`);
+    const response = await instance.get<Contest>(`/api/competition/${competitionId}`);
     return response.data;
 };
 
 // 대회 문제 조회
 export const getContestProblem = async (competitionId: string) => {
-    const response = await instance.get(`/api/competition/question/${competitionId}`);
+    const response = await instance.get<ContestProblem[]>(`/api/competition/question/${competitionId}`);
     return response.data;
 };
 
 // 참여 가능 대회 리스트 + 종료된 대회 리스트
 export const getContestList = async ({ page = 0, size = 10, query = '' }) => {
-    const response = await instance.get(`/api/competition/list${query}?page=${page}&size=${size}`);
+    const response = await instance.get<ContestList>(`/api/competition/list${query}?page=${page}&size=${size}`);
     return response.data;
 };
 
@@ -30,7 +31,7 @@ export const getContestRanking = async (competitionId = '', page = 0, size = 10)
 
 // 대회 점수 조회
 export const getContestResult = async (competitionId: string) => {
-    const response = await instance.get(`/api/competition/result/${competitionId}`);
+    const response = await instance.get<ContestResult>(`/api/competition/result/${competitionId}`);
     return response.data;
 };
 

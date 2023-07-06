@@ -1,25 +1,27 @@
 import { instance } from 'api';
 import { FieldValues } from 'react-hook-form';
 import { WorkbookSetForm } from 'types/Form';
-import { Workbook } from 'types/workbookList';
+import { Workbook, WorkbookList, WorkbookQuestion } from 'types/api';
 
 /* -------- Get 요청 -------- */
 
 // 문제집리스트
 export const getWorkbookList = async ({ page = 0, size = 8 }) => {
-    const response = await instance.get<Workbook>(`/api/workbook/list?page=${page}&size=${size}`);
+    const response = await instance.get<WorkbookList>(`/api/workbook/list?page=${page}&size=${size}`);
     return response.data;
 };
 
 // 문제집 정보 요청
 export const getWorkbook = async (id: string) => {
-    const response = await instance.get(`/api/workbook/${id}`);
+    const response = await instance.get<Workbook>(`/api/workbook/${id}`);
     return response.data;
 };
 
 // 문제집 문제 요청
 export const getWorkbookQuestion = async (workbookPageId = '', page = 0, size = 10) => {
-    const response = await instance.get(`/api/workbook/question/${workbookPageId}?page=${page}&size=${size}`);
+    const response = await instance.get<WorkbookQuestion>(
+        `/api/workbook/question/${workbookPageId}?page=${page}&size=${size}`,
+    );
     return response.data;
 };
 

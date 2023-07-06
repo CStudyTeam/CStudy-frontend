@@ -1,8 +1,8 @@
-import { OneProblemProps } from 'types/problem';
+import { OneProblem } from 'types/api';
 import * as Styled from './style';
 
 interface ProblemRenderTitleProps {
-    problem: OneProblemProps;
+    problem: OneProblem;
 }
 
 const ProblemRenderTitle = ({ problem }: ProblemRenderTitleProps) => {

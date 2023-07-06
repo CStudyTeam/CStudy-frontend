@@ -10,14 +10,16 @@ import { useSelectAnswerProblem } from 'hooks/@query/problem/useSelectAnswerProb
 import { LoginUserDto, selectAnswerProblemFromProps } from 'types/problem';
 import ProblemForm from 'components/ProblemSet/ProblemRender';
 import ProblemFooter from 'components/ProblemSet/ProblemFooter';
+import { OneProblem } from 'types/api';
 
 const Problem = () => {
     const { problemId } = useParams();
     const [isLoading, setIsLoading] = useState(false);
-    const problem = useGetOneProblem(problemId as string);
+    const oneProblem = useGetOneProblem(problemId as string);
 
     const { register, handleSubmit } = useForm<FieldValues>();
 
+    console.log(oneProblem);
     const SelectAnswerProblem = useSelectAnswerProblem({ setIsLoading });
 
     const onSubmit: SubmitHandler<FieldValues> = useCallback(
@@ -43,12 +45,12 @@ const Problem = () => {
             <ContentBodyWrapper>
                 <ProblemForm
                     isLoading={isLoading}
-                    problem={problem}
+                    problem={oneProblem as OneProblem}
                     register={register}
                     handleSubmit={handleSubmit}
                     onSubmit={onSubmit}
                 />
-                <ProblemFooter explain={problem?.explain} />
+                <ProblemFooter explain={oneProblem?.explain as string} />
             </ContentBodyWrapper>
         </ContentContainer>
     );

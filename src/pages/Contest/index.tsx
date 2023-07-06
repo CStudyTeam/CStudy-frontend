@@ -7,7 +7,6 @@ import Pagination from 'components/ProblemSet/Pagination';
 import { useState, useCallback } from 'react';
 import useGetContestList from 'hooks/@query/contest/useGetContestList';
 import { Link } from 'react-router-dom';
-import { ContestListData } from 'types/contest';
 
 const Contest = () => {
     const [page, setPage] = useState(0);
@@ -24,7 +23,7 @@ const Contest = () => {
             <ContentHeaderWrapper title="대회" adminLink="대회생성 페이지 이동" />
             <ContentBodyWrapper>
                 <Table colRate={['60%', '10%', '30%']} title={['대회명', '최대 인원수', '기간']}>
-                    {contestList?.content?.map(({ id, title, startTime, endTime, participants }: ContestListData) => (
+                    {contestList?.content?.map(({ id, title, startTime, endTime, participants }) => (
                         <tr key={id}>
                             <TBodyTd className="bold">
                                 <Link to={`${id}`}>{title}</Link>
@@ -35,11 +34,11 @@ const Contest = () => {
                             </TBodyTd>
                         </tr>
                     ))}
-                    {contestList?.totalPages > 1 && (
+                    {(contestList?.totalPages as number) > 1 && (
                         <tr>
                             <TBodyTd colSpan={3}>
                                 <Pagination
-                                    totalPages={contestList?.totalPages}
+                                    totalPages={contestList?.totalPages as number}
                                     handlePage={handlePage}
                                     page={page}
                                     white

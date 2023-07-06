@@ -1,9 +1,7 @@
-import useGetRequestList from 'hooks/@query/board/useGetRequestList';
 import RequestList from '../RequestList';
-import { useCallback, useState } from 'react';
 import Pagination from 'components/ProblemSet/Pagination';
 import * as Styled from './style';
-import { RequestDetail } from 'types/board';
+import useGetToggleRequestList from 'hooks/@query/board/useGetRequestList';
 
 interface RequestListsProps {
     query: string;
@@ -12,12 +10,12 @@ interface RequestListsProps {
 }
 
 const RequestLists = ({ query, page, handlePage }: RequestListsProps) => {
-    const requestList = useGetRequestList({ page, query });
-
+    const requestList = useGetToggleRequestList({ page, query });
+    console.log(requestList);
     return (
         <>
             {!requestList && <div style={{ height: '172vh' }}></div>}
-            {requestList?.content.map(({ id, flag, title, description, memberName, createAt }: RequestDetail) => (
+            {requestList?.content.map(({ id, flag, title, description, memberName, createAt }) => (
                 <RequestList
                     key={id}
                     id={id}
@@ -29,7 +27,7 @@ const RequestLists = ({ query, page, handlePage }: RequestListsProps) => {
                 />
             ))}
             <Styled.PaginationWrapper>
-                <Pagination totalPages={requestList?.totalPages} handlePage={handlePage} page={page} />
+                <Pagination totalPages={requestList?.totalPages as number} handlePage={handlePage} page={page} />
             </Styled.PaginationWrapper>
         </>
     );
