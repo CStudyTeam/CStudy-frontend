@@ -8,8 +8,9 @@ import ProblemForm from 'components/CreateProblem/ProblemForm';
 import Button from 'components/@shared/Button';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 
-import { QuestionDataProps } from 'types/problem';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
+import { QuestionDataProps } from 'types/Form';
+import { UTIL } from 'constants/Util';
 
 const CreateProblem = () => {
     const navigate = useNavigate();
@@ -39,8 +40,8 @@ const CreateProblem = () => {
                     category: data[`category${i}`],
                 },
                 createChoicesAboutQuestionDto: Array.from({ length: 5 }, (_, index) => ({
-                    number: index + 1,
-                    content: data[`content${i * 5 + index}`],
+                    number: index + UTIL.INCREASE_COUNT,
+                    content: data[`content${i * UTIL.CHOICE_LENGTH + index}`],
                 })),
             };
 
@@ -62,15 +63,18 @@ const CreateProblem = () => {
     ]);
 
     const handleClick = useCallback(() => {
-        setProblemForms((forms) => [
-            ...forms,
-            {
-                id: forms.length,
-                titleNumber: forms[forms.length - 1].titleNumber + 1,
-                basicInfoNumber: forms[forms.length - 1].basicInfoNumber + 1,
-                contentNumber: forms[forms.length - 1].contentNumber.map((number) => number + 5),
-            },
-        ]);
+        setProblemForms((forms) => {
+            const lastForm = forms[forms.length - 1];
+            return [
+                ...forms,
+                {
+                    id: forms.length,
+                    titleNumber: lastForm.titleNumber + UTIL.INCREASE_COUNT,
+                    basicInfoNumber: lastForm.basicInfoNumber + UTIL.INCREASE_COUNT,
+                    contentNumber: lastForm.contentNumber.map((number) => number + UTIL.CHOICE_LENGTH),
+                },
+            ];
+        });
     }, []);
 
     return (
