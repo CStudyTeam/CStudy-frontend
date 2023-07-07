@@ -52,7 +52,7 @@ const BoardDetail = () => {
                             </Button>
                         </>
                     )}
-                    <Button type="button" className="xl revert style" onClick={handleNavigate}>
+                    <Button type="button" className="xl gray style" onClick={handleNavigate}>
                         돌아가기
                     </Button>
                 </Styled.ButtonWrapper>

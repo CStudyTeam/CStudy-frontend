@@ -5,14 +5,20 @@ import styled from 'styled-components';
 
 interface Props {
     white?: boolean;
+    maxHeight?: boolean;
 }
 
 export const Table = styled.table<Props>`
     width: 100%;
+    max-height: ${({ maxHeight }) => maxHeight && '32rem'};
     background-color: ${({ white }) => (white ? COLOR.WHITE : COLOR.NAVY_100)};
     border: 0.1rem solid ${COLOR.WHITE};
     border-radius: 5rem;
     box-shadow: ${({ white }) => (white ? SHADOW.CONTENTBOX_REVERSE : SHADOW.CONTENTBOX_XLG)};
+
+    /* .maxHeight {
+        max-height: 32rem;
+    } */
 `;
 
 export const THeadTh = styled.th`
@@ -78,4 +84,15 @@ export const TBodyTd = styled.td<Props>`
             transition: all 0.2s ease-in-out;
         }
     }
+`;
+
+export const TBodyTh = styled.th<Props>`
+    text-align: center;
+    padding: 2rem 0;
+    border-top: ${({ white }) => (white ? `0.1rem solid ${COLOR.GRAY_50}` : `0.1rem solid ${COLOR.WHITE}`)};
+    vertical-align: middle;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-all;
 `;

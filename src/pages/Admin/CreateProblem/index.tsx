@@ -100,7 +100,7 @@ const CreateProblem = () => {
                     <Button type="submit" className="navy mt xl2 style" disabled={isLoading}>
                         문제 등록하기
                     </Button>
-                    <Button type="button" className="revert mt ml xl2" onClick={() => navigate(-1)}>
+                    <Button type="button" className="gray style mt ml xl2" onClick={() => navigate(-1)}>
                         돌아가기
                     </Button>
                 </Form>

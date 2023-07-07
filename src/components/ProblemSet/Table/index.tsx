@@ -5,11 +5,12 @@ interface TableProps {
     colRate: string[];
     title: string[];
     white?: boolean;
+    maxHeight?: boolean;
 }
 
-const Table = ({ colRate, title, children, white }: PropsWithChildren<TableProps>) => {
+const Table = ({ colRate, title, maxHeight, children, white }: PropsWithChildren<TableProps>) => {
     return (
-        <Styled.Table cellSpacing={0} white={white}>
+        <Styled.Table cellSpacing={0} white={white} maxHeight={maxHeight}>
             <colgroup>
                 {colRate.map((rate, index) => (
                     <col width={rate} key={index} />

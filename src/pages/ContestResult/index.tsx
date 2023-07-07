@@ -15,7 +15,7 @@ const ContestResult = () => {
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="대회 결과">
-                <Button type="button" onClick={() => navigate(-1)}>
+                <Button type="button" className="xl gray style" onClick={() => navigate(-1)}>
                     돌아가기
                 </Button>
             </ContentHeaderWrapper>

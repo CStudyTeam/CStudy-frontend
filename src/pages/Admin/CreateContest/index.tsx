@@ -117,7 +117,7 @@ const CreateContest = () => {
                         <Button type="submit" className="mt xl navy style" disabled={isLoading}>
                             대회 등록하기
                         </Button>
-                        <Button type="button" className="revert mt ml xl2" onClick={() => navigate(-1)}>
+                        <Button type="button" className="gray style mt ml xl2" onClick={() => navigate(-1)}>
                             돌아가기
                         </Button>
                     </FormBody>

@@ -60,7 +60,7 @@ const BoardRequestForm = () => {
                         <Button type="submit" className="xl wide navy style">
                             등록하기
                         </Button>
-                        <Button type="button" className="xl revert style" onClick={handleNavigate}>
+                        <Button type="button" className="xl gray style" onClick={handleNavigate}>
                             돌아가기
                         </Button>
                     </Styled.ButtonWrapper>
