@@ -53,7 +53,7 @@ const CreateContest = () => {
 
             setIsLoading(true);
             data.competitionStart = formatDate(data.competitionStart);
-            data.competitionEnd = formatDate(data.competitionEnd);
+            data.competitionEnd = formatDate(data.competitionEnd, { endOfDay: true });
             ContestSet(data as ContestSetForm);
         } catch (err) {
             const error = err as Error;
