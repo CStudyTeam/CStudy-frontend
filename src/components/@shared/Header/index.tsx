@@ -35,6 +35,9 @@ const Header = () => {
                         <Styled.NavItem>
                             <Link to="workbook">문제집</Link>
                         </Styled.NavItem>
+                        <Styled.NavItem>
+                            <Link to="membersranks">전체랭킹</Link>
+                        </Styled.NavItem>
                     </Styled.NavList>
                 </Styled.Nav>
                 <Styled.Sign>

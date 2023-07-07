@@ -29,6 +29,7 @@ import ContestDetail from 'pages/ContestDetail';
 import ContestProblemAdd from 'pages/Admin/ContestProblemAdd';
 import ContestProblem from 'pages/ContestProblem';
 import ContestResult from 'pages/ContestResult';
+import MembersRanks from 'pages/MembersRanks';
 
 const queryClient = new QueryClient();
 
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
                         ],
                     },
                 ],
+            },
+            {
+                path: 'membersranks',
+                children: [{ index: true, element: <MembersRanks /> }],
             },
             { path: 'mypage', element: <MyPage /> },
             { path: 'oauth2/login', element: <OAuthRedirect /> },
