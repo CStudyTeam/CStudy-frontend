@@ -152,3 +152,16 @@ type WorkbookQuestionContent = {
 export interface WorkbookQuestion extends Omit<ContestList, 'content'> {
     content: WorkbookQuestionContent[];
 }
+
+// mypage
+
+export interface MyImageProps {
+    memberId: string;
+    roles: string;
+}
+
+export interface MyPage {
+    id: number;
+    name: string;
+    email: string;
+}
