@@ -205,17 +205,23 @@ const ContestDetail = () => {
                                 </Styled.StyledTr>
                             </Styled.StyledThead>
                             <Styled.StyledTbody>
-                                {contestRanking?.content?.map(({ memberId, name, score, endTime }) => (
-                                    <Styled.StyledTr key={memberId}>
-                                        <Styled.StyledTd>{name}</Styled.StyledTd>
-                                        <Styled.StyledTd>
-                                            {score} / {totalQuestion}
-                                        </Styled.StyledTd>
-                                        <Styled.StyledTd>
-                                            {endTime ? endTime : '제출한 시험지가 없습니다'}
-                                        </Styled.StyledTd>
+                                {(contestRanking?.content?.length as number) > 0 ? (
+                                    contestRanking?.content?.map(({ memberId, name, score, endTime }) => (
+                                        <Styled.StyledTr key={memberId}>
+                                            <Styled.StyledTd>{name}</Styled.StyledTd>
+                                            <Styled.StyledTd>
+                                                {score} / {totalQuestion}
+                                            </Styled.StyledTd>
+                                            <Styled.StyledTd>
+                                                {endTime ? endTime : '제출한 시험지가 없습니다'}
+                                            </Styled.StyledTd>
+                                        </Styled.StyledTr>
+                                    ))
+                                ) : (
+                                    <Styled.StyledTr>
+                                        <Styled.StyledTd colSpan={3}>등록된 참가자가 없습니다.</Styled.StyledTd>
                                     </Styled.StyledTr>
-                                ))}
+                                )}
                             </Styled.StyledTbody>
                         </Styled.StyledTable>
                         <Styled.PaginationWrapper>
