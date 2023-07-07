@@ -34,6 +34,10 @@ export const ButtonWrapper = styled.div`
     }
 `;
 
+export const FinishContestTableWrapper = styled.div`
+    margin-bottom: 3rem;
+`;
+
 export const ContestInfoBodyWrapper = styled.div`
     display: flex;
 `;

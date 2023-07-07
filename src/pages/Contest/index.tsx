@@ -37,7 +37,9 @@ const Contest = () => {
                     {contestList?.content?.map(({ id, title, startTime, endTime, participants }) => (
                         <tr key={id}>
                             <TBodyTd className="bold">
-                                <Link to={`${id}`}>{title}</Link>
+                                <Link to={`${id}`} state={!!isActive}>
+                                    {title}
+                                </Link>
                             </TBodyTd>
                             <TBodyTd>{participants}</TBodyTd>
                             <TBodyTd>

@@ -4,7 +4,7 @@ import * as Styled from './style';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import useGetContest from 'hooks/@query/contest/useGetContest';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useJoinContest } from 'hooks/@query/contest/useJoinContest';
 import Button from 'components/@shared/Button';
 import { FONT } from 'constants/Font';
@@ -28,6 +28,7 @@ import Pagination from 'components/ProblemSet/Pagination';
 const ContestDetail = () => {
     const { contestId } = useParams();
     const navigate = useNavigate();
+    const { state: finishContest } = useLocation();
     const [page, setPage] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -98,7 +99,7 @@ const ContestDetail = () => {
                     돌아가기
                 </Button>
             </ContentHeaderWrapper>
-            {isAdmin() && (
+            {isAdmin() && !finishContest && (
                 <ContentBodyWrapper>
                     <Styled.Label>관리자</Styled.Label>
                     <Styled.AdminWrapper>
@@ -147,11 +148,13 @@ const ContestDetail = () => {
                     <Styled.Label>대회정보</Styled.Label>
                     <Styled.ButtonWrapper>
                         <StyleLink to="contestresult" className="xl green style">
-                            대회 결과보기
+                            나의 대회 결과보기
                         </StyleLink>
-                        <Button type="button" className="xl navy style" onClick={() => setIsModalOpen(true)}>
-                            대회 참여하기
-                        </Button>
+                        {!finishContest && (
+                            <Button type="button" className="xl navy style" onClick={() => setIsModalOpen(true)}>
+                                대회 참여하기
+                            </Button>
+                        )}
                         <ConfirmModal
                             title="대회에 참가하시겠습니까?"
                             isOpen={isModalOpen}
@@ -161,6 +164,21 @@ const ContestDetail = () => {
                         />
                     </Styled.ButtonWrapper>
                 </Styled.ContestInfoHeaderWrapper>
+                {finishContest && (
+                    <Styled.FinishContestTableWrapper>
+                        <Table colRate={['20%', '60%', '20%']} title={['문제번호', '문제이름', '카테고리']}>
+                            {filterQuestion?.map(({ questionId, questionTitle, categoryTitle }: ProblemList) => (
+                                <tr key={questionId}>
+                                    <TBodyTd>{questionId}</TBodyTd>
+                                    <TBodyTd className="bold">
+                                        <Link to={`/problemset/${questionId}`}>{questionTitle}</Link>
+                                    </TBodyTd>
+                                    <TBodyTd>{categoryTitle}</TBodyTd>
+                                </tr>
+                            ))}
+                        </Table>
+                    </Styled.FinishContestTableWrapper>
+                )}
                 <Styled.ContestInfoBodyWrapper>
                     <Table maxHeight colRate={['50%', '50%']} title={['대회 시작일', '대회 종료일']}>
                         <tr>
