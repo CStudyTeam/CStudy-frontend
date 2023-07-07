@@ -1,7 +1,7 @@
 import { instance } from 'api';
 import { FieldValues } from 'react-hook-form';
 import { ContestSetForm } from 'types/Form';
-import { Contest, ContestList, ContestProblem, ContestResult } from 'types/api';
+import { Contest, ContestList, ContestProblem, ContestRanking, ContestResult } from 'types/api';
 
 /* -------- Get 요청 -------- */
 
@@ -24,8 +24,10 @@ export const getContestList = async ({ page = 0, size = 10, query = '' }) => {
 };
 
 // 대회 랭킹
-export const getContestRanking = async (competitionId = '', page = 0, size = 10) => {
-    const response = await instance.get(`/api/competition/ranking/${competitionId}?page=${page}&size=${size}`);
+export const getContestRanking = async ({ contestId = '', page = 0, size = 10 }) => {
+    const response = await instance.get<ContestRanking>(
+        `/api/competition/ranking/${contestId}?page=${page}&size=${size}`,
+    );
     return response.data;
 };
 

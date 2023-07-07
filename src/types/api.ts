@@ -75,6 +75,17 @@ export interface ContestResult {
     details: ContestDetail[];
 }
 
+type ContestRankingContent = {
+    memberId: number;
+    name: string;
+    score: number;
+    endTime: number | null;
+};
+
+export interface ContestRanking extends Omit<ContestList, 'content'> {
+    content: ContestRankingContent[];
+}
+
 // Problem
 
 type ProblemContent = {
