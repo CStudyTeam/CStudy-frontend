@@ -17,6 +17,7 @@ const ChoiceList = ({ choiceList, register }: ChoiceListProps) => {
                     <Styled.ProblemNumber
                         type="radio"
                         {...register('choiceNumber')}
+                        required
                         value={number}
                         data-count={number}
                     />

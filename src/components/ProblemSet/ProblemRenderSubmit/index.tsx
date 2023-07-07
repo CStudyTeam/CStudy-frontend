@@ -8,7 +8,7 @@ interface ProblemRenderSubmitProps {
 const ProblemRenderSubmit = ({ isLoading }: ProblemRenderSubmitProps) => {
     return (
         <Styled.ProblemSubmitWrapper>
-            <Button className="xl wide navy style" disabled={isLoading}>
+            <Button type="submit" className="xl wide navy style" disabled={isLoading}>
                 제출
             </Button>
             <Styled.ProblemAnswerWrapper>
