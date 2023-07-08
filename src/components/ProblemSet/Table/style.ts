@@ -6,6 +6,7 @@ import styled from 'styled-components';
 interface Props {
     white?: boolean;
     maxHeight?: boolean;
+    narrow?: boolean;
 }
 
 export const Table = styled.table<Props>`
@@ -13,7 +14,7 @@ export const Table = styled.table<Props>`
     max-height: ${({ maxHeight }) => maxHeight && '32rem'};
     background-color: ${({ white }) => (white ? COLOR.WHITE : COLOR.NAVY_100)};
     border: 0.1rem solid ${COLOR.WHITE};
-    border-radius: 5rem;
+    border-radius: ${({ narrow }) => (narrow ? '2rem' : '5rem')};
     box-shadow: ${({ white }) => (white ? SHADOW.CONTENTBOX_REVERSE : SHADOW.CONTENTBOX_XLG)};
 
     /* .maxHeight {
@@ -21,13 +22,13 @@ export const Table = styled.table<Props>`
     } */
 `;
 
-export const THeadTh = styled.th`
-    padding: 4rem 0 2rem;
+export const THeadTh = styled.th<Props>`
+    padding: ${({ narrow }) => (narrow ? '2rem 0 1rem' : '4rem 0 2rem')};
 `;
 
 export const TBodyTd = styled.td<Props>`
     text-align: center;
-    padding: 3rem 0;
+    padding: ${({ narrow }) => (narrow ? '0' : '3rem 0')};
     border-top: ${({ white }) => (white ? `0.1rem solid ${COLOR.GRAY_50}` : `0.1rem solid ${COLOR.WHITE}`)};
     vertical-align: middle;
     word-wrap: break-word;
@@ -62,7 +63,7 @@ export const TBodyTd = styled.td<Props>`
     &.title {
         ${FONT.BOLD_20}
         text-align: left;
-        padding: 2rem 3rem;
+        padding: ${({ narrow }) => (narrow ? '1.5rem 2rem' : '2rem 3rem')};
 
         a:hover {
             text-shadow: 0 0rem 2rem ${COLOR.WHITE}, 0 0rem 2.5rem ${COLOR.NAVY_100}, 0 -0.5rem 4rem ${COLOR.NAVY_200};

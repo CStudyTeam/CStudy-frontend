@@ -6,11 +6,12 @@ interface TableProps {
     title: string[];
     white?: boolean;
     maxHeight?: boolean;
+    narrow?: boolean;
 }
 
-const Table = ({ colRate, title, maxHeight, children, white }: PropsWithChildren<TableProps>) => {
+const Table = ({ colRate, title, maxHeight, children, white, narrow }: PropsWithChildren<TableProps>) => {
     return (
-        <Styled.Table cellSpacing={0} white={white} maxHeight={maxHeight}>
+        <Styled.Table cellSpacing={0} white={white} maxHeight={maxHeight} narrow={narrow}>
             <colgroup>
                 {colRate.map((rate, index) => (
                     <col width={rate} key={index} />
@@ -19,7 +20,9 @@ const Table = ({ colRate, title, maxHeight, children, white }: PropsWithChildren
             <thead>
                 <tr>
                     {title.map((t, index) => (
-                        <Styled.THeadTh key={index}>{t}</Styled.THeadTh>
+                        <Styled.THeadTh narrow={narrow} key={index}>
+                            {t}
+                        </Styled.THeadTh>
                     ))}
                 </tr>
             </thead>
