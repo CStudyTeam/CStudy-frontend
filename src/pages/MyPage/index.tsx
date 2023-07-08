@@ -17,6 +17,7 @@ import { BiSolidError } from 'react-icons/bi';
 import useGetToggleRequestList from 'hooks/@query/board/useGetRequestList';
 import { Status } from 'components/Board/RequestList/style';
 import { Link } from 'react-router-dom';
+import ApproveStatus from 'components/@shared/Status';
 
 const MyPage = () => {
     const [page, setPage] = useState(0);
@@ -48,9 +49,7 @@ const MyPage = () => {
                 <Link to={`/board/${id}`}>{title}</Link>
             </TBodyTd>
             <TBodyTd white narrow>
-                <Status small isApproved={flag}>
-                    {flag ? '승인' : '대기'}
-                </Status>
+                <ApproveStatus small flag={flag} />
             </TBodyTd>
         </tr>
     ));

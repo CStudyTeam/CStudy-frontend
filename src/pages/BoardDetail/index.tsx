@@ -10,6 +10,7 @@ import { FONT } from 'constants/Font';
 import { isAdmin } from 'utils/auth';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useApproveRequest } from 'hooks/@query/board/useApproveRequest';
+import ApproveStatus from 'components/@shared/Status';
 
 const BoardDetail = () => {
     const { requestId } = useParams();
@@ -28,14 +29,12 @@ const BoardDetail = () => {
         ApproveRequest(formData);
     };
 
-    const isApproved = request?.flag;
-
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="게시판" />
             <ContentBodyWrapper blue>
                 <Styled.Container>
-                    <Styled.Status isApproved={isApproved}>{request?.flag ? '승인' : '대기'}</Styled.Status>
+                    <ApproveStatus flag={request?.flag} />
                     <Styled.Title>{request?.title}</Styled.Title>
                     <Styled.Detail>
                         {request?.memberName}
