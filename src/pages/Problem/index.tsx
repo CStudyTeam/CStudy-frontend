@@ -36,7 +36,7 @@ const Problem = () => {
             const formData = {
                 ...choiceNumber,
                 loginUserDto: loginUserDto,
-                time: elapsedTime / UTIL.SECOND,
+                time: Math.floor(elapsedTime / UTIL.SECOND),
             };
 
             SelectAnswerProblem({ problemId, formData } as selectAnswerProblemFromProps);
