@@ -15,7 +15,6 @@ import { AiFillCheckCircle } from 'react-icons/ai';
 import { COLOR } from 'constants/Color';
 import { BiSolidError } from 'react-icons/bi';
 import useGetToggleRequestList from 'hooks/@query/board/useGetRequestList';
-import { Status } from 'components/Board/RequestList/style';
 import { Link } from 'react-router-dom';
 import ApproveStatus from 'components/@shared/Status';
 
