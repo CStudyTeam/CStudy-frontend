@@ -26,6 +26,10 @@ export const ButtonLinkSharedStyles = css`
         text-shadow: none;
     }
 
+    &.mt-sm {
+        margin-top: 0.8rem;
+    }
+
     &.mt {
         margin-top: 1.6rem;
     }
@@ -48,6 +52,10 @@ export const ButtonLinkSharedStyles = css`
 
     &.xl2 {
         padding: 1.4rem 1.8rem;
+    }
+
+    &.fs--sm {
+        font-size: ${FONT.REGULAR_14};
     }
 
     &.navy {
