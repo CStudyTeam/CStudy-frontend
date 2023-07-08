@@ -14,7 +14,6 @@ const RequestLists = ({ query, page, handlePage }: RequestListsProps) => {
     console.log(requestList);
     return (
         <>
-            {!requestList && <div style={{ height: '172vh' }}></div>}
             {requestList?.content.map(({ id, flag, title, description, memberName, createAt }) => (
                 <RequestList
                     key={id}
