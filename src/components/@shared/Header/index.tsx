@@ -6,6 +6,7 @@ import { isAdmin, isLogin } from 'utils/auth';
 import { useSignOut } from 'hooks/@query/useSignOut';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
+import StyleLink from '../StyleLink';
 
 const Header = () => {
     const loginModal = useLoginModal();
@@ -44,9 +45,9 @@ const Header = () => {
                     {isLogin() ? (
                         <>
                             <Button onClick={() => signOut()}>로그아웃</Button>
-                            <Button>
-                                <Link to="mypage">마이페이지</Link>
-                            </Button>
+                            <StyleLink to="mypage" className="fs--sm">
+                                마이페이지
+                            </StyleLink>
                         </>
                     ) : (
                         <>
