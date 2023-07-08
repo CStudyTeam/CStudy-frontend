@@ -23,3 +23,7 @@ export interface ProblemList {
     questionTitle: string;
     categoryTitle: string;
 }
+
+export interface statusLabelProp {
+    status: number;
+}

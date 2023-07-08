@@ -92,7 +92,7 @@ type ProblemContent = {
     questionId: number;
     questionTitle: string;
     categoryTitle: string;
-    questionSuccess: number;
+    status: number;
 };
 export interface Problem extends Omit<ContestList, 'content'> {
     content: ProblemContent[];

@@ -11,6 +11,7 @@ import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import { Link } from 'react-router-dom';
 import { TBodyTd } from './../../components/ProblemSet/Table/style';
 import { Filter } from 'pages/Board/style';
+import { statusLabelProp } from 'types/problem';
 
 const ProblemSet = () => {
     const {
@@ -33,7 +34,7 @@ const ProblemSet = () => {
 
     const problemList = useGetProblem({
         categoryTitle: categoryValue as string,
-        questionSuccess: statusValue as number,
+        status: statusValue as number,
         page,
         query,
     });
@@ -47,11 +48,23 @@ const ProblemSet = () => {
         setPage(page);
     }, []);
 
+    const StatusLabel = ({ status }: statusLabelProp) => {
+        if (status === 1) {
+            return <span className="success">완료</span>;
+        }
+        if (status === 2) {
+            return <span className="failed">실패</span>;
+        }
+        return null;
+    };
+
     const TBodyContent = problemList?.content?.map(
-        ({ questionId, questionTitle, categoryTitle, questionSuccess }, index: number) => (
+        ({ questionId, questionTitle, categoryTitle, status }, index: number) => (
             <tr key={index}>
                 <TBodyTd>{questionId}</TBodyTd>
-                <TBodyTd>{questionSuccess ? <span className="success">완료</span> : ''}</TBodyTd>
+                <TBodyTd>
+                    <StatusLabel status={status} />
+                </TBodyTd>
                 <TBodyTd className="title">
                     <Link to={`${questionId}`}>{questionTitle}</Link>
                 </TBodyTd>
@@ -72,7 +85,7 @@ const ProblemSet = () => {
                         handleActive={statusHandleActive}
                         isActive={statusActive}
                         options={['전체', '완료', '실패']}
-                        optionsValue={[-1, 0, 1]}
+                        optionsValue={[0, 1, 2]}
                     />
                     <Select
                         name={category}

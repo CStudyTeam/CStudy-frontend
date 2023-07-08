@@ -6,11 +6,11 @@ import { selectAnswerProblemFromProps } from 'types/problem';
 /* -------- Get 요청 -------- */
 
 //  전체 문제 페이징 / 내가 푼 문제 조회
-export const getProblem = async ({ categoryTitle = '', questionSuccess = -1, page = 0, size = 10, query = '' }) => {
+export const getProblem = async ({ categoryTitle = '', status = 0, page = 0, size = 10, query = '' }) => {
     const response = await instance.get<Problem>(
         `/api/questions${query}?${
             query === ''
-                ? `categoryTitle=${categoryTitle}&questionSuccess=${questionSuccess}&page=${page}&size=${size}`
+                ? `categoryTitle=${categoryTitle}&status=${status}&page=${page}&size=${size}`
                 : `page=${page}&size=${size}`
         }`,
     );
