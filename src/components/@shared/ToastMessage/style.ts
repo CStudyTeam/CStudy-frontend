@@ -20,13 +20,13 @@ export const ToastContainer = styled.div<Props>`
     color: ${COLOR.WHITE};
     word-break: keep-all;
     box-shadow: ${SHADOW.CONTENTBOX_REVERSE};
-    animation: slide-in-blurred-top 0.6s cubic-bezier(0.23, 1, 0.32, 1) both 0s,
-        slide-out-blurred-top 0.45s cubic-bezier(0.755, 0.05, 0.855, 0.06) both 1.45s;
+    animation: slide-in-blurred-top 0.3s cubic-bezier(0.23, 1, 0.32, 1) both 0s,
+        slide-out-blurred-top 0.3s cubic-bezier(0.755, 0.05, 0.855, 0.06) both 1.9s;
     animation-fill-mode: forwards;
 
     @keyframes slide-in-blurred-top {
         0% {
-            transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+            transform: translate3D(0, -20rem, 0) scaleY(2.5) scaleX(0.2);
             transform-origin: 50% 0%;
             filter: blur(40px);
             opacity: 0;
@@ -41,14 +41,14 @@ export const ToastContainer = styled.div<Props>`
 
     @keyframes slide-out-blurred-top {
         0% {
-            transform: translateY(0) scaleY(1) scaleX(1);
+            transform: translate3D(0, 0, 0) scaleY(1) scaleX(1);
             transform-origin: 50% 0%;
             filter: blur(0);
             opacity: 1;
             max-height: 100%;
         }
         100% {
-            transform: translateY(-1000px) scaleY(2) scaleX(0.2);
+            transform: translate3D(0, -20rem, 0) scaleY(2) scaleX(0.2);
             transform-origin: 50% 0%;
             filter: blur(40px);
             opacity: 0;
