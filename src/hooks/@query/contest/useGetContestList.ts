@@ -8,8 +8,10 @@ interface GetContestListProps {
 }
 
 const useGetContestList = ({ page, query }: GetContestListProps) => {
-    const { data: contestList } = useQuery<ContestList>(['contestList', { page, query }], () =>
-        getContestList({ page, query }),
+    const { data: contestList } = useQuery<ContestList>(
+        ['contestList', { page, query }],
+        () => getContestList({ page, query }),
+        { keepPreviousData: true },
     );
     return contestList;
 };

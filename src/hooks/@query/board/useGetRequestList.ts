@@ -4,12 +4,14 @@ import { ToggleRequestList } from 'types/api';
 
 interface GetRequestList {
     page: number;
-    query: string;
+    query?: string;
 }
 
 const useGetToggleRequestList = ({ page, query }: GetRequestList) => {
-    const { data: requestList } = useQuery<ToggleRequestList>(['requestList', { page, query }], () =>
-        getToggleRequestList({ page, query }),
+    const { data: requestList } = useQuery<ToggleRequestList>(
+        ['requestList', { page, query }],
+        () => getToggleRequestList({ page, query }),
+        { keepPreviousData: true },
     );
     return requestList;
 };
