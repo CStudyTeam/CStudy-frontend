@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import * as Styled from './style';
+import ApproveStatus from 'components/@shared/Status';
 
 interface RequestListProps {
     id: number;
@@ -16,7 +17,7 @@ const RequestList = ({ id, flag, title, description, memberName, createAt }: Req
             <Link to={`/board/${id}`}>
                 <Styled.Article>
                     <div>
-                        <Styled.Status isApproved={flag}>{flag ? '승인' : '대기'}</Styled.Status>
+                        <ApproveStatus flag={flag} />
                         <Styled.Title>{title}</Styled.Title>
                     </div>
                     <Styled.Content>{description}</Styled.Content>
