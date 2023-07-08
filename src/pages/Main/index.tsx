@@ -1,12 +1,17 @@
+import { Suspense, lazy } from 'react';
 import * as Styled from './style';
 import Contents from 'components/@main/Contents';
-import Banner from 'components/@main/Banner';
+import Skeleton from 'components/@shared/Skeleton';
+
+const Banner = lazy(() => import('components/@main/Banner'));
 
 const Main = () => {
     return (
         <Styled.MainWrapper>
             <Styled.Banner>
-                <Banner />
+                <Suspense fallback={<Skeleton width="100%" height="100%" />}>
+                    <Banner />
+                </Suspense>
             </Styled.Banner>
             <Contents />
         </Styled.MainWrapper>
