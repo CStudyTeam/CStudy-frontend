@@ -4,15 +4,15 @@ import { Problem } from 'types/api';
 
 interface UseGetProblemProps {
     categoryTitle?: string;
-    questionSuccess?: number;
+    status?: number;
     page?: number;
     query?: string;
 }
 
-export const useGetProblem = ({ categoryTitle, questionSuccess, page, query }: UseGetProblemProps) => {
+export const useGetProblem = ({ categoryTitle, status, page, query }: UseGetProblemProps) => {
     const { data: problemList } = useQuery<Problem>(
-        ['getProblem', { categoryTitle, questionSuccess, page, query }],
-        () => getProblem({ categoryTitle, questionSuccess, page, query }),
+        ['getProblem', { categoryTitle, status, page, query }],
+        () => getProblem({ categoryTitle, status, page, query }),
         { keepPreviousData: true },
     );
 
