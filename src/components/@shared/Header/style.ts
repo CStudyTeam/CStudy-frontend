@@ -29,10 +29,8 @@ export const NavList = styled.ul`
 `;
 
 export const NavItem = styled.li`
-    margin-right: 1rem;
-
-    &:hover ul {
-        display: block;
+    & + & {
+        margin-left: 1rem;
     }
 
     & > a {
