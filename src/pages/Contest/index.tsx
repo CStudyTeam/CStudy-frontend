@@ -6,12 +6,16 @@ import { TBodyTd } from 'components/ProblemSet/Table/style';
 import Pagination from 'components/ProblemSet/Pagination';
 import { useState, useCallback } from 'react';
 import useGetContestList from 'hooks/@query/contest/useGetContestList';
-import { Link } from 'react-router-dom';
 import { Filter } from 'pages/Board/style';
+import StyleLink from 'components/@shared/StyleLink';
+import { isLogin } from 'utils/auth';
+import Button from 'components/@shared/Button';
+import useLoginModal from 'hooks/@zustand/useLoginModal';
 
 const Contest = () => {
     const [page, setPage] = useState(0);
     const [query, setQuery] = useState('');
+    const loginModal = useLoginModal();
 
     const contestList = useGetContestList({ page, query });
     const isActive = query === '/finish' ? 'active' : '';
@@ -37,9 +41,15 @@ const Contest = () => {
                     {contestList?.content?.map(({ id, title, startTime, endTime, participants }) => (
                         <tr key={id}>
                             <TBodyTd className="bold">
-                                <Link to={`${id}`} state={!!isActive}>
-                                    {title}
-                                </Link>
+                                {isLogin() ? (
+                                    <StyleLink className="bold fs--xl" to={`${id}`} state={!!isActive}>
+                                        {title}
+                                    </StyleLink>
+                                ) : (
+                                    <Button className="bold fs--xl" onClick={loginModal.onOpen}>
+                                        {title}
+                                    </Button>
+                                )}
                             </TBodyTd>
                             <TBodyTd>{participants}</TBodyTd>
                             <TBodyTd>

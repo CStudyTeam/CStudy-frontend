@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useJoinContest } from 'hooks/@query/contest/useJoinContest';
 import Button from 'components/@shared/Button';
 import { FONT } from 'constants/Font';
-import { isAdmin } from 'utils/auth';
+import { isAdmin, isLogin, userInfo } from 'utils/auth';
 import { COLOR } from 'constants/Color';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import ConfirmModal from 'components/Contest/ConfirmModal';
@@ -24,6 +24,9 @@ import StyleLink from 'components/@shared/StyleLink';
 import useGetContestRanking from 'hooks/@query/contest/useGetContestRanking';
 import { GetContestRankingProps } from './../../hooks/@query/contest/useGetContestRanking';
 import Pagination from 'components/ProblemSet/Pagination';
+import useLoginModal from 'hooks/@zustand/useLoginModal';
+import useGetContestMyRanking from 'hooks/@query/contest/useGetContestMyRanking';
+import useGetContestResult from 'hooks/@query/contest/useGetContestResult';
 
 const ContestDetail = () => {
     const { contestId } = useParams();
@@ -31,10 +34,12 @@ const ContestDetail = () => {
     const { state: finishContest } = useLocation();
     const [page, setPage] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const user = userInfo();
 
     const [isLoading, setIsLoading] = useState(false);
     const problem = useGetProblem({});
     const contestQuestion = useGetContestProblem(contestId as string);
+    const myRanking = useGetContestMyRanking(user?.memberId as number);
     const filterQuestion = problem?.content?.filter(({ questionId: problemQuestionId }: { questionId: number }) => {
         return contestQuestion?.some(
             ({ questionId: contestQuestionId }: { questionId: number }) => problemQuestionId === contestQuestionId,
@@ -58,9 +63,12 @@ const ContestDetail = () => {
             questionIds: [],
         },
     });
+    const loginModal = useLoginModal();
 
     const contest = useGetContest(contestId as string);
     const contestRanking = useGetContestRanking({ contestId, page } as GetContestRankingProps);
+    // 나중에 기능 안정화 될 시, filterQuestion, totalQuestion 대체 할 예정
+    // const contestResult = useGetContestResult(contestId as string);
 
     const JoinContest = useJoinContest({ contestId, setIsLoading, setIsModalOpen } as UseJoinContestProps);
     const DeleteContestProblem = useDeleteContestProblem({ setIsLoading });
@@ -147,14 +155,21 @@ const ContestDetail = () => {
                 <Styled.ContestInfoHeaderWrapper>
                     <Styled.Label>대회정보</Styled.Label>
                     <Styled.ButtonWrapper>
-                        <StyleLink to="contestresult" className="xl green style">
-                            나의 대회 결과보기
-                        </StyleLink>
-                        {!finishContest && (
-                            <Button type="button" className="xl navy style" onClick={() => setIsModalOpen(true)}>
-                                대회 참여하기
-                            </Button>
+                        {isLogin() && (
+                            <StyleLink to="contestresult" state={!!myRanking?.['ranking']} className="xl green style">
+                                나의 대회 결과보기
+                            </StyleLink>
                         )}
+                        {!finishContest &&
+                            (isLogin() ? (
+                                <Button type="button" className="xl navy style" onClick={() => setIsModalOpen(true)}>
+                                    대회 참여하기
+                                </Button>
+                            ) : (
+                                <Button type="button" className="xl navy style" onClick={loginModal.onOpen}>
+                                    대회 참여하기
+                                </Button>
+                            ))}
                         <ConfirmModal
                             title="대회에 참가하시겠습니까?"
                             isOpen={isModalOpen}
@@ -195,7 +210,10 @@ const ContestDetail = () => {
                         </tr>
                     </Table>
                     <Styled.ContestRanking>
-                        <Styled.RankingTitle>랭킹 테이블</Styled.RankingTitle>
+                        <Styled.RankingTitle>
+                            랭킹 테이블
+                            {!!myRanking?.['ranking'] && <span>나의 랭킹 : {myRanking?.['ranking']}</span>}
+                        </Styled.RankingTitle>
                         <Styled.StyledTable>
                             <Styled.StyledThead>
                                 <Styled.StyledTr>

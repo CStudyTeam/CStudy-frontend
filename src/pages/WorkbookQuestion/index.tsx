@@ -8,21 +8,21 @@ import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
 import useGetWorkbookQuestion from 'hooks/@query/workbook/useGetWorkbookQuestion';
-import { isAdmin } from 'utils/auth';
+import { isAdmin, isLogin } from 'utils/auth';
 import Button from 'components/@shared/Button';
 import Pagination from 'components/ProblemSet/Pagination';
 import { PaginationWrapper } from 'pages/Workbook/style';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { COLOR } from 'constants/Color';
-import { FONT } from 'constants/Font';
 import { useWorkbookQuestionDelete } from 'hooks/@query/workbook/useWorkbookQuestionDelete';
 import StyleLink from 'components/@shared/StyleLink';
+import useLoginModal from 'hooks/@zustand/useLoginModal';
 
 const WorkbookQuestion = () => {
     const { questionId } = useParams();
     const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(0);
+    const loginModal = useLoginModal();
 
     const {
         register,
@@ -89,7 +89,11 @@ const WorkbookQuestion = () => {
                         <tr key={workbookQuestionId}>
                             <TBodyTd>{questionId}</TBodyTd>
                             <TBodyTd className="bold">
-                                <Link to={`/problemset/${questionId}`}>{title}</Link>
+                                {isLogin() ? (
+                                    <StyleLink to={`/problemset/${questionId}`}>{title}</StyleLink>
+                                ) : (
+                                    <Button onClick={loginModal.onOpen}>{title}</Button>
+                                )}
                             </TBodyTd>
                             {isAdmin() && (
                                 <TBodyTd>

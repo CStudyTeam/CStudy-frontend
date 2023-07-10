@@ -32,6 +32,10 @@ export const ButtonWrapper = styled.div`
     a + button {
         margin-left: 0.8rem;
     }
+
+    button + button {
+        margin-left: 0.8rem;
+    }
 `;
 
 export const FinishContestTableWrapper = styled.div`
@@ -53,7 +57,15 @@ export const ContestRanking = styled.div`
 `;
 
 export const RankingTitle = styled.h4`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     ${FONT.H2}
+
+    & > span {
+        font-size: ${FONT.BOLD_14};
+        color: ${COLOR.GRAY_200};
+    }
 `;
 // -----------------
 
