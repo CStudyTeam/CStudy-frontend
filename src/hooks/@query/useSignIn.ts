@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { signIn } from 'api/auth';
 import { userStorage } from 'utils/userStorage';
+import toast from 'provider/Toast';
 
 export const useSignIn = (closeSignInModal: VoidFunction) => {
     return useMutation(signIn, {
@@ -9,11 +10,11 @@ export const useSignIn = (closeSignInModal: VoidFunction) => {
                 accessToken: response.accessToken,
                 refreshToken: response.refreshToken,
             });
-            alert('로그인 되었습니다.');
+            toast.success('로그인 되었습니다.');
             closeSignInModal();
         },
         onError: () => {
-            alert('로그인에 실패했습니다.');
+            toast.error('로그인에 실패했습니다.');
         },
     });
 };

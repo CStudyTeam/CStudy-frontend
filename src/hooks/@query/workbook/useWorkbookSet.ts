@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { workbookSet } from 'api/workbook';
 import { Dispatch, SetStateAction } from 'react';
+import toast from 'provider/Toast';
 
 interface useWorkbookSetProps {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
@@ -9,10 +10,10 @@ interface useWorkbookSetProps {
 export const useWorkbookSet = ({ setIsLoading }: useWorkbookSetProps) => {
     const { mutate: WorkbookSet } = useMutation(workbookSet, {
         onSuccess: () => {
-            alert('문제집 생성에 성공했습니다.');
+            toast.success('문제집 생성에 성공했습니다.');
         },
-        onError: (error) => {
-            alert(error);
+        onError: () => {
+            toast.error('문제집 생성에 실패했습니다.');
         },
         onSettled: () => {
             setIsLoading(false);

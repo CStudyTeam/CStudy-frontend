@@ -3,7 +3,7 @@ import { getWorkbook } from 'api/workbook';
 import { Workbook } from 'types/api';
 
 const useGetWorkbook = (workbookPageId: string) => {
-    const { data: workbook } = useQuery<Workbook>(['woorkbook', { workbookPageId }], () => getWorkbook(workbookPageId));
+    const { data: workbook } = useQuery<Workbook>(['workbook', { workbookPageId }], () => getWorkbook(workbookPageId));
     return workbook;
 };
 
