@@ -7,6 +7,8 @@ interface Props {
     white?: boolean;
     maxHeight?: boolean;
     narrow?: boolean;
+    rank?: number;
+    rankFont?: number;
 }
 
 export const Table = styled.table<Props>`
@@ -27,8 +29,31 @@ export const THeadTh = styled.th<Props>`
 `;
 
 export const TBodyTd = styled.td<Props>`
-    text-align: center;
     padding: ${({ narrow }) => (narrow ? '0' : '3rem 0')};
+    background-image: ${({ rank }) => {
+        switch (rank) {
+            case 1:
+                return 'url("gold_crown.png")';
+            case 2:
+                return 'url("silver_crown.png")';
+            case 3:
+                return 'url("bronze_crown.png")';
+        }
+    }};
+    background-size: ${({ rank }) => rank && '70%'};
+    background-repeat: ${({ rank }) => rank && 'no-repeat'};
+    background-position: ${({ rank }) => rank && 'center center'};
+    text-align: center;
+    ${({ rankFont }) => {
+        switch (rankFont) {
+            case 1:
+                return FONT.BOLD_20;
+            case 2:
+                return FONT.BOLD_18;
+            case 3:
+                return FONT.BOLD_16;
+        }
+    }}
     border-top: ${({ white }) => (white ? `0.1rem solid ${COLOR.GRAY_50}` : `0.1rem solid ${COLOR.WHITE}`)};
     vertical-align: middle;
     word-wrap: break-word;
@@ -69,6 +94,10 @@ export const TBodyTd = styled.td<Props>`
             text-shadow: 0 0rem 2rem ${COLOR.WHITE}, 0 0rem 2.5rem ${COLOR.NAVY_100}, 0 -0.5rem 4rem ${COLOR.NAVY_200};
             transition: all 0.2s ease-in-out;
         }
+
+        &.center {
+            text-align: center;
+        }
     }
 
     &.bold {
@@ -84,6 +113,10 @@ export const TBodyTd = styled.td<Props>`
             text-shadow: 0 0rem 2rem ${COLOR.WHITE}, 0 0rem 2.5rem ${COLOR.NAVY_100}, 0 -0.5rem 4rem ${COLOR.NAVY_200};
             transition: all 0.2s ease-in-out;
         }
+    }
+
+    &.white {
+        background-color: ${COLOR.WHITE};
     }
 `;
 
