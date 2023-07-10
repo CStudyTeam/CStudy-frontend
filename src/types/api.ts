@@ -86,6 +86,10 @@ export interface ContestRanking extends Omit<ContestList, 'content'> {
     content: ContestRankingContent[];
 }
 
+export interface ContestMyRanking {
+    ranking: boolean | null;
+}
+
 // Problem
 
 type ProblemContent = {
