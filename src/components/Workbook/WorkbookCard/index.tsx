@@ -12,17 +12,15 @@ interface WorkBookCardProps {
 
 const WorkBookCard = ({ id, title, createdAt, description }: WorkBookCardProps) => {
     const loginModal = useLoginModal();
+    const checkAndDisplayLoginModal = (e: React.MouseEvent) => {
+        if (!isLogin()) {
+            e.preventDefault();
+            loginModal.onOpen();
+        }
+    };
     return (
         <Styled.WorkBookCard>
-            <Link
-                to={`${id}`}
-                onClick={(e) => {
-                    if (!isLogin()) {
-                        e.preventDefault();
-                        loginModal.onOpen();
-                    }
-                }}
-            >
+            <Link to={`${id}`} onClick={checkAndDisplayLoginModal}>
                 <Styled.Title>{title}</Styled.Title>
                 <Styled.Time>{createdAt}</Styled.Time>
                 <Styled.Img />

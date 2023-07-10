@@ -29,6 +29,13 @@ const Contest = () => {
         setPage(0);
     };
 
+    const checkAndDisplayLoginModal = (e: React.MouseEvent) => {
+        if (!isLogin()) {
+            e.preventDefault();
+            loginModal.onOpen();
+        }
+    };
+
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="대회" adminLink="대회생성 페이지 이동">
@@ -41,15 +48,14 @@ const Contest = () => {
                     {contestList?.content?.map(({ id, title, startTime, endTime, participants }) => (
                         <tr key={id}>
                             <TBodyTd className="bold">
-                                {isLogin() ? (
-                                    <StyleLink className="bold fs--xl" to={`${id}`} state={!!isActive}>
-                                        {title}
-                                    </StyleLink>
-                                ) : (
-                                    <Button className="bold fs--xl" onClick={loginModal.onOpen}>
-                                        {title}
-                                    </Button>
-                                )}
+                                <StyleLink
+                                    className="bold fs--xl"
+                                    to={`${id}`}
+                                    state={!!isActive}
+                                    onClick={checkAndDisplayLoginModal}
+                                >
+                                    {title}
+                                </StyleLink>
                             </TBodyTd>
                             <TBodyTd>{participants}</TBodyTd>
                             <TBodyTd>

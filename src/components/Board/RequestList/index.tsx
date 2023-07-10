@@ -15,17 +15,15 @@ interface RequestListProps {
 
 const RequestList = ({ id, flag, title, description, memberName, createAt }: RequestListProps) => {
     const loginModal = useLoginModal();
+    const checkAndDisplayLoginModal = (e: React.MouseEvent) => {
+        if (!isLogin()) {
+            e.preventDefault();
+            loginModal.onOpen();
+        }
+    };
     return (
         <Styled.Container key={id}>
-            <Link
-                to={`/board/${id}`}
-                onClick={(e) => {
-                    if (!isLogin()) {
-                        e.preventDefault();
-                        loginModal.onOpen();
-                    }
-                }}
-            >
+            <Link to={`/board/${id}`} onClick={checkAndDisplayLoginModal}>
                 <Styled.Article>
                     <div>
                         <ApproveStatus flag={flag} />

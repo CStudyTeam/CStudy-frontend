@@ -7,9 +7,7 @@ import useGetContest from 'hooks/@query/contest/useGetContest';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useJoinContest } from 'hooks/@query/contest/useJoinContest';
 import Button from 'components/@shared/Button';
-import { FONT } from 'constants/Font';
 import { isAdmin, isLogin, userInfo } from 'utils/auth';
-import { COLOR } from 'constants/Color';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import ConfirmModal from 'components/Contest/ConfirmModal';
 import Table from 'components/ProblemSet/Table';
@@ -24,7 +22,6 @@ import StyleLink from 'components/@shared/StyleLink';
 import useGetContestRanking from 'hooks/@query/contest/useGetContestRanking';
 import { GetContestRankingProps } from './../../hooks/@query/contest/useGetContestRanking';
 import Pagination from 'components/ProblemSet/Pagination';
-import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useGetContestMyRanking from 'hooks/@query/contest/useGetContestMyRanking';
 import useGetContestResult from 'hooks/@query/contest/useGetContestResult';
 
@@ -63,7 +60,6 @@ const ContestDetail = () => {
             questionIds: [],
         },
     });
-    const loginModal = useLoginModal();
 
     const contest = useGetContest(contestId as string);
     const contestRanking = useGetContestRanking({ contestId, page } as GetContestRankingProps);
@@ -98,6 +94,10 @@ const ContestDetail = () => {
 
         DeleteContestProblem(formData);
         reset();
+    };
+
+    const handleJoinContestModal = () => {
+        setIsModalOpen(true);
     };
 
     return (
@@ -160,16 +160,11 @@ const ContestDetail = () => {
                                 나의 대회 결과보기
                             </StyleLink>
                         )}
-                        {!finishContest &&
-                            (isLogin() ? (
-                                <Button type="button" className="xl navy style" onClick={() => setIsModalOpen(true)}>
-                                    대회 참여하기
-                                </Button>
-                            ) : (
-                                <Button type="button" className="xl navy style" onClick={loginModal.onOpen}>
-                                    대회 참여하기
-                                </Button>
-                            ))}
+                        {!finishContest && (
+                            <Button type="button" className="xl navy style" onClick={handleJoinContestModal}>
+                                대회 참여하기
+                            </Button>
+                        )}
                         <ConfirmModal
                             title="대회에 참가하시겠습니까?"
                             isOpen={isModalOpen}

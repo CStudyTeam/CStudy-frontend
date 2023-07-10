@@ -51,6 +51,13 @@ const ProblemSet = () => {
         setPage(page);
     }, []);
 
+    const checkAndDisplayLoginModal = (e: React.MouseEvent) => {
+        if (!isLogin()) {
+            e.preventDefault();
+            loginModal.onOpen();
+        }
+    };
+
     const StatusLabel = ({ status }: statusLabelProp) => {
         if (status === 1) {
             return <span className="success">완료</span>;
@@ -69,15 +76,7 @@ const ProblemSet = () => {
                     <StatusLabel status={status} />
                 </TBodyTd>
                 <TBodyTd className="title">
-                    <Link
-                        to={`${questionId}`}
-                        onClick={(e) => {
-                            if (!isLogin()) {
-                                e.preventDefault();
-                                loginModal.onOpen();
-                            }
-                        }}
-                    >
+                    <Link to={`${questionId}`} onClick={checkAndDisplayLoginModal}>
                         {questionTitle}
                     </Link>
                 </TBodyTd>
