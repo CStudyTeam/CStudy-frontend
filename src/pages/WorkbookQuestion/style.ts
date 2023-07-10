@@ -14,7 +14,9 @@ export const AdminWrapper = styled.div`
     }
 `;
 
-export const CreateInfo = styled.span`
+export const CreateInfo = styled.div`
+    display: flex;
+    flex-direction: column;
     flex-shrink: 0;
     font-size: ${FONT.REGULAR_14};
     color: ${COLOR.GRAY_100};

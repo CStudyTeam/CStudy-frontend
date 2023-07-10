@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useCallback } from 'react';
 import * as Styled from './style';
 import useGetWorkbook from 'hooks/@query/workbook/useGetWorkbook';
@@ -19,6 +19,7 @@ import StyleLink from 'components/@shared/StyleLink';
 
 const WorkbookQuestion = () => {
     const { questionId } = useParams();
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(0);
 
@@ -59,7 +60,12 @@ const WorkbookQuestion = () => {
     return (
         <ContentContainer>
             <ContentHeaderWrapper admin title={workbook?.title as string} desc={workbook?.description}>
-                <Styled.CreateInfo>출시일: {workbook?.createdAt}</Styled.CreateInfo>
+                <Styled.CreateInfo>
+                    출시일: {workbook?.createdAt}
+                    <Button type="button" className="gray style mt xl2" onClick={() => navigate(-1)}>
+                        돌아가기
+                    </Button>
+                </Styled.CreateInfo>
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
                 <Styled.AdminWrapper>

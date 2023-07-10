@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import ContentContainer from 'components/@shared/ContentContainer';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useGetOneProblem } from 'hooks/@query/problem/useGetOneProblem';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
@@ -12,9 +12,11 @@ import ProblemForm from 'components/ProblemSet/ProblemRender';
 import ProblemFooter from 'components/ProblemSet/ProblemFooter';
 import { OneProblem } from 'types/api';
 import { UTIL } from 'constants/Util';
+import Button from 'components/@shared/Button';
 
 const Problem = () => {
     const { problemId } = useParams();
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [startTime, setStartTime] = useState<null | number>(null);
     const oneProblem = useGetOneProblem(problemId as string);
@@ -50,7 +52,11 @@ const Problem = () => {
 
     return (
         <ContentContainer>
-            <ContentHeaderWrapper title="문제" />
+            <ContentHeaderWrapper title="문제">
+                <Button type="button" className="gray style mt ml xl2" onClick={() => navigate(-1)}>
+                    돌아가기
+                </Button>
+            </ContentHeaderWrapper>
             <ContentBodyWrapper>
                 <ProblemForm
                     isLoading={isLoading}
