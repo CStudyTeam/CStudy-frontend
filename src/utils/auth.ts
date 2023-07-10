@@ -32,7 +32,7 @@ export const isAdmin = () => {
 export const userInfo = () => {
     const userToken = userStorage.get();
     if (!userToken) {
-        return false;
+        return null;
     }
 
     const { memberId, roles }: jwtDecodeProps = jwtDecode(userToken.accessToken);
