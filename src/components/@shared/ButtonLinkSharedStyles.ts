@@ -62,6 +62,14 @@ export const ButtonLinkSharedStyles = css`
         font-size: ${FONT.REGULAR_14};
     }
 
+    &.fs--lg {
+        font-size: ${FONT.REGULAR_18};
+    }
+
+    &.fs--xl {
+        font-size: ${FONT.REGULAR_20};
+    }
+
     &.navy {
         background-color: ${COLOR.NAVY_200};
         color: ${COLOR.WHITE};
