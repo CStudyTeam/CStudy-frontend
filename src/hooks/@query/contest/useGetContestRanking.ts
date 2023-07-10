@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { getContestRanking } from 'api/contest';
-import { ContestRanking } from 'types/api';
 
 export interface GetContestRankingProps {
     page: number;
@@ -8,7 +7,7 @@ export interface GetContestRankingProps {
 }
 
 const useGetContestRanking = ({ contestId, page }: GetContestRankingProps) => {
-    const { data: contestRanking } = useQuery<ContestRanking>(['contestRanking', { contestId, page }], () =>
+    const { data: contestRanking } = useQuery(['contestRanking', { contestId, page }], () =>
         getContestRanking({ contestId, page }),
     );
     return contestRanking;

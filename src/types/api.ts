@@ -169,3 +169,10 @@ export interface MyPage {
     name: string;
     email: string;
 }
+
+// membersRanks
+
+export interface MembersRanks {
+    score: number | null;
+    value: string | null;
+}

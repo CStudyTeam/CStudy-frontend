@@ -3,6 +3,7 @@ import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import RankingList from 'components/Ranking/RankingList';
 import { useGetMembersRanks } from 'hooks/@query/members/useGetMembersRanks';
+import { MembersRanks as MembersRanksType } from 'types/api';
 
 const MembersRanks = () => {
     const membersRanks = useGetMembersRanks();
@@ -11,7 +12,7 @@ const MembersRanks = () => {
         <ContentContainer>
             <ContentHeaderWrapper title="전체랭킹" />
             <ContentBodyWrapper>
-                <RankingList rankItems={membersRanks} />
+                <RankingList rankItems={membersRanks as MembersRanksType[]} />
             </ContentBodyWrapper>
         </ContentContainer>
     );

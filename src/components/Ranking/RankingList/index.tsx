@@ -1,13 +1,9 @@
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
-
-interface RankItem {
-    value: string | null;
-    score: number | null;
-}
+import { MembersRanks } from 'types/api';
 
 interface RankingListProps {
-    rankItems: RankItem[];
+    rankItems: MembersRanks[];
 }
 
 const RankingList = ({ rankItems }: RankingListProps) => {

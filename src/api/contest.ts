@@ -6,28 +6,26 @@ import { Contest, ContestList, ContestMyRanking, ContestProblem, ContestRanking,
 /* -------- Get 요청 -------- */
 
 // 대회 정보
-export const getContest = async (competitionId: string) => {
-    const response = await instance.get<Contest>(`/api/competition/${competitionId}`);
+export const getContest = async (competitionId: string): Promise<Contest> => {
+    const response = await instance.get(`/api/competition/${competitionId}`);
     return response.data;
 };
 
 // 대회 문제 조회
-export const getContestProblem = async (competitionId: string) => {
-    const response = await instance.get<ContestProblem[]>(`/api/competition/question/${competitionId}`);
+export const getContestProblem = async (competitionId: string): Promise<ContestProblem[]> => {
+    const response = await instance.get(`/api/competition/question/${competitionId}`);
     return response.data;
 };
 
 // 참여 가능 대회 리스트 + 종료된 대회 리스트
-export const getContestList = async ({ page = 0, size = 10, query = '' }) => {
-    const response = await instance.get<ContestList>(`/api/competition/list${query}?page=${page}&size=${size}`);
+export const getContestList = async ({ page = 0, size = 10, query = '' }): Promise<ContestList> => {
+    const response = await instance.get(`/api/competition/list${query}?page=${page}&size=${size}`);
     return response.data;
 };
 
 // 대회 랭킹
-export const getContestRanking = async ({ contestId = '', page = 0, size = 10 }) => {
-    const response = await instance.get<ContestRanking>(
-        `/api/competition/ranking/${contestId}?page=${page}&size=${size}`,
-    );
+export const getContestRanking = async ({ contestId = '', page = 0, size = 10 }): Promise<ContestRanking> => {
+    const response = await instance.get(`/api/competition/ranking/${contestId}?page=${page}&size=${size}`);
     return response.data;
 };
 
@@ -38,8 +36,8 @@ export const getContestMyRanking = async (memberId: number): Promise<ContestMyRa
 };
 
 // 대회 점수 조회
-export const getContestResult = async (competitionId: string) => {
-    const response = await instance.get<ContestResult>(`/api/competition/result/${competitionId}`);
+export const getContestResult = async (competitionId: string): Promise<ContestResult> => {
+    const response = await instance.get(`/api/competition/result/${competitionId}`);
     return response.data;
 };
 

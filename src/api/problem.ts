@@ -6,8 +6,14 @@ import { selectAnswerProblemFromProps } from 'types/problem';
 /* -------- Get 요청 -------- */
 
 //  전체 문제 페이징 / 내가 푼 문제 조회
-export const getProblem = async ({ categoryTitle = '', status = 0, page = 0, size = 10, query = '' }) => {
-    const response = await instance.get<Problem>(
+export const getProblem = async ({
+    categoryTitle = '',
+    status = 0,
+    page = 0,
+    size = 10,
+    query = '',
+}): Promise<Problem> => {
+    const response = await instance.get(
         `/api/questions${query}?${
             query === ''
                 ? `categoryTitle=${categoryTitle}&status=${status}&page=${page}&size=${size}`
@@ -19,8 +25,8 @@ export const getProblem = async ({ categoryTitle = '', status = 0, page = 0, siz
 };
 
 //  단일 문제 찾기
-export const getOneProblem = async (problemId: string) => {
-    const response = await instance.get<OneProblem>(`/api/question/${problemId}`);
+export const getOneProblem = async (problemId: string): Promise<OneProblem> => {
+    const response = await instance.get(`/api/question/${problemId}`);
     return response.data;
 };
 
