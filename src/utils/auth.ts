@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import { userStorage } from './userStorage';
 import { jwtDecodeProps } from 'types/utils';
+import { redirect } from 'react-router-dom';
 
 export const getUserTokens = () => {
     const userTokens = userStorage.get();
@@ -38,4 +39,18 @@ export const userInfo = () => {
     const { memberId, roles }: jwtDecodeProps = jwtDecode(userToken.accessToken);
 
     return { memberId, roles };
+};
+
+export const checkAuthLoader = async () => {
+    const userToken = userStorage.get();
+
+    if (!userToken) return redirect('/forbidden');
+
+    return null;
+};
+
+export const checkAdminLoader = async () => {
+    if (!isAdmin()) return redirect('/forbidden');
+
+    return null;
 };

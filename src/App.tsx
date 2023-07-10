@@ -30,6 +30,7 @@ import ContestProblemAdd from 'pages/Admin/ContestProblemAdd';
 import ContestProblem from 'pages/ContestProblem';
 import ContestResult from 'pages/ContestResult';
 import MembersRanks from 'pages/MembersRanks';
+import { checkAdminLoader, checkAuthLoader } from 'utils/auth';
 
 const queryClient = new QueryClient();
 
@@ -45,10 +46,12 @@ const router = createBrowserRouter([
                     { index: true, element: <Board /> },
                     {
                         path: 'request',
+                        loader: checkAuthLoader,
                         element: <BoardRequestForm />,
                     },
                     {
                         path: ':requestId',
+                        loader: checkAuthLoader,
                         element: <BoardDetail />,
                     },
                 ],
@@ -57,9 +60,10 @@ const router = createBrowserRouter([
                 path: 'problemset',
                 children: [
                     { index: true, element: <ProblemSet /> },
-                    { path: 'admin', element: <CreateProblem /> },
+                    { path: 'admin', element: <CreateProblem />, loader: checkAdminLoader },
                     {
                         path: ':problemId',
+                        loader: checkAuthLoader,
                         children: [{ index: true, element: <Problem /> }],
                     },
                 ],
@@ -68,12 +72,13 @@ const router = createBrowserRouter([
                 path: 'workbook',
                 children: [
                     { index: true, element: <Workbook /> },
-                    { path: 'admin', element: <CreateWorkbook /> },
+                    { path: 'admin', element: <CreateWorkbook />, loader: checkAdminLoader },
                     {
                         path: ':questionId',
+                        loader: checkAuthLoader,
                         children: [
                             { index: true, element: <WorkbookQuestion /> },
-                            { path: 'adminadd', element: <WorkbookProblemAdd /> },
+                            { path: 'adminadd', element: <WorkbookProblemAdd />, loader: checkAdminLoader },
                         ],
                     },
                 ],
@@ -82,9 +87,10 @@ const router = createBrowserRouter([
                 path: 'contest',
                 children: [
                     { index: true, element: <Contest /> },
-                    { path: 'admin', element: <CreateContest /> },
+                    { path: 'admin', element: <CreateContest />, loader: checkAdminLoader },
                     {
                         path: ':contestId',
+                        loader: checkAuthLoader,
                         children: [
                             { index: true, element: <ContestDetail /> },
                             { path: 'adminadd', element: <ContestProblemAdd /> },
@@ -98,7 +104,7 @@ const router = createBrowserRouter([
                 path: 'membersranks',
                 children: [{ index: true, element: <MembersRanks /> }],
             },
-            { path: 'mypage', element: <MyPage /> },
+            { path: 'mypage', element: <MyPage />, loader: checkAuthLoader },
             { path: 'oauth2/login', element: <OAuthRedirect /> },
         ],
     },

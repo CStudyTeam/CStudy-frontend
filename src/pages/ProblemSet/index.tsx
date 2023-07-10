@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 import { TBodyTd } from './../../components/ProblemSet/Table/style';
 import { Filter } from 'pages/Board/style';
 import { statusLabelProp } from 'types/problem';
+import useLoginModal from 'hooks/@zustand/useLoginModal';
+import { isLogin } from 'utils/auth';
 
 const ProblemSet = () => {
     const {
@@ -31,6 +33,7 @@ const ProblemSet = () => {
 
     const [query, setQuery] = useState('');
     const isActive = query === '/myquestion' ? 'active' : '';
+    const loginModal = useLoginModal();
 
     const problemList = useGetProblem({
         categoryTitle: categoryValue as string,
@@ -66,7 +69,17 @@ const ProblemSet = () => {
                     <StatusLabel status={status} />
                 </TBodyTd>
                 <TBodyTd className="title">
-                    <Link to={`${questionId}`}>{questionTitle}</Link>
+                    <Link
+                        to={`${questionId}`}
+                        onClick={(e) => {
+                            if (!isLogin()) {
+                                e.preventDefault();
+                                loginModal.onOpen();
+                            }
+                        }}
+                    >
+                        {questionTitle}
+                    </Link>
                 </TBodyTd>
                 <TBodyTd>{categoryTitle}</TBodyTd>
             </tr>

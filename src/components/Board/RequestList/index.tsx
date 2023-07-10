@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import * as Styled from './style';
 import ApproveStatus from 'components/@shared/Status';
+import useLoginModal from 'hooks/@zustand/useLoginModal';
+import { isLogin } from 'utils/auth';
 
 interface RequestListProps {
     id: number;
@@ -12,9 +14,18 @@ interface RequestListProps {
 }
 
 const RequestList = ({ id, flag, title, description, memberName, createAt }: RequestListProps) => {
+    const loginModal = useLoginModal();
     return (
         <Styled.Container key={id}>
-            <Link to={`/board/${id}`}>
+            <Link
+                to={`/board/${id}`}
+                onClick={(e) => {
+                    if (!isLogin()) {
+                        e.preventDefault();
+                        loginModal.onOpen();
+                    }
+                }}
+            >
                 <Styled.Article>
                     <div>
                         <ApproveStatus flag={flag} />
