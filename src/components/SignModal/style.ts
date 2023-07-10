@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
+import { FONT } from 'constants/Font';
 
 export const Form = styled.form`
     display: flex;
@@ -31,4 +32,14 @@ export const Button = styled.button`
     background: ${COLOR.NAVY_200};
     color: white;
     margin-top: 1rem;
+`;
+
+export const Suggestion = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const TextSuggestionLabel = styled.span`
+    font-size: ${FONT.REGULAR_14};
 `;

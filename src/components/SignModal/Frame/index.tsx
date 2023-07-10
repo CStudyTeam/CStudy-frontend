@@ -1,5 +1,6 @@
 import * as Styled from './style';
 import GoogleLogoImage from 'assets/Google_Logo.png';
+import { IoMdClose } from 'react-icons/io';
 
 interface Props {
     children: JSX.Element;
@@ -9,7 +10,9 @@ interface Props {
 const SignModalFrame = ({ children, closeModalHandler }: Props) => {
     return (
         <Styled.Container>
-            <Styled.XButton onClick={closeModalHandler}>X</Styled.XButton>
+            <Styled.XButton onClick={closeModalHandler}>
+                <IoMdClose size={30} />
+            </Styled.XButton>
             <Styled.Title>CSTUDY에 오신 것을 환영합니다!</Styled.Title>
             {children}
             <Styled.Line>

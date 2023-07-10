@@ -9,6 +9,10 @@ export const ButtonLinkSharedStyles = css`
     font-size: ${FONT.REGULAR_16};
     border-radius: 1rem;
 
+    &.bold {
+        ${FONT.BOLD_16}
+    }
+
     &.style {
         box-shadow: ${SHADOW.BUTTON};
         text-shadow: 0.1rem 0.1rem 0.2rem ${COLOR.GRAY_200};

@@ -14,16 +14,27 @@ export const Container = styled.div`
     width: 60.5rem;
     height: 57rem;
     border-radius: 3.2rem;
-    background: ${COLOR.WHITE};
+    background-color: ${COLOR.WHITE};
     box-shadow: ${SHADOW.CONTENTBOX_MD};
     transform: translate(-50%, -50%);
+    animation: showModal 0.25s ease-in-out;
+
+    @keyframes showModal {
+        0% {
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    }
 `;
 
 export const XButton = styled.span`
     position: absolute;
     top: 2.5rem;
     right: 2.5rem;
-    font-size: 2.5rem;
     cursor: pointer;
 `;
 
