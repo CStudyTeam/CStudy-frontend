@@ -5,10 +5,10 @@ import Pagination from 'components/ProblemSet/Pagination';
 import * as Styled from './style';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
-import { Filter } from 'pages/Board/style';
 import ProgramFilterTBody from 'components/ProblemSet/ProgramFilterTBody';
 import { Problem } from 'types/api';
 import useProblemSetFilter from 'hooks/ProblemSet/useProblemFilter';
+import { Filter } from 'components/@shared/FilterStyles';
 
 const ProblemSet = () => {
     const {

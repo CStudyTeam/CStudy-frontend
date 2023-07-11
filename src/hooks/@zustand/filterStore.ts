@@ -1,3 +1,4 @@
+import { ROUTE } from 'constants/Route';
 import { create } from 'zustand';
 
 export interface StatusFilterStore {
@@ -32,10 +33,28 @@ export const useProblemFilter = create<StatusFilterStore>((set) => ({
     reset: () =>
         set({
             pageNumber: 0,
-            query: '',
             status: '상태',
             statusValue: 0,
             category: '카테고리',
             categoryValue: '',
+        }),
+}));
+
+export interface BoardFilterStoreType {
+    pageNumber: number;
+    query: string;
+    setQuery: (query: string) => void;
+    setPageNumber: (pageNumber: number) => void;
+    reset: () => void;
+}
+
+export const useBoardFilterStore = create<BoardFilterStoreType>((set) => ({
+    pageNumber: 0,
+    query: ROUTE.BOARD_LIST,
+    setPageNumber: (pageNumber) => set({ pageNumber }),
+    setQuery: (query) => set({ query }),
+    reset: () =>
+        set({
+            pageNumber: 0,
         }),
 }));

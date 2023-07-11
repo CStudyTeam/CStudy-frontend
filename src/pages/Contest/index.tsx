@@ -6,11 +6,10 @@ import { TBodyTd } from 'components/ProblemSet/Table/style';
 import Pagination from 'components/ProblemSet/Pagination';
 import { useState, useCallback } from 'react';
 import useGetContestList from 'hooks/@query/contest/useGetContestList';
-import { Filter } from 'pages/Board/style';
 import StyleLink from 'components/@shared/StyleLink';
 import { isLogin } from 'utils/auth';
-import Button from 'components/@shared/Button';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
+import { Filter } from 'components/@shared/FilterStyles';
 
 const Contest = () => {
     const [page, setPage] = useState(0);
