@@ -58,3 +58,22 @@ export const useBoardFilterStore = create<BoardFilterStoreType>((set) => ({
             pageNumber: 0,
         }),
 }));
+
+export interface ContestFilterStoreType {
+    pageNumber: number;
+    query: string;
+    setQuery: (query: string) => void;
+    setPageNumber: (pageNumber: number) => void;
+    reset: () => void;
+}
+
+export const useContestFilterStore = create<ContestFilterStoreType>((set) => ({
+    pageNumber: 0,
+    query: ROUTE.CONTEST_FINISH,
+    setPageNumber: (pageNumber) => set({ pageNumber }),
+    setQuery: (query) => set({ query }),
+    reset: () =>
+        set({
+            pageNumber: 0,
+        }),
+}));

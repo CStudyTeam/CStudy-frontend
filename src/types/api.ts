@@ -41,7 +41,7 @@ type ContestPageAble = {
     unpaged: boolean;
 };
 
-type ContestContent = {
+export type ContestContent = {
     id: number;
     title: string;
     startTime: string;

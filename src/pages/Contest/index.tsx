@@ -2,38 +2,15 @@ import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Table from 'components/ProblemSet/Table';
-import { TBodyTd } from 'components/ProblemSet/Table/style';
-import Pagination from 'components/ProblemSet/Pagination';
-import { useState, useCallback } from 'react';
 import useGetContestList from 'hooks/@query/contest/useGetContestList';
-import StyleLink from 'components/@shared/StyleLink';
-import { isLogin } from 'utils/auth';
-import useLoginModal from 'hooks/@zustand/useLoginModal';
 import { Filter } from 'components/@shared/FilterStyles';
+import useContestFilter from 'hooks/Contest/useContestFilter';
+import ContestListTableBody from 'components/Contest/ContestListTableBody';
+import { ContestContent } from 'types/api';
 
 const Contest = () => {
-    const [page, setPage] = useState(0);
-    const [query, setQuery] = useState('');
-    const loginModal = useLoginModal();
-
-    const contestList = useGetContestList({ page, query });
-    const isActive = query === '/finish' ? 'active' : '';
-
-    const handlePage = useCallback((page: number) => {
-        setPage(page);
-    }, []);
-
-    const handleToggle = () => {
-        setQuery(query === '' ? '/finish' : '');
-        setPage(0);
-    };
-
-    const checkAndDisplayLoginModal = (e: React.MouseEvent) => {
-        if (!isLogin()) {
-            e.preventDefault();
-            loginModal.onOpen();
-        }
-    };
+    const { contestFilter, isActive, handlePage, handleToggle, checkAndDisplayLoginModal } = useContestFilter();
+    const contestList = useGetContestList({ page: contestFilter.pageNumber, query: contestFilter.query });
 
     return (
         <ContentContainer>
@@ -44,36 +21,14 @@ const Contest = () => {
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
                 <Table colRate={['60%', '10%', '30%']} title={['대회명', '최대 인원수', '기간']}>
-                    {contestList?.content?.map(({ id, title, startTime, endTime, participants }) => (
-                        <tr key={id}>
-                            <TBodyTd className="bold">
-                                <StyleLink
-                                    className="bold fs--xl"
-                                    to={`${id}`}
-                                    state={!!isActive}
-                                    onClick={checkAndDisplayLoginModal}
-                                >
-                                    {title}
-                                </StyleLink>
-                            </TBodyTd>
-                            <TBodyTd>{participants}</TBodyTd>
-                            <TBodyTd>
-                                {startTime.split(' ')[0]} ~ {endTime.split(' ')[0]}
-                            </TBodyTd>
-                        </tr>
-                    ))}
-                    {(contestList?.totalPages as number) > 1 && (
-                        <tr>
-                            <TBodyTd colSpan={3}>
-                                <Pagination
-                                    totalPages={contestList?.totalPages as number}
-                                    handlePage={handlePage}
-                                    page={page}
-                                    white
-                                />
-                            </TBodyTd>
-                        </tr>
-                    )}
+                    <ContestListTableBody
+                        contestList={contestList?.content as ContestContent[]}
+                        contestFilter={contestFilter}
+                        isActive={isActive}
+                        totalPages={contestList?.totalPages as number}
+                        checkAndDisplayLoginModal={checkAndDisplayLoginModal}
+                        handlePage={handlePage}
+                    />
                 </Table>
             </ContentBodyWrapper>
         </ContentContainer>
