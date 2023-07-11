@@ -9,6 +9,10 @@ export const ButtonLinkSharedStyles = css`
     font-size: ${FONT.REGULAR_16};
     border-radius: 1rem;
 
+    &:active {
+        transform: scale(0.97);
+    }
+
     &.bold {
         ${FONT.BOLD_16}
     }

@@ -2,11 +2,12 @@ import * as Styled from './style';
 import Logo from 'assets/Logo.png';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
-import { isAdmin, isLogin } from 'utils/auth';
+import { isLogin } from 'utils/auth';
 import { useSignOut } from 'hooks/@query/useSignOut';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 import StyleLink from '../StyleLink';
+import { StyleNavLink } from '../NavLinkStyles';
 
 const Header = () => {
     const loginModal = useLoginModal();
@@ -25,19 +26,19 @@ const Header = () => {
                 <Styled.Nav>
                     <Styled.NavList>
                         <Styled.NavItem>
-                            <Link to="board">게시판</Link>
+                            <StyleNavLink to="board">게시판</StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <Link to="problemset">문제풀이</Link>
+                            <StyleNavLink to="problemset">문제풀이</StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <Link to="contest">대회</Link>
+                            <StyleNavLink to="contest">대회</StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <Link to="workbook">문제집</Link>
+                            <StyleNavLink to="workbook">문제집</StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <Link to="membersranks">전체랭킹</Link>
+                            <StyleNavLink to="membersranks">전체랭킹</StyleNavLink>
                         </Styled.NavItem>
                     </Styled.NavList>
                 </Styled.Nav>
