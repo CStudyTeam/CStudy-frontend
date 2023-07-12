@@ -22,7 +22,7 @@ const RequestList = ({ id, flag, title, description, memberName, createAt }: Req
         }
     };
     return (
-        <Styled.Container key={id}>
+        <Styled.Container>
             <Link to={`/board/${id}`} onClick={checkAndDisplayLoginModal}>
                 <Styled.Article>
                     <div>

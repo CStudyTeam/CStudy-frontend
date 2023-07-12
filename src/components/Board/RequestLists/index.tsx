@@ -1,17 +1,16 @@
 import RequestList from '../RequestList';
 import Pagination from 'components/ProblemSet/Pagination';
 import * as Styled from './style';
-import useGetToggleRequestList from 'hooks/@query/board/useGetRequestList';
 import NoData from 'components/@shared/NoData';
+import { ToggleRequestList } from 'types/api';
 
 interface RequestListsProps {
-    query: string;
+    requestList: ToggleRequestList;
     page: number;
     handlePage: (page: number) => void;
 }
 
-const RequestLists = ({ query, page, handlePage }: RequestListsProps) => {
-    const requestList = useGetToggleRequestList({ page, query });
+const RequestLists = ({ requestList, handlePage, page }: RequestListsProps) => {
     return (
         <>
             {requestList?.totalElements === 0 && <NoData>게시글이 없습니다.</NoData>}
