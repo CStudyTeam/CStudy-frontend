@@ -9,6 +9,7 @@ import Pagination from 'components/ProblemSet/Pagination';
 import { FieldValues, useForm } from 'react-hook-form';
 import useWorkbookFilter from 'hooks/Workbook/useWorkbookFilter';
 import { LuRefreshCw } from 'react-icons/lu';
+import NoData from 'components/@shared/NoData';
 
 const Workbook = () => {
     const { register, handleSubmit, reset } = useForm<FieldValues>({
@@ -46,19 +47,22 @@ const Workbook = () => {
                 </Styled.SearchWrapper>
             </ContentHeaderWrapper>
             <ContentBodyWrapper blue>
+                {workbookList?.totalElements === 0 && <NoData>문제집이 없습니다.</NoData>}
                 <Styled.WorkBookCards>
                     {workbookList?.content?.map(({ id, title, description, createdAt }) => (
                         <WorkBookCard key={id} id={id} title={title} description={description} createdAt={createdAt} />
                     ))}
                 </Styled.WorkBookCards>
-                <Styled.PaginationWrapper>
-                    <Pagination
-                        totalPages={workbookList?.totalPages as number}
-                        handlePage={handlePage}
-                        page={workbookFilter.pageNumber}
-                        white
-                    />
-                </Styled.PaginationWrapper>
+                {(workbookList?.totalPages as number) > 1 && (
+                    <Styled.PaginationWrapper>
+                        <Pagination
+                            totalPages={workbookList?.totalPages as number}
+                            handlePage={handlePage}
+                            page={workbookFilter.pageNumber}
+                            white
+                        />
+                    </Styled.PaginationWrapper>
+                )}
             </ContentBodyWrapper>
         </ContentContainer>
     );

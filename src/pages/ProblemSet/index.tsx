@@ -54,13 +54,15 @@ const ProblemSet = () => {
                         checkAndDisplayLoginModal={checkAndDisplayLoginModal}
                     />
                 </Table>
-                <Styled.PaginationWrapper>
-                    <Pagination
-                        totalPages={problemList?.totalPages as number}
-                        handlePage={handlePage}
-                        page={problemFilter.pageNumber}
-                    />
-                </Styled.PaginationWrapper>
+                {problemList?.totalPages > 1 && (
+                    <Styled.PaginationWrapper>
+                        <Pagination
+                            totalPages={problemList?.totalPages as number}
+                            handlePage={handlePage}
+                            page={problemFilter.pageNumber}
+                        />
+                    </Styled.PaginationWrapper>
+                )}
             </ContentBodyWrapper>
         </ContentContainer>
     );

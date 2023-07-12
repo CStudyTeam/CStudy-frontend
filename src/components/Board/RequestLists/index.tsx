@@ -2,6 +2,7 @@ import RequestList from '../RequestList';
 import Pagination from 'components/ProblemSet/Pagination';
 import * as Styled from './style';
 import useGetToggleRequestList from 'hooks/@query/board/useGetRequestList';
+import NoData from 'components/@shared/NoData';
 
 interface RequestListsProps {
     query: string;
@@ -11,9 +12,9 @@ interface RequestListsProps {
 
 const RequestLists = ({ query, page, handlePage }: RequestListsProps) => {
     const requestList = useGetToggleRequestList({ page, query });
-    console.log(requestList);
     return (
         <>
+            {requestList?.totalElements === 0 && <NoData>게시글이 없습니다.</NoData>}
             {requestList?.content.map(({ id, flag, title, description, memberName, createAt }) => (
                 <RequestList
                     key={id}
@@ -25,9 +26,11 @@ const RequestLists = ({ query, page, handlePage }: RequestListsProps) => {
                     createAt={createAt}
                 />
             ))}
-            <Styled.PaginationWrapper>
-                <Pagination totalPages={requestList?.totalPages as number} handlePage={handlePage} page={page} />
-            </Styled.PaginationWrapper>
+            {(requestList?.totalPages as number) > 1 && (
+                <Styled.PaginationWrapper>
+                    <Pagination totalPages={requestList?.totalPages as number} handlePage={handlePage} page={page} />
+                </Styled.PaginationWrapper>
+            )}
         </>
     );
 };

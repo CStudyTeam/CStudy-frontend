@@ -7,6 +7,7 @@ import { Filter } from 'components/@shared/FilterStyles';
 import useContestFilter from 'hooks/Contest/useContestFilter';
 import ContestListTableBody from 'components/Contest/ContestListTableBody';
 import { ContestContent } from 'types/api';
+import NoData from 'components/@shared/NoData';
 
 const Contest = () => {
     const { contestFilter, isActive, handlePage, handleToggle, checkAndDisplayLoginModal } = useContestFilter();
@@ -21,6 +22,13 @@ const Contest = () => {
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
                 <Table colRate={['60%', '10%', '30%']} title={['대회명', '최대 인원수', '기간']}>
+                    {contestList?.totalElements === 0 && (
+                        <tr>
+                            <td colSpan={3}>
+                                <NoData>대회가 없습니다.</NoData>
+                            </td>
+                        </tr>
+                    )}
                     <ContestListTableBody
                         contestList={contestList?.content as ContestContent[]}
                         contestFilter={contestFilter}

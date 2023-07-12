@@ -20,6 +20,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useUpdatePassword } from 'hooks/@query/mypage/useUpdatePassword';
 import { ROUTE } from 'constants/Route';
 import useMyPageFilter from 'hooks/Mypage/useBoardFilter';
+import NoData from 'components/@shared/NoData';
 
 const MyPage = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -151,6 +152,13 @@ const MyPage = () => {
                     <Styled.MyPageLabel>나의 게시판 승인 현황</Styled.MyPageLabel>
                     <Styled.MyPageTableWrapper>
                         <Table white narrow colRate={['10%', '70%', '30%']} title={['NO.', '게시글 제목', '승인상태']}>
+                            {requestList?.totalElements === 0 && (
+                                <tr>
+                                    <td colSpan={3}>
+                                        <NoData>게시글이 없습니다.</NoData>
+                                    </td>
+                                </tr>
+                            )}
                             {requestTBodyContent}
                         </Table>
                         {(requestList?.totalPages as number) > 1 && (
@@ -174,6 +182,13 @@ const MyPage = () => {
                             colRate={['10%', '50%', '20%', '10%', '10%']}
                             title={['NO.', '문제이름', '카테고리', '맞춘 문제', '틀린 문제']}
                         >
+                            {problemList?.totalElements === 0 && (
+                                <tr>
+                                    <td colSpan={5}>
+                                        <NoData>문제가 없습니다.</NoData>
+                                    </td>
+                                </tr>
+                            )}
                             {TBodyContent}
                         </Table>
                         {(problemList?.totalPages as number) > 1 && (
