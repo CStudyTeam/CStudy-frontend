@@ -34,38 +34,6 @@ export const MyPageUserInfoWrapper = styled.div`
     }
 `;
 
-export const ProfileImg = styled.img`
-    width: 14rem;
-    height: 14rem;
-    border: 0.2rem solid ${COLOR.WHITE};
-    border-radius: 100%;
-    box-shadow: ${SHADOW.CONTENTBOX_MD};
-`;
-
-export const MyPageUserInfo = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 1.8rem;
-`;
-export const MyPageUserInfoName = styled.span`
-    ${FONT.BOLD_18}
-`;
-export const MyPageUserInfoEmail = styled.span`
-    font-size: ${FONT.REGULAR_16};
-`;
-
-export const InputWrapper = styled.div`
-    display: flex;
-
-    ${Field} + ${Field} {
-        margin-left: 1rem;
-    }
-`;
-
 export const MyPageTableWrapper = styled.div`
     margin-top: 0.8rem;
-`;
-
-export const PaginationWrapper = styled.div`
-    padding: 2rem 0;
 `;

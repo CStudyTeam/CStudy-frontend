@@ -121,7 +121,7 @@ export interface RequestDetail {
     createAt: string;
 }
 
-type RequestContent = {
+export type RequestContent = {
     id: number;
     memberId: number;
     title: string;
