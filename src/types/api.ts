@@ -148,7 +148,7 @@ export interface WorkbookList extends Omit<ContestList, 'content'> {
 
 export type Workbook = WorkbookContent;
 
-type WorkbookQuestionContent = {
+export type WorkbookQuestionContent = {
     title: string;
     questionId: number;
     workbookQuestionId: number;

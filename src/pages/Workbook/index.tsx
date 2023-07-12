@@ -4,12 +4,13 @@ import useGetWorkbookList from 'hooks/@query/workbook/useGetWorkbookList';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
-import WorkBookCard from 'components/Workbook/WorkbookCard';
 import Pagination from 'components/ProblemSet/Pagination';
 import { FieldValues, useForm } from 'react-hook-form';
 import useWorkbookFilter from 'hooks/Workbook/useWorkbookFilter';
 import { LuRefreshCw } from 'react-icons/lu';
 import NoData from 'components/@shared/NoData';
+import WorkBookCards from 'components/Workbook/WorkbookCards';
+import { WorkbookList } from 'types/api';
 
 const Workbook = () => {
     const { register, handleSubmit, reset } = useForm<FieldValues>({
@@ -48,11 +49,7 @@ const Workbook = () => {
             </ContentHeaderWrapper>
             <ContentBodyWrapper blue>
                 {workbookList?.totalElements === 0 && <NoData>문제집이 없습니다.</NoData>}
-                <Styled.WorkBookCards>
-                    {workbookList?.content?.map(({ id, title, description, createdAt }) => (
-                        <WorkBookCard key={id} id={id} title={title} description={description} createdAt={createdAt} />
-                    ))}
-                </Styled.WorkBookCards>
+                <WorkBookCards workbookList={workbookList as WorkbookList} />
                 {(workbookList?.totalPages as number) > 1 && (
                     <Styled.PaginationWrapper>
                         <Pagination
