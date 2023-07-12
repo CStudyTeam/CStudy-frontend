@@ -2,14 +2,9 @@ import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import styled from 'styled-components';
 
-export const Head = styled.div`
+export const SearchWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
-    margin-top: 8rem;
-`;
-
-export const PageTitle = styled.div`
-    ${FONT.H4};
+    align-items: center;
 `;
 
 export const SearchInput = styled.input`

@@ -6,8 +6,10 @@ import { Workbook, WorkbookList, WorkbookQuestion } from 'types/api';
 /* -------- Get 요청 -------- */
 
 // 문제집리스트
-export const getWorkbookList = async ({ page = 0, size = 8 }): Promise<WorkbookList> => {
-    const response = await instance.get(`/api/workbook/list?page=${page}&size=${size}`);
+export const getWorkbookList = async ({ page = 0, size = 8, title = '', description = '' }): Promise<WorkbookList> => {
+    const response = await instance.get(
+        `/api/workbook/list?page=${page}&size=${size}&title=${title}&description=${description}`,
+    );
     return response.data;
 };
 

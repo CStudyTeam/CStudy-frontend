@@ -77,3 +77,28 @@ export const useContestFilterStore = create<ContestFilterStoreType>((set) => ({
             pageNumber: 0,
         }),
 }));
+
+export interface WorkbookFilterStoreType {
+    pageNumber: number;
+    title: string;
+    description: string;
+    setPageNumber: (pageNumber: number) => void;
+    setTitle: (title: string) => void;
+    setDescription: (description: string) => void;
+    reset: () => void;
+}
+
+export const useWorkbookFilterStore = create<WorkbookFilterStoreType>((set) => ({
+    pageNumber: 0,
+    title: '',
+    description: '',
+    setPageNumber: (pageNumber) => set({ pageNumber }),
+    setTitle: (title) => set({ title }),
+    setDescription: (description) => set({ description }),
+    reset: () =>
+        set({
+            pageNumber: 0,
+            title: '',
+            description: '',
+        }),
+}));

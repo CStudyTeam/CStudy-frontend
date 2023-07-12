@@ -1,30 +1,49 @@
 import Button from 'components/@shared/Button';
 import * as Styled from './style';
-import { COLOR } from 'constants/Color';
 import useGetWorkbookList from 'hooks/@query/workbook/useGetWorkbookList';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import WorkBookCard from 'components/Workbook/WorkbookCard';
 import Pagination from 'components/ProblemSet/Pagination';
-import { useCallback, useState } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
+import useWorkbookFilter from 'hooks/Workbook/useWorkbookFilter';
+import { LuRefreshCw } from 'react-icons/lu';
 
 const Workbook = () => {
-    const [page, setPage] = useState(0);
+    const { register, handleSubmit, reset } = useForm<FieldValues>({
+        defaultValues: {
+            search: '',
+        },
+    });
+    const { workbookFilter, handlePage, onSubmit } = useWorkbookFilter();
 
-    const handlePage = useCallback((page: number) => {
-        setPage(page);
-    }, []);
+    const workbookList = useGetWorkbookList({
+        page: workbookFilter.pageNumber,
+        title: workbookFilter.title,
+        description: workbookFilter.description,
+    });
 
-    const workbookList = useGetWorkbookList({ page });
+    const handleReset = () => {
+        reset();
+        workbookFilter.reset();
+    };
 
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="문제집" adminLink="문제집생성 페이지 이동">
-                <div>
-                    <Styled.SearchInput type="text" />
-                    <Button className="navy xl style">검색</Button>
-                </div>
+                <Styled.SearchWrapper>
+                    <Styled.SearchInput type="text" {...register('search', { required: true })} />
+                    <Button onClick={handleSubmit(onSubmit)} className="navy xl style">
+                        검색
+                    </Button>
+                    <Button onClick={handleReset} className="ml xl revert">
+                        <LuRefreshCw
+                            size={20}
+                            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                        />
+                    </Button>
+                </Styled.SearchWrapper>
             </ContentHeaderWrapper>
             <ContentBodyWrapper blue>
                 <Styled.WorkBookCards>
@@ -36,7 +55,7 @@ const Workbook = () => {
                     <Pagination
                         totalPages={workbookList?.totalPages as number}
                         handlePage={handlePage}
-                        page={page}
+                        page={workbookFilter.pageNumber}
                         white
                     />
                 </Styled.PaginationWrapper>
