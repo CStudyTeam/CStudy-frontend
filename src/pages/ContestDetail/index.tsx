@@ -7,7 +7,7 @@ import useGetContest from 'hooks/@query/contest/useGetContest';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useJoinContest } from 'hooks/@query/contest/useJoinContest';
 import Button from 'components/@shared/Button';
-import { isAdmin, isLogin, userInfo } from 'utils/auth';
+import { isAdmin, isLogin } from 'utils/auth';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import ConfirmModal from 'components/Contest/ConfirmModal';
 import Table from 'components/ProblemSet/Table';
@@ -23,7 +23,6 @@ import useGetContestRanking from 'hooks/@query/contest/useGetContestRanking';
 import { GetContestRankingProps } from './../../hooks/@query/contest/useGetContestRanking';
 import Pagination from 'components/ProblemSet/Pagination';
 import useGetContestMyRanking from 'hooks/@query/contest/useGetContestMyRanking';
-import useGetContestResult from 'hooks/@query/contest/useGetContestResult';
 
 const ContestDetail = () => {
     const { contestId } = useParams();
@@ -31,12 +30,11 @@ const ContestDetail = () => {
     const { state: finishContest } = useLocation();
     const [page, setPage] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const user = userInfo();
 
     const [isLoading, setIsLoading] = useState(false);
     const problem = useGetProblem({});
     const contestQuestion = useGetContestProblem(contestId as string);
-    const myRanking = useGetContestMyRanking(user?.memberId as number);
+    const myRanking = useGetContestMyRanking(contestId as string);
     const filterQuestion = problem?.content?.filter(({ questionId: problemQuestionId }: { questionId: number }) => {
         return contestQuestion?.some(
             ({ questionId: contestQuestionId }: { questionId: number }) => problemQuestionId === contestQuestionId,
@@ -63,8 +61,6 @@ const ContestDetail = () => {
 
     const contest = useGetContest(contestId as string);
     const contestRanking = useGetContestRanking({ contestId, page } as GetContestRankingProps);
-    // 나중에 기능 안정화 될 시, filterQuestion, totalQuestion 대체 할 예정
-    // const contestResult = useGetContestResult(contestId as string);
 
     const JoinContest = useJoinContest({ contestId, setIsLoading, setIsModalOpen } as UseJoinContestProps);
     const DeleteContestProblem = useDeleteContestProblem({ setIsLoading });

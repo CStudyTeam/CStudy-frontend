@@ -2,10 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import { getContestMyRanking } from './../../../api/contest';
 import { isLogin } from 'utils/auth';
 
-const useGetContestMyRanking = (memberId: number) => {
-    const { data: contestMyRanking } = useQuery(['contestRanking', { memberId }], () => getContestMyRanking(memberId), {
-        enabled: isLogin(),
-    });
+const useGetContestMyRanking = (contestId: string) => {
+    const { data: contestMyRanking } = useQuery(
+        ['contestRanking', { contestId }],
+        () => getContestMyRanking(contestId),
+        {
+            enabled: isLogin(),
+        },
+    );
     return contestMyRanking;
 };
 

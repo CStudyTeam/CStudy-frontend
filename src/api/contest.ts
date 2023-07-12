@@ -30,14 +30,14 @@ export const getContestRanking = async ({ contestId = '', page = 0, size = 10 })
 };
 
 // 대회 나의 랭킹
-export const getContestMyRanking = async (memberId: number): Promise<ContestMyRanking> => {
-    const response = await instance.get(`/api/competition/myranking/${memberId}`);
+export const getContestMyRanking = async (contestId: string): Promise<ContestMyRanking> => {
+    const response = await instance.get(`/api/competition/myranking/${contestId}`);
     return response.data;
 };
 
 // 대회 점수 조회
-export const getContestResult = async (competitionId: string): Promise<ContestResult> => {
-    const response = await instance.get(`/api/competition/result/${competitionId}`);
+export const getContestResult = async (contestId: string): Promise<ContestResult> => {
+    const response = await instance.get(`/api/competition/result/${contestId}`);
     return response.data;
 };
 

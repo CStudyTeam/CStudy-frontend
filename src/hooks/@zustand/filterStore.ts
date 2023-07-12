@@ -32,6 +32,7 @@ export const useProblemFilter = create<StatusFilterStore>((set) => ({
     setPageNumber: (pageNumber) => set({ pageNumber }),
     reset: () =>
         set({
+            query: '',
             pageNumber: 0,
             status: '상태',
             statusValue: 0,
@@ -55,6 +56,7 @@ export const useBoardFilterStore = create<BoardFilterStoreType>((set) => ({
     setQuery: (query) => set({ query }),
     reset: () =>
         set({
+            query: ROUTE.BOARD_LIST,
             pageNumber: 0,
         }),
 }));
@@ -69,11 +71,12 @@ export interface ContestFilterStoreType {
 
 export const useContestFilterStore = create<ContestFilterStoreType>((set) => ({
     pageNumber: 0,
-    query: ROUTE.CONTEST_FINISH,
+    query: '',
     setPageNumber: (pageNumber) => set({ pageNumber }),
     setQuery: (query) => set({ query }),
     reset: () =>
         set({
+            query: '',
             pageNumber: 0,
         }),
 }));
