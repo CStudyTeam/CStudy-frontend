@@ -1,6 +1,7 @@
 import {
     useBoardFilterStore,
     useContestFilterStore,
+    useMyPageFilterStore,
     useProblemFilter,
     useWorkbookFilterStore,
 } from 'hooks/@zustand/filterStore';
@@ -11,4 +12,5 @@ export const resetAllFilters = () => {
     useBoardFilterStore.getState().reset();
     useContestFilterStore.getState().reset();
     useWorkbookFilterStore.getState().reset();
+    useMyPageFilterStore.getState().reset();
 };

@@ -20,10 +20,8 @@ export const getWorkbook = async (id: string): Promise<Workbook> => {
 };
 
 // 문제집 문제 요청
-export const getWorkbookQuestion = async (workbookPageId = '', page = 0, size = 10) => {
-    const response = await instance.get<WorkbookQuestion>(
-        `/api/workbook/question/${workbookPageId}?page=${page}&size=${size}`,
-    );
+export const getWorkbookQuestion = async (workbookPageId = '', page = 0, size = 10): Promise<WorkbookQuestion> => {
+    const response = await instance.get(`/api/workbook/question/${workbookPageId}?page=${page}&size=${size}`);
     return response.data;
 };
 

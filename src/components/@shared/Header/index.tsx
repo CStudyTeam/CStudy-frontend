@@ -6,7 +6,6 @@ import { isLogin } from 'utils/auth';
 import { useSignOut } from 'hooks/@query/useSignOut';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
-import StyleLink from '../StyleLink';
 import { StyleNavLink } from '../NavLinkStyles';
 import { resetAllFilters } from 'utils/resetAllFilter';
 
@@ -61,7 +60,7 @@ const Header = () => {
                     {isLogin() ? (
                         <>
                             <Button onClick={() => signOut()}>로그아웃</Button>
-                            <StyleNavLink to="mypage" className="mypage">
+                            <StyleNavLink to="mypage" className="mypage" onClick={handleNavigationClick}>
                                 마이페이지
                             </StyleNavLink>
                         </>

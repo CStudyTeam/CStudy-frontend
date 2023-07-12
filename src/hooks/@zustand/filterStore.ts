@@ -105,3 +105,23 @@ export const useWorkbookFilterStore = create<WorkbookFilterStoreType>((set) => (
             description: '',
         }),
 }));
+
+export interface MyPageFilterStoreType {
+    requestPageNumber: number;
+    problemPageNumber: number;
+    setRequestPageNumber: (requestPageNumber: number) => void;
+    setProblemPageNumber: (problemPageNumber: number) => void;
+    reset: () => void;
+}
+
+export const useMyPageFilterStore = create<MyPageFilterStoreType>((set) => ({
+    requestPageNumber: 0,
+    problemPageNumber: 0,
+    setRequestPageNumber: (requestPageNumber) => set({ requestPageNumber }),
+    setProblemPageNumber: (problemPageNumber) => set({ problemPageNumber }),
+    reset: () =>
+        set({
+            requestPageNumber: 0,
+            problemPageNumber: 0,
+        }),
+}));

@@ -11,6 +11,11 @@ interface InputProps {
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors;
     defaultValue?: string;
+    pattern?: {
+        value: RegExp;
+        message: string;
+    };
+    onErrorMsg?: boolean;
 }
 
 const Input = ({
@@ -23,6 +28,8 @@ const Input = ({
     errors,
     placeholder,
     defaultValue,
+    pattern,
+    onErrorMsg,
 }: InputProps) => {
     return (
         <Styled.Field>
@@ -32,10 +39,16 @@ const Input = ({
                 type={type}
                 placeholder={placeholder}
                 disabled={disabled}
-                {...register(id, { required })}
+                {...register(id, { required, pattern })}
                 errors={errors}
                 defaultValue={defaultValue}
+                required={required}
             />
+            {onErrorMsg && errors[id] && (
+                <Styled.ErrorMsg errors={errors} id={id}>
+                    {errors[id]?.message as string}
+                </Styled.ErrorMsg>
+            )}
         </Styled.Field>
     );
 };

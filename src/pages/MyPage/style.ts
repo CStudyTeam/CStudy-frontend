@@ -1,3 +1,4 @@
+import { Field } from 'components/@shared/Input/style';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { SHADOW } from 'constants/Shadow';
@@ -13,8 +14,12 @@ export const MyPageLabel = styled.h3`
     ${FONT.H2}
 `;
 
+export const MyPageUserInfoBg = styled.div`
+    display: flex;
+`;
+
 export const MyPageUserInfoWrapper = styled.div`
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem 3rem;
@@ -23,6 +28,10 @@ export const MyPageUserInfoWrapper = styled.div`
     border-radius: 1.2rem;
     box-shadow: ${SHADOW.CONTENTBOX_XLG};
     margin-top: 0.8rem;
+
+    & + & {
+        margin-left: 1.8rem;
+    }
 `;
 
 export const ProfileImg = styled.img`
@@ -43,6 +52,14 @@ export const MyPageUserInfoName = styled.span`
 `;
 export const MyPageUserInfoEmail = styled.span`
     font-size: ${FONT.REGULAR_16};
+`;
+
+export const InputWrapper = styled.div`
+    display: flex;
+
+    ${Field} + ${Field} {
+        margin-left: 1rem;
+    }
 `;
 
 export const MyPageTableWrapper = styled.div`

@@ -3,9 +3,7 @@ import * as Styled from './style';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
-import { useGetMyImage } from 'hooks/@query/mypage/useGetMyImage';
 import { useGetMyPage } from 'hooks/@query/mypage/useGetMyPage';
-import { userInfo } from 'utils/auth';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
 import { useCallback, useState } from 'react';
 import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
@@ -17,27 +15,48 @@ import { BiSolidError } from 'react-icons/bi';
 import useGetToggleRequestList from 'hooks/@query/board/useGetRequestList';
 import { Link } from 'react-router-dom';
 import ApproveStatus from 'components/@shared/Status';
+import Input from 'components/@shared/Input';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { useUpdatePassword } from 'hooks/@query/mypage/useUpdatePassword';
+import { ROUTE } from 'constants/Route';
+import useMyPageFilter from 'hooks/Mypage/useBoardFilter';
 
 const MyPage = () => {
-    const [page, setPage] = useState(0);
-    const [requestPage, setRequestPage] = useState(0);
-    // const user = userInfo();
-    // const myImage = useGetMyImage({});
-    const myPage = useGetMyPage();
-    const requestList = useGetToggleRequestList({ page: requestPage, query: 'mylist' });
-
-    const handlePage = useCallback((page: number) => {
-        setPage(page);
-    }, []);
-
-    console.log(myPage);
-    const requestHandlePage = useCallback((page: number) => {
-        setRequestPage(page);
-    }, []);
-
-    const problemList = useGetProblem({
-        page,
+    const [isLoading, setIsLoading] = useState(false);
+    const [isActive, setIsActive] = useState(false);
+    const { myPageFilter, handlePage, requestHandlePage } = useMyPageFilter();
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm<FieldValues>({
+        defaultValues: {
+            newPassword: '',
+            oldPassword: '',
+        },
     });
+
+    const passwordPattern = {
+        value: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*\W).{8,20}$/,
+        message: '문자, 숫자, 기호를 포함한 8~20자를 입력해주세요.',
+    };
+
+    const myPage = useGetMyPage();
+    const requestList = useGetToggleRequestList({ page: myPageFilter.requestPageNumber, query: ROUTE.BOARD_MY_LIST });
+    const problemList = useGetProblem({
+        page: myPageFilter.problemPageNumber,
+    });
+
+    const UpdatePassword = useUpdatePassword({ setIsLoading, reset });
+
+    const onSubmit: SubmitHandler<FieldValues> = (FormData) => {
+        UpdatePassword(FormData);
+    };
+
+    const handleClick = () => {
+        setIsActive((value) => !value);
+    };
 
     const requestTBodyContent = requestList?.content?.map(({ id, flag, title }, index: number) => (
         <tr key={index}>
@@ -81,18 +100,52 @@ const MyPage = () => {
             <ContentBodyWrapper blue>
                 <Styled.MyPageContentWrapper>
                     <Styled.MyPageLabel>내 정보</Styled.MyPageLabel>
-                    <Styled.MyPageUserInfoWrapper>
-                        <div>
-                            <Styled.ProfileImg src="basic_profile.jpg" alt="사용자 프로필 이미지" />
-                        </div>
-                        <Styled.MyPageUserInfo>
-                            <Styled.MyPageUserInfoName>{myPage?.name}</Styled.MyPageUserInfoName>
-                            <Styled.MyPageUserInfoEmail>{myPage?.email}</Styled.MyPageUserInfoEmail>
-                            <Button type="button" className="mt-sm lg gray style">
-                                비밀번호 수정하기
-                            </Button>
-                        </Styled.MyPageUserInfo>
-                    </Styled.MyPageUserInfoWrapper>
+                    <Styled.MyPageUserInfoBg>
+                        <Styled.MyPageUserInfoWrapper>
+                            <div>
+                                <Styled.ProfileImg src="basic_profile.jpg" alt="사용자 프로필 이미지" />
+                            </div>
+                            <Styled.MyPageUserInfo>
+                                <Styled.MyPageUserInfoName>{myPage?.name}</Styled.MyPageUserInfoName>
+                                <Styled.MyPageUserInfoEmail>{myPage?.email}</Styled.MyPageUserInfoEmail>
+                                <Button
+                                    type="button"
+                                    onClick={handleClick}
+                                    disabled={isLoading}
+                                    className="mt-sm lg gray style"
+                                >
+                                    비밀번호 변경
+                                </Button>
+                            </Styled.MyPageUserInfo>
+                        </Styled.MyPageUserInfoWrapper>
+                        {isActive && (
+                            <Styled.MyPageUserInfoWrapper>
+                                <Styled.MyPageUserInfo>
+                                    <Styled.InputWrapper>
+                                        <Input
+                                            label="현재 비밀번호"
+                                            id="oldPassword"
+                                            errors={errors}
+                                            register={register}
+                                            required
+                                        />
+                                        <Input
+                                            label="바꿀 비밀번호"
+                                            id="newPassword"
+                                            errors={errors}
+                                            register={register}
+                                            pattern={passwordPattern}
+                                            onErrorMsg
+                                            required
+                                        />
+                                    </Styled.InputWrapper>
+                                    <Button type="button" onClick={handleSubmit(onSubmit)} className="mt lg navy style">
+                                        변경하기
+                                    </Button>
+                                </Styled.MyPageUserInfo>
+                            </Styled.MyPageUserInfoWrapper>
+                        )}
+                    </Styled.MyPageUserInfoBg>
                 </Styled.MyPageContentWrapper>
                 <Styled.MyPageContentWrapper>
                     <Styled.MyPageLabel>나의 게시판 승인 현황</Styled.MyPageLabel>
@@ -106,7 +159,7 @@ const MyPage = () => {
                                     white
                                     totalPages={requestList?.totalPages as number}
                                     handlePage={requestHandlePage}
-                                    page={requestPage}
+                                    page={myPageFilter.requestPageNumber}
                                 />
                             </Styled.PaginationWrapper>
                         )}
@@ -129,7 +182,7 @@ const MyPage = () => {
                                     white
                                     totalPages={problemList?.totalPages as number}
                                     handlePage={handlePage}
-                                    page={page}
+                                    page={myPageFilter.problemPageNumber}
                                 />
                             </Styled.PaginationWrapper>
                         )}
