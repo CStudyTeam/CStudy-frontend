@@ -5,16 +5,16 @@ import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Button from 'components/@shared/Button';
-import { COLOR } from 'constants/Color';
-import { FONT } from 'constants/Font';
 import { isAdmin } from 'utils/auth';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useApproveRequest } from 'hooks/@query/board/useApproveRequest';
-import ApproveStatus from 'components/@shared/Status';
+import BoardDetailBoard from 'components/BoardDetail/BoardDetailBoard';
+import { RequestDetail } from 'types/api';
 
 const BoardDetail = () => {
     const { requestId } = useParams();
     const navigate = useNavigate();
+
     const request = useGetRequest(requestId);
     const ApproveRequest = useApproveRequest();
     const { handleSubmit } = useForm<FieldValues>();
@@ -33,16 +33,7 @@ const BoardDetail = () => {
         <ContentContainer>
             <ContentHeaderWrapper title="게시판" />
             <ContentBodyWrapper blue>
-                <Styled.Container>
-                    <ApproveStatus flag={request?.flag} />
-                    <Styled.Title>{request?.title}</Styled.Title>
-                    <Styled.Detail>
-                        {request?.memberName}
-                        <span>·</span>
-                        {request?.createAt}
-                    </Styled.Detail>
-                    <Styled.Content>{request?.description}</Styled.Content>
-                </Styled.Container>
+                <BoardDetailBoard request={request as RequestDetail} />
                 <Styled.ButtonWrapper>
                     {isAdmin() && (
                         <>
