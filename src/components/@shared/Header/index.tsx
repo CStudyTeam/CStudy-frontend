@@ -61,9 +61,9 @@ const Header = () => {
                     {isLogin() ? (
                         <>
                             <Button onClick={() => signOut()}>로그아웃</Button>
-                            <StyleLink to="mypage" className="fs--sm">
+                            <StyleNavLink to="mypage" className="mypage">
                                 마이페이지
-                            </StyleLink>
+                            </StyleNavLink>
                         </>
                     ) : (
                         <>
