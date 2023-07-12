@@ -5,14 +5,17 @@ import { Dispatch, SetStateAction } from 'react';
 
 interface useProblemSetProps {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
+    setIsAnswer: Dispatch<SetStateAction<boolean>>;
 }
 
-export const useSelectAnswerProblem = ({ setIsLoading }: useProblemSetProps) => {
+export const useSelectAnswerProblem = ({ setIsLoading, setIsAnswer }: useProblemSetProps) => {
     const { mutate: SelectAnswerProblem } = useMutation(selectAnswerProblem, {
         onSuccess: (response) => {
             if (!response?.data?.answer) {
+                setIsAnswer(false);
                 return toast.error('오답입니다!');
             }
+            setIsAnswer(true);
             return toast.success('정답입니다!');
         },
         onError: (error) => {
@@ -25,7 +28,6 @@ export const useSelectAnswerProblem = ({ setIsLoading }: useProblemSetProps) => 
                     toast.error('채점 하는데 실패했습니다.');
                     break;
             }
-            console.log('에러스', error);
         },
         onSettled: () => {
             setIsLoading(false);

@@ -5,7 +5,7 @@ import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import { useGetMyPage } from 'hooks/@query/mypage/useGetMyPage';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
 import Table from 'components/ProblemSet/Table';
 import Pagination from 'components/ProblemSet/Pagination';

@@ -19,12 +19,14 @@ const Problem = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [startTime, setStartTime] = useState<null | number>(null);
+    const [Answer, setAnswer] = useState('');
+    const [isAnswer, setIsAnswer] = useState(false);
+
     const oneProblem = useGetOneProblem(problemId as string);
 
     const { register, handleSubmit } = useForm<FieldValues>();
 
-    console.log(oneProblem);
-    const SelectAnswerProblem = useSelectAnswerProblem({ setIsLoading });
+    const SelectAnswerProblem = useSelectAnswerProblem({ setIsLoading, setIsAnswer });
 
     const onSubmit: SubmitHandler<FieldValues> = useCallback(
         (FormData) => {
@@ -41,6 +43,7 @@ const Problem = () => {
                 time: Math.floor(elapsedTime / UTIL.SECOND),
             };
 
+            setAnswer(FormData.choiceNumber);
             SelectAnswerProblem({ problemId, formData } as selectAnswerProblemFromProps);
         },
         [SelectAnswerProblem, problemId, startTime],
@@ -64,8 +67,10 @@ const Problem = () => {
                     register={register}
                     handleSubmit={handleSubmit}
                     onSubmit={onSubmit}
+                    Answer={Answer}
+                    isAnswer={isAnswer}
                 />
-                <ProblemFooter explain={oneProblem?.explain as string} />
+                {isAnswer && <ProblemFooter explain={oneProblem?.explain as string} />}
             </ContentBodyWrapper>
         </ContentContainer>
     );
