@@ -6,11 +6,11 @@ export const WorkBookCards = styled.section`
     justify-items: center;
     grid-gap: 3rem;
 
-    @media screen and (max-width: 1200px) {
+    /* @media screen and (max-width: 1200px) {
         grid-template-columns: repeat(3, 1fr);
     }
 
     @media screen and (max-width: 868px) {
         grid-template-columns: repeat(2, 1fr);
-    }
+    } */
 `;
