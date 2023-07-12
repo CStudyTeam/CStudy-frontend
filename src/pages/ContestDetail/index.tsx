@@ -7,7 +7,7 @@ import useGetContest from 'hooks/@query/contest/useGetContest';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useJoinContest } from 'hooks/@query/contest/useJoinContest';
 import Button from 'components/@shared/Button';
-import { isAdmin, isLogin } from 'utils/auth';
+import { isAdmin } from 'utils/auth';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import ConfirmModal from 'components/Contest/ConfirmModal';
 import Table from 'components/ProblemSet/Table';
@@ -23,18 +23,26 @@ import useGetContestRanking from 'hooks/@query/contest/useGetContestRanking';
 import { GetContestRankingProps } from './../../hooks/@query/contest/useGetContestRanking';
 import Pagination from 'components/ProblemSet/Pagination';
 import useGetContestMyRanking from 'hooks/@query/contest/useGetContestMyRanking';
+import AdminContestAddDeleteProblem from 'components/ContestDetail/AdminContestAddDeleteProblem';
+import { Contest, ContestMyRanking, ContestRanking, ProblemContent } from 'types/api';
+import ContestDetailInfoHeader from 'components/ContestDetail/ContestDetailInfoHeader';
+import FinishedDetailContestTable from 'components/ContestDetail/FinishedDetailContestTable';
+import ContestDetailInfoTable from 'components/ContestDetail/ContestDetailInfoTable';
+import ContestDetailRankingTable from 'components/ContestDetail/ContestDetailRankingTable';
 
 const ContestDetail = () => {
     const { contestId } = useParams();
     const navigate = useNavigate();
     const { state: finishContest } = useLocation();
-    const [page, setPage] = useState(0);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     const [isLoading, setIsLoading] = useState(false);
+    const [page, setPage] = useState(0);
+
     const problem = useGetProblem({});
     const contestQuestion = useGetContestProblem(contestId as string);
     const myRanking = useGetContestMyRanking(contestId as string);
+    const contest = useGetContest(contestId as string);
+    const contestRanking = useGetContestRanking({ contestId, page } as GetContestRankingProps);
+
     const filterQuestion = problem?.content?.filter(({ questionId: problemQuestionId }: { questionId: number }) => {
         return contestQuestion?.some(
             ({ questionId: contestQuestionId }: { questionId: number }) => problemQuestionId === contestQuestionId,
@@ -42,59 +50,9 @@ const ContestDetail = () => {
     });
     const totalQuestion = filterQuestion?.length;
 
-    const columns = [
-        { field: 'name', headerName: '이름' },
-        { field: 'score', headerName: '점수(맞은 개수/총개수)' },
-        { field: 'endTime', headerName: '끝난 시간' },
-    ];
-
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors },
-    } = useForm<FieldValues>({
-        defaultValues: {
-            questionIds: [],
-        },
-    });
-
-    const contest = useGetContest(contestId as string);
-    const contestRanking = useGetContestRanking({ contestId, page } as GetContestRankingProps);
-
-    const JoinContest = useJoinContest({ contestId, setIsLoading, setIsModalOpen } as UseJoinContestProps);
-    const DeleteContestProblem = useDeleteContestProblem({ setIsLoading });
-
-    const handleConfirm = () => {
-        JoinContest(contestId as string);
-    };
-
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    };
-
     const handlePage = useCallback((page: number) => {
         setPage(page);
     }, []);
-
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const isArray = Array.isArray(data.questionIds);
-        const customQuestionIds = isArray
-            ? data.questionIds.map((questionId: (string | number)[]) => ({ id: +questionId }))
-            : (data.questionIds = [{ id: +data.questionIds }]);
-
-        const formData = {
-            competitionId: parseInt(contestId as string),
-            questionIds: customQuestionIds,
-        };
-
-        DeleteContestProblem(formData);
-        reset();
-    };
-
-    const handleJoinContestModal = () => {
-        setIsModalOpen(true);
-    };
 
     return (
         <ContentContainer>
@@ -104,144 +62,32 @@ const ContestDetail = () => {
                 </Button>
             </ContentHeaderWrapper>
             {isAdmin() && !finishContest && (
-                <ContentBodyWrapper>
-                    <Styled.Label>관리자</Styled.Label>
-                    <Styled.AdminWrapper>
-                        <div>
-                            <StyleLink to="adminadd" className="xl navy style">
-                                대회문제 추가하기
-                            </StyleLink>
-                            <Button
-                                className="xl revert--red style"
-                                onClick={handleSubmit(onSubmit)}
-                                disabled={isLoading}
-                            >
-                                대회문제 삭제하기
-                            </Button>
-                        </div>
-                    </Styled.AdminWrapper>
-                    <Table
-                        colRate={['15%', '50%', '15%', '20%']}
-                        title={['문제번호', '문제이름', '카테고리', '문제삭제']}
-                    >
-                        {filterQuestion?.map(({ questionId, questionTitle, categoryTitle }: ProblemList) => (
-                            <tr key={questionId}>
-                                <TBodyTd>{questionId}</TBodyTd>
-                                <TBodyTd className="bold">
-                                    <Link to={`/problemset/${questionId}`}>{questionTitle}</Link>
-                                </TBodyTd>
-                                <TBodyTd>{categoryTitle}</TBodyTd>
-                                <TBodyTd>
-                                    <AdminInput
-                                        type="checkbox"
-                                        name="questionIds"
-                                        register={register}
-                                        errors={errors}
-                                        value={`${questionId}`}
-                                        required
-                                    />
-                                </TBodyTd>
-                            </tr>
-                        ))}
-                    </Table>
-                </ContentBodyWrapper>
+                <AdminContestAddDeleteProblem
+                    contestId={contestId as string}
+                    setIsLoading={setIsLoading}
+                    isLoading={isLoading}
+                    filterQuestion={filterQuestion as ProblemContent[]}
+                />
             )}
 
             <ContentBodyWrapper>
-                <Styled.ContestInfoHeaderWrapper>
-                    <Styled.Label>대회정보</Styled.Label>
-                    <Styled.ButtonWrapper>
-                        {isLogin() && (
-                            <StyleLink to="contestresult" state={!!myRanking?.['ranking']} className="xl green style">
-                                나의 대회 결과보기
-                            </StyleLink>
-                        )}
-                        {!finishContest && (
-                            <Button type="button" className="xl navy style" onClick={handleJoinContestModal}>
-                                대회 참여하기
-                            </Button>
-                        )}
-                        <ConfirmModal
-                            title="대회에 참가하시겠습니까?"
-                            isOpen={isModalOpen}
-                            handleConfirm={handleConfirm}
-                            handleCancel={handleCancel}
-                            isLoading={isLoading}
-                        />
-                    </Styled.ButtonWrapper>
-                </Styled.ContestInfoHeaderWrapper>
-                {finishContest && (
-                    <Styled.FinishContestTableWrapper>
-                        <Table colRate={['20%', '60%', '20%']} title={['문제번호', '문제이름', '카테고리']}>
-                            {filterQuestion?.map(({ questionId, questionTitle, categoryTitle }: ProblemList) => (
-                                <tr key={questionId}>
-                                    <TBodyTd>{questionId}</TBodyTd>
-                                    <TBodyTd className="bold">
-                                        <Link to={`/problemset/${questionId}`}>{questionTitle}</Link>
-                                    </TBodyTd>
-                                    <TBodyTd>{categoryTitle}</TBodyTd>
-                                </tr>
-                            ))}
-                        </Table>
-                    </Styled.FinishContestTableWrapper>
-                )}
+                <ContestDetailInfoHeader
+                    myRanking={!!myRanking?.['ranking'] as boolean}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
+                    contestId={contestId as string}
+                    finishContest={finishContest}
+                />
+                {finishContest && <FinishedDetailContestTable filterQuestion={filterQuestion as ProblemContent[]} />}
                 <Styled.ContestInfoBodyWrapper>
-                    <Table maxHeight colRate={['50%', '50%']} title={['대회 시작일', '대회 종료일']}>
-                        <tr>
-                            <TBodyTd>{contest?.startTime}</TBodyTd>
-                            <TBodyTd>{contest?.endTime}</TBodyTd>
-                        </tr>
-                        <tr>
-                            <TBodyTh>최대인원수</TBodyTh>
-                            <TBodyTh>현재 참가자수</TBodyTh>
-                        </tr>
-                        <tr>
-                            <TBodyTd>{contest?.maxParticipants}</TBodyTd>
-                            <TBodyTd>{contest?.participants}</TBodyTd>
-                        </tr>
-                    </Table>
-                    <Styled.ContestRanking>
-                        <Styled.RankingTitle>
-                            랭킹 테이블
-                            {!!myRanking?.['ranking'] && <span>나의 랭킹 : {myRanking?.['ranking']}</span>}
-                        </Styled.RankingTitle>
-                        <Styled.StyledTable>
-                            <Styled.StyledThead>
-                                <Styled.StyledTr>
-                                    {columns.map((column) => (
-                                        <Styled.StyledTh key={column.field}>{column.headerName}</Styled.StyledTh>
-                                    ))}
-                                </Styled.StyledTr>
-                            </Styled.StyledThead>
-                            <Styled.StyledTbody>
-                                {(contestRanking?.content?.length as number) > 0 ? (
-                                    contestRanking?.content?.map(({ memberId, name, score, endTime }) => (
-                                        <Styled.StyledTr key={memberId}>
-                                            <Styled.StyledTd>{name}</Styled.StyledTd>
-                                            <Styled.StyledTd>
-                                                {score} / {totalQuestion}
-                                            </Styled.StyledTd>
-                                            <Styled.StyledTd>
-                                                {endTime ? endTime : '제출한 시험지가 없습니다'}
-                                            </Styled.StyledTd>
-                                        </Styled.StyledTr>
-                                    ))
-                                ) : (
-                                    <Styled.StyledTr>
-                                        <Styled.StyledTd colSpan={3}>등록된 참가자가 없습니다.</Styled.StyledTd>
-                                    </Styled.StyledTr>
-                                )}
-                            </Styled.StyledTbody>
-                        </Styled.StyledTable>
-                        <Styled.PaginationWrapper>
-                            <Pagination
-                                white
-                                totalPages={contestRanking?.totalPages as number}
-                                handlePage={handlePage}
-                                page={page}
-                            />
-                        </Styled.PaginationWrapper>
-                    </Styled.ContestRanking>
+                    <ContestDetailInfoTable contest={contest as Contest} />
+                    <ContestDetailRankingTable
+                        contestRanking={contestRanking as ContestRanking}
+                        totalQuestion={totalQuestion as number}
+                        myRanking={myRanking as ContestMyRanking}
+                        handlePage={handlePage}
+                        page={page}
+                    />
                 </Styled.ContestInfoBodyWrapper>
             </ContentBodyWrapper>
         </ContentContainer>

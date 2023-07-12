@@ -75,7 +75,7 @@ export interface ContestResult {
     details: ContestDetail[];
 }
 
-type ContestRankingContent = {
+export type ContestRankingContent = {
     memberId: number;
     name: string;
     score: number;
@@ -92,7 +92,7 @@ export interface ContestMyRanking {
 
 // Problem
 
-type ProblemContent = {
+export type ProblemContent = {
     questionId: number;
     questionTitle: string;
     categoryTitle: string;
