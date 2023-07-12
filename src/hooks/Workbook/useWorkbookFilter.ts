@@ -21,7 +21,7 @@ const useWorkbookFilter = (): WorkbookFilterType => {
     const onSubmit: SubmitHandler<FieldValues> = useCallback(
         ({ search }) => {
             workbookFilter.setTitle(search);
-            // workbookFilter.setDescription(search);
+            workbookFilter.setDescription(search);
         },
         [workbookFilter],
     );
