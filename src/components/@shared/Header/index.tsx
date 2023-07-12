@@ -8,12 +8,17 @@ import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 import StyleLink from '../StyleLink';
 import { StyleNavLink } from '../NavLinkStyles';
+import { resetAllFilters } from 'utils/resetAllFilter';
 
 const Header = () => {
     const loginModal = useLoginModal();
     const registerModal = useRegisterModal();
 
     const { mutate: signOut } = useSignOut();
+
+    const handleNavigationClick = () => {
+        resetAllFilters();
+    };
 
     return (
         <>
@@ -26,19 +31,29 @@ const Header = () => {
                 <Styled.Nav>
                     <Styled.NavList>
                         <Styled.NavItem>
-                            <StyleNavLink to="board">게시판</StyleNavLink>
+                            <StyleNavLink to="/board" onClick={handleNavigationClick}>
+                                게시판
+                            </StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <StyleNavLink to="problemset">문제풀이</StyleNavLink>
+                            <StyleNavLink to="/problemset" onClick={handleNavigationClick}>
+                                문제풀이
+                            </StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <StyleNavLink to="contest">대회</StyleNavLink>
+                            <StyleNavLink to="/contest" onClick={handleNavigationClick}>
+                                대회
+                            </StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <StyleNavLink to="workbook">문제집</StyleNavLink>
+                            <StyleNavLink to="/workbook" onClick={handleNavigationClick}>
+                                문제집
+                            </StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <StyleNavLink to="membersranks">전체랭킹</StyleNavLink>
+                            <StyleNavLink to="/membersranks" onClick={handleNavigationClick}>
+                                전체랭킹
+                            </StyleNavLink>
                         </Styled.NavItem>
                     </Styled.NavList>
                 </Styled.Nav>
