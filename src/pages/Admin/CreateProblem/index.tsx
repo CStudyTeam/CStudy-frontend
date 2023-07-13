@@ -11,6 +11,7 @@ import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import { QuestionDataProps } from 'types/Form';
 import { UTIL } from 'constants/Util';
+import AdminProblemForms from 'components/Admin/AdminProblemForms';
 
 const CreateProblem = () => {
     const navigate = useNavigate();
@@ -90,17 +91,12 @@ const CreateProblem = () => {
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    {problemForms.map((form) => (
-                        <ProblemForm
-                            key={form.id}
-                            isLoading={isLoading}
-                            register={register}
-                            errors={errors}
-                            titleNumber={form.titleNumber}
-                            basicInfoNumber={form.basicInfoNumber}
-                            contentNumber={form.contentNumber}
-                        />
-                    ))}
+                    <AdminProblemForms
+                        problemForms={problemForms}
+                        isLoading={isLoading}
+                        register={register}
+                        errors={errors}
+                    />
                     <Button type="submit" className="navy mt xl2 style" disabled={isLoading}>
                         문제 등록하기
                     </Button>

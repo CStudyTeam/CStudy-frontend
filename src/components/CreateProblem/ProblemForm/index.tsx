@@ -11,19 +11,11 @@ interface ProblemFormProps {
     isLoading?: boolean;
     register: UseFormRegister<FieldValues>;
     errors: FieldErrors;
-    titleNumber: number;
-    basicInfoNumber: number;
-    contentNumber: number[];
+    form: { id: number; titleNumber: number; basicInfoNumber: number; contentNumber: number[] };
 }
 
-const ProblemForm = ({
-    isLoading,
-    register,
-    errors,
-    titleNumber,
-    basicInfoNumber,
-    contentNumber,
-}: ProblemFormProps) => {
+const ProblemForm = ({ isLoading, register, errors, form }: ProblemFormProps) => {
+    const { titleNumber, basicInfoNumber, contentNumber } = form;
     const basicInfoInputs = [
         { name: 'questionTitle', label: '문제 제목' },
         { name: 'questionDesc', label: '문제 설명' },
