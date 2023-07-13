@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, memo } from 'react';
 import * as Styled from './style';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,4 +14,4 @@ const Button = ({ children, type = 'button', disabled, ...rest }: ButtonProps) =
     );
 };
 
-export default Button;
+export default memo(Button);

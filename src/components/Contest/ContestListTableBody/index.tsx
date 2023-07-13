@@ -3,6 +3,7 @@ import Pagination from 'components/ProblemSet/Pagination';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
 import { ContestFilterStoreType } from 'hooks/@zustand/filterStore';
 import { ContestContent } from 'types/api';
+import { memo } from 'react';
 
 interface ContestListTableBodyProps {
     contestList: ContestContent[];
@@ -57,4 +58,4 @@ const ContestListTableBody = ({
     );
 };
 
-export default ContestListTableBody;
+export default memo(ContestListTableBody);

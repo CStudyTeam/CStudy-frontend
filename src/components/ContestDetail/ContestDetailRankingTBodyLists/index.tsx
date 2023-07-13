@@ -1,5 +1,6 @@
 import { ContestRanking } from 'types/api';
 import ContestDetailRankingTBodyList from '../ContestDetailRankingTBodyList';
+import { memo } from 'react';
 
 interface ContestDetailRankingTBodyListsProps {
     contestRanking: ContestRanking;
@@ -11,16 +12,9 @@ const ContestDetailRankingTBodyLists = ({ contestRanking, totalQuestion }: Conte
         <>
             {contestRanking?.content?.map((ranking) => (
                 <ContestDetailRankingTBodyList key={ranking.memberId} ranking={ranking} totalQuestion={totalQuestion} />
-                // <Styled.StyledTr key={memberId}>
-                //     <Styled.StyledTd>{name}</Styled.StyledTd>
-                //     <Styled.StyledTd>
-                //         {score} / {totalQuestion}
-                //     </Styled.StyledTd>
-                //     <Styled.StyledTd>{endTime ? endTime : '제출한 시험지가 없습니다'}</Styled.StyledTd>
-                // </Styled.StyledTr>
             ))}
         </>
     );
 };
 
-export default ContestDetailRankingTBodyLists;
+export default memo(ContestDetailRankingTBodyLists);

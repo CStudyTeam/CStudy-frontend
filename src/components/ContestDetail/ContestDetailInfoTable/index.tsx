@@ -1,6 +1,7 @@
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd, TBodyTh } from 'components/ProblemSet/Table/style';
 import { Contest } from 'types/api';
+import { memo } from 'react';
 
 interface ContestDetailInfoTableProps {
     contest: Contest;
@@ -25,4 +26,4 @@ const ContestDetailInfoTable = ({ contest }: ContestDetailInfoTableProps) => {
     );
 };
 
-export default ContestDetailInfoTable;
+export default memo(ContestDetailInfoTable);

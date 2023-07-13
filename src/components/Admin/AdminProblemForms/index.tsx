@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import ProblemForm from 'components/CreateProblem/ProblemForm';
 
@@ -18,4 +19,4 @@ const AdminProblemForms = ({ problemForms, isLoading, register, errors }: AdminW
     );
 };
 
-export default AdminProblemForms;
+export default memo(AdminProblemForms);
