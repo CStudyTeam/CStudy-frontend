@@ -1,5 +1,6 @@
 import { Problem } from 'types/api';
 import ProblemTBodyContentTableList from '../ProblemTBodyContentTableList';
+import { memo } from 'react';
 
 interface ProblemTBodyContentTableListsProps {
     problemList: Problem;
@@ -15,4 +16,4 @@ const ProblemTBodyContentTableLists = ({ problemList }: ProblemTBodyContentTable
     );
 };
 
-export default ProblemTBodyContentTableLists;
+export default memo(ProblemTBodyContentTableLists);

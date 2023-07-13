@@ -3,6 +3,7 @@ import Pagination from 'components/ProblemSet/Pagination';
 import * as Styled from './style';
 import NoData from 'components/@shared/NoData';
 import { ToggleRequestList } from 'types/api';
+import { memo } from 'react';
 
 interface RequestListsProps {
     requestList: ToggleRequestList;
@@ -34,4 +35,4 @@ const RequestLists = ({ requestList, handlePage, page }: RequestListsProps) => {
     );
 };
 
-export default RequestLists;
+export default memo(RequestLists);

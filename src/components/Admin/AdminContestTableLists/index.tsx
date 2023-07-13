@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { ProblemContent } from 'types/api';
 import AdminContestTableList from '../AdminContestTableList';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
@@ -18,4 +19,4 @@ const AdminContestTableLists = ({ filterQuestion, register, errors }: AdminConte
     );
 };
 
-export default AdminContestTableLists;
+export default memo(AdminContestTableLists);

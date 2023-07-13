@@ -1,14 +1,7 @@
-import { Field } from 'components/@shared/Input/style';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
-
-export const MyPageContentWrapper = styled.div`
-    & + & {
-        margin-top: 3.4rem;
-    }
-`;
 
 export const MyPageLabel = styled.h3`
     ${FONT.H2}
@@ -32,8 +25,4 @@ export const MyPageUserInfoWrapper = styled.div`
     & + & {
         margin-left: 1.8rem;
     }
-`;
-
-export const MyPageTableWrapper = styled.div`
-    margin-top: 0.8rem;
 `;

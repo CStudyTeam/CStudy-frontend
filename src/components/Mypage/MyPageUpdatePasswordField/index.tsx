@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Input from 'components/@shared/Input';
 import * as Styled from './style';
 import Button from 'components/@shared/Button';
@@ -43,4 +44,4 @@ const MyPageUpdatePasswordField = ({
     );
 };
 
-export default MyPageUpdatePasswordField;
+export default memo(MyPageUpdatePasswordField);

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import * as Styled from './style';
 
@@ -27,4 +28,4 @@ const TextArea = ({ id, label, disabled, required, register, errors, placeholder
     );
 };
 
-export default TextArea;
+export default memo(TextArea);

@@ -35,28 +35,3 @@ export const useMixMyPageAllData = ({ requestPage, query, problemPage }: MixQuer
 
     return { myPage, requestList, problemList };
 };
-
-// export const useGetMyPage = () => {
-//     const { data: myPage } = useQuery(['getMyPage'], getMyPage);
-
-//     return myPage;
-// };
-
-// const useGetToggleRequestList = ({ page, query }: GetRequestList) => {
-//     const { data: requestList } = useQuery(
-//         ['requestList', { page, query }],
-//         () => getToggleRequestList({ page, query }),
-//         { keepPreviousData: true },
-//     );
-//     return requestList;
-// };
-
-// export const useGetProblem = ({ categoryTitle, status, page, query }: UseGetProblemProps) => {
-//     const { data: problemList } = useQuery(
-//         ['getProblem', { categoryTitle, status, page, query }],
-//         () => getProblem({ categoryTitle, status, page, query }),
-//         { keepPreviousData: true },
-//     );
-
-//     return problemList;
-// };

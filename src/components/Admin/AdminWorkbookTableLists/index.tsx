@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { ProblemContent } from 'types/api';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import AdminWorkbookTableList from '../AdminWorkbookTableList';
@@ -23,4 +24,4 @@ const AdminWorkbookTableLists = ({ filterQuestion, register, errors }: AdminWork
     );
 };
 
-export default AdminWorkbookTableLists;
+export default memo(AdminWorkbookTableLists);

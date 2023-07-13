@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { OneProblem } from 'types/api';
 import ChoiceList from '../ChoiceList';
 import * as Styled from './style';
@@ -17,4 +18,4 @@ const ProblemRenderContent = ({ problem, register }: ProblemFormProps) => {
     );
 };
 
-export default ProblemRenderContent;
+export default memo(ProblemRenderContent);

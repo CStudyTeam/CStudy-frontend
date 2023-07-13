@@ -1,6 +1,7 @@
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
 import { MembersRanks } from 'types/api';
+import { memo } from 'react';
 
 interface RankingListProps {
     rankItems: MembersRanks[];
@@ -34,4 +35,4 @@ const RankingList = ({ rankItems }: RankingListProps) => {
     );
 };
 
-export default RankingList;
+export default memo(RankingList);

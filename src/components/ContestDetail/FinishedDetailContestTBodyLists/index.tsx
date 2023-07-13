@@ -1,6 +1,7 @@
 import { ProblemList } from 'types/problem';
 import FinishedDetailContestTBodyList from '../FinishedDetailContestTBodyList';
 import { ProblemContent } from 'types/api';
+import { memo } from 'react';
 
 interface FinishedDetailContestTBodyListsProps {
     filterQuestion: ProblemContent[];
@@ -15,5 +16,5 @@ const FinishedDetailContestTBodyLists = ({ filterQuestion }: FinishedDetailConte
         </>
     );
 };
-// questionId, questionTitle, categoryTitle;
-export default FinishedDetailContestTBodyLists;
+
+export default memo(FinishedDetailContestTBodyLists);

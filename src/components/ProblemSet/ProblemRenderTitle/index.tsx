@@ -1,5 +1,6 @@
 import { OneProblem } from 'types/api';
 import * as Styled from './style';
+import { memo } from 'react';
 
 interface ProblemRenderTitleProps {
     problem: OneProblem;
@@ -14,4 +15,4 @@ const ProblemRenderTitle = ({ problem }: ProblemRenderTitleProps) => {
     );
 };
 
-export default ProblemRenderTitle;
+export default memo(ProblemRenderTitle);

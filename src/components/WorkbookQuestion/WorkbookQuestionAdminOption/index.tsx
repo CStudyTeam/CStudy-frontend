@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import Button from 'components/@shared/Button';
 import StyleLink from 'components/@shared/StyleLink';
 import { useWorkbookQuestionDelete } from 'hooks/@query/workbook/useWorkbookQuestionDelete';
@@ -54,4 +54,4 @@ const WorkbookQuestionAdminOptionGroup = ({
     );
 };
 
-export default WorkbookQuestionAdminOptionGroup;
+export default memo(WorkbookQuestionAdminOptionGroup);

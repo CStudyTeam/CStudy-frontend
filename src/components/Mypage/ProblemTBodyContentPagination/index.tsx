@@ -3,6 +3,7 @@ import Pagination from 'components/ProblemSet/Pagination';
 import * as Styled from './style';
 import { Problem } from 'types/api';
 import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
+import { memo } from 'react';
 
 interface ProblemTBodyContentPaginationProps {
     problemList: Problem;
@@ -31,4 +32,4 @@ const ProblemTBodyContentPagination = ({
     );
 };
 
-export default ProblemTBodyContentPagination;
+export default memo(ProblemTBodyContentPagination);

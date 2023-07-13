@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import Button from 'components/@shared/Button';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import StyleLink from 'components/@shared/StyleLink';

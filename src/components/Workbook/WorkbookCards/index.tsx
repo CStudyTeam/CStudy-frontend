@@ -1,6 +1,7 @@
 import { WorkbookList } from 'types/api';
 import WorkBookCard from '../WorkbookCard';
 import * as Styled from './style';
+import { memo } from 'react';
 
 interface WorkbookCardsProps {
     workbookList: WorkbookList;
@@ -16,4 +17,4 @@ const WorkbookCards = ({ workbookList }: WorkbookCardsProps) => {
     );
 };
 
-export default WorkbookCards;
+export default memo(WorkbookCards);

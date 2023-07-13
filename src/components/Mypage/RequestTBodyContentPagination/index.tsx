@@ -2,6 +2,7 @@ import Pagination from 'components/ProblemSet/Pagination';
 import * as Styled from './style';
 import { ToggleRequestList } from 'types/api';
 import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
+import { memo } from 'react';
 
 interface RequestTBodyContentPaginationProps {
     requestList: ToggleRequestList;
@@ -30,4 +31,4 @@ const RequestTBodyContentPagination = ({
     );
 };
 
-export default RequestTBodyContentPagination;
+export default memo(RequestTBodyContentPagination);

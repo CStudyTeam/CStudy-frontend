@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import StyleLink from 'components/@shared/StyleLink';
 import Button from 'components/@shared/Button';
 import { ButtonWrapper, ContestInfoHeaderWrapper, Label } from 'pages/ContestDetail/style';

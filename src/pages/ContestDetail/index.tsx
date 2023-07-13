@@ -32,9 +32,9 @@ const ContestDetail = () => {
     });
     const totalQuestion = filterQuestion?.length;
 
-    const handleIsLoading = (isLoading: boolean) => {
+    const handleIsLoading = useCallback((isLoading: boolean) => {
         setIsLoading(isLoading);
-    };
+    }, []);
 
     const handlePage = useCallback((page: number) => {
         setPage(page);

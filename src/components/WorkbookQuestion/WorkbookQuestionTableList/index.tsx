@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 import StyleLink from 'components/@shared/StyleLink';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
@@ -35,4 +36,4 @@ const WorkbookQuestionTableList = ({ content, register, errors }: WorkbookQuesti
     );
 };
 
-export default WorkbookQuestionTableList;
+export default memo(WorkbookQuestionTableList);

@@ -1,14 +1,13 @@
 import { isAdmin } from 'utils/auth';
 import Button from '../Button';
 import * as Styled from './style';
-import { PropsWithChildren, useState, useEffect } from 'react';
-import { COLOR } from 'constants/Color';
-import { FONT } from 'constants/Font';
+import { PropsWithChildren, useState, memo, useCallback } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import Input from '../Input';
 import { useUpdateWorkbook } from 'hooks/@query/workbook/useUpdateWorkbook';
 import StyleLink from '../StyleLink';
+import ContentHeaderWrapperTitle from '../ContentHeaderWrapperTitle';
 
 interface CreateContestProps {
     title: string;
@@ -28,13 +27,13 @@ const ContentHeaderWrapper = ({ title, desc, admin, adminLink, children }: Props
         formState: { errors },
     } = useForm<FieldValues>();
 
-    const handleIsLoading = (isLoading: boolean) => {
+    const handleIsLoading = useCallback((isLoading: boolean) => {
         setIsLoading(isLoading);
-    };
+    }, []);
 
-    const handleIsActive = (isActive: boolean) => {
+    const handleIsActive = useCallback((isActive: boolean) => {
         setIsActive(isActive);
-    };
+    }, []);
 
     const UpdateWorkbook = useUpdateWorkbook({ handleIsLoading, handleIsActive });
 
@@ -76,13 +75,7 @@ const ContentHeaderWrapper = ({ title, desc, admin, adminLink, children }: Props
                         {adminLink}
                     </StyleLink>
                 )}
-                <Styled.Title>
-                    {isActive ? (
-                        <Input id="title" defaultValue={title} register={register} errors={errors} required />
-                    ) : (
-                        title
-                    )}
-                </Styled.Title>
+                <ContentHeaderWrapperTitle isActive={isActive} title={title} register={register} errors={errors} />
                 {desc && (
                     <Styled.Desc>
                         {isActive ? (
@@ -98,4 +91,4 @@ const ContentHeaderWrapper = ({ title, desc, admin, adminLink, children }: Props
     );
 };
 
-export default ContentHeaderWrapper;
+export default memo(ContentHeaderWrapper);

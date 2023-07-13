@@ -1,9 +1,7 @@
-import React from 'react';
-import { TBodyTd } from '../Table/style';
-import StatusLabel from '../StatusLabel';
-import { Link } from 'react-router-dom';
+import { memo } from 'react';
 import { Problem } from 'types/api';
 import NoData from 'components/@shared/NoData';
+import ProgramFilterTBodyList from '../ProgramFilterTBodyList';
 
 interface ProgramFilterTBodyProps {
     problemList: Problem;
@@ -20,22 +18,15 @@ const ProgramFilterTBody = ({ problemList, checkAndDisplayLoginModal }: ProgramF
                     </td>
                 </tr>
             )}
-            {problemList?.content?.map(({ questionId, questionTitle, categoryTitle, status }, index: number) => (
-                <tr key={index}>
-                    <TBodyTd>{questionId}</TBodyTd>
-                    <TBodyTd>
-                        <StatusLabel status={status} />
-                    </TBodyTd>
-                    <TBodyTd className="title">
-                        <Link to={`${questionId}`} onClick={checkAndDisplayLoginModal}>
-                            {questionTitle}
-                        </Link>
-                    </TBodyTd>
-                    <TBodyTd>{categoryTitle}</TBodyTd>
-                </tr>
+            {problemList?.content?.map((problem) => (
+                <ProgramFilterTBodyList
+                    key={problem.questionId}
+                    problem={problem}
+                    checkAndDisplayLoginModal={checkAndDisplayLoginModal}
+                />
             ))}
         </>
     );
 };
 
-export default ProgramFilterTBody;
+export default memo(ProgramFilterTBody);

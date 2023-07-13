@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, memo } from 'react';
 import { FieldValues, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 import ProblemRenderSubmit from '../ProblemRenderSubmit';
 import ProblemRenderContent from '../ProblemRenderContent';
@@ -34,4 +34,4 @@ const ProblemRender = ({
     );
 };
 
-export default ProblemRender;
+export default memo(ProblemRender);

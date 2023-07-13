@@ -8,6 +8,7 @@ import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 import { StyleNavLink } from '../NavLinkStyles';
 import { resetAllFilters } from 'utils/resetAllFilter';
+import { memo, useCallback } from 'react';
 
 const Header = () => {
     const loginModal = useLoginModal();
@@ -15,9 +16,9 @@ const Header = () => {
 
     const { mutate: signOut } = useSignOut();
 
-    const handleNavigationClick = () => {
+    const handleNavigationClick = useCallback(() => {
         resetAllFilters();
-    };
+    }, []);
 
     return (
         <>
@@ -76,4 +77,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default memo(Header);

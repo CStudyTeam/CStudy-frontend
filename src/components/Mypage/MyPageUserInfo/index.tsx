@@ -1,6 +1,7 @@
 import Button from 'components/@shared/Button';
 import * as Styled from './style';
 import { MyPage } from 'types/api';
+import { memo } from 'react';
 
 interface MyPageUserInfoProps {
     myPage: MyPage;
@@ -25,4 +26,4 @@ const MyPageUserInfo = ({ myPage, handleClickActive, isLoading }: MyPageUserInfo
     );
 };
 
-export default MyPageUserInfo;
+export default memo(MyPageUserInfo);

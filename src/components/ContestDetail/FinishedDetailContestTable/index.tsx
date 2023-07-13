@@ -2,6 +2,7 @@ import Table from 'components/ProblemSet/Table';
 import * as Styled from './style';
 import { ProblemContent } from 'types/api';
 import FinishedDetailContestTBodyLists from '../FinishedDetailContestTBodyLists';
+import { memo } from 'react';
 
 interface FinishedDetailContestTableProps {
     filterQuestion: ProblemContent[];
@@ -17,4 +18,4 @@ const FinishedDetailContestTable = ({ filterQuestion }: FinishedDetailContestTab
     );
 };
 
-export default FinishedDetailContestTable;
+export default memo(FinishedDetailContestTable);
