@@ -3,15 +3,14 @@ import styled, { css } from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { SHADOW } from 'constants/Shadow';
 import { InputStyleProps } from 'types/style';
-import { FieldErrors } from 'react-hook-form';
 
 export const Field = styled.div`
     display: flex;
     flex-direction: column;
 `;
 
-export const Label = styled.label`
-    ${FONT.BOLD_20};
+export const Label = styled.label<{ smallLabel?: boolean }>`
+    ${({ smallLabel }) => (smallLabel ? FONT.BOLD_14 : FONT.BOLD_20)}
 `;
 
 export const Input = styled.input<InputStyleProps>`

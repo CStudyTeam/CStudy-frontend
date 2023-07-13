@@ -24,9 +24,10 @@ const MyPageUpdatePasswordField = ({
     return (
         <Styled.MyPageUserInfo>
             <Styled.InputWrapper>
-                <Input label="현재 비밀번호" id="oldPassword" errors={errors} register={register} required />
+                <Input label="현재 비밀번호" smallLabel id="oldPassword" errors={errors} register={register} required />
                 <Input
                     label="바꿀 비밀번호"
+                    smallLabel
                     id="newPassword"
                     errors={errors}
                     register={register}

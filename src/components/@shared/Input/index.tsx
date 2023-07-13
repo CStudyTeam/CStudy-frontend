@@ -16,6 +16,7 @@ interface InputProps {
         message: string;
     };
     onErrorMsg?: boolean;
+    smallLabel?: boolean;
 }
 
 const Input = ({
@@ -30,10 +31,15 @@ const Input = ({
     defaultValue,
     pattern,
     onErrorMsg,
+    smallLabel,
 }: InputProps) => {
     return (
         <Styled.Field>
-            {label && <Styled.Label htmlFor={id}>{label}</Styled.Label>}
+            {label && (
+                <Styled.Label smallLabel={smallLabel} htmlFor={id}>
+                    {label}
+                </Styled.Label>
+            )}
             <Styled.Input
                 id={id}
                 type={type}
