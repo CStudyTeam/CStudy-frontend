@@ -8,8 +8,6 @@ import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 import FormBody from 'components/@shared/Admin/FormBody';
 
-import { FONT } from 'constants/Font';
-import { COLOR } from 'constants/Color';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
 import Table from 'components/ProblemSet/Table';
@@ -27,8 +25,6 @@ const ContestProblemAdd = () => {
             ({ questionId: contestQuestionId }: { questionId: number }) => problemQuestionId === contestQuestionId,
         );
     });
-    const AddContestQuestion = useAddContestProblem({ setIsLoading });
-    console.log(problem);
     const {
         register,
         handleSubmit,
@@ -39,6 +35,12 @@ const ContestProblemAdd = () => {
             questionIds: [],
         },
     });
+
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
+    const AddContestQuestion = useAddContestProblem({ handleIsLoading });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const isArray = Array.isArray(data.questionIds);

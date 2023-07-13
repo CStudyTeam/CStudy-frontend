@@ -1,13 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addContestProblem } from 'api/contest';
 import toast from 'provider/Toast';
-import { Dispatch, SetStateAction } from 'react';
 
 interface useAddContestProblemProps {
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    handleIsLoading: (isLoading: boolean) => void;
 }
 
-export const useAddContestProblem = ({ setIsLoading }: useAddContestProblemProps) => {
+export const useAddContestProblem = ({ handleIsLoading }: useAddContestProblemProps) => {
     const queryClient = useQueryClient();
 
     const { mutate: AddContestProblem } = useMutation(addContestProblem, {
@@ -19,7 +18,7 @@ export const useAddContestProblem = ({ setIsLoading }: useAddContestProblemProps
             toast.error('문제 추가에 실패했습니다.');
         },
         onSettled: () => {
-            setIsLoading(false);
+            handleIsLoading(false);
         },
     });
 

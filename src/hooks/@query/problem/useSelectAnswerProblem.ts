@@ -1,21 +1,20 @@
 import { useMutation } from '@tanstack/react-query';
 import { selectAnswerProblem } from 'api/problem';
 import toast from 'provider/Toast';
-import { Dispatch, SetStateAction } from 'react';
 
 interface useProblemSetProps {
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
-    setIsAnswer: Dispatch<SetStateAction<boolean>>;
+    handleIsLoading: (isLoading: boolean) => void;
+    handleIsAnswer: (isAnswer: boolean) => void;
 }
 
-export const useSelectAnswerProblem = ({ setIsLoading, setIsAnswer }: useProblemSetProps) => {
+export const useSelectAnswerProblem = ({ handleIsLoading, handleIsAnswer }: useProblemSetProps) => {
     const { mutate: SelectAnswerProblem } = useMutation(selectAnswerProblem, {
         onSuccess: (response) => {
             if (!response?.data?.answer) {
-                setIsAnswer(false);
+                handleIsAnswer(false);
                 return toast.error('오답입니다!');
             }
-            setIsAnswer(true);
+            handleIsAnswer(true);
             return toast.success('정답입니다!');
         },
         onError: (error) => {
@@ -30,7 +29,7 @@ export const useSelectAnswerProblem = ({ setIsLoading, setIsAnswer }: useProblem
             }
         },
         onSettled: () => {
-            setIsLoading(false);
+            handleIsLoading(false);
         },
     });
 

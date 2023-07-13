@@ -1,16 +1,16 @@
-import { useState, Dispatch, SetStateAction } from 'react';
+import { useState } from 'react';
 import { useJoinContest } from 'hooks/@query/contest/useJoinContest';
 import { UseJoinContestProps } from 'types/contest';
 
 interface JoinContestProps {
     contestId: string;
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    handleIsLoading: (isLoading: boolean) => void;
 }
 
-const useJoinContestModal = ({ setIsLoading, contestId }: JoinContestProps) => {
+const useJoinContestModal = ({ handleIsLoading, contestId }: JoinContestProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const JoinContest = useJoinContest({ contestId, setIsLoading, setIsModalOpen } as UseJoinContestProps);
+    const JoinContest = useJoinContest({ contestId, handleIsLoading, setIsModalOpen } as UseJoinContestProps);
 
     const handleConfirm = () => {
         JoinContest(contestId as string);

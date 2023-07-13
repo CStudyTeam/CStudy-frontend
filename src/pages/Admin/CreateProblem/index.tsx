@@ -15,13 +15,41 @@ import { UTIL } from 'constants/Util';
 const CreateProblem = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const ProblemSet = useProblemSet({ setIsLoading });
+    const [problemForms, setProblemForms] = useState([
+        {
+            id: 0,
+            titleNumber: 1,
+            basicInfoNumber: 0,
+            contentNumber: [0, 1, 2, 3, 4],
+        },
+    ]);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<FieldValues>();
+
+    const handleClick = useCallback(() => {
+        setProblemForms((forms) => {
+            const lastForm = forms[forms.length - 1];
+            return [
+                ...forms,
+                {
+                    id: forms.length,
+                    titleNumber: lastForm.titleNumber + UTIL.INCREASE_COUNT,
+                    basicInfoNumber: lastForm.basicInfoNumber + UTIL.INCREASE_COUNT,
+                    contentNumber: lastForm.contentNumber.map((number) => number + UTIL.CHOICE_LENGTH),
+                },
+            ];
+        });
+    }, []);
+
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
+    const ProblemSet = useProblemSet({ handleIsLoading });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
@@ -52,30 +80,6 @@ const CreateProblem = () => {
 
         ProblemSet(transformedData);
     };
-
-    const [problemForms, setProblemForms] = useState([
-        {
-            id: 0,
-            titleNumber: 1,
-            basicInfoNumber: 0,
-            contentNumber: [0, 1, 2, 3, 4],
-        },
-    ]);
-
-    const handleClick = useCallback(() => {
-        setProblemForms((forms) => {
-            const lastForm = forms[forms.length - 1];
-            return [
-                ...forms,
-                {
-                    id: forms.length,
-                    titleNumber: lastForm.titleNumber + UTIL.INCREASE_COUNT,
-                    basicInfoNumber: lastForm.basicInfoNumber + UTIL.INCREASE_COUNT,
-                    contentNumber: lastForm.contentNumber.map((number) => number + UTIL.CHOICE_LENGTH),
-                },
-            ];
-        });
-    }, []);
 
     return (
         <ContentContainer>

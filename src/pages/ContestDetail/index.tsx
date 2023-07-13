@@ -50,6 +50,10 @@ const ContestDetail = () => {
     });
     const totalQuestion = filterQuestion?.length;
 
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
     const handlePage = useCallback((page: number) => {
         setPage(page);
     }, []);
@@ -64,7 +68,7 @@ const ContestDetail = () => {
             {isAdmin() && !finishContest && (
                 <AdminContestAddDeleteProblem
                     contestId={contestId as string}
-                    setIsLoading={setIsLoading}
+                    handleIsLoading={handleIsLoading}
                     isLoading={isLoading}
                     filterQuestion={filterQuestion as ProblemContent[]}
                 />
@@ -74,7 +78,7 @@ const ContestDetail = () => {
                 <ContestDetailInfoHeader
                     myRanking={!!myRanking?.['ranking'] as boolean}
                     isLoading={isLoading}
-                    setIsLoading={setIsLoading}
+                    handleIsLoading={handleIsLoading}
                     contestId={contestId as string}
                     finishContest={finishContest}
                 />

@@ -16,12 +16,13 @@ const BoardDetail = () => {
     const navigate = useNavigate();
 
     const request = useGetRequest(requestId);
-    const ApproveRequest = useApproveRequest();
     const { handleSubmit } = useForm<FieldValues>();
 
     const handleNavigate = () => {
         navigate(-1);
     };
+
+    const ApproveRequest = useApproveRequest();
 
     const onSubmit: SubmitHandler<FieldValues> = (formData) => {
         formData.id = request?.id;

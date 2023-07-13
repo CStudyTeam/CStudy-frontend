@@ -17,8 +17,6 @@ const CreateWorkbook = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const WorkbookSet = useWorkbookSet({ setIsLoading });
-
     const {
         register,
         handleSubmit,
@@ -29,6 +27,12 @@ const CreateWorkbook = () => {
             description: '',
         },
     });
+
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
+    const WorkbookSet = useWorkbookSet({ handleIsLoading });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);

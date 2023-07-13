@@ -25,14 +25,14 @@ const BoardRequestForm = () => {
         },
     });
 
+    const handleNavigate = () => {
+        navigate(-1);
+    };
+
     const { mutate: createRequest } = useCreateRequest();
 
     const submitForm: SubmitHandler<FieldValues> = (FormData) => {
         createRequest(FormData);
-    };
-
-    const handleNavigate = () => {
-        navigate(-1);
     };
 
     return (

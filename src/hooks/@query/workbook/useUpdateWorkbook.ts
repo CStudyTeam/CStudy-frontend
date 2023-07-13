@@ -1,14 +1,13 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { updateWorkbook } from 'api/workbook';
-import { Dispatch, SetStateAction } from 'react';
 import toast from 'provider/Toast';
 
 interface UpdateWorkbookProps {
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
-    setIsActive: Dispatch<SetStateAction<boolean>>;
+    handleIsLoading: (isLoading: boolean) => void;
+    handleIsActive: (isActive: boolean) => void;
 }
 
-export const useUpdateWorkbook = ({ setIsLoading, setIsActive }: UpdateWorkbookProps) => {
+export const useUpdateWorkbook = ({ handleIsLoading, handleIsActive }: UpdateWorkbookProps) => {
     const queryClient = useQueryClient();
     const { mutate: UpdateWorkbook } = useMutation(updateWorkbook, {
         onSuccess: () => {
@@ -19,8 +18,8 @@ export const useUpdateWorkbook = ({ setIsLoading, setIsActive }: UpdateWorkbookP
             toast.error('문제집 정보 수정에 실패했습니다.');
         },
         onSettled: () => {
-            setIsActive(false);
-            setIsLoading(false);
+            handleIsActive(false);
+            handleIsLoading(false);
         },
     });
 

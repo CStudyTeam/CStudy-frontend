@@ -18,7 +18,11 @@ const WorkbookQuestionAdminOptionGroup = ({
 }: WorkbookQuestionAdminOptionGroupProps) => {
     const [isLoading, setIsLoading] = useState(false);
 
-    const WorkbookQuestionDelete = useWorkbookQuestionDelete({ setIsLoading });
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
+    const WorkbookQuestionDelete = useWorkbookQuestionDelete({ handleIsLoading });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const isArray = Array.isArray(data.questionIds);

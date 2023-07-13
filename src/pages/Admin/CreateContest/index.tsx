@@ -24,8 +24,6 @@ const CreateContest = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [defaultValue] = useState<Date | null>(new Date());
 
-    const ContestSet = useContestSet({ setIsLoading });
-
     const {
         register,
         handleSubmit,
@@ -43,6 +41,12 @@ const CreateContest = () => {
     const customSetValue = (id: string, value: Date) => {
         setValue(id, value);
     };
+
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
+    const ContestSet = useContestSet({ handleIsLoading });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         data.competitionStart = formatDate(data.competitionStart);

@@ -28,7 +28,15 @@ const ContentHeaderWrapper = ({ title, desc, admin, adminLink, children }: Props
         formState: { errors },
     } = useForm<FieldValues>();
 
-    const UpdateWorkbook = useUpdateWorkbook({ setIsLoading, setIsActive });
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
+    const handleIsActive = (isActive: boolean) => {
+        setIsActive(isActive);
+    };
+
+    const UpdateWorkbook = useUpdateWorkbook({ handleIsLoading, handleIsActive });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         data.id = questionId;

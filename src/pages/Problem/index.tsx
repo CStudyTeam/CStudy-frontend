@@ -26,7 +26,15 @@ const Problem = () => {
 
     const { register, handleSubmit } = useForm<FieldValues>();
 
-    const SelectAnswerProblem = useSelectAnswerProblem({ setIsLoading, setIsAnswer });
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
+    const handleIsAnswer = (isAnswer: boolean) => {
+        setIsAnswer(isAnswer);
+    };
+
+    const SelectAnswerProblem = useSelectAnswerProblem({ handleIsLoading, handleIsAnswer });
 
     const onSubmit: SubmitHandler<FieldValues> = useCallback(
         (FormData) => {

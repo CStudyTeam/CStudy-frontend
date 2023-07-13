@@ -1,15 +1,14 @@
 import { useMutation } from '@tanstack/react-query';
 import { submitContest } from 'api/contest';
 import toast from 'provider/Toast';
-import { Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface useSubmitContestProps {
     contestId: string;
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    handleIsLoading: (isLoading: boolean) => void;
 }
 
-export const useSubmitContest = ({ setIsLoading, contestId }: useSubmitContestProps) => {
+export const useSubmitContest = ({ handleIsLoading, contestId }: useSubmitContestProps) => {
     const navigate = useNavigate();
     const { mutate: SubmitContest } = useMutation(submitContest, {
         onSuccess: () => {
@@ -20,7 +19,7 @@ export const useSubmitContest = ({ setIsLoading, contestId }: useSubmitContestPr
             toast.error('답안 제출에 실패했습니다.');
         },
         onSettled: () => {
-            setIsLoading(false);
+            handleIsLoading(false);
         },
     });
 

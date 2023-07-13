@@ -11,7 +11,7 @@ interface ContestDetailInfoHeaderProps {
     isLoading: boolean;
     finishContest: boolean;
     contestId: string;
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    handleIsLoading: (isLoading: boolean) => void;
 }
 
 const ContestDetailInfoHeader = ({
@@ -19,11 +19,11 @@ const ContestDetailInfoHeader = ({
     isLoading,
     finishContest,
     contestId,
-    setIsLoading,
+    handleIsLoading,
 }: ContestDetailInfoHeaderProps) => {
     const { isModalOpen, handleConfirm, handleCancel, handleJoinContestModal } = useJoinContestModal({
         contestId,
-        setIsLoading,
+        handleIsLoading,
     });
     return (
         <>

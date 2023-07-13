@@ -8,8 +8,6 @@ import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 import FormBody from 'components/@shared/Admin/FormBody';
 
-import { FONT } from 'constants/Font';
-import { COLOR } from 'constants/Color';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
 import Table from 'components/ProblemSet/Table';
@@ -27,7 +25,6 @@ const WorkbookProblemAdd = () => {
             ({ questionId: workbookQuestionId }: { questionId: number }) => problemQuestionId === workbookQuestionId,
         );
     });
-    const AddWorkbookQuestion = useAddWorkbookQuestion({ setIsLoading });
 
     const {
         register,
@@ -39,6 +36,12 @@ const WorkbookProblemAdd = () => {
             questionIds: [],
         },
     });
+
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
+    const AddWorkbookQuestion = useAddWorkbookQuestion({ handleIsLoading });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const isArray = Array.isArray(data.questionIds);

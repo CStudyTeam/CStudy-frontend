@@ -35,14 +35,6 @@ const Quiz = ({ quizData, competitionId }: QuizProps) => {
         },
     });
 
-    const { fields } = useFieldArray({ control, name: 'questions' });
-    const SubmitContest = useSubmitContest({ setIsLoading, contestId } as UseSubmitContestProps);
-
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        console.log(data);
-        SubmitContest(data);
-    };
-
     const handleNextClick = debounce(() => {
         if (currentIndex < quizData.length - 1) {
             setCurrentIndex((curIndex) => curIndex + 1);
@@ -53,6 +45,18 @@ const Quiz = ({ quizData, competitionId }: QuizProps) => {
         if (currentIndex > 0) {
             setCurrentIndex((curIndex) => curIndex - 1);
         }
+    };
+
+    const handleIsLoading = (isLoading: boolean) => {
+        setIsLoading(isLoading);
+    };
+
+    const { fields } = useFieldArray({ control, name: 'questions' });
+    const SubmitContest = useSubmitContest({ handleIsLoading, contestId } as UseSubmitContestProps);
+
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        console.log(data);
+        SubmitContest(data);
     };
 
     useEffect(() => {

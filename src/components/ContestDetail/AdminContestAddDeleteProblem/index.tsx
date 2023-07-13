@@ -12,7 +12,7 @@ import AdminContestTableTBodyLists from '../AdminContestTableTBodyLists';
 interface AdminContestAddDeleteProblemProps {
     contestId: string;
     filterQuestion: ProblemContent[];
-    setIsLoading: Dispatch<SetStateAction<boolean>>;
+    handleIsLoading: (isLoading: boolean) => void;
     isLoading: boolean;
 }
 
@@ -20,7 +20,7 @@ const AdminContestAddDeleteProblem = ({
     contestId,
     filterQuestion,
     isLoading,
-    setIsLoading,
+    handleIsLoading,
 }: AdminContestAddDeleteProblemProps) => {
     const {
         register,
@@ -33,7 +33,7 @@ const AdminContestAddDeleteProblem = ({
         },
     });
 
-    const DeleteContestProblem = useDeleteContestProblem({ setIsLoading });
+    const DeleteContestProblem = useDeleteContestProblem({ handleIsLoading });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const isArray = Array.isArray(data.questionIds);

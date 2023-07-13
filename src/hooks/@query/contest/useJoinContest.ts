@@ -4,7 +4,7 @@ import toast from 'provider/Toast';
 import { useNavigate } from 'react-router-dom';
 import { UseJoinContestProps } from 'types/contest';
 
-export const useJoinContest = ({ setIsLoading, setIsModalOpen }: UseJoinContestProps) => {
+export const useJoinContest = ({ handleIsLoading, setIsModalOpen }: UseJoinContestProps) => {
     const navigate = useNavigate();
     const { mutate: JoinContest } = useMutation(joinContest, {
         onSuccess: () => {
@@ -31,7 +31,7 @@ export const useJoinContest = ({ setIsLoading, setIsModalOpen }: UseJoinContestP
             }
         },
         onSettled: () => {
-            setIsLoading(false);
+            handleIsLoading(false);
             setIsModalOpen(false);
         },
     });
