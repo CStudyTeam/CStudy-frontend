@@ -3,32 +3,16 @@ import ContentContainer from 'components/@shared/ContentContainer';
 import * as Styled from './style';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
-import useGetContest from 'hooks/@query/contest/useGetContest';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useJoinContest } from 'hooks/@query/contest/useJoinContest';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Button from 'components/@shared/Button';
 import { isAdmin } from 'utils/auth';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import ConfirmModal from 'components/Contest/ConfirmModal';
-import Table from 'components/ProblemSet/Table';
-import { TBodyTd, TBodyTh } from 'components/ProblemSet/Table/style';
-import AdminInput from 'components/@shared/Admin/AdminInput';
-import useGetContestProblem from 'hooks/@query/contest/useGetContestProblem';
-import { useDeleteContestProblem } from 'hooks/@query/contest/useDeleteContestProblem';
-import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
-import { ProblemList } from 'types/problem';
-import { UseJoinContestProps } from 'types/contest';
-import StyleLink from 'components/@shared/StyleLink';
-import useGetContestRanking from 'hooks/@query/contest/useGetContestRanking';
-import { GetContestRankingProps } from './../../hooks/@query/contest/useGetContestRanking';
-import Pagination from 'components/ProblemSet/Pagination';
-import useGetContestMyRanking from 'hooks/@query/contest/useGetContestMyRanking';
 import AdminContestAddDeleteProblem from 'components/ContestDetail/AdminContestAddDeleteProblem';
 import { Contest, ContestMyRanking, ContestRanking, ProblemContent } from 'types/api';
 import ContestDetailInfoHeader from 'components/ContestDetail/ContestDetailInfoHeader';
 import FinishedDetailContestTable from 'components/ContestDetail/FinishedDetailContestTable';
 import ContestDetailInfoTable from 'components/ContestDetail/ContestDetailInfoTable';
 import ContestDetailRankingTable from 'components/ContestDetail/ContestDetailRankingTable';
+import { useMixContestDetailAllData } from 'hooks/@query/@GETmixed/useMixContestDetailAllData';
 
 const ContestDetail = () => {
     const { contestId } = useParams();
@@ -37,12 +21,10 @@ const ContestDetail = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(0);
 
-    const problem = useGetProblem({});
-    const contestQuestion = useGetContestProblem(contestId as string);
-    const myRanking = useGetContestMyRanking(contestId as string);
-    const contest = useGetContest(contestId as string);
-    const contestRanking = useGetContestRanking({ contestId, page } as GetContestRankingProps);
-
+    const { problem, contestQuestion, myRanking, contest, contestRanking } = useMixContestDetailAllData({
+        contestId,
+        page,
+    } as { contestId: string });
     const filterQuestion = problem?.content?.filter(({ questionId: problemQuestionId }: { questionId: number }) => {
         return contestQuestion?.some(
             ({ questionId: contestQuestionId }: { questionId: number }) => problemQuestionId === contestQuestionId,

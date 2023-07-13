@@ -9,22 +9,21 @@ import AdminInput from 'components/@shared/Admin/AdminInput';
 import FormBody from 'components/@shared/Admin/FormBody';
 
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
-import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
-import useGetContestProblem from 'hooks/@query/contest/useGetContestProblem';
 import { useAddContestProblem } from 'hooks/@query/contest/useAddContestProblem';
+import { useMixProblemContestProblem } from 'hooks/@query/@GETmixed/useMixProblemContestProblem';
 
 const ContestProblemAdd = () => {
     const [isLoading, setIsLoading] = useState(false);
     const { contestId } = useParams();
-    const problem = useGetProblem({});
-    const contestQuestion = useGetContestProblem(contestId as string);
+    const { problem, contestQuestion } = useMixProblemContestProblem({ contestId } as { contestId: string });
     const filterQuestion = problem?.content?.filter(({ questionId: problemQuestionId }) => {
         return !contestQuestion?.some(
             ({ questionId: contestQuestionId }: { questionId: number }) => problemQuestionId === contestQuestionId,
         );
     });
+
     const {
         register,
         handleSubmit,

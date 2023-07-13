@@ -9,17 +9,15 @@ import AdminInput from 'components/@shared/Admin/AdminInput';
 import FormBody from 'components/@shared/Admin/FormBody';
 
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
-import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
 import { useAddWorkbookQuestion } from 'hooks/@query/workbook/useAddWorkbookQuestion';
-import useGetWorkbookQuestion from 'hooks/@query/workbook/useGetWorkbookQuestion';
+import { useMixProblemWorkbookQuestion } from 'hooks/@query/@GETmixed/useMixProblemWorkbookQuestion';
 
 const WorkbookProblemAdd = () => {
     const [isLoading, setIsLoading] = useState(false);
     const { questionId } = useParams();
-    const problem = useGetProblem({});
-    const workbookQuestion = useGetWorkbookQuestion(questionId as string, null);
+    const { problem, workbookQuestion } = useMixProblemWorkbookQuestion({ questionId } as { questionId: string });
     const filterQuestion = problem?.content?.filter(({ questionId: problemQuestionId }: { questionId: number }) => {
         return !workbookQuestion?.content?.some(
             ({ questionId: workbookQuestionId }: { questionId: number }) => problemQuestionId === workbookQuestionId,

@@ -2,9 +2,6 @@ import * as Styled from './style';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
-import { useGetMyPage } from 'hooks/@query/mypage/useGetMyPage';
-import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
-import useGetToggleRequestList from 'hooks/@query/board/useGetRequestList';
 import { FieldValues, useForm } from 'react-hook-form';
 import { ROUTE } from 'constants/Route';
 import useMyPageFilter from 'hooks/Mypage/useBoardFilter';
@@ -14,6 +11,7 @@ import useMyPageActions from 'hooks/Mypage/useMyPageActions';
 import MyPageUpdatePasswordField from 'components/Mypage/MyPageUpdatePasswordField';
 import RequestTBodyContent from 'components/Mypage/RequestTBodyContent';
 import ProblemTBodyContent from 'components/Mypage/ProblemTBodyContent';
+import { useMixMyPageAllData } from 'hooks/@query/@GETmixed/useMixMyPageAllData';
 
 const MyPage = () => {
     const { myPageFilter, handlePage, requestHandlePage } = useMyPageFilter();
@@ -32,10 +30,10 @@ const MyPage = () => {
         reset,
     });
 
-    const myPage = useGetMyPage();
-    const requestList = useGetToggleRequestList({ page: myPageFilter.requestPageNumber, query: ROUTE.BOARD_MY_LIST });
-    const problemList = useGetProblem({
-        page: myPageFilter.problemPageNumber,
+    const { myPage, requestList, problemList } = useMixMyPageAllData({
+        requestPage: myPageFilter.requestPageNumber,
+        query: ROUTE.BOARD_MY_LIST,
+        problemPage: myPageFilter.problemPageNumber,
     });
 
     return (

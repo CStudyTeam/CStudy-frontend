@@ -15,6 +15,7 @@ import WorkbookQuestionAdminOptionGroup from 'components/WorkbookQuestion/Workbo
 import * as Styled from './style';
 import WorkbookQuestionTableLists from 'components/WorkbookQuestion/WorkbookQuestionTableLists';
 import { WorkbookQuestionContent } from 'types/api';
+import { useMixWorkbookWorkbookQuestion } from 'hooks/@query/@GETmixed/useMixWorkbookWorkbookQuestion';
 
 const WorkbookQuestion = () => {
     const { questionId } = useParams();
@@ -32,8 +33,10 @@ const WorkbookQuestion = () => {
         },
     });
 
-    const workbook = useGetWorkbook(questionId as string);
-    const workbookQuestion = useGetWorkbookQuestion(questionId as string, page);
+    const { workbook, workbookQuestion } = useMixWorkbookWorkbookQuestion({ questionId, page } as {
+        questionId: string;
+        page: number;
+    });
 
     const handlePage = useCallback((page: number) => {
         setPage(page);
