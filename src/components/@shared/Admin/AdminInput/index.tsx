@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import * as Styled from './style';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
@@ -98,4 +97,4 @@ const AdminInput = ({
     );
 };
 
-export default memo(AdminInput);
+export default AdminInput;

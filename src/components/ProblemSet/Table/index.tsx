@@ -1,4 +1,4 @@
-import { PropsWithChildren, memo } from 'react';
+import { PropsWithChildren } from 'react';
 import * as Styled from './style';
 
 interface TableProps {
@@ -31,4 +31,4 @@ const Table = ({ colRate, title, maxHeight, children, white, narrow }: PropsWith
     );
 };
 
-export default memo(Table);
+export default Table;

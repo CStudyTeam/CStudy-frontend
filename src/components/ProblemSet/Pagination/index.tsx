@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import * as Styled from './style';
 import usePagination from '../../../hooks/ProblemSet/usePagination';
 import { PaginationProps } from 'types/problem';
@@ -32,4 +31,4 @@ const Pagination = ({ totalPages, handlePage, page, white }: PaginationProps) =>
     );
 };
 
-export default memo(Pagination);
+export default Pagination;

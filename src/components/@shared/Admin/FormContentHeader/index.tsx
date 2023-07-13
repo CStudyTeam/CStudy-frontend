@@ -1,5 +1,4 @@
 import * as Styled from './style';
-import { memo } from 'react';
 
 interface FormContentHeaderProps {
     title: string;
@@ -15,4 +14,4 @@ const FormContentHeader = ({ title, subtitle }: FormContentHeaderProps) => {
     );
 };
 
-export default memo(FormContentHeader);
+export default FormContentHeader;

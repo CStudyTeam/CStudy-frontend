@@ -1,7 +1,7 @@
 import { isAdmin } from 'utils/auth';
 import Button from '../Button';
 import * as Styled from './style';
-import { PropsWithChildren, useState, memo, useCallback } from 'react';
+import { PropsWithChildren, useState, useCallback } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import Input from '../Input';
@@ -91,4 +91,4 @@ const ContentHeaderWrapper = ({ title, desc, admin, adminLink, children }: Props
     );
 };
 
-export default memo(ContentHeaderWrapper);
+export default ContentHeaderWrapper;
