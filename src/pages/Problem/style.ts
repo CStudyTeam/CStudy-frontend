@@ -10,3 +10,9 @@ export const Header = styled.div`
 export const Title = styled.h2`
     ${FONT.H4}
 `;
+
+export const Stamp = styled.div`
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+`;

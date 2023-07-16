@@ -21,11 +21,11 @@ export const ProblemAnswerNumber = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 6rem;
-    min-height: 6rem;
+    min-width: 5rem;
+    min-height: 5rem;
     background-color: ${COLOR.NAVY_100};
     margin-left: 1rem;
-    ${FONT.BOLD_20}
+    ${FONT.BOLD_18}
     border: 0.5rem solid ${COLOR.ANSWERGREEN};
     border-radius: 100%;
     box-shadow: ${SHADOW.CONTENTBOX_LG};

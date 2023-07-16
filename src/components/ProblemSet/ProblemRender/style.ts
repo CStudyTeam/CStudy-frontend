@@ -4,6 +4,7 @@ import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
 
 export const Form = styled.form`
+    position: relative;
     width: 100%;
     margin-top: 3rem;
     padding: 3rem 4rem 3rem 7rem;

@@ -5,17 +5,15 @@ import toast from 'provider/Toast';
 interface useProblemSetProps {
     handleIsLoading: (isLoading: boolean) => void;
     handleIsAnswer: (isAnswer: boolean) => void;
+    actionAnimations: (isActions: boolean) => void;
 }
 
-export const useSelectAnswerProblem = ({ handleIsLoading, handleIsAnswer }: useProblemSetProps) => {
+export const useSelectAnswerProblem = ({ handleIsLoading, handleIsAnswer, actionAnimations }: useProblemSetProps) => {
     const { mutate: SelectAnswerProblem } = useMutation(selectAnswerProblem, {
         onSuccess: (response) => {
-            if (!response?.data?.answer) {
-                handleIsAnswer(false);
-                return toast.error('오답입니다!');
-            }
-            handleIsAnswer(true);
-            return toast.success('정답입니다!');
+            const isAnswer = !!response?.data?.answer;
+            handleIsAnswer(isAnswer);
+            actionAnimations(true);
         },
         onError: (error) => {
             switch (error) {
