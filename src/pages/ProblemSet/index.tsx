@@ -7,22 +7,25 @@ import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import ProgramFilterTBody from 'components/ProblemSet/ProgramFilterTBody';
 import { Problem } from 'types/api';
-import useProblemSetFilter from 'hooks/ProblemSet/useProblemFilter';
 import { Filter } from 'components/@shared/FilterStyles';
+import { usePageNumberStore } from 'hooks/@zustand/filterStore';
+import useQueryFilterAction from 'hooks/ProblemSet/useQueryFilterAction';
+import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
+import useStatusFilterAction from 'hooks/ProblemSet/useStatusFilterAction';
+import useCategoryFilterAction from 'hooks/ProblemSet/useCategoryFilterAction';
 
 const ProblemSet = () => {
-    const {
-        problemFilter,
-        problemList,
-        isActive,
-        statusActive,
-        categoryActive,
-        handlePage,
-        handleToggle,
-        statusHandleActive,
-        categoryHandleActive,
-        checkAndDisplayLoginModal,
-    } = useProblemSetFilter();
+    const { pageNumber, handlePage, reset } = usePageNumberStore();
+    const { queryFilter, isActive, handleToggle } = useQueryFilterAction({ reset });
+    const { statusFilter, statusActive, statusHandleActive } = useStatusFilterAction({ reset });
+    const { categoryFilter, categoryActive, categoryHandleActive } = useCategoryFilterAction({ reset });
+
+    const problemList = useGetProblem({
+        categoryTitle: categoryFilter.categoryValue,
+        status: statusFilter.statusValue,
+        page: pageNumber,
+        query: queryFilter.query,
+    });
 
     return (
         <ContentContainer>
@@ -32,14 +35,14 @@ const ProblemSet = () => {
                         내가 푼 문제
                     </Filter>
                     <Select
-                        name={problemFilter.status}
+                        name={statusFilter.status}
                         handleActive={statusHandleActive}
                         isActive={statusActive}
                         options={!isActive ? ['전체', '완료', '실패'] : ['전체']}
                         optionsValue={!isActive ? [0, 1, 2] : [0]}
                     />
                     <Select
-                        name={problemFilter.category}
+                        name={categoryFilter.category}
                         handleActive={categoryHandleActive}
                         isActive={categoryActive}
                         options={!isActive ? ['전체', '자바', '네트워크', '운영체제', '데이터베이스'] : ['전체']}
@@ -49,17 +52,14 @@ const ProblemSet = () => {
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
                 <Table colRate={['10%', '10%', '65%', '15%']} title={['번호', '상태', '제목', '카테고리']}>
-                    <ProgramFilterTBody
-                        problemList={problemList as Problem}
-                        checkAndDisplayLoginModal={checkAndDisplayLoginModal}
-                    />
+                    <ProgramFilterTBody problemList={problemList as Problem} />
                 </Table>
-                {problemList?.totalPages > 1 && (
+                {(problemList?.totalPages as number) > 1 && (
                     <Styled.PaginationWrapper>
                         <Pagination
                             totalPages={problemList?.totalPages as number}
                             handlePage={handlePage}
-                            page={problemFilter.pageNumber}
+                            page={pageNumber}
                         />
                     </Styled.PaginationWrapper>
                 )}

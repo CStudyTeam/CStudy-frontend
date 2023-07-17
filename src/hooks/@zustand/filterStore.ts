@@ -1,44 +1,59 @@
 import { ROUTE } from 'constants/Route';
 import { create } from 'zustand';
 
-export interface StatusFilterStore {
+export interface PageNumberStoreType {
     pageNumber: number;
-    query: string;
-    status: string;
-    statusValue: number;
-    categoryValue: string;
-    category: string;
-    setQuery: (query: string) => void;
-    setStatus: (status: string) => void;
-    setStatusValue: (statusValue: number) => void;
-    setCategory: (category: string) => void;
-    setCategoryValue: (categoryValue: string) => void;
-    setPageNumber: (pageNumber: number) => void;
+    handlePage: (pageNumber: number) => void;
     reset: () => void;
 }
 
-export const useProblemFilter = create<StatusFilterStore>((set) => ({
+export const usePageNumberStore = create<PageNumberStoreType>((set) => ({
     pageNumber: 0,
-    query: '',
+    handlePage: (pageNumber) => set({ pageNumber }),
+    reset: () => {
+        set({ pageNumber: 0 });
+        useStatusFilter.setState({ status: '상태', statusValue: 0 });
+        useCategoryFilter.setState({ category: '카테고리', categoryValue: '' });
+        useQueryFilter.setState({ query: '' });
+    },
+}));
+
+export interface StatusFilterStoreType {
+    status: string;
+    statusValue: number;
+    setStatus: (status: string) => void;
+    setStatusValue: (statusValue: number) => void;
+}
+
+export const useStatusFilter = create<StatusFilterStoreType>((set, get) => ({
     status: '상태',
     statusValue: 0,
-    category: '카테고리',
-    categoryValue: '',
-    setQuery: (query) => set({ query }),
     setStatus: (status) => set({ status }),
     setStatusValue: (statusValue) => set({ statusValue }),
+}));
+
+export interface QueryFilterStoreType {
+    query: string;
+    setQuery: (query: string) => void;
+}
+
+export const useQueryFilter = create<QueryFilterStoreType>((set) => ({
+    query: '',
+    setQuery: (query) => set({ query }),
+}));
+
+export interface CategoryFilterStoreType {
+    category: string;
+    categoryValue: string;
+    setCategory: (category: string) => void;
+    setCategoryValue: (categoryValue: string) => void;
+}
+
+export const useCategoryFilter = create<CategoryFilterStoreType>((set) => ({
+    category: '카테고리',
+    categoryValue: '',
     setCategory: (category) => set({ category }),
     setCategoryValue: (categoryValue) => set({ categoryValue }),
-    setPageNumber: (pageNumber) => set({ pageNumber }),
-    reset: () =>
-        set({
-            query: '',
-            pageNumber: 0,
-            status: '상태',
-            statusValue: 0,
-            category: '카테고리',
-            categoryValue: '',
-        }),
 }));
 
 export interface BoardFilterStoreType {

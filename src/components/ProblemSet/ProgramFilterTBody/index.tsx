@@ -5,10 +5,9 @@ import ProgramFilterTBodyList from '../ProgramFilterTBodyList';
 
 interface ProgramFilterTBodyProps {
     problemList: Problem;
-    checkAndDisplayLoginModal: (e: React.MouseEvent) => void;
 }
 
-const ProgramFilterTBody = ({ problemList, checkAndDisplayLoginModal }: ProgramFilterTBodyProps) => {
+const ProgramFilterTBody = ({ problemList }: ProgramFilterTBodyProps) => {
     return (
         <>
             {problemList?.totalElements === 0 && (
@@ -19,11 +18,7 @@ const ProgramFilterTBody = ({ problemList, checkAndDisplayLoginModal }: ProgramF
                 </tr>
             )}
             {problemList?.content?.map((problem) => (
-                <ProgramFilterTBodyList
-                    key={problem.questionId}
-                    problem={problem}
-                    checkAndDisplayLoginModal={checkAndDisplayLoginModal}
-                />
+                <ProgramFilterTBodyList key={problem.questionId} problem={problem} />
             ))}
         </>
     );
