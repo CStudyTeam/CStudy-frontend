@@ -10,6 +10,7 @@ import SignUpModal from 'components/SignModal/SignUpModal';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 import { checkAdminLoader, checkAuthLoader } from 'utils/auth';
+import { LoadingSpinner } from 'components/@shared/LoadingSpinner/style';
 
 const Main = lazy(() => import('pages/Main'));
 const Board = lazy(() => import('pages/Board'));
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: (
-            <Suspense>
+            <Suspense fallback={<LoadingSpinner />}>
                 <RootLayout />
             </Suspense>
         ),
