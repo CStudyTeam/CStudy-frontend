@@ -16,7 +16,7 @@ import Button from 'components/@shared/Button';
 import useProblemAction from './../../hooks/Problem/useProblemAction';
 import LoadingSpinner from 'components/@shared/LoadingSpinner';
 
-const Stamp = lazy(() => import('components/ProblemSet/Stamp'));
+const Stamp = lazy(() => import(/* webpackChunkName: "Stamp" */ 'components/ProblemSet/Stamp'));
 
 const Problem = () => {
     const { problemId } = useParams();
