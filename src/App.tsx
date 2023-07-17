@@ -10,27 +10,31 @@ import SignUpModal from 'components/SignModal/SignUpModal';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 import { checkAdminLoader, checkAuthLoader } from 'utils/auth';
-import { LoadingSpinner } from 'components/@shared/LoadingSpinner/style';
+import LoadingSpinner from 'components/@shared/LoadingSpinner';
 
-const Main = lazy(() => import('pages/Main'));
-const Board = lazy(() => import('pages/Board'));
-const BoardRequestForm = lazy(() => import('pages/BoardRequestForm'));
-const BoardDetail = lazy(() => import('pages/BoardDetail'));
-const ProblemSet = lazy(() => import('pages/ProblemSet'));
-const Problem = lazy(() => import('pages/Problem'));
-const CreateProblem = lazy(() => import('pages/Admin/CreateProblem'));
-const Workbook = lazy(() => import('pages/Workbook'));
-const CreateWorkbook = lazy(() => import('pages/Admin/CreateWorkbook'));
-const WorkbookQuestion = lazy(() => import('pages/WorkbookQuestion'));
-const WorkbookProblemAdd = lazy(() => import('pages/Admin/WorkbookProblemAdd'));
-const Contest = lazy(() => import('pages/Contest'));
-const CreateContest = lazy(() => import('pages/Admin/CreateContest'));
-const ContestDetail = lazy(() => import('pages/ContestDetail'));
-const ContestProblemAdd = lazy(() => import('pages/Admin/ContestProblemAdd'));
-const ContestProblem = lazy(() => import('pages/ContestProblem'));
-const ContestResult = lazy(() => import('pages/ContestResult'));
-const MembersRanks = lazy(() => import('pages/MembersRanks'));
-const MyPage = lazy(() => import('pages/MyPage'));
+const Main = lazy(() => import(/* webpackChunkName: "Main" */ 'pages/Main'));
+const Board = lazy(() => import(/* webpackChunkName: "Board" */ 'pages/Board'));
+const BoardRequestForm = lazy(() => import(/* webpackChunkName: "BoardRequestForm" */ 'pages/BoardRequestForm'));
+const BoardDetail = lazy(() => import(/* webpackChunkName: "BoardDetail" */ 'pages/BoardDetail'));
+const ProblemSet = lazy(() => import(/* webpackChunkName: "ProblemSet" */ 'pages/ProblemSet'));
+const Problem = lazy(() => import(/* webpackChunkName: "Problem" */ 'pages/Problem'));
+const CreateProblem = lazy(() => import(/* webpackChunkName: "CreateProblem" */ 'pages/Admin/CreateProblem'));
+const Workbook = lazy(() => import(/* webpackChunkName: "Workbook" */ 'pages/Workbook'));
+const CreateWorkbook = lazy(() => import(/* webpackChunkName: "CreateWorkbook" */ 'pages/Admin/CreateWorkbook'));
+const WorkbookQuestion = lazy(() => import(/* webpackChunkName: "WorkbookQuestion" */ 'pages/WorkbookQuestion'));
+const WorkbookProblemAdd = lazy(
+    () => import(/* webpackChunkName: "WorkbookProblemAdd" */ 'pages/Admin/WorkbookProblemAdd'),
+);
+const Contest = lazy(() => import(/* webpackChunkName: "Contest" */ 'pages/Contest'));
+const CreateContest = lazy(() => import(/* webpackChunkName: "CreateContest" */ 'pages/Admin/CreateContest'));
+const ContestDetail = lazy(() => import(/* webpackChunkName: "ContestDetail" */ 'pages/ContestDetail'));
+const ContestProblemAdd = lazy(
+    () => import(/* webpackChunkName: "ContestProblemAdd" */ 'pages/Admin/ContestProblemAdd'),
+);
+const ContestProblem = lazy(() => import(/* webpackChunkName: "ContestProblem" */ 'pages/ContestProblem'));
+const ContestResult = lazy(() => import(/* webpackChunkName: "ContestResult" */ 'pages/ContestResult'));
+const MembersRanks = lazy(() => import(/* webpackChunkName: "MembersRanks" */ 'pages/MembersRanks'));
+const MyPage = lazy(() => import(/* webpackChunkName: "MyPage" */ 'pages/MyPage'));
 
 const queryClient = new QueryClient();
 
