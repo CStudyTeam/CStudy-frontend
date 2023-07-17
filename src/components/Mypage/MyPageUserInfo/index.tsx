@@ -2,6 +2,8 @@ import Button from 'components/@shared/Button';
 import * as Styled from './style';
 import { MyPage } from 'types/api';
 import { memo } from 'react';
+import Profile_Jpg from 'assets/profile/basic_profile.jpg';
+import Profile_Webp from 'assets/profile/basic_profile.webp';
 
 interface MyPageUserInfoProps {
     myPage: MyPage;
@@ -12,9 +14,11 @@ interface MyPageUserInfoProps {
 const MyPageUserInfo = ({ myPage, handleClickActive, isLoading }: MyPageUserInfoProps) => {
     return (
         <>
-            <div>
-                <Styled.ProfileImg src="basic_profile.jpg" alt="사용자 프로필 이미지" />
-            </div>
+            <picture>
+                <source srcSet={Profile_Webp} type="image/webp" />
+                <source srcSet={Profile_Jpg} type="image/jpg" />
+                <Styled.ProfileImg src={Profile_Jpg} alt="사용자 프로필 이미지" />
+            </picture>
             <Styled.MyPageUserInfo>
                 <Styled.MyPageUserInfoName>{myPage?.name}</Styled.MyPageUserInfoName>
                 <Styled.MyPageUserInfoEmail>{myPage?.email}</Styled.MyPageUserInfoEmail>

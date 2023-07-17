@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { SHADOW } from 'constants/Shadow';
+import filterArrow from 'assets/filterArrow.png';
 
 export const SelectBox = styled.div`
     position: relative;
@@ -8,11 +9,21 @@ export const SelectBox = styled.div`
     height: 4.5rem;
     border-radius: 1.6rem;
     border: 1px solid ${COLOR.WHITE};
-    background: url('filterArrow.png') calc(100% - 1.2rem) center no-repeat;
-    background-size: 1rem;
     background-color: ${COLOR.NAVY_100};
     box-shadow: ${SHADOW.CONTENTBOX_LG};
     cursor: pointer;
+
+    .arrow {
+        display: inline-block;
+        position: absolute;
+        top: 55%;
+        right: 1.3rem;
+        width: 1rem;
+        height: 1rem;
+        background: url(${filterArrow}) no-repeat;
+        background-size: 100%;
+        transform: translateY(-50%);
+    }
 
     &::after {
         content: '';
@@ -28,6 +39,11 @@ export const SelectBox = styled.div`
     &.active {
         .optionList {
             max-height: 50rem;
+            transition: all 0.25s ease-in;
+        }
+
+        .arrow {
+            transform: translateY(-50%) rotate(180deg);
             transition: all 0.25s ease-in;
         }
     }

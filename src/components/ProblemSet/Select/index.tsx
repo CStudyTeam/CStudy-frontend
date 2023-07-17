@@ -11,7 +11,10 @@ interface SelectProps {
 const Select = ({ name, handleActive, isActive, options, optionsValue }: SelectProps) => {
     return (
         <Styled.SelectBox onClick={handleActive} className={isActive ? 'active' : ''}>
-            <Styled.Button>{name}</Styled.Button>
+            <Styled.Button>
+                {name}
+                <span className="arrow" />
+            </Styled.Button>
             <Styled.OptionList className="optionList">
                 {options.map((option, index) => (
                     <Styled.OptionItem key={index} data-value={optionsValue[index]}>

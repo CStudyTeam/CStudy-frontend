@@ -1,3 +1,9 @@
+import GoldCrown_Png from 'assets/crown/gold_crown.png';
+import SilverCrown_Png from 'assets/crown/silver_crown.png';
+import BronzeCrown_Png from 'assets/crown/bronze_crown.png';
+import GoldCrown_Webp from 'assets/crown/gold_crown.webp';
+import SilverCrown_Webp from 'assets/crown/silver_crown.webp';
+import BronzeCrown_Webp from 'assets/crown/bronze_crown.webp';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { SHADOW } from 'constants/Shadow';
@@ -33,13 +39,34 @@ export const TBodyTd = styled.td<Props>`
     background-image: ${({ rank }) => {
         switch (rank) {
             case 1:
-                return 'url("gold_crown.png")';
+                return `url(${GoldCrown_Png})`;
             case 2:
-                return 'url("silver_crown.png")';
+                return `url(${SilverCrown_Png})`;
             case 3:
-                return 'url("bronze_crown.png")';
+                return `url(${BronzeCrown_Png})`;
         }
     }};
+    background-image: ${({ rank }) => {
+        switch (rank) {
+            case 1:
+                return `-webkit-image-set(url(${GoldCrown_Webp}) 1x), -webkit-image-set(url(${GoldCrown_Png}) 1x)`;
+            case 2:
+                return `-webkit-image-set(url(${SilverCrown_Webp}) 1x), -webkit-image-set(url(${SilverCrown_Png}) 1x)`;
+            case 3:
+                return `-webkit-image-set(url(${BronzeCrown_Webp}) 1x), -webkit-image-set(url(${BronzeCrown_Png}) 1x)`;
+        }
+    }};
+    background-image: ${({ rank }) => {
+        switch (rank) {
+            case 1:
+                return `image-set(url(${GoldCrown_Webp}) 1x), image-set(url(${GoldCrown_Png}) 1x)`;
+            case 2:
+                return `image-set(url(${SilverCrown_Webp}) 1x), image-set(url(${SilverCrown_Png}) 1x)`;
+            case 3:
+                return `image-set(url(${BronzeCrown_Webp}) 1x), image-set(url(${BronzeCrown_Png}) 1x)`;
+        }
+    }};
+
     background-size: ${({ rank }) => rank && '70%'};
     background-repeat: ${({ rank }) => rank && 'no-repeat'};
     background-position: ${({ rank }) => rank && 'center center'};

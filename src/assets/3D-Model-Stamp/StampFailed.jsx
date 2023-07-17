@@ -9,7 +9,7 @@ import { PropTypes } from 'prop-types';
 
 export default function StampFailed({ isAction, actionAnimations, animationTimeCheck }) {
     const group = useRef();
-    const gltf = useGLTF('/stampanimation_red.gltf');
+    const gltf = useGLTF('/stamp/stampanimation_red.gltf');
     const { animations } = gltf;
     const { actions, mixer } = useAnimations(animations, group);
 
@@ -48,7 +48,7 @@ export default function StampFailed({ isAction, actionAnimations, animationTimeC
     );
 }
 
-useGLTF.preload('/stampanimation_red.gltf');
+useGLTF.preload('/stamp/stampanimation_red.gltf');
 
 StampFailed.propTypes = {
     actionAnimations: PropTypes.func.isRequired,
