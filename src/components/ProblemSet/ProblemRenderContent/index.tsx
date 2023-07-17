@@ -6,7 +6,7 @@ import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface ProblemFormProps {
     problem: OneProblem;
-    register: UseFormRegister<FieldValues>;
+    register?: UseFormRegister<FieldValues>;
 }
 
 const ProblemRenderContent = ({ problem, register }: ProblemFormProps) => {

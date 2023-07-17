@@ -37,7 +37,7 @@ const ProblemRender = ({
             {children}
             <ResultImage isAnswer={isAnswer} isAction={isAction} timeCheck={timeCheck} />
             <ProblemRenderContent problem={problem} register={register} />
-            <ProblemRenderSubmit isAnswer={isAnswer} Answer={Answer} isLoading={isLoading} />
+            <ProblemRenderSubmit timeCheck={timeCheck} isAnswer={isAnswer} Answer={Answer} isLoading={isLoading} />
         </Styled.Form>
     );
 };

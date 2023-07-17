@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, lazy, Suspense } from 'react';
 import ContentContainer from 'components/@shared/ContentContainer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetOneProblem } from 'hooks/@query/problem/useGetOneProblem';
@@ -13,12 +13,10 @@ import ProblemFooter from 'components/ProblemSet/ProblemFooter';
 import { OneProblem } from 'types/api';
 import { UTIL } from 'constants/Util';
 import Button from 'components/@shared/Button';
-import { Canvas } from '@react-three/fiber';
-import * as Styled from './style';
-import { Color } from 'three';
-import StampSuccess from 'assets/3D-Model-Stamp/StampSuccess';
-import StampFailed from 'assets/3D-Model-Stamp/StampFailed';
 import useProblemAction from './../../hooks/Problem/useProblemAction';
+import LoadingSpinner from 'components/@shared/LoadingSpinner';
+
+const Stamp = lazy(() => import('components/ProblemSet/Stamp'));
 
 const Problem = () => {
     const { problemId } = useParams();
@@ -87,27 +85,17 @@ const Problem = () => {
                     timeCheck={timeCheck}
                 >
                     {isAction && (
-                        <Styled.Stamp>
-                            <Canvas>
-                                <directionalLight color={new Color(0xffffff)} intensity={2} position={[-1, 1, 1]} />
-                                {isAnswer ? (
-                                    <StampSuccess
-                                        actionAnimations={actionAnimations}
-                                        animationTimeCheck={animationTimeCheck}
-                                        isAction={isAction}
-                                    />
-                                ) : (
-                                    <StampFailed
-                                        actionAnimations={actionAnimations}
-                                        animationTimeCheck={animationTimeCheck}
-                                        isAction={isAction}
-                                    />
-                                )}
-                            </Canvas>
-                        </Styled.Stamp>
+                        <Suspense fallback={<LoadingSpinner />}>
+                            <Stamp
+                                isAnswer={isAnswer}
+                                isAction={isAction}
+                                actionAnimations={actionAnimations}
+                                animationTimeCheck={animationTimeCheck}
+                            />
+                        </Suspense>
                     )}
                 </ProblemForm>
-                {isAnswer && <ProblemFooter explain={oneProblem?.explain as string} />}
+                {timeCheck && isAnswer && <ProblemFooter explain={oneProblem?.explain as string} />}
             </ContentBodyWrapper>
         </ContentContainer>
     );

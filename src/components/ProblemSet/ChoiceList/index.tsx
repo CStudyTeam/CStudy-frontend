@@ -6,7 +6,7 @@ interface ChoiceListProps {
         number: number;
         content: string;
     }[];
-    register: UseFormRegister<FieldValues>;
+    register?: UseFormRegister<FieldValues>;
 }
 
 const ChoiceList = ({ choiceList, register }: ChoiceListProps) => {
@@ -16,7 +16,7 @@ const ChoiceList = ({ choiceList, register }: ChoiceListProps) => {
                 <Styled.ProblemOption key={number}>
                     <Styled.ProblemNumber
                         type="radio"
-                        {...register('choiceNumber')}
+                        {...(register && register('choiceNumber'))}
                         required
                         value={number}
                         data-count={number}
