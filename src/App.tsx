@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -10,7 +10,6 @@ import MyPage from 'pages/MyPage';
 import OAuthRedirect from 'pages/OAuthRedirect';
 import ProblemSet from 'pages/ProblemSet';
 import Problem from 'pages/Problem';
-import AdminRoot from 'pages/Admin/AdminRoot';
 import CreateProblem from 'pages/Admin/CreateProblem';
 import CreateContest from 'pages/Admin/CreateContest';
 import CreateWorkbook from 'pages/Admin/CreateWorkbook';
@@ -24,7 +23,6 @@ import SignUpModal from 'components/SignModal/SignUpModal';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 import WorkbookProblemAdd from 'pages/Admin/WorkbookProblemAdd';
-import { dummyData } from 'api/auth';
 import ContestDetail from 'pages/ContestDetail';
 import ContestProblemAdd from 'pages/Admin/ContestProblemAdd';
 import ContestProblem from 'pages/ContestProblem';
@@ -113,11 +111,6 @@ const router = createBrowserRouter([
 const App = () => {
     const loginModal = useLoginModal();
     const registerModal = useRegisterModal();
-
-    // 더미데이터
-    useEffect(() => {
-        // dummyData().then((res) => console.log(res));
-    }, []);
 
     return (
         <QueryClientProvider client={queryClient}>
