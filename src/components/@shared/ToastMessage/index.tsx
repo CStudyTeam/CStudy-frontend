@@ -1,6 +1,6 @@
 import React from 'react';
-import { BiSolidError } from 'react-icons/bi';
-import { AiFillCheckCircle } from 'react-icons/ai';
+import { BiError } from '@react-icons/all-files/bi/BiError';
+import { AiFillCheckCircle } from '@react-icons/all-files/ai/AiFillCheckCircle';
 import * as Styled from './style';
 import { Message } from 'provider/Toast';
 
@@ -11,7 +11,7 @@ interface ToastMessageProps {
 const ToastMessage = ({ messages }: ToastMessageProps) => {
     const getIcon = (type: string) => {
         if (type === 'success') return <AiFillCheckCircle size={20} color="white" />;
-        if (type === 'error') return <BiSolidError size={20} color="white" />;
+        if (type === 'error') return <BiError size={20} color="white" />;
     };
 
     return (

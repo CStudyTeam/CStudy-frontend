@@ -1,7 +1,7 @@
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Form, useNavigate } from 'react-router-dom';
 import Calendar from 'react-calendar';
-import { BsChevronDoubleRight } from 'react-icons/bs';
+import { BsChevronDoubleRight } from '@react-icons/all-files/bs/BsChevronDoubleRight';
 
 import { useState } from 'react';
 import ContentContainer from 'components/@shared/ContentContainer';

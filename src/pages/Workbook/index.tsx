@@ -7,7 +7,7 @@ import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Pagination from 'components/ProblemSet/Pagination';
 import { FieldValues, useForm } from 'react-hook-form';
 import useWorkbookFilter from 'hooks/Workbook/useWorkbookFilter';
-import { LuRefreshCw } from 'react-icons/lu';
+import { RiRefreshLine } from '@react-icons/all-files/ri/RiRefreshLine';
 import NoData from 'components/@shared/NoData';
 import WorkBookCards from 'components/Workbook/WorkbookCards';
 import { WorkbookList } from 'types/api';
@@ -40,7 +40,7 @@ const Workbook = () => {
                         검색
                     </Button>
                     <Button onClick={handleReset} className="ml xl revert">
-                        <LuRefreshCw
+                        <RiRefreshLine
                             size={20}
                             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                         />
