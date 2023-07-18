@@ -1,4 +1,3 @@
-import { Suspense, lazy } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -10,42 +9,32 @@ import SignUpModal from 'components/SignModal/SignUpModal';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import useRegisterModal from 'hooks/@zustand/useRegisterModal';
 import { checkAdminLoader, checkAuthLoader } from 'utils/auth';
-import LoadingSpinner from 'components/@shared/LoadingSpinner';
-
-const Main = lazy(() => import(/* webpackChunkName: "Main" */ 'pages/Main'));
-const Board = lazy(() => import(/* webpackChunkName: "Board" */ 'pages/Board'));
-const BoardRequestForm = lazy(() => import(/* webpackChunkName: "BoardRequestForm" */ 'pages/BoardRequestForm'));
-const BoardDetail = lazy(() => import(/* webpackChunkName: "BoardDetail" */ 'pages/BoardDetail'));
-const ProblemSet = lazy(() => import(/* webpackChunkName: "ProblemSet" */ 'pages/ProblemSet'));
-const Problem = lazy(() => import(/* webpackChunkName: "Problem" */ 'pages/Problem'));
-const CreateProblem = lazy(() => import(/* webpackChunkName: "CreateProblem" */ 'pages/Admin/CreateProblem'));
-const Workbook = lazy(() => import(/* webpackChunkName: "Workbook" */ 'pages/Workbook'));
-const CreateWorkbook = lazy(() => import(/* webpackChunkName: "CreateWorkbook" */ 'pages/Admin/CreateWorkbook'));
-const WorkbookQuestion = lazy(() => import(/* webpackChunkName: "WorkbookQuestion" */ 'pages/WorkbookQuestion'));
-const WorkbookProblemAdd = lazy(
-    () => import(/* webpackChunkName: "WorkbookProblemAdd" */ 'pages/Admin/WorkbookProblemAdd'),
-);
-const Contest = lazy(() => import(/* webpackChunkName: "Contest" */ 'pages/Contest'));
-const CreateContest = lazy(() => import(/* webpackChunkName: "CreateContest" */ 'pages/Admin/CreateContest'));
-const ContestDetail = lazy(() => import(/* webpackChunkName: "ContestDetail" */ 'pages/ContestDetail'));
-const ContestProblemAdd = lazy(
-    () => import(/* webpackChunkName: "ContestProblemAdd" */ 'pages/Admin/ContestProblemAdd'),
-);
-const ContestProblem = lazy(() => import(/* webpackChunkName: "ContestProblem" */ 'pages/ContestProblem'));
-const ContestResult = lazy(() => import(/* webpackChunkName: "ContestResult" */ 'pages/ContestResult'));
-const MembersRanks = lazy(() => import(/* webpackChunkName: "MembersRanks" */ 'pages/MembersRanks'));
-const MyPage = lazy(() => import(/* webpackChunkName: "MyPage" */ 'pages/MyPage'));
+import Main from 'pages/Main';
+import Problem from 'pages/Problem';
+import ContestDetail from 'pages/ContestDetail';
+import ContestProblemAdd from 'pages/Admin/ContestProblemAdd';
+import ContestProblem from 'pages/ContestProblem';
+import WorkbookQuestion from 'pages/WorkbookQuestion';
+import WorkbookProblemAdd from 'pages/Admin/WorkbookProblemAdd';
+import BoardRequestForm from 'pages/BoardRequestForm';
+import BoardDetail from 'pages/BoardDetail';
+import CreateProblem from 'pages/Admin/CreateProblem';
+import Board from 'pages/Board';
+import ProblemSet from 'pages/ProblemSet';
+import Workbook from 'pages/Workbook';
+import CreateWorkbook from 'pages/Admin/CreateWorkbook';
+import Contest from 'pages/Contest';
+import CreateContest from 'pages/Admin/CreateContest';
+import ContestResult from 'pages/ContestResult';
+import MembersRanks from 'pages/MembersRanks';
+import MyPage from 'pages/MyPage';
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: (
-            <Suspense fallback={<LoadingSpinner />}>
-                <RootLayout />
-            </Suspense>
-        ),
+        element: <RootLayout />,
         children: [
             {
                 index: true,
