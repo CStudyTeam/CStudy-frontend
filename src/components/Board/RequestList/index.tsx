@@ -25,10 +25,10 @@ const RequestList = ({ id, flag, title, description, memberName, createAt }: Req
         <Styled.Container>
             <Link to={`/board/${id}`} onClick={checkAndDisplayLoginModal}>
                 <Styled.Article>
-                    <div>
+                    <Styled.ArticleHeader>
                         <ApproveStatus flag={flag} />
                         <Styled.Title>{title}</Styled.Title>
-                    </div>
+                    </Styled.ArticleHeader>
                     <Styled.Content>{description}</Styled.Content>
                     <Styled.Detail>
                         <span>{memberName}</span>·<span>{createAt}</span>

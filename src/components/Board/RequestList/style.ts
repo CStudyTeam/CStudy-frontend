@@ -14,17 +14,26 @@ export const Article = styled.article`
     padding: 2.5rem;
 `;
 
+export const ArticleHeader = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
 export const Title = styled.span`
-    ${FONT.BOLD_20};
+    display: block;
     margin-left: 1rem;
+    ${FONT.BOLD_20};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 export const Content = styled.div`
+    margin-top: 1rem;
+    font-size: ${FONT.REGULAR_16};
     overflow: hidden;
     white-space: nowrap;
-    font-size: ${FONT.REGULAR_16};
     text-overflow: ellipsis;
-    margin-top: 1rem;
 `;
 
 export const Detail = styled.div`
