@@ -1,9 +1,9 @@
+import { memo } from 'react';
+import { FieldErrors, FieldValues, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 import { MyPage } from 'types/api';
 import MyPageUpdatePasswordField from '../MyPageUpdatePasswordField';
 import MyPageUserInfo from '../MyPageUserInfo';
 import * as Styled from './style';
-import { memo } from 'react';
-import { FieldErrors, FieldValues, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 
 interface MyPageMyInfoProps {
     isLoading: boolean;

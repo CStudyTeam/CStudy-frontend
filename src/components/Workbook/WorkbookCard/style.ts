@@ -1,3 +1,7 @@
+import styled from 'styled-components';
+import { COLOR } from 'constants/Color';
+import { FONT } from 'constants/Font';
+import { SHADOW } from 'constants/Shadow';
 import CardDefault_Png from 'assets/card/card-default.png';
 import CardDefault_Webp from 'assets/card/card-default.webp';
 import Java_Png from 'assets/card/java.png';
@@ -8,10 +12,6 @@ import OperatingSystem_Png from 'assets/card/operating_system.png';
 import OperatingSystem_Webp from 'assets/card/operating_system.webp';
 import Database_Png from 'assets/card/database.png';
 import Database_Webp from 'assets/card/database.webp';
-import { COLOR } from 'constants/Color';
-import { FONT } from 'constants/Font';
-import { SHADOW } from 'constants/Shadow';
-import styled from 'styled-components';
 
 export const WorkBookCard = styled.article`
     width: 24rem;

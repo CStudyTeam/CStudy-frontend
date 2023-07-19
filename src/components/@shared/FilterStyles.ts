@@ -1,5 +1,5 @@
-import { COLOR } from 'constants/Color';
 import styled from 'styled-components';
+import { COLOR } from 'constants/Color';
 
 export const Filter = styled.button`
     &:hover {

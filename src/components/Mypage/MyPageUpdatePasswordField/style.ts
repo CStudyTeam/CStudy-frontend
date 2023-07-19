@@ -1,5 +1,5 @@
-import { Field } from 'components/@shared/Input/style';
 import styled from 'styled-components';
+import { Field } from 'components/@shared/Input/style';
 
 export const MyPageUserInfo = styled.div`
     display: flex;

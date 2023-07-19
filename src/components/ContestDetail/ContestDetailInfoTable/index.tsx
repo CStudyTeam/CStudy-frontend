@@ -1,7 +1,7 @@
+import { memo } from 'react';
+import { Contest } from 'types/api';
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd, TBodyTh } from 'components/ProblemSet/Table/style';
-import { Contest } from 'types/api';
-import { memo } from 'react';
 
 interface ContestDetailInfoTableProps {
     contest: Contest;

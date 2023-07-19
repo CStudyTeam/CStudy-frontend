@@ -16,10 +16,6 @@ export const AdminWrapper = styled.div`
     }
 `;
 
-export const Title = styled.h2`
-    ${FONT.H4}
-`;
-
 export const Desc = styled.div`
     font-size: ${FONT.REGULAR_18};
 `;

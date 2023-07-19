@@ -1,5 +1,5 @@
-import { FONT } from 'constants/Font';
 import styled, { css } from 'styled-components';
+import { FONT } from 'constants/Font';
 import { COLOR } from 'constants/Color';
 import { SHADOW } from 'constants/Shadow';
 import { InputStyleProps } from 'types/style';

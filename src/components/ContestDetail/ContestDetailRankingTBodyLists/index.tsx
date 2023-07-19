@@ -1,6 +1,6 @@
+import { memo } from 'react';
 import { ContestRanking } from 'types/api';
 import ContestDetailRankingTBodyList from '../ContestDetailRankingTBodyList';
-import { memo } from 'react';
 
 interface ContestDetailRankingTBodyListsProps {
     contestRanking: ContestRanking;

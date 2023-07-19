@@ -1,5 +1,5 @@
-import Container from 'components/@shared/Container';
 import { Outlet } from 'react-router-dom';
+import Container from 'components/@shared/Container';
 
 const AdminRoot = () => {
     return (

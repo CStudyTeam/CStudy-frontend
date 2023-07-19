@@ -1,9 +1,10 @@
+import { useGetMembersRanks } from 'hooks/@query/members/useGetMembersRanks';
+import { MembersRanks as MembersRanksType } from 'types/api';
+
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import RankingList from 'components/Ranking/RankingList';
-import { useGetMembersRanks } from 'hooks/@query/members/useGetMembersRanks';
-import { MembersRanks as MembersRanksType } from 'types/api';
 
 const MembersRanks = () => {
     const membersRanks = useGetMembersRanks();

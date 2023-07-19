@@ -1,6 +1,6 @@
+import { memo } from 'react';
 import { Problem } from 'types/api';
 import ProblemTBodyContentTableList from '../ProblemTBodyContentTableList';
-import { memo } from 'react';
 
 interface ProblemTBodyContentTableListsProps {
     problemList: Problem;

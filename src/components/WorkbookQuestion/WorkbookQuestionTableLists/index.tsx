@@ -1,6 +1,6 @@
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import { WorkbookQuestionContent } from 'types/api';
 import WorkbookQuestionTableList from '../WorkbookQuestionTableList';
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface WorkbookQuestionTableListsProps {
     workbookContent: WorkbookQuestionContent[];

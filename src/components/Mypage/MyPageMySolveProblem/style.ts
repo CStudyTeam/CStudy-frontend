@@ -1,5 +1,5 @@
-import { FONT } from 'constants/Font';
 import styled from 'styled-components';
+import { FONT } from 'constants/Font';
 
 export const MyPageContentWrapper = styled.div`
     margin-top: 3.4rem;

@@ -1,13 +1,13 @@
+import styled from 'styled-components';
+import { COLOR } from 'constants/Color';
+import { FONT } from 'constants/Font';
+import { SHADOW } from 'constants/Shadow';
 import GoldCrown_Png from 'assets/crown/gold_crown.png';
 import SilverCrown_Png from 'assets/crown/silver_crown.png';
 import BronzeCrown_Png from 'assets/crown/bronze_crown.png';
 import GoldCrown_Webp from 'assets/crown/gold_crown.webp';
 import SilverCrown_Webp from 'assets/crown/silver_crown.webp';
 import BronzeCrown_Webp from 'assets/crown/bronze_crown.webp';
-import { COLOR } from 'constants/Color';
-import { FONT } from 'constants/Font';
-import { SHADOW } from 'constants/Shadow';
-import styled from 'styled-components';
 
 interface Props {
     white?: boolean;

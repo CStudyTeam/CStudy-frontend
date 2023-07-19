@@ -1,8 +1,9 @@
-import React from 'react';
-import { BiError } from '@react-icons/all-files/bi/BiError';
-import { AiFillCheckCircle } from '@react-icons/all-files/ai/AiFillCheckCircle';
-import * as Styled from './style';
 import { Message } from 'provider/Toast';
+
+import { AiFillCheckCircle } from '@react-icons/all-files/ai/AiFillCheckCircle';
+import { BiError } from '@react-icons/all-files/bi/BiError';
+
+import * as Styled from './style';
 
 interface ToastMessageProps {
     messages: Message[];

@@ -1,11 +1,11 @@
 import { PropsWithChildren, memo } from 'react';
 import { FieldValues, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
+import { OneProblem } from 'types/api';
 import ProblemRenderSubmit from '../ProblemRenderSubmit';
 import ProblemRenderContent from '../ProblemRenderContent';
 import ProblemRenderTitle from '../ProblemRenderTitle';
-import { OneProblem } from 'types/api';
-import * as Styled from './style';
 import ResultImage from 'components/@shared/ResultImage';
+import * as Styled from './style';
 
 interface ProblemRenderProps {
     problem: OneProblem;

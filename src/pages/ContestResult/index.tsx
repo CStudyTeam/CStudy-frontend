@@ -1,11 +1,12 @@
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import useGetContestResult from 'hooks/@query/contest/useGetContestResult';
+import { ContestResult as ContestResultType } from 'types/api';
+
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import QuizResult from 'components/Contest/QuizResult';
-import useGetContestResult from 'hooks/@query/contest/useGetContestResult';
 import Button from 'components/@shared/Button';
-import { ContestResult as ContestResultType } from 'types/api';
 
 const ContestResult = () => {
     const { contestId } = useParams();

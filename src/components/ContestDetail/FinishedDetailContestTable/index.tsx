@@ -1,8 +1,8 @@
-import Table from 'components/ProblemSet/Table';
-import * as Styled from './style';
-import { ProblemContent } from 'types/api';
-import FinishedDetailContestTBodyLists from '../FinishedDetailContestTBodyLists';
 import { memo } from 'react';
+import { ProblemContent } from 'types/api';
+import Table from 'components/ProblemSet/Table';
+import FinishedDetailContestTBodyLists from '../FinishedDetailContestTBodyLists';
+import * as Styled from './style';
 
 interface FinishedDetailContestTableProps {
     filterQuestion: ProblemContent[];

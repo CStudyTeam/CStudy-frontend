@@ -1,6 +1,6 @@
+import { memo } from 'react';
 import { RequestContent, ToggleRequestList } from 'types/api';
 import RequestTBodyContentTableList from '../RequestTBodyContentTableList';
-import { memo } from 'react';
 
 interface RequestTBodyContentTableListsProps {
     requestList: ToggleRequestList;

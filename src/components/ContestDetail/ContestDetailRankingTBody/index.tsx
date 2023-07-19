@@ -1,6 +1,6 @@
 import { ContestRanking } from 'types/api';
-import * as Styled from './style';
 import ContestDetailRankingTBodyLists from '../ContestDetailRankingTBodyLists';
+import * as Styled from './style';
 
 interface ContestDetailRankingTBodyProps {
     contestRanking: ContestRanking;

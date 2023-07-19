@@ -1,9 +1,9 @@
+import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
+import { Problem } from 'types/api';
 import Table from 'components/ProblemSet/Table';
 import ProblemTBodyContentTableLists from '../ProblemTBodyContentTableLists';
-import NoData from 'components/@shared/NoData';
-import { Problem } from 'types/api';
 import ProblemTBodyContentPagination from '../ProblemTBodyContentPagination';
-import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
+import NoData from 'components/@shared/NoData';
 
 interface ProblemTBodyContentProps {
     problemList: Problem;

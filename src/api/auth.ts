@@ -1,8 +1,8 @@
 import { instance } from 'api';
 import { FieldValues } from 'react-hook-form';
 import { SignInForm, SignUpForm } from 'types/Form';
-import { LoginResponse } from 'types/api';
 import { userStorage } from 'utils/userStorage';
+import { LoginResponse } from 'types/api';
 
 // 회원가입
 export const signUp = async (formData: SignUpForm) => {

@@ -1,8 +1,8 @@
+import { FieldErrors, FieldValues, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
 import { memo } from 'react';
 import Input from 'components/@shared/Input';
-import * as Styled from './style';
 import Button from 'components/@shared/Button';
-import { FieldErrors, FieldValues, SubmitHandler, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form';
+import * as Styled from './style';
 
 interface MyPageUpdatePasswordFieldProps {
     errors: FieldErrors<FieldValues>;

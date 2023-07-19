@@ -1,6 +1,5 @@
-import React from 'react';
-import * as Styled from './style';
 import { ContestResult } from 'types/api';
+import * as Styled from './style';
 
 interface QuizResultProps {
     testResultData: ContestResult;

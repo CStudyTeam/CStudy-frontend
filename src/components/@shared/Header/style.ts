@@ -39,15 +39,6 @@ export const NavItem = styled.li`
     }
 `;
 
-export const ContestCategory = styled.ul`
-    display: none;
-    position: absolute;
-
-    & > li {
-        margin-top: 1rem;
-    }
-`;
-
 export const Sign = styled.div`
     display: flex;
     padding-right: 1.8rem;

@@ -1,8 +1,8 @@
+import { memo } from 'react';
 import { ToggleRequestList } from 'types/api';
+import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
 import RequestTBodyContent from '../RequestTBodyContent';
 import * as Styled from './style';
-import { memo } from 'react';
-import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
 
 interface MyPageMyBoardProps {
     requestList: ToggleRequestList;

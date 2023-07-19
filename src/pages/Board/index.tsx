@@ -1,12 +1,13 @@
-import * as Styled from './style';
+import useBoardFilter from 'hooks/Board/useBoardFilter';
+import useGetToggleRequestList from 'hooks/@query/board/useGetRequestList';
+import { ToggleRequestList } from 'types/api';
+
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import RequestLists from 'components/Board/RequestLists';
-import useBoardFilter from 'hooks/Board/useBoardFilter';
 import LoginSwitchButton from 'components/Board/LoginSwitchButton';
-import useGetToggleRequestList from 'hooks/@query/board/useGetRequestList';
-import { ToggleRequestList } from 'types/api';
+import * as Styled from './style';
 
 const Board = () => {
     const { boardFilter, handlePage, handleToggle, isActive } = useBoardFilter();

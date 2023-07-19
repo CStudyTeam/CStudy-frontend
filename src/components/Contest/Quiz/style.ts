@@ -1,8 +1,8 @@
+import styled from 'styled-components';
+import { AdminInputStyleProps } from 'types/style';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { SHADOW } from 'constants/Shadow';
-import styled from 'styled-components';
-import { AdminInputStyleProps } from 'types/style';
 
 export const ContestProblemDesc = styled.h3`
     ${FONT.H3}

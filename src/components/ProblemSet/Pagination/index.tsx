@@ -1,6 +1,6 @@
-import * as Styled from './style';
-import usePagination from '../../../hooks/ProblemSet/usePagination';
 import { PaginationProps } from 'types/problem';
+import usePagination from '../../../hooks/ProblemSet/usePagination';
+import * as Styled from './style';
 
 const Pagination = ({ totalPages, handlePage, page, white }: PaginationProps) => {
     const { currentPage, handlePrevPageGroupClick, handleNextPageGroupClick, paginationButtons, totalGroups } =

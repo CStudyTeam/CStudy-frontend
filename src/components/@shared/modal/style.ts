@@ -1,4 +1,3 @@
-import { COLOR } from 'constants/Color';
 import styled from 'styled-components';
 
 export const Dimmer = styled.div`

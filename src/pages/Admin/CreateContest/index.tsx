@@ -2,22 +2,22 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Form, useNavigate } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import { BsChevronDoubleRight } from '@react-icons/all-files/bs/BsChevronDoubleRight';
-
 import { useState } from 'react';
+
+import { useContestSet } from 'hooks/@query/contest/useContestSet';
+import formatDate from 'utils/formatDate';
+import { COLOR } from 'constants/Color';
+import { ContestSetForm } from 'types/Form';
+
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Button from 'components/@shared/Button';
 import AdminInput from 'components/@shared/Admin/AdminInput';
+import FormSection from 'components/@shared/Admin/FormSection';
+import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
+import { FormBody } from 'components/@shared/Admin/FormBody/style';
 
 import * as Styled from './style';
-import { FONT } from 'constants/Font';
-import { COLOR } from 'constants/Color';
-import { FormBody } from 'components/@shared/Admin/FormBody/style';
-import FormSection from 'components/@shared/Admin/FormSection';
-import { useContestSet } from 'hooks/@query/contest/useContestSet';
-import { ContestSetForm } from 'types/Form';
-import formatDate from 'utils/formatDate';
-import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 
 const CreateContest = () => {
     const navigate = useNavigate();

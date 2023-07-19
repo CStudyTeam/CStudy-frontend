@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react';
-import * as Styled from './style';
 import Contents from 'components/@main/Contents';
 import Skeleton from 'components/@shared/Skeleton';
+import * as Styled from './style';
 
 const Banner = lazy(() => import(/* webpackChunkName: "Banner" */ 'components/@main/Banner'));
 

@@ -1,9 +1,9 @@
+import { memo } from 'react';
+import { ToggleRequestList } from 'types/api';
 import RequestList from '../RequestList';
 import Pagination from 'components/ProblemSet/Pagination';
-import * as Styled from './style';
 import NoData from 'components/@shared/NoData';
-import { ToggleRequestList } from 'types/api';
-import { memo } from 'react';
+import * as Styled from './style';
 
 interface RequestListsProps {
     requestList: ToggleRequestList;

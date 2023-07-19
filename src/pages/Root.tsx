@@ -1,7 +1,6 @@
-import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Container from 'components/@shared/Container';
 import Header from '../components/@shared/Header';
-import { Outlet } from 'react-router-dom';
 import Footer from 'components/@shared/Footer';
 
 const RootLayout = () => {

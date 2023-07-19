@@ -1,11 +1,5 @@
-import { COLOR } from 'constants/Color';
-import { FONT } from 'constants/Font';
 import styled from 'styled-components';
-
-export const PageTitle = styled.div`
-    ${FONT.H4};
-    margin-top: 8rem;
-`;
+import { COLOR } from 'constants/Color';
 
 export const Wrapper = styled.div`
     display: flex;

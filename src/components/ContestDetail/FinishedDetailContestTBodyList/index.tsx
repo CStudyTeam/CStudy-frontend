@@ -1,6 +1,6 @@
-import { TBodyTd } from 'components/ProblemSet/Table/style';
 import { Link } from 'react-router-dom';
 import { ProblemList } from 'types/problem';
+import { TBodyTd } from 'components/ProblemSet/Table/style';
 
 interface FinishedDetailContestTBodyListProps {
     question: ProblemList;

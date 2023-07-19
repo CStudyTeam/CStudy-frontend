@@ -1,10 +1,10 @@
-import * as Styled from './style';
-import SignModalFrame from './Frame';
 import { useForm } from 'react-hook-form';
-import { SignUpForm } from 'types/Form';
 import { useSignUp } from 'hooks/@query/useSignUp';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
+import { SignUpForm } from 'types/Form';
+import SignModalFrame from './Frame';
 import Button from 'components/@shared/Button';
+import * as Styled from './style';
 
 const SignUpModal = ({ closeSignUpModal }: { closeSignUpModal: VoidFunction }) => {
     const {

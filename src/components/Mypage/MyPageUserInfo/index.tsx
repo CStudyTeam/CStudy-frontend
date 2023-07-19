@@ -1,9 +1,9 @@
-import Button from 'components/@shared/Button';
-import * as Styled from './style';
-import { MyPage } from 'types/api';
 import { memo } from 'react';
+import { MyPage } from 'types/api';
+import Button from 'components/@shared/Button';
 import Profile_Jpg from 'assets/profile/basic_profile.jpg';
 import Profile_Webp from 'assets/profile/basic_profile.webp';
+import * as Styled from './style';
 
 interface MyPageUserInfoProps {
     myPage: MyPage;

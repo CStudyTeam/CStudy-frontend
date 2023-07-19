@@ -1,9 +1,9 @@
-import { TBodyTd } from 'components/ProblemSet/Table/style';
+import { Link } from 'react-router-dom';
+import { ProblemContent } from 'types/api';
 import { COLOR } from 'constants/Color';
 import { AiFillCheckCircle } from '@react-icons/all-files/ai/AiFillCheckCircle';
 import { BiError } from '@react-icons/all-files/bi/BiError';
-import { Link } from 'react-router-dom';
-import { ProblemContent } from 'types/api';
+import { TBodyTd } from 'components/ProblemSet/Table/style';
 
 interface ProblemTBodyContentTableListProps {
     problem: ProblemContent;

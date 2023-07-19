@@ -1,8 +1,8 @@
+import { memo } from 'react';
+import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
 import { Problem } from 'types/api';
 import ProblemTBodyContent from '../ProblemTBodyContent';
 import * as Styled from './style';
-import { memo } from 'react';
-import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
 
 interface MyPageMySolveProblemProps {
     problemList: Problem;

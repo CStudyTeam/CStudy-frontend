@@ -1,6 +1,6 @@
+import { PropsWithChildren, memo } from 'react';
 import FormContentHeader from '../FormContentHeader';
 import * as Styled from './style';
-import { PropsWithChildren, memo } from 'react';
 
 interface FormSectionProps {
     title: string;

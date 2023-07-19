@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import * as Styled from './style';
+import { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
+
 import { Model } from 'assets/3D-Model/Earth-ver2';
-import { Link } from 'react-router-dom';
-import Button from 'components/@shared/Button';
-import { COLOR } from 'constants/Color';
 import CanvasEffect from '../CanvasEffect';
-import { FONT } from 'constants/Font';
 import StyleLink from 'components/@shared/StyleLink';
+
+import * as Styled from './style';
 
 const Banner = () => {
     const [isModelLoaded, setIsModelLoaded] = useState(false);

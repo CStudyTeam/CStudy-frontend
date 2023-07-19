@@ -1,12 +1,13 @@
-import React from 'react';
-import * as Styled from './style';
 import StyleLink from 'components/@shared/StyleLink';
+
 import contest_Png from 'assets/banner/contest.png';
 import contest_Webp from 'assets/banner/contest.webp';
 import notice_Png from 'assets/banner/notice.png';
 import notice_Webp from 'assets/banner/notice.webp';
 import ranking_Png from 'assets/banner/ranking.png';
 import ranking_Webp from 'assets/banner/ranking.webp';
+
+import * as Styled from './style';
 
 const Contents = () => {
     return (

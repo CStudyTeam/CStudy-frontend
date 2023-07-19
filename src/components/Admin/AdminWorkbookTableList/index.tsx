@@ -1,7 +1,7 @@
-import AdminInput from 'components/@shared/Admin/AdminInput';
-import { TBodyTd } from 'components/ProblemSet/Table/style';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import AdminInput from 'components/@shared/Admin/AdminInput';
 import { ProblemContent } from 'types/api';
+import { TBodyTd } from 'components/ProblemSet/Table/style';
 
 interface AdminWorkbookTableListProps {
     problem: ProblemContent;

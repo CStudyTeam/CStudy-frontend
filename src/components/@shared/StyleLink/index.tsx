@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import * as Styled from './style';
 import { LinkProps } from 'react-router-dom';
+import * as Styled from './style';
 
 const StyleLink = ({ children, ...rest }: PropsWithChildren<LinkProps>) => {
     return <Styled.StyleLink {...rest}>{children}</Styled.StyleLink>;

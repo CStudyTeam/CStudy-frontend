@@ -1,9 +1,9 @@
+import { memo } from 'react';
+import { ContestMyRanking, ContestRanking } from 'types/api';
 import Pagination from 'components/ProblemSet/Pagination';
 import ContestDetailRankingTHead from '../ContestDetailRankingTHead';
 import ContestDetailRankingTBody from '../ContestDetailRankingTBody';
 import * as Styled from './style';
-import { ContestMyRanking, ContestRanking } from 'types/api';
-import { memo } from 'react';
 
 interface ContestDetailRankingTableProps {
     contestRanking: ContestRanking;

@@ -1,5 +1,5 @@
-import * as Styled from './style';
 import { PropsWithChildren } from 'react';
+import * as Styled from './style';
 
 interface ContentBodyWrapper {
     blue?: boolean;

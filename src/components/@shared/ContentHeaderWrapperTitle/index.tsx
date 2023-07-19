@@ -1,7 +1,9 @@
 import { memo } from 'react';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
-import * as Styled from './style';
+
 import Input from '../Input';
+
+import * as Styled from './style';
 
 interface ContentHeaderWrapperTitleProps {
     isActive: boolean;

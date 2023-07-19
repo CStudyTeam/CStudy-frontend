@@ -1,7 +1,7 @@
-import Pagination from 'components/ProblemSet/Pagination';
-import * as Styled from './style';
 import { ToggleRequestList } from 'types/api';
 import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
+import Pagination from 'components/ProblemSet/Pagination';
+import * as Styled from './style';
 
 interface RequestTBodyContentPaginationProps {
     requestList: ToggleRequestList;

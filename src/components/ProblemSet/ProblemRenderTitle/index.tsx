@@ -1,6 +1,6 @@
+import { memo } from 'react';
 import { OneProblem } from 'types/api';
 import * as Styled from './style';
-import { memo } from 'react';
 
 interface ProblemRenderTitleProps {
     problem: OneProblem;

@@ -27,7 +27,6 @@ instance.interceptors.response.use(
     },
     async (error) => {
         const { config, response } = error;
-        console.log(error);
         if (response.data.code == 401) {
             const originalRequest = config;
             const tokens = getUserTokens();

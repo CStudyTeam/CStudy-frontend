@@ -1,8 +1,8 @@
-import StampSuccess from 'assets/3D-Model-Stamp/StampSuccess';
-import * as Styled from './style';
-import StampFailed from 'assets/3D-Model-Stamp/StampFailed';
 import { Canvas } from '@react-three/fiber';
 import { Color } from 'three';
+import StampSuccess from 'assets/3D-Model-Stamp/StampSuccess';
+import StampFailed from 'assets/3D-Model-Stamp/StampFailed';
+import * as Styled from './style';
 
 interface StampProps {
     isAnswer: boolean;

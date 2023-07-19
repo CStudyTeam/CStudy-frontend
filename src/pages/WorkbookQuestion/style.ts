@@ -1,6 +1,5 @@
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
-import { SHADOW } from 'constants/Shadow';
 import styled from 'styled-components';
 
 export const AdminWrapper = styled.div`

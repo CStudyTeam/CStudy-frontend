@@ -1,7 +1,7 @@
+import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { SHADOW } from 'constants/Shadow';
 import { ToastTheme } from 'constants/ToastTheme';
-import styled from 'styled-components';
 
 interface Props {
     type: string;

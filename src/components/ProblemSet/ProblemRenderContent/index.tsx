@@ -1,8 +1,8 @@
 import { memo } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 import { OneProblem } from 'types/api';
 import ChoiceList from '../ChoiceList';
 import * as Styled from './style';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface ProblemFormProps {
     problem: OneProblem;

@@ -1,7 +1,7 @@
-import ApproveStatus from 'components/@shared/Status';
-import { TBodyTd } from 'components/ProblemSet/Table/style';
 import { Link } from 'react-router-dom';
 import { RequestContent } from 'types/api';
+import ApproveStatus from 'components/@shared/Status';
+import { TBodyTd } from 'components/ProblemSet/Table/style';
 
 interface RequestTBodyContentTableListProps {
     request: RequestContent;

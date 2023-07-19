@@ -1,7 +1,6 @@
 import Modal from 'components/@shared/modal';
-import * as Styled from './style';
 import Button from 'components/@shared/Button';
-import { COLOR } from 'constants/Color';
+import * as Styled from './style';
 
 interface ConfirmModalProps {
     title: string;

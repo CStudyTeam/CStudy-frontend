@@ -1,18 +1,20 @@
 import { useCallback, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+
+import { useMixContestDetailAllData } from 'hooks/@query/@GETmixed/useMixContestDetailAllData';
+import { isAdmin } from 'utils/auth';
+import { Contest, ContestMyRanking, ContestRanking, ProblemContent } from 'types/api';
+
 import ContentContainer from 'components/@shared/ContentContainer';
-import * as Styled from './style';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Button from 'components/@shared/Button';
-import { isAdmin } from 'utils/auth';
 import AdminContestAddDeleteProblem from 'components/ContestDetail/AdminContestAddDeleteProblem';
-import { Contest, ContestMyRanking, ContestRanking, ProblemContent } from 'types/api';
 import ContestDetailInfoHeader from 'components/ContestDetail/ContestDetailInfoHeader';
 import FinishedDetailContestTable from 'components/ContestDetail/FinishedDetailContestTable';
 import ContestDetailInfoTable from 'components/ContestDetail/ContestDetailInfoTable';
 import ContestDetailRankingTable from 'components/ContestDetail/ContestDetailRankingTable';
-import { useMixContestDetailAllData } from 'hooks/@query/@GETmixed/useMixContestDetailAllData';
+import * as Styled from './style';
 
 const ContestDetail = () => {
     const { contestId } = useParams();

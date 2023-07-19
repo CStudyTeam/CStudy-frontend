@@ -1,13 +1,15 @@
-import Button from 'components/@shared/Button';
-import * as Styled from './style';
 import { useState, useEffect } from 'react';
-import { useForm, useFieldArray, SubmitHandler, FieldValues } from 'react-hook-form';
-import formatDate from 'utils/formatDate';
 import { useParams } from 'react-router-dom';
+import { useForm, useFieldArray, SubmitHandler, FieldValues } from 'react-hook-form';
+
 import { useSubmitContest } from './../../../hooks/@query/contest/useSubmitContest';
 import debounce from 'utils/debounce';
+import formatDate from 'utils/formatDate';
 import { UseSubmitContestProps } from 'types/contest';
 import { ContestProblem } from 'types/api';
+
+import Button from 'components/@shared/Button';
+import * as Styled from './style';
 
 interface QuizProps {
     quizData: ContestProblem[];
@@ -55,7 +57,6 @@ const Quiz = ({ quizData, competitionId }: QuizProps) => {
     const SubmitContest = useSubmitContest({ handleIsLoading, contestId } as UseSubmitContestProps);
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        console.log(data);
         SubmitContest(data);
     };
 

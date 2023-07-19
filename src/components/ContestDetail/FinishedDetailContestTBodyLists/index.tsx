@@ -1,7 +1,7 @@
-import { ProblemList } from 'types/problem';
-import FinishedDetailContestTBodyList from '../FinishedDetailContestTBodyList';
-import { ProblemContent } from 'types/api';
 import { memo } from 'react';
+import { ProblemList } from 'types/problem';
+import { ProblemContent } from 'types/api';
+import FinishedDetailContestTBodyList from '../FinishedDetailContestTBodyList';
 
 interface FinishedDetailContestTBodyListsProps {
     filterQuestion: ProblemContent[];

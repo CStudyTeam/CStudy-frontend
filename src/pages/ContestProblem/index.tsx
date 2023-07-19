@@ -1,10 +1,11 @@
-import ContentContainer from 'components/@shared/ContentContainer';
 import { useParams } from 'react-router-dom';
+import useGetContestProblem from 'hooks/@query/contest/useGetContestProblem';
+import { ContestProblem as ContestProblemType } from 'types/api';
+
+import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
-import useGetContestProblem from 'hooks/@query/contest/useGetContestProblem';
 import Quiz from 'components/Contest/Quiz';
-import { ContestProblem as ContestProblemType } from 'types/api';
 
 const ContestProblem = () => {
     const { contestId } = useParams();

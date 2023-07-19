@@ -1,7 +1,7 @@
+import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { SHADOW } from 'constants/Shadow';
-import styled from 'styled-components';
 
 export const MyPageLabel = styled.h3`
     ${FONT.H2}

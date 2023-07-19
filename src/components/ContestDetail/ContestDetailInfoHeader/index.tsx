@@ -1,9 +1,9 @@
+import useJoinContestModal from 'hooks/Contest/useJoinContestModal';
+import { isLogin } from 'utils/auth';
 import StyleLink from 'components/@shared/StyleLink';
 import Button from 'components/@shared/Button';
-import { ButtonWrapper, ContestInfoHeaderWrapper, Label } from 'pages/ContestDetail/style';
 import ConfirmModal from 'components/Contest/ConfirmModal';
-import { isLogin } from 'utils/auth';
-import useJoinContestModal from 'hooks/Contest/useJoinContestModal';
+import * as Styled from './style';
 
 interface ContestDetailInfoHeaderProps {
     myRanking: boolean;
@@ -26,9 +26,9 @@ const ContestDetailInfoHeader = ({
     });
     return (
         <>
-            <ContestInfoHeaderWrapper>
-                <Label>대회정보</Label>
-                <ButtonWrapper>
+            <Styled.ContestInfoHeaderWrapper>
+                <Styled.Label>대회정보</Styled.Label>
+                <Styled.ButtonWrapper>
                     {isLogin() && (
                         <StyleLink to="contestresult" state={myRanking} className="xl green style">
                             나의 대회 결과보기
@@ -39,8 +39,8 @@ const ContestDetailInfoHeader = ({
                             대회 참여하기
                         </Button>
                     )}
-                </ButtonWrapper>
-            </ContestInfoHeaderWrapper>
+                </Styled.ButtonWrapper>
+            </Styled.ContestInfoHeaderWrapper>
             <ConfirmModal
                 title="대회에 참가하시겠습니까?"
                 isOpen={isModalOpen}

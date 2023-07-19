@@ -1,6 +1,6 @@
-import * as Styled from './style';
 import GoogleLogoImage from 'assets/Google_Logo.png';
 import { IoMdClose } from '@react-icons/all-files/io/IoMdClose';
+import * as Styled from './style';
 
 interface Props {
     children: JSX.Element;

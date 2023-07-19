@@ -1,7 +1,7 @@
+import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { FONT } from 'constants/Font';
 import { SHADOW } from 'constants/Shadow';
-import styled from 'styled-components';
 
 export const ContestRanking = styled.div`
     width: 100%;
@@ -24,7 +24,6 @@ export const RankingTitle = styled.h4`
         color: ${COLOR.GRAY_200};
     }
 `;
-// -----------------
 
 export const StyledTable = styled.table`
     width: 100%;

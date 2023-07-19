@@ -1,8 +1,8 @@
-import Pagination from 'components/ProblemSet/Pagination';
-
-import * as Styled from './style';
-import { Problem } from 'types/api';
 import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
+import { Problem } from 'types/api';
+
+import Pagination from 'components/ProblemSet/Pagination';
+import * as Styled from './style';
 
 interface ProblemTBodyContentPaginationProps {
     problemList: Problem;

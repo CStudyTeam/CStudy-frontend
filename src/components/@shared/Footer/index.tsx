@@ -1,5 +1,5 @@
-import { ImGithub } from '@react-icons/all-files/im/ImGithub';
 import { memo } from 'react';
+import { ImGithub } from '@react-icons/all-files/im/ImGithub';
 import * as Styled from './style';
 
 const Footer = () => {

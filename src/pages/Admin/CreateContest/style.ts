@@ -1,4 +1,3 @@
-import { COLOR } from 'constants/Color';
 import styled from 'styled-components';
 import { FONT } from 'constants/Font';
 import { SHADOW } from 'constants/Shadow';

@@ -1,15 +1,14 @@
-import Button from 'components/@shared/Button';
-import * as Styled from './style';
-import { COLOR } from 'constants/Color';
-import { FONT } from 'constants/Font';
+import { useNavigate } from 'react-router-dom';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useCreateRequest } from 'hooks/@query/board/useCreateRequest';
+
+import Button from 'components/@shared/Button';
 import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Input from 'components/@shared/Input';
 import TextArea from 'components/@shared/TextArea';
-import { useNavigate } from 'react-router-dom';
+import * as Styled from './style';
 
 const BoardRequestForm = () => {
     const navigate = useNavigate();

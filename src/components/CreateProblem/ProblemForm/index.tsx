@@ -4,8 +4,8 @@ import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import FormSection from 'components/@shared/Admin/FormSection';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 
-import * as Styled from './style';
 import { FormBody } from './../../@shared/Admin/FormBody/style';
+import * as Styled from './style';
 
 interface ProblemFormProps {
     isLoading?: boolean;

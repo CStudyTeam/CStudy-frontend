@@ -1,5 +1,5 @@
-import * as Styled from './style';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import * as Styled from './style';
 
 interface AdminInputProps {
     id?: string;

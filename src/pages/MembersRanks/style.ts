@@ -1,5 +1,5 @@
-import { FONT } from 'constants/Font';
 import styled from 'styled-components';
+import { FONT } from 'constants/Font';
 
 export const Header = styled.div`
     display: flex;

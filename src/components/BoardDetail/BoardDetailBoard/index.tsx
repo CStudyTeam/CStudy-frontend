@@ -1,6 +1,6 @@
 import ApproveStatus from 'components/@shared/Status';
-import * as Styled from './style';
 import { RequestDetail } from 'types/api';
+import * as Styled from './style';
 
 interface BoardDetailBoardProps {
     request: RequestDetail;
