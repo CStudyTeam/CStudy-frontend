@@ -21,7 +21,7 @@ const SignModalFrame = ({ children, closeModalHandler }: Props) => {
                 <Styled.Hr></Styled.Hr>
             </Styled.Line>
             <Styled.SocialLogin>
-                <a href="http://localhost:8080/oauth2/authorization/google">
+                <a href="http://localhost:8080/oauth2/authorization/google" rel="noopener noreferrer">
                     <Styled.GoogleLogo src={GoogleLogoImage} alt="구글로 로그인" />
                 </a>
             </Styled.SocialLogin>
