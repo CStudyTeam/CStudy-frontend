@@ -1,5 +1,6 @@
 import * as Styled from './style';
-import Logo from 'assets/Logo.png';
+import Logo_Png from 'assets/Logo.png';
+import Logo_Webp from 'assets/Logo.webp';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
 import { isLogin } from 'utils/auth';
@@ -25,7 +26,11 @@ const Header = () => {
             <Styled.Wrapper>
                 <Styled.LogoWrap>
                     <Link to="/">
-                        <img src={Logo} alt="CStudy 로고" />
+                        <picture>
+                            <source srcSet={Logo_Webp} type="image/webp" />
+                            <source srcSet={Logo_Png} type="image/png" />
+                            <img src={Logo_Png} alt="CStudy 로고" />
+                        </picture>
                     </Link>
                 </Styled.LogoWrap>
                 <Styled.Nav>

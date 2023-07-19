@@ -34,6 +34,9 @@ export const Title = styled.h2`
 
 export const ContentsImg = styled.img`
     padding-top: 3rem;
+    width: 55rem;
+    height: 55rem;
+    border-radius: 5rem;
 `;
 
 export const ContentsItem = styled.div`

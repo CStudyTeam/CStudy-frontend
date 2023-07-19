@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import * as Styled from './style';
 import useLoginModal from 'hooks/@zustand/useLoginModal';
 import { isLogin } from 'utils/auth';
+import { useCallback } from 'react';
 
 interface WorkBookCardProps {
     id: number;
@@ -18,12 +19,24 @@ const WorkBookCard = ({ id, title, createdAt, description }: WorkBookCardProps) 
             loginModal.onOpen();
         }
     };
+
+    const getCategory = useCallback((title: string) => {
+        const categories = ['자바', '데이터베이스', '네트워크', '운영체제'];
+
+        for (const category of categories) {
+            if (title.includes(category)) {
+                return category;
+            }
+        }
+        return '';
+    }, []);
+
     return (
         <Styled.WorkBookCard>
             <Link to={`${id}`} onClick={checkAndDisplayLoginModal}>
                 <Styled.Title>{title}</Styled.Title>
                 <Styled.Time>{createdAt}</Styled.Time>
-                <Styled.Img />
+                <Styled.Img category={getCategory(title)} />
                 <Styled.Description>{description}</Styled.Description>
             </Link>
         </Styled.WorkBookCard>

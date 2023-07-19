@@ -1,6 +1,12 @@
 import React from 'react';
 import * as Styled from './style';
 import StyleLink from 'components/@shared/StyleLink';
+import contest_Png from 'assets/banner/contest.png';
+import contest_Webp from 'assets/banner/contest.webp';
+import notice_Png from 'assets/banner/notice.png';
+import notice_Webp from 'assets/banner/notice.webp';
+import ranking_Png from 'assets/banner/ranking.png';
+import ranking_Webp from 'assets/banner/ranking.webp';
 
 const Contents = () => {
     return (
@@ -13,7 +19,11 @@ const Contents = () => {
                             <br />
                             해외 전공서적으로 공부하시나요?
                         </Styled.Title>
-                        <Styled.ContentsImg src="https://via.placeholder.com/543x320" alt="컨텐츠 이미지" />
+                        <picture>
+                            <source srcSet={notice_Webp} type="image/webp" />
+                            <source srcSet={notice_Png} type="image/png" />
+                            <Styled.ContentsImg src={notice_Png} alt="컨텐츠 이미지" />
+                        </picture>
                     </Styled.ContentsTitleImg>
                     <Styled.ContentsItem>
                         <Styled.ContentsTexts>
@@ -73,7 +83,11 @@ const Contents = () => {
                             <br />
                             공부한것에 대한 확신이 없으신가요?
                         </Styled.Title>
-                        <Styled.ContentsImg src="https://via.placeholder.com/543x320" alt="컨텐츠 이미지" />
+                        <picture>
+                            <source srcSet={contest_Webp} type="image/webp" />
+                            <source srcSet={contest_Png} type="image/png" />
+                            <Styled.ContentsImg src={contest_Png} alt="컨텐츠 이미지" />
+                        </picture>
                     </Styled.ContentsTitleImg>
                 </Styled.Wrapper>
             </Styled.Section>
@@ -81,7 +95,11 @@ const Contents = () => {
                 <Styled.Wrapper>
                     <Styled.ContentsTitleImg>
                         <Styled.Title>점수와 랭킹을 올려 랭커에 도전 하세요!</Styled.Title>
-                        <Styled.ContentsImg src="https://via.placeholder.com/543x320" alt="컨텐츠 이미지" />
+                        <picture>
+                            <source srcSet={ranking_Webp} type="image/webp" />
+                            <source srcSet={ranking_Png} type="image/png" />
+                            <Styled.ContentsImg src={ranking_Png} alt="컨텐츠 이미지" />
+                        </picture>
                     </Styled.ContentsTitleImg>
                     <Styled.ContentsItem>
                         <Styled.ContentsTexts>

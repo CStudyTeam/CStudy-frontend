@@ -37,34 +37,24 @@ export const THeadTh = styled.th<Props>`
 export const TBodyTd = styled.td<Props>`
     padding: ${({ narrow }) => (narrow ? '0' : '3rem 0')};
     background-image: ${({ rank }) => {
+        let imageUrl, webpUrl;
+
         switch (rank) {
             case 1:
-                return `url(${GoldCrown_Png})`;
+                imageUrl = GoldCrown_Png;
+                webpUrl = GoldCrown_Webp;
+                break;
             case 2:
-                return `url(${SilverCrown_Png})`;
+                imageUrl = SilverCrown_Png;
+                webpUrl = SilverCrown_Webp;
+                break;
             case 3:
-                return `url(${BronzeCrown_Png})`;
+                imageUrl = BronzeCrown_Png;
+                webpUrl = BronzeCrown_Webp;
+                break;
         }
-    }};
-    background-image: ${({ rank }) => {
-        switch (rank) {
-            case 1:
-                return `-webkit-image-set(url(${GoldCrown_Webp}) 1x), -webkit-image-set(url(${GoldCrown_Png}) 1x)`;
-            case 2:
-                return `-webkit-image-set(url(${SilverCrown_Webp}) 1x), -webkit-image-set(url(${SilverCrown_Png}) 1x)`;
-            case 3:
-                return `-webkit-image-set(url(${BronzeCrown_Webp}) 1x), -webkit-image-set(url(${BronzeCrown_Png}) 1x)`;
-        }
-    }};
-    background-image: ${({ rank }) => {
-        switch (rank) {
-            case 1:
-                return `image-set(url(${GoldCrown_Webp}) 1x), image-set(url(${GoldCrown_Png}) 1x)`;
-            case 2:
-                return `image-set(url(${SilverCrown_Webp}) 1x), image-set(url(${SilverCrown_Png}) 1x)`;
-            case 3:
-                return `image-set(url(${BronzeCrown_Webp}) 1x), image-set(url(${BronzeCrown_Png}) 1x)`;
-        }
+
+        return `-webkit-image-set(url(${webpUrl}) 1x), -webkit-image-set(url(${imageUrl}) 1x), image-set(url(${webpUrl}) 1x), image-set(url(${imageUrl}) 1x)`;
     }};
 
     background-size: ${({ rank }) => rank && '70%'};
