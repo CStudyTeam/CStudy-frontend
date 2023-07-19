@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    padding-top: 8rem;
+    padding: 8rem 0 12rem;
 `;
