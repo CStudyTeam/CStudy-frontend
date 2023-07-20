@@ -12,11 +12,44 @@ module.exports = {
                     test: /.s?css$/,
                     use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
                 },
+                {
+                    test: /\.(gif|png|jpe?g|svg)$/i,
+                    use: [
+                        'file-loader',
+                        {
+                            loader: 'image-webpack-loader',
+                            options: {
+                                mozjpeg: {
+                                    progressive: true,
+                                },
+                                optipng: {
+                                    enabled: false,
+                                },
+                                pngquant: {
+                                    quality: [0.65, 0.9],
+                                    speed: 4,
+                                },
+                                gifsicle: {
+                                    interlaced: false,
+                                },
+                                svgo: {
+                                    enabled: true,
+                                },
+                                webp: {
+                                    quality: 75,
+                                },
+                            },
+                        },
+                    ],
+                },
             ],
         },
         plugins: {
             add: [
-                new MiniCssExtractPlugin(),
+                new MiniCssExtractPlugin({
+                    filename: 'styles/[name].css',
+                    chunkFilename: 'styles/[id].css',
+                }),
                 new BundleAnalyzerPlugin(),
                 new CopyWebpackPlugin({
                     patterns: [
@@ -36,16 +69,39 @@ module.exports = {
             webpackConfig.output.clean = true;
 
             webpackConfig.optimization.splitChunks = {
-                chunks: 'all',
+                name: (module, chunks, cacheGroupKey) => {
+                    const allChunksNames = chunks.map((chunk) => chunk.name).join('-');
+                    return allChunksNames;
+                },
                 cacheGroups: {
+                    corejsVendor: {
+                        test: /[\\/]node_modules[\\/](core-js)[\\/]/,
+                        name: 'corejs',
+                        chunks: 'all',
+                        priority: 90,
+                    },
                     reactVendor: {
-                        test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                        test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
                         name: 'react',
                         chunks: 'all',
+                        priority: 80,
+                    },
+                    axiosAndReactQuery: {
+                        test: /[\\/]node_modules[\\/](axios|@tanstack)[\\/]/,
+                        name: 'axios-react-query',
+                        chunks: 'all',
+                        priority: 70,
+                    },
+                    threeVendor: {
+                        test: /[\\/]node_modules[\\/](three|@react-three)[\\/]/,
+                        name: 'three',
+                        chunks: 'all',
+                        priority: 60,
                     },
                 },
             };
             webpackConfig.optimization.minimizer = [`...`, new CssMinimizerPlugin()];
+            webpackConfig.optimization.minimize = true;
 
             return webpackConfig;
         },

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FONT } from 'constants/Font';
 
 export const BannerContent = styled.div`
     position: absolute;
