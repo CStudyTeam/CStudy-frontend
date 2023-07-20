@@ -7,10 +7,6 @@ export const MyPageLabel = styled.h3`
     ${FONT.H2}
 `;
 
-export const MyPageUserInfoBg = styled.div`
-    display: flex;
-`;
-
 export const MyPageUserInfoWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -24,5 +20,20 @@ export const MyPageUserInfoWrapper = styled.div`
 
     & + & {
         margin-left: 1.8rem;
+    }
+`;
+
+export const MyPageUserInfoBg = styled.div`
+    display: flex;
+
+    @media all and (max-device-width: 540px) {
+        & {
+            flex-wrap: wrap;
+        }
+
+        ${MyPageUserInfoWrapper} {
+            margin-left: 0;
+            margin-right: 1.8rem;
+        }
     }
 `;

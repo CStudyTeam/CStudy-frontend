@@ -13,24 +13,26 @@ interface StampProps {
 
 const Stamp = ({ isAnswer, actionAnimations, animationTimeCheck, isAction }: StampProps) => {
     return (
-        <Styled.Stamp>
-            <Canvas>
-                <directionalLight color={new Color(0xffffff)} intensity={2} position={[-1, 1, 1]} />
-                {isAnswer ? (
-                    <StampSuccess
-                        actionAnimations={actionAnimations}
-                        animationTimeCheck={animationTimeCheck}
-                        isAction={isAction}
-                    />
-                ) : (
-                    <StampFailed
-                        actionAnimations={actionAnimations}
-                        animationTimeCheck={animationTimeCheck}
-                        isAction={isAction}
-                    />
-                )}
-            </Canvas>
-        </Styled.Stamp>
+        <Styled.StampWrapper>
+            <Styled.Stamp>
+                <Canvas>
+                    <directionalLight color={new Color(0xffffff)} intensity={2} position={[-1, 1, 1]} />
+                    {isAnswer ? (
+                        <StampSuccess
+                            actionAnimations={actionAnimations}
+                            animationTimeCheck={animationTimeCheck}
+                            isAction={isAction}
+                        />
+                    ) : (
+                        <StampFailed
+                            actionAnimations={actionAnimations}
+                            animationTimeCheck={animationTimeCheck}
+                            isAction={isAction}
+                        />
+                    )}
+                </Canvas>
+            </Styled.Stamp>
+        </Styled.StampWrapper>
     );
 };
 

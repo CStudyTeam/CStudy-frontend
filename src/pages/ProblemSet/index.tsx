@@ -52,7 +52,7 @@ const ProblemSet = () => {
                 </Styled.FilterWrapper>
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
-                <Table colRate={['10%', '10%', '65%', '15%']} title={['번호', '상태', '제목', '카테고리']}>
+                <Table colRate={['10%', '15%', '60%', '15%']} title={['번호', '상태', '제목', '카테고리']}>
                     <ProgramFilterTBody problemList={problemList as Problem} />
                 </Table>
                 {(problemList?.totalPages as number) > 1 && (

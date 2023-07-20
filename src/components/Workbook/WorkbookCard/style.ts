@@ -57,6 +57,8 @@ export const Img = styled.div<{ category?: string }>`
                 return `${getBackgroundImage(CardDefault_Webp, CardDefault_Png)}`;
         }
     }};
+    background-repeat: no-repeat;
+    background-size: cover;
 `;
 
 export const Description = styled.div`

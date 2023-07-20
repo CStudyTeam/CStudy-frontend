@@ -22,7 +22,7 @@ const Contest = () => {
                 </Filter>
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
-                <Table colRate={['60%', '10%', '30%']} title={['대회명', '최대 인원수', '기간']}>
+                <Table colRate={['45%', '15%', '40%']} title={['대회명', '최대 인원수', '기간']}>
                     {contestList?.totalElements === 0 && (
                         <tr>
                             <td colSpan={3}>

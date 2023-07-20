@@ -1,5 +1,5 @@
 export const FONT = {
-    H1: 'font-weight: 700; font-size: 1.6rem;',
+    H1: 'font-weight: 700; font-size: 2.0rem;',
     H2: 'font-weight: 700; font-size: 2.4rem;',
     H3: 'font-weight: 700; font-size: 2.8rem;',
     H4: 'font-weight: 700; font-size: 3.2rem;',

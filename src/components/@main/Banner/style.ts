@@ -35,6 +35,8 @@ export const BannerTitle = styled.h2`
     word-break: keep-all;
 
     & > span {
-        font-size: ${FONT.REGULAR_18};
+        display: inline-block;
+        margin-top: 0.8rem;
+        font-size: 1.8rem;
     }
 `;

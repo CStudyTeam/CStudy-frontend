@@ -17,8 +17,9 @@ import ProblemForm from 'components/ProblemSet/ProblemRender';
 import ProblemFooter from 'components/ProblemSet/ProblemFooter';
 import Button from 'components/@shared/Button';
 import LoadingSpinner from 'components/@shared/LoadingSpinner';
+import Stamp from 'components/ProblemSet/Stamp';
 
-const Stamp = lazy(() => import(/* webpackChunkName: "Stamp" */ 'components/ProblemSet/Stamp'));
+// const Stamp = lazy(() => import(/* webpackChunkName: "Stamp" */ 'components/ProblemSet/Stamp'));
 
 const Problem = () => {
     const { problemId } = useParams();
@@ -87,14 +88,14 @@ const Problem = () => {
                     timeCheck={timeCheck}
                 >
                     {isAction && (
-                        <Suspense fallback={<LoadingSpinner />}>
-                            <Stamp
-                                isAnswer={isAnswer}
-                                isAction={isAction}
-                                actionAnimations={actionAnimations}
-                                animationTimeCheck={animationTimeCheck}
-                            />
-                        </Suspense>
+                        // <Suspense fallback={<LoadingSpinner />}>
+                        <Stamp
+                            isAnswer={isAnswer}
+                            isAction={isAction}
+                            actionAnimations={actionAnimations}
+                            animationTimeCheck={animationTimeCheck}
+                        />
+                        // </Suspense>
                     )}
                 </ProblemForm>
                 {timeCheck && isAnswer && <ProblemFooter explain={oneProblem?.explain as string} />}

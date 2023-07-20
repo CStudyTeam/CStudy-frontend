@@ -39,8 +39,8 @@ export default function StampFailed({ isAction, actionAnimations, animationTimeC
                 makeDefault={true}
                 far={1000}
                 near={0.1}
-                fov={15}
-                position={[10.508, 140.245, 522.667]}
+                fov={10.5}
+                position={[85.508, 175.945, 402.667]}
                 rotation={[0.005, -0.037, 0]}
             />
             <primitive object={gltf.scene} />

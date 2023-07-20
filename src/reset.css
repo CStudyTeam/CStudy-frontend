@@ -50,3 +50,15 @@ a {
     transform: translateX(-50%);
     z-index: 100;
 }
+
+@media all and (max-device-width: 1200px) {
+    html {
+        font-size: 100%;
+    }
+}
+
+@media all and (max-device-width: 280px) {
+    html {
+        font-size: 90%;
+    }
+}

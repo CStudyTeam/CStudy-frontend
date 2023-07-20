@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { COLOR } from 'constants/Color';
 import { SHADOW } from 'constants/Shadow';
 import filterArrow from 'assets/filterArrow.png';
+import { FONT } from 'constants/Font';
 
 export const SelectBox = styled.div`
     position: relative;
@@ -59,6 +60,7 @@ export const Button = styled.button`
     width: inherit;
     height: inherit;
     padding-left: 1.5rem;
+    font-size: ${FONT.REGULAR_14};
     cursor: pointer;
 `;
 
@@ -97,6 +99,7 @@ export const OptionItem = styled.li`
     background: ${COLOR.NAVY_100};
     border-bottom: 0.1rem dashed ${COLOR.GRAY_100};
     padding: 0.5rem 1.5rem 0.5rem;
+    font-size: ${FONT.REGULAR_14};
     color: ${COLOR.BLACK};
 
     &:hover {

@@ -30,6 +30,12 @@ export const ContentsTitleImg = styled.div`
 
 export const Title = styled.h2`
     ${FONT.H2};
+
+    @media all and (max-device-width: 540px) {
+        & {
+            ${FONT.H1}
+        }
+    }
 `;
 
 export const ContentsImg = styled.img`
@@ -37,6 +43,13 @@ export const ContentsImg = styled.img`
     width: 55rem;
     height: 55rem;
     border-radius: 5rem;
+
+    @media all and (max-device-width: 540px) {
+        & {
+            width: 34rem;
+            height: 34rem;
+        }
+    }
 `;
 
 export const ContentsItem = styled.div`
