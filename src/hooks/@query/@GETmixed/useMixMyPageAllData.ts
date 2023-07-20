@@ -2,6 +2,7 @@ import { useQueries } from '@tanstack/react-query';
 import { getProblem } from 'api/problem';
 import { getMyPage } from 'api/mypage';
 import { getToggleRequestList } from 'api/board';
+import { ROUTE } from 'constants/Route';
 
 interface MixQueryProps {
     requestPage: number;
@@ -23,7 +24,7 @@ export const useMixMyPageAllData = ({ requestPage, query, problemPage }: MixQuer
             },
             {
                 queryKey: ['contest', { page: problemPage }],
-                queryFn: () => getProblem({ page: problemPage }),
+                queryFn: () => getProblem({ query: ROUTE.PROBLEMSET_MYQUESTION, page: problemPage }),
                 keepPreviousData: true,
             },
         ],
