@@ -80,6 +80,7 @@
         "eslint-plugin-promise": "^6.1.1",
         "eslint-plugin-react": "^7.32.2",
         "eslint-plugin-storybook": "^0.6.12",
+        "image-webpack-loader": "^8.1.0",
         "mini-css-extract-plugin": "^2.7.6",
         "postcss-styled-syntax": "^0.4.0",
         "prettier": "^2.8.8",
