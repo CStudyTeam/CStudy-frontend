@@ -78,7 +78,7 @@ const Quiz = ({ quizData, competitionId }: QuizProps) => {
                         {index + 1}. {quizData[index].description}
                     </Styled.ContestProblemDesc>
                     <Styled.ContestFieldWrapper>
-                        {quizData[index].choices.map((choice) => (
+                        {quizData[index].choices?.map((choice) => (
                             <Styled.ContestField key={choice.number}>
                                 <Styled.ContestInput
                                     type="radio"

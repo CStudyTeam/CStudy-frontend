@@ -39,7 +39,7 @@ const CreateProblem = () => {
                     id: forms.length,
                     titleNumber: lastForm.titleNumber + UTIL.INCREASE_COUNT,
                     basicInfoNumber: lastForm.basicInfoNumber + UTIL.INCREASE_COUNT,
-                    contentNumber: lastForm.contentNumber.map((number) => number + UTIL.CHOICE_LENGTH),
+                    contentNumber: lastForm.contentNumber?.map((number) => number + UTIL.CHOICE_LENGTH),
                 },
             ];
         });

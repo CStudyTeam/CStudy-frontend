@@ -15,7 +15,7 @@ const RequestLists = ({ requestList, handlePage, page }: RequestListsProps) => {
     return (
         <>
             {requestList?.totalElements === 0 && <NoData>게시글이 없습니다.</NoData>}
-            {requestList?.content.map(({ id, flag, title, description, memberName, createAt }) => (
+            {requestList?.content?.map(({ id, flag, title, description, memberName, createAt }) => (
                 <RequestList
                     key={id}
                     id={id}

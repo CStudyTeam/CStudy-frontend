@@ -12,7 +12,7 @@ interface AdminWorkbookTableListsProps {
 const AdminProblemForms = ({ problemForms, isLoading, register, errors }: AdminWorkbookTableListsProps) => {
     return (
         <>
-            {problemForms.map((form) => (
+            {problemForms?.map((form) => (
                 <ProblemForm key={form.id} form={form} isLoading={isLoading} register={register} errors={errors} />
             ))}
         </>

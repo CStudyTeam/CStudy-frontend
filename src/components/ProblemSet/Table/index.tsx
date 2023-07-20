@@ -13,13 +13,13 @@ const Table = ({ colRate, title, maxHeight, children, white, narrow }: PropsWith
     return (
         <Styled.Table cellSpacing={0} white={white} maxHeight={maxHeight} narrow={narrow}>
             <colgroup>
-                {colRate.map((rate, index) => (
+                {colRate?.map((rate, index) => (
                     <col width={rate} key={index} />
                 ))}
             </colgroup>
             <thead>
                 <tr>
-                    {title.map((t, index) => (
+                    {title?.map((t, index) => (
                         <Styled.THeadTh narrow={narrow} key={index}>
                             {t}
                         </Styled.THeadTh>

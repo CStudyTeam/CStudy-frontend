@@ -29,7 +29,7 @@ const ProblemForm = ({ isLoading, register, errors, form }: ProblemFormProps) =>
             <Styled.ProblemNumber>#{titleNumber}</Styled.ProblemNumber>
             <FormBody>
                 <FormSection title="문제 기본정보를 설정해주세요" subtitle="제목, 설명, 해설을 기입해주세요.">
-                    {basicInfoInputs.map(({ name, label }, index) => (
+                    {basicInfoInputs?.map(({ name, label }, index) => (
                         <AdminInput
                             key={index}
                             id={`${name}${basicInfoNumber}`}
@@ -43,7 +43,7 @@ const ProblemForm = ({ isLoading, register, errors, form }: ProblemFormProps) =>
                     ))}
                 </FormSection>
                 <FormSection title="문제 카테고리를 설정해주세요" subtitle="문제에 해당하는 카테고리를 체크해 주세요.">
-                    {categories.map((category, index) => (
+                    {categories?.map((category, index) => (
                         <AdminInput
                             key={index}
                             id={`category${contentNumber[index]}`}

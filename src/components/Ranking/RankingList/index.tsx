@@ -1,20 +1,20 @@
 import { memo } from 'react';
-import { MembersRanks } from 'types/api';
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
+import { useGetMembersRanks } from 'hooks/@query/members/useGetMembersRanks';
 
-interface RankingListProps {
-    rankItems: MembersRanks[];
-}
+const RankingList = () => {
+    const membersRanks = useGetMembersRanks();
 
-const RankingList = ({ rankItems }: RankingListProps) => {
-    const emptyDataCount = Math.max(0, 10 - rankItems?.length);
+    if (Array.isArray(membersRanks)) {
+        const emptyDataCount = Math.max(0, 10 - (membersRanks?.length as number));
 
-    for (let i = 0; i < emptyDataCount; i++) {
-        rankItems?.push({ value: null, score: null });
+        for (let i = 0; i < emptyDataCount; i++) {
+            membersRanks?.push({ value: null, score: null });
+        }
     }
 
-    const TBodyContent = rankItems?.map(({ score, value }, index: number) => (
+    const TBodyContent = (Array.isArray(membersRanks) ? membersRanks : [])?.map(({ score, value }, index: number) => (
         <tr key={index}>
             <TBodyTd className="white" white narrow rank={index + 1} />
             <TBodyTd className="white" white narrow rankFont={index + 1}>

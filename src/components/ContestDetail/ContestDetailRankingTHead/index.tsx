@@ -9,7 +9,7 @@ const ContestDetailRankingTHead = () => {
     return (
         <Styled.StyledThead>
             <Styled.StyledTr>
-                {columns.map((column) => (
+                {columns?.map((column) => (
                     <Styled.StyledTh key={column.field}>{column.headerName}</Styled.StyledTh>
                 ))}
             </Styled.StyledTr>

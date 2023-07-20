@@ -16,7 +16,7 @@ const Select = ({ name, handleActive, isActive, options, optionsValue }: SelectP
                 <span className="arrow" />
             </Styled.Button>
             <Styled.OptionList className="optionList">
-                {options.map((option, index) => (
+                {options?.map((option, index) => (
                     <Styled.OptionItem key={index} data-value={optionsValue[index]}>
                         {option}
                     </Styled.OptionItem>

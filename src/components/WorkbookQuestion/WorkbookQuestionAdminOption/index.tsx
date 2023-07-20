@@ -27,7 +27,7 @@ const WorkbookQuestionAdminOptionGroup = ({
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const isArray = Array.isArray(data.questionIds);
         const customQuestionIds = isArray
-            ? data.questionIds.map((questionId: (string | number)[]) => ({ id: +questionId }))
+            ? data.questionIds?.map((questionId: (string | number)[]) => ({ id: +questionId }))
             : (data.questionIds = [{ id: +data.questionIds }]);
 
         const formData = {
