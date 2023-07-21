@@ -1,7 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { useMixContestDetailAllData } from 'hooks/@query/@GETmixed/useMixContestDetailAllData';
+import useCongratulation from 'hooks/@zustand/useCongratulation';
 import { isAdmin } from 'utils/auth';
 import { Contest, ContestMyRanking, ContestRanking, ProblemContent } from 'types/api';
 
@@ -14,12 +15,15 @@ import ContestDetailInfoHeader from 'components/ContestDetail/ContestDetailInfoH
 import FinishedDetailContestTable from 'components/ContestDetail/FinishedDetailContestTable';
 import ContestDetailInfoTable from 'components/ContestDetail/ContestDetailInfoTable';
 import ContestDetailRankingTable from 'components/ContestDetail/ContestDetailRankingTable';
+import Congratulation from 'components/@shared/Congratulation';
 import * as Styled from './style';
 
 const ContestDetail = () => {
     const { contestId } = useParams();
     const navigate = useNavigate();
     const { state: finishContest } = useLocation();
+
+    const { isCongratulation, setCongratulation } = useCongratulation();
     const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(0);
 
@@ -42,43 +46,56 @@ const ContestDetail = () => {
         setPage(page);
     }, []);
 
-    return (
-        <ContentContainer>
-            <ContentHeaderWrapper title={contest?.title as string}>
-                <Button className="xl gray style" onClick={() => navigate(-1)}>
-                    돌아가기
-                </Button>
-            </ContentHeaderWrapper>
-            {isAdmin() && !finishContest && (
-                <AdminContestAddDeleteProblem
-                    contestId={contestId as string}
-                    handleIsLoading={handleIsLoading}
-                    isLoading={isLoading}
-                    filterQuestion={filterQuestion as ProblemContent[]}
-                />
-            )}
+    useEffect(() => {
+        if (isCongratulation) {
+            setTimeout(() => {
+                setCongratulation(false);
+            }, 3500);
+        }
+    }, [isCongratulation, setCongratulation]);
 
-            <ContentBodyWrapper>
-                <ContestDetailInfoHeader
-                    myRanking={!!myRanking?.['ranking'] as boolean}
-                    isLoading={isLoading}
-                    handleIsLoading={handleIsLoading}
-                    contestId={contestId as string}
-                    finishContest={finishContest}
-                />
-                {finishContest && <FinishedDetailContestTable filterQuestion={filterQuestion as ProblemContent[]} />}
-                <Styled.ContestInfoBodyWrapper>
-                    <ContestDetailInfoTable contest={contest as Contest} />
-                    <ContestDetailRankingTable
-                        contestRanking={contestRanking as ContestRanking}
-                        totalQuestion={totalQuestion as number}
-                        myRanking={myRanking as ContestMyRanking}
-                        handlePage={handlePage}
-                        page={page}
+    return (
+        <>
+            {isCongratulation && <Congratulation />}
+            <ContentContainer>
+                <ContentHeaderWrapper title={contest?.title as string}>
+                    <Button className="xl gray style" onClick={() => navigate(-1)}>
+                        돌아가기
+                    </Button>
+                </ContentHeaderWrapper>
+                {isAdmin() && !finishContest && (
+                    <AdminContestAddDeleteProblem
+                        contestId={contestId as string}
+                        handleIsLoading={handleIsLoading}
+                        isLoading={isLoading}
+                        filterQuestion={filterQuestion as ProblemContent[]}
                     />
-                </Styled.ContestInfoBodyWrapper>
-            </ContentBodyWrapper>
-        </ContentContainer>
+                )}
+
+                <ContentBodyWrapper>
+                    <ContestDetailInfoHeader
+                        myRanking={!!myRanking?.['ranking'] as boolean}
+                        isLoading={isLoading}
+                        handleIsLoading={handleIsLoading}
+                        contestId={contestId as string}
+                        finishContest={finishContest}
+                    />
+                    {finishContest && (
+                        <FinishedDetailContestTable filterQuestion={filterQuestion as ProblemContent[]} />
+                    )}
+                    <Styled.ContestInfoBodyWrapper>
+                        <ContestDetailInfoTable contest={contest as Contest} />
+                        <ContestDetailRankingTable
+                            contestRanking={contestRanking as ContestRanking}
+                            totalQuestion={totalQuestion as number}
+                            myRanking={myRanking as ContestMyRanking}
+                            handlePage={handlePage}
+                            page={page}
+                        />
+                    </Styled.ContestInfoBodyWrapper>
+                </ContentBodyWrapper>
+            </ContentContainer>
+        </>
     );
 };
 

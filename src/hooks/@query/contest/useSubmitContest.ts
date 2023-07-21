@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
+import useCongratulation from 'hooks/@zustand/useCongratulation';
 import { submitContest } from 'api/contest';
 import toast from 'provider/Toast';
-import { useNavigate } from 'react-router-dom';
 
 interface useSubmitContestProps {
     contestId: string;
@@ -10,9 +11,11 @@ interface useSubmitContestProps {
 
 export const useSubmitContest = ({ handleIsLoading, contestId }: useSubmitContestProps) => {
     const navigate = useNavigate();
+    const { setCongratulation } = useCongratulation();
     const { mutate: SubmitContest } = useMutation(submitContest, {
         onSuccess: () => {
-            toast.success('대회에 참여에 성공했습니다.');
+            toast.success('대회 참여에 성공했습니다.');
+            setCongratulation(true);
             navigate(`/contest/${contestId}`, { replace: true });
         },
         onError: () => {
