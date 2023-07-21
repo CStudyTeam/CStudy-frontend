@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import { ProblemList } from 'types/problem';
@@ -35,4 +36,4 @@ const AdminContestTableTBodyList = ({ problem, register, errors }: AdminContestT
     );
 };
 
-export default AdminContestTableTBodyList;
+export default memo(AdminContestTableTBodyList);

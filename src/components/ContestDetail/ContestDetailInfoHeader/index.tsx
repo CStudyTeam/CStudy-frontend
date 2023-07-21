@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import useJoinContestModal from 'hooks/Contest/useJoinContestModal';
 import { isLogin } from 'utils/auth';
 import StyleLink from 'components/@shared/StyleLink';
@@ -52,4 +53,4 @@ const ContestDetailInfoHeader = ({
     );
 };
 
-export default ContestDetailInfoHeader;
+export default memo(ContestDetailInfoHeader);
