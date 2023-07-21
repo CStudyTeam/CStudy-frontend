@@ -22,7 +22,7 @@ const Main = () => {
 
     return (
         <Styled.MainWrapper>
-            <Styled.Banner ref={targetRef}>
+            <Styled.Banner ref={targetRef} aria-label="메인 배너">
                 <Suspense fallback={<Skeleton width="100%" height="100%" />}>
                     <Banner hasViewModel={hasViewModel} />
                 </Suspense>

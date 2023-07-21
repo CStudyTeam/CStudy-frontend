@@ -41,6 +41,7 @@ const ProblemSet = () => {
                         isActive={statusActive}
                         options={!isActive ? ['전체', '완료', '실패'] : ['전체']}
                         optionsValue={!isActive ? [0, 1, 2] : [0]}
+                        selectedIndex={!isActive ? [0, 1, 2] : [0]}
                     />
                     <Select
                         name={categoryFilter.category}
@@ -48,6 +49,7 @@ const ProblemSet = () => {
                         isActive={categoryActive}
                         options={!isActive ? ['전체', '자바', '네트워크', '운영체제', '데이터베이스'] : ['전체']}
                         optionsValue={!isActive ? ['', '자바', '네트워크', '운영체제', '데이터베이스'] : ['']}
+                        selectedIndex={!isActive ? [0, 1, 2] : [0]}
                     />
                 </Styled.FilterWrapper>
             </ContentHeaderWrapper>

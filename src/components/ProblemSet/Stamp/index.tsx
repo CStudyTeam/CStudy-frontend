@@ -13,7 +13,7 @@ interface StampProps {
 
 const Stamp = ({ isAnswer, actionAnimations, animationTimeCheck, isAction }: StampProps) => {
     return (
-        <Styled.StampWrapper>
+        <Styled.StampWrapper aria-hidden="true">
             <Styled.Stamp>
                 <Canvas>
                     <directionalLight color={new Color(0xffffff)} intensity={2} position={[-1, 1, 1]} />
