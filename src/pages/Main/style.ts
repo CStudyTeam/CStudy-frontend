@@ -6,7 +6,7 @@ export const MainWrapper = styled.main`
     padding: 5rem 0 12rem;
 `;
 
-export const Banner = styled.div`
+export const Banner = styled.div<{ ref: React.RefObject<Element> }>`
     position: relative;
     display: flex;
     width: 100%;

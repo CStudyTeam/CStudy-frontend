@@ -25,6 +25,12 @@ export const BannerContent = styled.div`
         z-index: -1;
         filter: blur(50px);
     }
+
+    @media all and (max-device-width: 540px) {
+        & {
+            width: 55%;
+        }
+    }
 `;
 
 export const BannerTitle = styled.h2`

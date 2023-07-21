@@ -7,7 +7,11 @@ import StyleLink from 'components/@shared/StyleLink';
 
 import * as Styled from './style';
 
-const Banner = () => {
+interface BannerProps {
+    hasViewModel: boolean;
+}
+
+const Banner = ({ hasViewModel }: BannerProps) => {
     const [isModelLoaded, setIsModelLoaded] = useState(false);
 
     const handleModelLoad = () => {
@@ -37,7 +41,7 @@ const Banner = () => {
                 }}
             >
                 <CanvasEffect />
-                <Model onLoad={handleModelLoad} />
+                <Model onLoad={handleModelLoad} hasViewModel={hasViewModel} />
             </Canvas>
         </>
     );

@@ -8,7 +8,7 @@ import { useGLTF, useAnimations } from '@react-three/drei';
 import PropTypes from 'prop-types';
 
 export function Model(props) {
-    const { onLoad } = props;
+    const { onLoad, hasViewModel } = props;
     const gltf = useGLTF('/earth/earth-ver2.gltf');
     const { animations } = gltf;
     const group = useRef();
@@ -24,12 +24,19 @@ export function Model(props) {
         onLoad();
         group.current.position.set(3, 0, 0);
         group.current.rotation.set(0, 3.8, 0);
-        playAnimations();
+
+        if (hasViewModel) {
+            playAnimations();
+        }
+
+        if (!hasViewModel) {
+            mixer.stopAllAction();
+        }
 
         return () => {
             mixer.stopAllAction();
         };
-    }, [actions, mixer, onLoad, playAnimations]);
+    }, [actions, hasViewModel, mixer, onLoad, playAnimations]);
 
     return (
         <group ref={group}>
@@ -42,8 +49,10 @@ useGLTF.preload('/earth/earth-ver2.gltf');
 
 Model.propTypes = {
     onLoad: PropTypes.func.isRequired,
+    hasViewModel: PropTypes.bool.isRequired,
 };
 
 Model.defaultProps = {
     onLoad: null,
+    hasViewModel: null,
 };
