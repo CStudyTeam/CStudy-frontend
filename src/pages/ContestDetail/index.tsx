@@ -15,7 +15,6 @@ import ContestDetailInfoHeader from 'components/ContestDetail/ContestDetailInfoH
 import FinishedDetailContestTable from 'components/ContestDetail/FinishedDetailContestTable';
 import ContestDetailInfoTable from 'components/ContestDetail/ContestDetailInfoTable';
 import ContestDetailRankingTable from 'components/ContestDetail/ContestDetailRankingTable';
-import Congratulation from 'components/@shared/Congratulation';
 import * as Styled from './style';
 
 const ContestDetail = () => {
@@ -55,47 +54,42 @@ const ContestDetail = () => {
     }, [isCongratulation, setCongratulation]);
 
     return (
-        <>
-            {isCongratulation && <Congratulation />}
-            <ContentContainer>
-                <ContentHeaderWrapper title={contest?.title as string}>
-                    <Button className="xl gray style" onClick={() => navigate(-1)}>
-                        돌아가기
-                    </Button>
-                </ContentHeaderWrapper>
-                {isAdmin() && !finishContest && (
-                    <AdminContestAddDeleteProblem
-                        contestId={contestId as string}
-                        handleIsLoading={handleIsLoading}
-                        isLoading={isLoading}
-                        filterQuestion={filterQuestion as ProblemContent[]}
-                    />
-                )}
+        <ContentContainer>
+            <ContentHeaderWrapper title={contest?.title as string}>
+                <Button className="xl gray style" onClick={() => navigate('/contest')}>
+                    돌아가기
+                </Button>
+            </ContentHeaderWrapper>
+            {isAdmin() && !finishContest && (
+                <AdminContestAddDeleteProblem
+                    contestId={contestId as string}
+                    handleIsLoading={handleIsLoading}
+                    isLoading={isLoading}
+                    filterQuestion={filterQuestion as ProblemContent[]}
+                />
+            )}
 
-                <ContentBodyWrapper>
-                    <ContestDetailInfoHeader
-                        myRanking={!!myRanking?.['ranking'] as boolean}
-                        isLoading={isLoading}
-                        handleIsLoading={handleIsLoading}
-                        contestId={contestId as string}
-                        finishContest={finishContest}
+            <ContentBodyWrapper>
+                <ContestDetailInfoHeader
+                    myRanking={!!myRanking?.['ranking'] as boolean}
+                    isLoading={isLoading}
+                    handleIsLoading={handleIsLoading}
+                    contestId={contestId as string}
+                    finishContest={finishContest}
+                />
+                {finishContest && <FinishedDetailContestTable filterQuestion={filterQuestion as ProblemContent[]} />}
+                <Styled.ContestInfoBodyWrapper>
+                    <ContestDetailInfoTable contest={contest as Contest} />
+                    <ContestDetailRankingTable
+                        contestRanking={contestRanking as ContestRanking}
+                        totalQuestion={totalQuestion as number}
+                        myRanking={myRanking as ContestMyRanking}
+                        handlePage={handlePage}
+                        page={page}
                     />
-                    {finishContest && (
-                        <FinishedDetailContestTable filterQuestion={filterQuestion as ProblemContent[]} />
-                    )}
-                    <Styled.ContestInfoBodyWrapper>
-                        <ContestDetailInfoTable contest={contest as Contest} />
-                        <ContestDetailRankingTable
-                            contestRanking={contestRanking as ContestRanking}
-                            totalQuestion={totalQuestion as number}
-                            myRanking={myRanking as ContestMyRanking}
-                            handlePage={handlePage}
-                            page={page}
-                        />
-                    </Styled.ContestInfoBodyWrapper>
-                </ContentBodyWrapper>
-            </ContentContainer>
-        </>
+                </Styled.ContestInfoBodyWrapper>
+            </ContentBodyWrapper>
+        </ContentContainer>
     );
 };
 

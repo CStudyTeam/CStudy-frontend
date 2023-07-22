@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { COLOR } from 'constants/Color';
 
 export const ConfettiWrapper = styled.div`
     @keyframes confetti-slow {
@@ -47,6 +48,7 @@ export const ConfettiWrapper = styled.div`
         z-index: 1001;
         top: -10px;
         border-radius: 0%;
+        will-change: transform;
 
         &--animation-slow {
             animation: confetti-slow 2.3s linear 1 forwards;
@@ -59,5 +61,46 @@ export const ConfettiWrapper = styled.div`
         &--animation-fast {
             animation: confetti-fast 1.05s linear 1 forwards;
         }
+    }
+`;
+
+export const ContestFinishSvgWrapper = styled.svg`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: none;
+    width: 55rem;
+    height: 60rem;
+    stroke-width: 15rem;
+    stroke-linecap: round;
+    will-change: contents;
+    z-index: 1000;
+
+    & path {
+        stroke-dasharray: var(--length);
+        stroke-dashoffset: var(--length);
+    }
+`;
+
+const svgAnimation = keyframes`
+        100% {
+            stroke-dashoffset: 0;
+        }
+`;
+
+export const BgGroup = styled.g`
+    & > path {
+        stroke: ${COLOR.GRAY_100};
+        animation: ${svgAnimation} var(--duration) ease forwards;
+        animation-delay: var(--delay);
+    }
+`;
+
+export const MainGroup = styled.g`
+    & > path {
+        stroke: ${COLOR.RED};
+        animation: ${svgAnimation} var(--duration) ease-in forwards;
+        animation-delay: var(--delay);
     }
 `;

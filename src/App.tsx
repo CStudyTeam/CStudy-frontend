@@ -13,6 +13,7 @@ import Modal from 'components/@shared/modal';
 import SignInModal from 'components/SignModal/SignInModal';
 import SignUpModal from 'components/SignModal/SignUpModal';
 import LoadingSpinner from 'components/@shared/LoadingSpinner';
+import Congratulation from 'components/@shared/Congratulation';
 
 const Board = lazy(() => import(/* webpackChunkName: "Board" */ 'pages/Board'));
 const BoardRequestForm = lazy(() => import(/* webpackChunkName: "BoardRequestForm" */ 'pages/BoardRequestForm'));
@@ -182,6 +183,7 @@ const App = () => {
                 </Modal>
             )}
             <RouterProvider router={router} />
+            <Congratulation />
         </QueryClientProvider>
     );
 };
