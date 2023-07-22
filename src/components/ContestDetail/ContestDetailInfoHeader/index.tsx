@@ -25,12 +25,13 @@ const ContestDetailInfoHeader = ({
         contestId,
         handleIsLoading,
     });
+
     return (
         <>
             <Styled.ContestInfoHeaderWrapper>
                 <Styled.Label>대회정보</Styled.Label>
                 <Styled.ButtonWrapper>
-                    {isLogin() && (
+                    {isLogin() && myRanking && (
                         <StyleLink to="contestresult" state={myRanking} className="xl green style">
                             나의 대회 결과보기
                         </StyleLink>
