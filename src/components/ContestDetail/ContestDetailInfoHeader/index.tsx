@@ -45,6 +45,8 @@ const ContestDetailInfoHeader = ({
             </Styled.ContestInfoHeaderWrapper>
             <ConfirmModal
                 title="대회에 참가하시겠습니까?"
+                confirmText="참가하기"
+                cancelText="돌아가기"
                 isOpen={isModalOpen}
                 handleConfirm={handleConfirm}
                 handleCancel={handleCancel}

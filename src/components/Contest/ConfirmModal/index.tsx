@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import Modal from 'components/@shared/modal';
 import Button from 'components/@shared/Button';
 import * as Styled from './style';
@@ -5,22 +6,39 @@ import * as Styled from './style';
 interface ConfirmModalProps {
     title: string;
     isOpen: boolean;
-    isLoading: boolean;
+    isLoading?: boolean;
+    confirmText: string;
+    cancelText: string;
     handleConfirm: () => void;
     handleCancel: () => void;
 }
 
-const ConfirmModal = ({ isLoading, title, isOpen, handleConfirm, handleCancel }: ConfirmModalProps) => {
+const ConfirmModal = ({
+    isLoading,
+    title,
+    isOpen,
+    confirmText,
+    cancelText,
+    handleConfirm,
+    handleCancel,
+}: ConfirmModalProps) => {
+    const onConfirm = useCallback(() => {
+        handleConfirm();
+    }, [handleConfirm]);
+
+    const onCancel = useCallback(() => {
+        handleCancel();
+    }, [handleCancel]);
     return (
         <Modal isOpenModal={isOpen} closeModalHandler={handleCancel}>
             <Styled.ModalContainer>
                 <Styled.ModalTitle>{title}</Styled.ModalTitle>
                 <Styled.ButtonRow>
-                    <Button className="xl navy style w-half" onClick={handleConfirm} disabled={isLoading}>
-                        참가하기
+                    <Button className="xl navy style w-half" onClick={onConfirm} disabled={isLoading}>
+                        {confirmText}
                     </Button>
-                    <Button type="button" className="xl gray style w-half" onClick={handleCancel} disabled={isLoading}>
-                        돌아가기
+                    <Button type="button" className="xl gray style w-half" onClick={onCancel} disabled={isLoading}>
+                        {cancelText}
                     </Button>
                 </Styled.ButtonRow>
             </Styled.ModalContainer>
