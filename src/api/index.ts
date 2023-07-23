@@ -35,20 +35,25 @@ instance.interceptors.response.use(
                 return window.location.replace('/');
             }
 
-            const { accessToken: newAccessToken, refreshToken: newRefreshToken } = await retryToken(
-                tokens.refreshToken,
-            );
+            try {
+                const { accessToken: newAccessToken, refreshToken: newRefreshToken } = await retryToken(
+                    tokens.refreshToken,
+                );
 
-            const newUser = {
-                accessToken: newAccessToken,
-                refreshToken: newRefreshToken,
-            };
+                const newUser = {
+                    accessToken: newAccessToken,
+                    refreshToken: newRefreshToken,
+                };
 
-            userStorage.set(newUser);
+                userStorage.set(newUser);
 
-            axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
-            originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-            return axios(originalRequest);
+                axios.defaults.headers.common.Authorization = `Bearer ${newAccessToken}`;
+                originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+                return axios(originalRequest);
+            } catch (error) {
+                userStorage.remove();
+                return window.location.replace('/');
+            }
         }
 
         if (error.response.data.code == 403) {
