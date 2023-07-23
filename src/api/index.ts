@@ -31,7 +31,9 @@ instance.interceptors.response.use(
             const originalRequest = config;
             const tokens = getUserTokens();
 
-            if (!tokens) throw new Error('저장된 토큰이 없습니다.');
+            if (!tokens) {
+                return window.location.replace('/');
+            }
 
             const { accessToken: newAccessToken, refreshToken: newRefreshToken } = await retryToken(
                 tokens.refreshToken,
