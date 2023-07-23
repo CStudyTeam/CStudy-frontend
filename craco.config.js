@@ -46,10 +46,7 @@ module.exports = {
         },
         plugins: {
             add: [
-                new MiniCssExtractPlugin({
-                    filename: 'styles/[name].css',
-                    chunkFilename: 'styles/[id].css',
-                }),
+                new MiniCssExtractPlugin(),
                 new BundleAnalyzerPlugin(),
                 new CopyWebpackPlugin({
                     patterns: [
