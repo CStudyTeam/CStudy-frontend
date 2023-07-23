@@ -1,10 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
-
-const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     webpack: {
@@ -49,7 +46,6 @@ module.exports = {
         plugins: {
             add: [
                 new MiniCssExtractPlugin(),
-                !isProduction && new BundleAnalyzerPlugin(),
                 new CopyWebpackPlugin({
                     patterns: [
                         { from: 'public/favicon.ico', to: 'favicon.ico' },
