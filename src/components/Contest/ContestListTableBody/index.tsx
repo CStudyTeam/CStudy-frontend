@@ -1,7 +1,6 @@
-import { memo } from 'react';
 import { ContestFilterStoreType } from 'hooks/@zustand/filterStore';
 import { ContestContent } from 'types/api';
-import StyleLink from 'components/@shared/StyleLink';
+import ContestListTableList from '../ContestListTableList';
 import Pagination from 'components/ProblemSet/Pagination';
 import { TBodyTd } from 'components/ProblemSet/Table/style';
 
@@ -24,23 +23,13 @@ const ContestListTableBody = ({
 }: ContestListTableBodyProps) => {
     return (
         <>
-            {contestList?.map(({ id, title, startTime, endTime, participants }) => (
-                <tr key={id}>
-                    <TBodyTd className="bold">
-                        <StyleLink
-                            className="bold fs--xl"
-                            to={`${id}`}
-                            state={!!isActive}
-                            onClick={checkAndDisplayLoginModal}
-                        >
-                            {title}
-                        </StyleLink>
-                    </TBodyTd>
-                    <TBodyTd>{participants}</TBodyTd>
-                    <TBodyTd>
-                        {startTime.split(' ')[0]} ~ {endTime.split(' ')[0]}
-                    </TBodyTd>
-                </tr>
+            {contestList?.map((listData) => (
+                <ContestListTableList
+                    key={listData.id}
+                    listData={listData}
+                    isActive={!!isActive}
+                    checkAndDisplayLoginModal={checkAndDisplayLoginModal}
+                />
             ))}
             {(totalPages as number) > 1 && (
                 <tr>
@@ -58,4 +47,4 @@ const ContestListTableBody = ({
     );
 };
 
-export default memo(ContestListTableBody);
+export default ContestListTableBody;

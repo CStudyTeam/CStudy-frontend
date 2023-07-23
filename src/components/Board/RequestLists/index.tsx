@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { ToggleRequestList } from 'types/api';
 import RequestList from '../RequestList';
 import Pagination from 'components/ProblemSet/Pagination';
@@ -35,4 +34,4 @@ const RequestLists = ({ requestList, handlePage, page }: RequestListsProps) => {
     );
 };
 
-export default memo(RequestLists);
+export default RequestLists;

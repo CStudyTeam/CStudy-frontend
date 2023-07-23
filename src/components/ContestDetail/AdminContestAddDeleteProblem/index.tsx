@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
 import { useDeleteContestProblem } from 'hooks/@query/contest/useDeleteContestProblem';
@@ -50,6 +51,10 @@ const AdminContestAddDeleteProblem = ({
         DeleteContestProblem(formData);
         reset();
     };
+
+    const tableColRate = useMemo(() => ['15%', '50%', '15%', '20%'], []);
+    const tableTitle = useMemo(() => ['문제번호', '문제이름', '카테고리', '문제삭제'], []);
+
     return (
         <ContentBodyWrapper>
             <Styled.Label>관리자</Styled.Label>
@@ -63,7 +68,7 @@ const AdminContestAddDeleteProblem = ({
                     </Button>
                 </div>
             </Styled.AdminWrapper>
-            <Table colRate={['15%', '50%', '15%', '20%']} title={['문제번호', '문제이름', '카테고리', '문제삭제']}>
+            <Table colRate={tableColRate} title={tableTitle}>
                 <AdminContestTableTBodyLists filterQuestion={filterQuestion} register={register} errors={errors} />
             </Table>
         </ContentBodyWrapper>

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { RequestContent, ToggleRequestList } from 'types/api';
 import RequestTBodyContentTableList from '../RequestTBodyContentTableList';
 
@@ -16,4 +15,4 @@ const RequestTBodyContentTableLists = ({ requestList }: RequestTBodyContentTable
     );
 };
 
-export default memo(RequestTBodyContentTableLists);
+export default RequestTBodyContentTableLists;

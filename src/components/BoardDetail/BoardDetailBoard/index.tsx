@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import ApproveStatus from 'components/@shared/Status';
 import { RequestDetail } from 'types/api';
 import * as Styled from './style';
@@ -21,4 +22,4 @@ const BoardDetailBoard = ({ request }: BoardDetailBoardProps) => {
     );
 };
 
-export default BoardDetailBoard;
+export default memo(BoardDetailBoard);

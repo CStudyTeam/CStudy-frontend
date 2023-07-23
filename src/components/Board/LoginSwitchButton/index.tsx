@@ -3,7 +3,7 @@ import useLoginModal from 'hooks/@zustand/useLoginModal';
 
 import Button from 'components/@shared/Button';
 import StyleLink from 'components/@shared/StyleLink';
-import { Filter } from 'components/@shared/FilterStyles';
+import Filter from 'components/@shared/Filter';
 
 interface LoginSwitchButtonProps {
     handleToggle: () => void;

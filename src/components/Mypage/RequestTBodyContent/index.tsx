@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
 import { ToggleRequestList } from 'types/api';
 import Table from 'components/ProblemSet/Table';
@@ -12,9 +13,12 @@ interface RequestTBodyContentProps {
 }
 
 const RequestTBodyContent = ({ requestList, requestHandlePage, myPageFilter }: RequestTBodyContentProps) => {
+    const tableColRate = useMemo(() => ['10%', '70%', '30%'], []);
+    const tableTitle = useMemo(() => ['NO.', '게시글 제목', '승인상태'], []);
+
     return (
         <>
-            <Table white narrow colRate={['10%', '70%', '30%']} title={['NO.', '게시글 제목', '승인상태']}>
+            <Table white narrow colRate={tableColRate} title={tableTitle}>
                 {requestList?.totalElements === 0 && (
                     <tr>
                         <td colSpan={3}>

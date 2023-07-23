@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { Contest } from 'types/api';
 import Table from 'components/ProblemSet/Table';
 import { TBodyTd, TBodyTh } from 'components/ProblemSet/Table/style';
@@ -8,8 +8,10 @@ interface ContestDetailInfoTableProps {
 }
 
 const ContestDetailInfoTable = ({ contest }: ContestDetailInfoTableProps) => {
+    const tableColRate = useMemo(() => ['50%', '50%'], []);
+    const tableTitle = useMemo(() => ['대회 시작일', '대회 종료일'], []);
     return (
-        <Table maxHeight colRate={['50%', '50%']} title={['대회 시작일', '대회 종료일']}>
+        <Table maxHeight colRate={tableColRate} title={tableTitle}>
             <tr>
                 <TBodyTd>{contest?.startTime}</TBodyTd>
                 <TBodyTd>{contest?.endTime}</TBodyTd>

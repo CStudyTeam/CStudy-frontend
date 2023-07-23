@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSignOut } from 'hooks/@query/useSignOut';
@@ -21,15 +21,22 @@ const Header = () => {
 
     const { mutate: signOut } = useSignOut();
 
-    const handleNavigationClick = useCallback(() => {
+    const handleNavigationClick = () => {
         resetAllFilters();
-    }, []);
+    };
+
+    const handleLinkClick = (event: React.MouseEvent, path: string) => {
+        if (window.location.pathname === path) {
+            event.preventDefault();
+        }
+        handleNavigationClick();
+    };
 
     return (
         <>
             <Styled.Wrapper>
                 <Styled.LogoWrap>
-                    <Link to="/">
+                    <Link to="/" onClick={(event) => handleLinkClick(event, '/')}>
                         <picture>
                             <source srcSet={Logo_Webp} type="image/webp" />
                             <source srcSet={Logo_Png} type="image/png" />
@@ -40,27 +47,30 @@ const Header = () => {
                 <Styled.Nav>
                     <Styled.NavList>
                         <Styled.NavItem>
-                            <StyleNavLink to="/board" onClick={handleNavigationClick}>
+                            <StyleNavLink to="/board" onClick={(event) => handleLinkClick(event, '/board')}>
                                 게시판
                             </StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <StyleNavLink to="/problemset" onClick={handleNavigationClick}>
+                            <StyleNavLink to="/problemset" onClick={(event) => handleLinkClick(event, '/problemset')}>
                                 문제풀이
                             </StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <StyleNavLink to="/contest" onClick={handleNavigationClick}>
+                            <StyleNavLink to="/contest" onClick={(event) => handleLinkClick(event, '/contest')}>
                                 대회
                             </StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <StyleNavLink to="/workbook" onClick={handleNavigationClick}>
+                            <StyleNavLink to="/workbook" onClick={(event) => handleLinkClick(event, '/workbook')}>
                                 문제집
                             </StyleNavLink>
                         </Styled.NavItem>
                         <Styled.NavItem>
-                            <StyleNavLink to="/membersranks" onClick={handleNavigationClick}>
+                            <StyleNavLink
+                                to="/membersranks"
+                                onClick={(event) => handleLinkClick(event, '/membersranks')}
+                            >
                                 전체랭킹
                             </StyleNavLink>
                         </Styled.NavItem>
@@ -70,7 +80,11 @@ const Header = () => {
                     {isLogin() ? (
                         <>
                             <Button onClick={() => signOut()}>로그아웃</Button>
-                            <StyleNavLink to="mypage" className="mypage" onClick={handleNavigationClick}>
+                            <StyleNavLink
+                                to="mypage"
+                                className="mypage"
+                                onClick={(event) => handleLinkClick(event, 'mypage')}
+                            >
                                 마이페이지
                             </StyleNavLink>
                         </>

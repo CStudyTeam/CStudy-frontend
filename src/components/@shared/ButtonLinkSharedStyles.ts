@@ -13,6 +13,11 @@ export const ButtonLinkSharedStyles = css`
         transform: scale(0.97);
     }
 
+    &:disabled {
+        background-color: ${COLOR.GRAY_100} !important;
+        box-shadow: ${SHADOW.BUTTON_DISABLED} !important;
+    }
+
     &.bold {
         ${FONT.BOLD_16}
     }

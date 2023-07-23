@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { isLogin } from 'utils/auth';
 import ApproveStatus from 'components/@shared/Status';
@@ -39,4 +40,4 @@ const RequestList = ({ id, flag, title, description, memberName, createAt }: Req
     );
 };
 
-export default RequestList;
+export default memo(RequestList);

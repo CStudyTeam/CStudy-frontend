@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { MyPageFilterStoreType } from 'hooks/@zustand/filterStore';
 import { Problem } from 'types/api';
 import Table from 'components/ProblemSet/Table';
@@ -12,14 +13,12 @@ interface ProblemTBodyContentProps {
 }
 
 const ProblemTBodyContent = ({ problemList, myPageFilter, handlePage }: ProblemTBodyContentProps) => {
+    const tableColRate = useMemo(() => ['10%', '50%', '20%', '10%', '10%'], []);
+    const tableTitle = useMemo(() => ['NO.', '문제이름', '카테고리', '맞춘 문제', '틀린 문제'], []);
+
     return (
         <>
-            <Table
-                white
-                narrow
-                colRate={['10%', '50%', '20%', '10%', '10%']}
-                title={['NO.', '문제이름', '카테고리', '맞춘 문제', '틀린 문제']}
-            >
+            <Table white narrow colRate={tableColRate} title={tableTitle}>
                 {problemList?.totalElements === 0 && (
                     <tr>
                         <td colSpan={5}>

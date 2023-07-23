@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { usePageNumberStore } from 'hooks/@zustand/filterStore';
 import useQueryFilterAction from 'hooks/ProblemSet/useQueryFilterAction';
 import { useGetProblem } from 'hooks/@query/problem/useGetProblem';
@@ -12,7 +13,7 @@ import Pagination from 'components/ProblemSet/Pagination';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import ProgramFilterTBody from 'components/ProblemSet/ProgramFilterTBody';
-import { Filter } from 'components/@shared/FilterStyles';
+import Filter from 'components/@shared/Filter';
 import * as Styled from './style';
 
 const ProblemSet = () => {
@@ -28,6 +29,16 @@ const ProblemSet = () => {
         query: queryFilter.query,
     });
 
+    const filterOptionTotal = useMemo(() => ['전체'], []);
+    const filterOptionEmpty = useMemo(() => [''], []);
+    const noActiveFilterSelectIndex = useMemo(() => [0], []);
+    const filterSelectIndex = useMemo(() => [0, 1, 2], []);
+    const filterOptionStatus = useMemo(() => ['전체', '완료', '실패'], []);
+    const filterOptionCategory = useMemo(() => ['전체', '자바', '네트워크', '운영체제', '데이터베이스'], []);
+    const filterOptionCategoryValue = useMemo(() => ['', '자바', '네트워크', '운영체제', '데이터베이스'], []);
+    const tableColRate = useMemo(() => ['10%', '15%', '60%', '15%'], []);
+    const tableTitle = useMemo(() => ['번호', '상태', '제목', '카테고리'], []);
+
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="문제풀이" adminLink="문제생성 페이지 이동">
@@ -39,22 +50,22 @@ const ProblemSet = () => {
                         name={statusFilter.status}
                         handleActive={statusHandleActive}
                         isActive={statusActive}
-                        options={!isActive ? ['전체', '완료', '실패'] : ['전체']}
-                        optionsValue={!isActive ? [0, 1, 2] : [0]}
-                        selectedIndex={!isActive ? [0, 1, 2] : [0]}
+                        options={!isActive ? filterOptionStatus : filterOptionTotal}
+                        optionsValue={!isActive ? filterSelectIndex : noActiveFilterSelectIndex}
+                        selectedIndex={!isActive ? filterSelectIndex : noActiveFilterSelectIndex}
                     />
                     <Select
                         name={categoryFilter.category}
                         handleActive={categoryHandleActive}
                         isActive={categoryActive}
-                        options={!isActive ? ['전체', '자바', '네트워크', '운영체제', '데이터베이스'] : ['전체']}
-                        optionsValue={!isActive ? ['', '자바', '네트워크', '운영체제', '데이터베이스'] : ['']}
-                        selectedIndex={!isActive ? [0, 1, 2] : [0]}
+                        options={!isActive ? filterOptionCategory : filterOptionTotal}
+                        optionsValue={!isActive ? filterOptionCategoryValue : filterOptionEmpty}
+                        selectedIndex={!isActive ? filterSelectIndex : noActiveFilterSelectIndex}
                     />
                 </Styled.FilterWrapper>
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
-                <Table colRate={['10%', '15%', '60%', '15%']} title={['번호', '상태', '제목', '카테고리']}>
+                <Table colRate={tableColRate} title={tableTitle}>
                     <ProgramFilterTBody problemList={problemList as Problem} />
                 </Table>
                 {(problemList?.totalPages as number) > 1 && (

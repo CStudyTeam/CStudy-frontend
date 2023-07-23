@@ -32,6 +32,7 @@ const BoardDetail = () => {
         ApproveRequest(formData);
     };
 
+    console.log(request);
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="게시판" />
@@ -40,7 +41,12 @@ const BoardDetail = () => {
                 <Styled.ButtonWrapper>
                     {isAdmin() && (
                         <>
-                            <Button type="submit" className="xl wide navy style" onClick={handleSubmit(onSubmit)}>
+                            <Button
+                                type="submit"
+                                className="xl wide navy style"
+                                disabled={request?.flag}
+                                onClick={handleSubmit(onSubmit)}
+                            >
                                 승인하기
                             </Button>
                         </>

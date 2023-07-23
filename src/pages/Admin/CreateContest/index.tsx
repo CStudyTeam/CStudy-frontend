@@ -1,12 +1,9 @@
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { Form, useNavigate } from 'react-router-dom';
-import Calendar from 'react-calendar';
-import { BsChevronDoubleRight } from '@react-icons/all-files/bs/BsChevronDoubleRight';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { useContestSet } from 'hooks/@query/contest/useContestSet';
 import formatDate from 'utils/formatDate';
-import { COLOR } from 'constants/Color';
 import { ContestSetForm } from 'types/Form';
 
 import ContentContainer from 'components/@shared/ContentContainer';
@@ -15,14 +12,12 @@ import Button from 'components/@shared/Button';
 import AdminInput from 'components/@shared/Admin/AdminInput';
 import FormSection from 'components/@shared/Admin/FormSection';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
+import ContestCalendar from 'components/CreateContest/ContestCalendar';
 import { FormBody } from 'components/@shared/Admin/FormBody/style';
-
-import * as Styled from './style';
 
 const CreateContest = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [defaultValue] = useState<Date | null>(new Date());
 
     const {
         register,
@@ -38,9 +33,12 @@ const CreateContest = () => {
         },
     });
 
-    const customSetValue = (id: string, value: Date) => {
-        setValue(id, value);
-    };
+    const customSetValue = useCallback(
+        (id: string, value: Date) => {
+            setValue(id, value);
+        },
+        [setValue],
+    );
 
     const handleIsLoading = (isLoading: boolean) => {
         setIsLoading(isLoading);
@@ -87,25 +85,7 @@ const CreateContest = () => {
                             title="대회 일정을 설정해 주세요"
                             subtitle="시작일과 종료일을 선택해주세요 (설정을 안했을 경우 당일로 처리됩니다)"
                         >
-                            <Styled.CustomCalendarContainer>
-                                <Styled.CalendarField>
-                                    <Styled.CalendarLabel>대회 시작일</Styled.CalendarLabel>
-                                    <Calendar
-                                        onChange={(value) => customSetValue('competitionStart', value as Date)}
-                                        defaultValue={defaultValue}
-                                        minDate={new Date()}
-                                    />
-                                </Styled.CalendarField>
-                                <BsChevronDoubleRight size={60} color={COLOR.NAVY_200} />
-                                <Styled.CalendarField>
-                                    <Styled.CalendarLabel>대회 종료일</Styled.CalendarLabel>
-                                    <Calendar
-                                        onChange={(value) => customSetValue('competitionEnd', value as Date)}
-                                        defaultValue={defaultValue}
-                                        minDate={new Date()}
-                                    />
-                                </Styled.CalendarField>
-                            </Styled.CustomCalendarContainer>
+                            <ContestCalendar customSetValue={customSetValue} />
                         </FormSection>
                         <Button type="submit" className="mt xl navy style" disabled={isLoading}>
                             대회 등록하기

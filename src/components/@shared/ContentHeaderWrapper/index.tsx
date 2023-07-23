@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState, useCallback } from 'react';
+import { PropsWithChildren, useState, useCallback, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
@@ -94,4 +94,4 @@ const ContentHeaderWrapper = ({ title, desc, admin, adminLink, children }: Props
     );
 };
 
-export default ContentHeaderWrapper;
+export default memo(ContentHeaderWrapper);

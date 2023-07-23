@@ -6,13 +6,17 @@ import ContentContainer from 'components/@shared/ContentContainer';
 import ContentHeaderWrapper from 'components/@shared/ContentHeaderWrapper';
 import ContentBodyWrapper from 'components/@shared/ContentBodyWrapper';
 import Table from 'components/ProblemSet/Table';
+import { useMemo } from 'react';
 import ContestListTableBody from 'components/Contest/ContestListTableBody';
 import NoData from 'components/@shared/NoData';
-import { Filter } from 'components/@shared/FilterStyles';
+import Filter from 'components/@shared/Filter';
 
 const Contest = () => {
     const { contestFilter, isActive, handlePage, handleToggle, checkAndDisplayLoginModal } = useContestFilter();
     const contestList = useGetContestList({ page: contestFilter.pageNumber, query: contestFilter.query });
+
+    const tableRate = useMemo(() => ['45%', '15%', '40%'], []);
+    const tableTitle = useMemo(() => ['대회명', '최대 인원수', '기간'], []);
 
     return (
         <ContentContainer>
@@ -22,7 +26,7 @@ const Contest = () => {
                 </Filter>
             </ContentHeaderWrapper>
             <ContentBodyWrapper>
-                <Table colRate={['45%', '15%', '40%']} title={['대회명', '최대 인원수', '기간']}>
+                <Table colRate={tableRate} title={tableTitle}>
                     {contestList?.totalElements === 0 && (
                         <tr>
                             <td colSpan={3}>

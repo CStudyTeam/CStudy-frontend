@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Form, useNavigate, useParams } from 'react-router-dom';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
@@ -57,13 +57,16 @@ const WorkbookProblemAdd = () => {
         reset();
     };
 
+    const tableColRate = useMemo(() => ['15%', '65%', '20%'], []);
+    const tableTitle = useMemo(() => ['선택', '문제목록', '카테고리'], []);
+
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="문제집 문제추가" />
             <ContentBodyWrapper>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <FormBody>
-                        <Table white colRate={['15%', '65%', '20%']} title={['선택', '문제목록', '카테고리']}>
+                        <Table white colRate={tableColRate} title={tableTitle}>
                             <AdminWorkbookTableLists
                                 filterQuestion={filterQuestion as ProblemContent[]}
                                 register={register}

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { RequestContent } from 'types/api';
 import ApproveStatus from 'components/@shared/Status';
@@ -24,4 +25,4 @@ const RequestTBodyContentTableList = ({ request }: RequestTBodyContentTableListP
     );
 };
 
-export default RequestTBodyContentTableList;
+export default memo(RequestTBodyContentTableList);

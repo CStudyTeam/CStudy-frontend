@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import * as Styled from './style';
 
 interface SelectProps {
@@ -39,4 +40,4 @@ const Select = ({ name, handleActive, isActive, options, optionsValue, selectedI
     );
 };
 
-export default Select;
+export default memo(Select);

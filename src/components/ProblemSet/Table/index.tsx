@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import * as Styled from './style';
+import TableHead from '../TableHead';
 
 interface TableProps {
     colRate: string[];
@@ -12,20 +13,7 @@ interface TableProps {
 const Table = ({ colRate, title, maxHeight, children, white, narrow }: PropsWithChildren<TableProps>) => {
     return (
         <Styled.Table cellSpacing={0} white={white} maxHeight={maxHeight} narrow={narrow}>
-            <colgroup>
-                {colRate?.map((rate, index) => (
-                    <col width={rate} key={index} />
-                ))}
-            </colgroup>
-            <thead>
-                <tr>
-                    {title?.map((t, index) => (
-                        <Styled.THeadTh narrow={narrow} key={index}>
-                            {t}
-                        </Styled.THeadTh>
-                    ))}
-                </tr>
-            </thead>
+            <TableHead colRate={colRate} title={title} narrow={narrow} />
             <tbody>{children}</tbody>
         </Styled.Table>
     );
