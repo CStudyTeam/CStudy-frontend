@@ -25,7 +25,7 @@ export interface StatusFilterStoreType {
     setStatusValue: (statusValue: number) => void;
 }
 
-export const useStatusFilter = create<StatusFilterStoreType>((set, get) => ({
+export const useStatusFilter = create<StatusFilterStoreType>((set) => ({
     status: '상태',
     statusValue: 0,
     setStatus: (status) => set({ status }),

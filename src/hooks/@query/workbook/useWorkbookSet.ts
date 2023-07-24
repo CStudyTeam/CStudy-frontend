@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { workbookSet } from 'api/workbook';
 import toast from 'provider/Toast';
 
@@ -7,8 +7,10 @@ interface useWorkbookSetProps {
 }
 
 export const useWorkbookSet = ({ handleIsLoading }: useWorkbookSetProps) => {
+    const queryClient = useQueryClient();
     const { mutate: WorkbookSet } = useMutation(workbookSet, {
         onSuccess: () => {
+            queryClient.invalidateQueries(['woorkbookList']);
             toast.success('문제집 생성에 성공했습니다.');
         },
         onError: () => {

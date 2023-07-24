@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { selectAnswerProblem } from 'api/problem';
 import toast from 'provider/Toast';
 
@@ -9,8 +9,10 @@ interface useProblemSetProps {
 }
 
 export const useSelectAnswerProblem = ({ handleIsLoading, handleIsAnswer, actionAnimations }: useProblemSetProps) => {
+    const queryClient = useQueryClient();
     const { mutate: SelectAnswerProblem } = useMutation(selectAnswerProblem, {
         onSuccess: (response) => {
+            queryClient.invalidateQueries();
             const isAnswer = !!response?.data?.answer;
             handleIsAnswer(isAnswer);
             actionAnimations(true);

@@ -20,11 +20,12 @@ const useCategoryFilterAction = ({ reset }: CategoryFilterActionProps): Category
             const target = e.target as HTMLElement;
             setCategoryActive((value) => !value);
             if (target.nodeName === 'LI') {
+                reset();
                 categoryFilter.setCategory(target.innerText);
                 categoryFilter.setCategoryValue(target.dataset.value as string);
             }
         },
-        [categoryFilter],
+        [categoryFilter, reset],
     );
 
     return {

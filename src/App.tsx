@@ -38,7 +38,14 @@ const ContestResult = lazy(() => import(/* webpackChunkName: "ContestResult" */ 
 const MembersRanks = lazy(() => import(/* webpackChunkName: "MembersRanks" */ 'pages/MembersRanks'));
 const MyPage = lazy(() => import(/* webpackChunkName: "MyPage" */ 'pages/MyPage'));
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            cacheTime: 1000 * 60 * 30,
+            staleTime: 1000 * 60 * 5,
+        },
+    },
+});
 
 const router = createBrowserRouter([
     {

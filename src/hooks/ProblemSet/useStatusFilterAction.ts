@@ -20,11 +20,12 @@ const useStatusFilterAction = ({ reset }: StatusFilterActionProps): StatusFilter
             const target = e.target as HTMLElement;
             setStatusActive((value) => !value);
             if (target.nodeName === 'LI') {
+                reset();
                 statusFilter.setStatus(target.innerText);
                 statusFilter.setStatusValue(Number(target.dataset.value));
             }
         },
-        [statusFilter],
+        [statusFilter, reset],
     );
 
     return {

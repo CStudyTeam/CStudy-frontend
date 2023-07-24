@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { joinContest } from 'api/contest';
 import toast from 'provider/Toast';
 import { useNavigate } from 'react-router-dom';
@@ -6,10 +6,12 @@ import { UseJoinContestProps } from 'types/contest';
 
 export const useJoinContest = ({ handleIsLoading, setIsModalOpen }: UseJoinContestProps) => {
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
     const { mutate: JoinContest } = useMutation(joinContest, {
         onSuccess: () => {
-            toast.success('대회에 참여에 성공했습니다.');
             navigate('contestproblem');
+            queryClient.invalidateQueries();
+            toast.success('대회에 참여에 성공했습니다.');
         },
         onError: (error) => {
             switch (error) {

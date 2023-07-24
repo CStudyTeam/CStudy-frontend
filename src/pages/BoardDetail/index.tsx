@@ -32,7 +32,6 @@ const BoardDetail = () => {
         ApproveRequest(formData);
     };
 
-    console.log(request);
     return (
         <ContentContainer>
             <ContentHeaderWrapper title="게시판" />

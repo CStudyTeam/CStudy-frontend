@@ -1,5 +1,4 @@
 import { useUpdatePassword } from 'hooks/@query/mypage/useUpdatePassword';
-import { MyPageFilterStoreType, useMyPageFilterStore } from 'hooks/@zustand/filterStore';
 import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, UseFormReset } from 'react-hook-form';
 
