@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 import useGetContestProblem from 'hooks/@query/contest/useGetContestProblem';
+import useTryOutContest from 'hooks/@zustand/useTryOutContest';
 import { ContestProblem as ContestProblemType } from 'types/api';
 
 import ContentContainer from 'components/@shared/ContentContainer';
@@ -12,9 +12,9 @@ import usePlayContest from 'hooks/@zustand/usePlayContest';
 import ConfirmModal from 'components/Contest/ConfirmModal';
 
 const ContestProblem = () => {
-    const history = createBrowserHistory();
     const { contestId } = useParams();
     const navigate = useNavigate();
+    const { tryOutOfContest, setTryOutOfContest } = useTryOutContest();
     const contestProblem = useGetContestProblem(contestId as string);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,17 +37,15 @@ const ContestProblem = () => {
     }, [setIsPlaying, contestId, navigate]);
 
     useEffect(() => {
-        const unlisten = history.listen(({ action }) => {
-            if (action === 'POP') {
-                history.forward();
-                setIsModalOpen(true);
-            }
-        });
-
+        setTryOutOfContest(false);
+        if (tryOutOfContest) {
+            setIsModalOpen(true);
+        }
         return () => {
-            unlisten();
+            navigate(1);
+            setTryOutOfContest(true);
         };
-    }, [history]);
+    }, [navigate, tryOutOfContest, setTryOutOfContest]);
 
     return (
         <>
