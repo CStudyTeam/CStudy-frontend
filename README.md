@@ -7,10 +7,12 @@
 <br>
 
 ## ✨ 프로젝트 소개
-``` Introduce ```
-- 취업에 있어 필요한 CS 지식을 학습할 수 있는 웹 어플리케이션 플랫폼 입니다. 카테고리 별 문제를 통해 필요한 지식을 빠르게 학습할 수 있으며 틀린 문제를 모아서 부족한 부분을 빠르게 인지할 수 있습니다.  또한 경쟁을 통하여 지루한 CS 학습에 재미를 부여하며 선의의 경쟁을 통해 동료와 함께 성장이 가능합니다.
 
-- [⭐️ 팀 노션](https://sunny-radiator-7f3.notion.site/CStudy-5da03f7b12d5477eae1e35caacd04615?pvs=4) | [📝 배포 사이트 ](https://dbsyacmkozvg1.cloudfront.net/)
+`Introduce`
+
+-   취업에 있어 필요한 CS 지식을 학습할 수 있는 웹 어플리케이션 플랫폼 입니다. 카테고리 별 문제를 통해 필요한 지식을 빠르게 학습할 수 있으며 틀린 문제를 모아서 부족한 부분을 빠르게 인지할 수 있습니다. 또한 경쟁을 통하여 지루한 CS 학습에 재미를 부여하며 선의의 경쟁을 통해 동료와 함께 성장이 가능합니다.
+
+-   [⭐️ 팀 노션](https://sunny-radiator-7f3.notion.site/CStudy-5da03f7b12d5477eae1e35caacd04615?pvs=4) | [📝 배포 사이트 ](https://dbsyacmkozvg1.cloudfront.net/)
 
 <br>
 
@@ -54,7 +56,9 @@
 <br>
 <br>
 
-### 라우터 설계도
+### 라우터 구조
+
+![라우트 구조](https://github.com/CStudyTeam/CStudy-frontend/assets/120312998/677eaecd-2c33-48b1-bace-a8243fd3bd03)
 
 <br>
 <br>
@@ -115,6 +119,23 @@
   <p align="center">
   
   <img src="https://img.shields.io/badge/react hook form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white"/>
+  
+  </p>
+</div>
+<div style="width: 50%">
+  <h4 align="center">3D Model Control</h4>
+  <p align="center">
+  
+  <img src="https://img.shields.io/badge/react three fiber-000000?style=for-the-badge&logo=threedotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/react three drei-000000?style=for-the-badge&logo=threedotjs&logoColor=white"/>
+  
+  </p>
+</div>
+<div style="width: 50%">
+  <h4 align="center">WebPack Control</h4>
+  <p align="center">
+  
+  <img src="https://img.shields.io/badge/Craco-8DD6F9?style=for-the-badge&logo=webpack&logoColor=white"/>
   
   </p>
 </div>
