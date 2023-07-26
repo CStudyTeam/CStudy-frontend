@@ -1,8 +1,9 @@
-import { Suspense, lazy, useRef, useCallback, useState } from 'react';
+import { Suspense, lazy, useRef, useCallback, useState, useEffect } from 'react';
 import useIntersectionObserver from 'hooks/useIntersectionObserver';
 import Contents from 'components/@main/Contents';
 import Skeleton from 'components/@shared/Skeleton';
 import * as Styled from './style';
+import { test } from 'api/auth';
 
 const Banner = lazy(() => import(/* webpackChunkName: "Banner" */ 'components/@main/Banner'));
 
@@ -19,6 +20,12 @@ const Main = () => {
     const targetRef = useRef<HTMLDivElement>(null);
 
     useIntersectionObserver({ targetRef, handleOutOfView, handleInView, options: { threshold: 0.3 } });
+
+    useEffect(() => {
+        test()
+            .then((res) => console.log(res))
+            .catch(() => console.log('실패'));
+    }, []);
 
     return (
         <Styled.MainWrapper>

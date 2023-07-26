@@ -40,3 +40,9 @@ export const retryToken = async (refreshToken: string) => {
     });
     return response.data;
 };
+
+export const test = async () => {
+    const response = await instance.get('/test');
+
+    return response.data;
+};
